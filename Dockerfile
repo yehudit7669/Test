@@ -4,7 +4,7 @@ COPY . /app
 RUN npm install
 RUN npm run build
 
-FROM nginx:1.23.4
+FROM nginx:1.24.0
 COPY --from=build /app/dist /var/www/html/
 EXPOSE 80
 CMD ["nginx","-g","daemon off;"]
