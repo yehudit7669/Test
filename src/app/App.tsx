@@ -1,9 +1,9 @@
 import { Routes, Route, Outlet, Link } from "react-router-dom";
-import AuthLayout from "./components/Auth/AuthLayout";
-import SignIn from "./components/Auth/SignIn";
-import SignUp from "./components/Auth/SignUp";
-import ForgotPassword from "./components/Auth/ForgotPassword";
-import "./App.css"
+import AuthLayout from "../components/layouts/AuthLayout/AuthLayout";
+import SignIn from "../components/pages/Auth/SignIn";
+import SignUp from "../components/pages/Auth/SignUp";
+import ForgotPassword from "../components/pages/Auth/ForgotPassword";
+
 
 function App() {
   return (
@@ -21,7 +21,6 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Route>
       </Routes>
-      <h1>Hello</h1>
     </div>
   );
 }
