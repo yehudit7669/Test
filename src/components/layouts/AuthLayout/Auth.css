@@ -1,0 +1,89 @@
+  .AuthLayout {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .SideNav {
+    width: 484px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../../assets/auth_bg.png");
+  }
+
+  .SideNav .Title {
+    width: 300px;
+    font-size: 70px;
+    line-height: 80px;
+    font-family: Mansalva;
+    color: white;
+  }
+
+  .Outlet {
+    width: calc(100% - 484px);
+  }
+
+  .SignIn {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .SignIn .Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 424px;
+  }
+
+  .SignIn .Navigation {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 36px;
+    letter-spacing: -0.011em;
+    color: #808080;
+  }
+
+  .SignIn .Title {
+    width: 424px;
+    height: 60px;
+    left: calc(50% - 424px/2 + 212px);
+    top: 253px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    text-align: center;
+    color: #212121;
+  }
+
+  .SignIn .Subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    color: #808080;
+    margin-bottom: 12px;
+  }
+
+  .SignIn .MuiTextField-root {
+    margin-bottom: 12px;
+  }
+
+  .SignIn .ForgotPassword {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 36px;
+    letter-spacing: -0.011em;
+    text-decoration-line: underline;
+    color: #808080;
+    position: relative;
+    right: 146px;
+    margin-top: 12px;
+  }
