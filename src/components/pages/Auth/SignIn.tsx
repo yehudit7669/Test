@@ -26,10 +26,7 @@ function SignIn() {
         {t("SignIn.newToWizer")} <Link to="sign-up">{t("SignIn.signUp")}</Link>
       </div>
       <div className="Wrapper">
-        <div className="Title">
-          {user.name}
-          {t("SignIn.signInToWizer")}
-        </div>
+        <div className="Title">{t("SignIn.signInToWizer")}</div>
         <div className="Subtitle">{t("SignIn.discoverWizer")}</div>
         <TextField label="Email" variant="outlined" fullWidth />
         <TextField label="Password" variant="outlined" fullWidth />
