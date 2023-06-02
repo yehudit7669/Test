@@ -1,25 +1,31 @@
 import { Routes, Route, Link } from "react-router-dom";
-import SignIn from "../components/features/Auth/SignIn";
-import SignUp from "../components/features/Auth/SignUp";
-import ForgotPassword from "../components/features/Auth/ForgotPassword";
+import SignIn from "../components/pages/Auth/SignIn";
+import SignUp from "../components/pages/Auth/SignUp";
+import ForgotPassword from "../components/pages/Auth/ForgotPassword";
 import MainLayout from "../components/layouts/MainLayout";
 import AuthLayout from "../components/layouts/AuthLayout";
 import { routes } from "../constants";
 import AuthRoute from "./authRoutes/AuthRoute";
 
-
 function App() {
   return (
     <div className="App">
       <Routes>
-      {/* Auth routes */}
+        {/* Auth routes */}
         <Route path={routes.AUTH} element={<AuthLayout />}>
           <Route index element={<SignIn />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
         {/* Main layout routes */}
-        <Route path={routes.ROOT} element={<AuthRoute><MainLayout /></AuthRoute>}>
+        <Route
+          path={routes.ROOT}
+          element={
+            <AuthRoute>
+              <MainLayout />
+            </AuthRoute>
+          }
+        >
           <Route index element={<Home />} />
           <Route path="*" element={<NoMatch />} />
         </Route>
@@ -28,8 +34,6 @@ function App() {
   );
 }
 
-
-
 function Home() {
   return (
     <div>
@@ -37,7 +41,6 @@ function Home() {
     </div>
   );
 }
-
 
 function NoMatch() {
   return (
@@ -50,4 +53,4 @@ function NoMatch() {
   );
 }
 
-export default App
+export default App;
