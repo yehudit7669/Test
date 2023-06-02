@@ -2,17 +2,29 @@ import { Link } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import Actions from "../../../actions";
 
 function SignIn() {
   const { t } = useTranslation();
+  const user = useSelector((state: any) => state.auth.user);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
+  }, []);
+  console.log(user);
   return (
     <div className="SignIn">
       <div className="Navigation">
         {t("SignIn.newToWizer")} <Link to="sign-up">{t("SignIn.signUp")}</Link>
       </div>
       <div className="Wrapper">
-        <div className="Title">{t("SignIn.signInToWizer")}</div>
+        <div className="Title">
+          {user.name}
+          {t("SignIn.signInToWizer")}
+        </div>
         <div className="Subtitle">{t("SignIn.discoverWizer")}</div>
         <TextField label="Email" variant="outlined" fullWidth />
         <TextField label="Password" variant="outlined" fullWidth />
