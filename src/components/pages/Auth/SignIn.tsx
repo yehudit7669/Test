@@ -2,18 +2,23 @@ import { Link } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Actions from "../../../actions";
+import { getUser } from "../../../services/auth/authServices";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 
 function SignIn() {
   const { t } = useTranslation();
-  const user = useSelector((state: any) => state.auth.user);
-  const dispatch = useDispatch();
+  const user = useAppSelector((state: any) => state.auth.user);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
   }, []);
+
+  const handleSignIn = () => {
+    dispatch(getUser("email", "password", true));
+  };
   console.log(user);
   return (
     <div className="SignIn">
