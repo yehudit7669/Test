@@ -20,6 +20,7 @@
     "axios": "^1.4.0",
     "i18next": "^22.5.0",
     "immer": "^10.0.2",
+    "keymirror": "^0.1.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
@@ -30,6 +31,7 @@
     "redux": "^4.2.1"
   },
   "devDependencies": {
+    "@types/keymirror": "^0.1.1",
     "@types/node": "^20.2.5",
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",

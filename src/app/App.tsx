@@ -6,8 +6,16 @@ import MainLayout from "../components/layouts/MainLayout";
 import AuthLayout from "../components/layouts/AuthLayout";
 import { routes } from "../constants";
 import AuthRoute from "./authRoutes/AuthRoute";
+import useWebSocket from "react-use-websocket";
+import { getWSEnv } from "../utils/envUtil";
 
 function App() {
+  useWebSocket(getWSEnv(), {
+    onOpen: () => {
+      console.log("WebSocket connection established.");
+    },
+  });
+
   return (
     <div className="App">
       <Routes>
