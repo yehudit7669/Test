@@ -1,0 +1,12 @@
+{
+  "translation": {
+    "SignIn": {
+      "newToWizer": "New to Wizer?",
+      "signUp":"Sign Up",
+      "signInToWizer":"Sign In To Wizer",
+      "discoverWizer":"Discover more with a Wizer account",
+      "signIn":"Sign In",
+      "forgotPassword":"Forgot Password?"
+    }
+  }
+}

@@ -1,27 +1,44 @@
-import { Link } from "react-router-dom"
-import { TextField, Button } from "@mui/material"
+import { Link } from "react-router-dom";
+import { TextField, Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
 import "./Auth.css";
+import { useEffect } from "react";
+import Actions from "../../../actions";
+import { getUser } from "../../../services/auth/authServices";
+import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
 
 function SignIn() {
-  return <div className="SignIn">
-    <div className="Navigation">
-      New to Wizer? <Link to="sign-up">Sign Up</Link>
-    </div>
-    <div className="Wrapper">
-      <div className="Title">
-        Sign In To Wizer
+  const { t } = useTranslation();
+  const user = useAppSelector((state: any) => state.auth.user);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
+  }, []);
+
+  const handleSignIn = () => {
+    dispatch(getUser("email", "password", true));
+  };
+  console.log(user);
+  return (
+    <div className="SignIn">
+      <div className="Navigation">
+        {t("SignIn.newToWizer")} <Link to="sign-up">{t("SignIn.signUp")}</Link>
       </div>
-      <div className="Subtitle">
-        Discover more with a Wizer account
+      <div className="Wrapper">
+        <div className="Title">{t("SignIn.signInToWizer")}</div>
+        <div className="Subtitle">{t("SignIn.discoverWizer")}</div>
+        <TextField label="Email" variant="outlined" fullWidth />
+        <TextField label="Password" variant="outlined" fullWidth />
+        <Button variant="contained" fullWidth>
+          {t("SignIn.signIn")}
+        </Button>
+        <Link className="ForgotPassword" to="forgot-password">
+          {t("SignIn.forgotPassword")}
+        </Link>
       </div>
-      <TextField label="Email" variant="outlined" fullWidth />
-      <TextField label="Password" variant="outlined" fullWidth />
-      <Button variant="contained" fullWidth>Sign In</Button>
-      <Link className="ForgotPassword" to="forgot-password">
-        Forgot Password?
-      </Link>
     </div>
-  </div>
+  );
 }
 
-export default SignIn
+export default SignIn;
