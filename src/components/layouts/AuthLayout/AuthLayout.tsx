@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom"
 
 import "@fontsource/mansalva"
-import "./Auth.css"
+import "./AuthLayout.css"
 
 function AuthLayout() {
   return (

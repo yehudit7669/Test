@@ -3,10 +3,15 @@
     "SignIn": {
       "newToWizer": "New to Wizer?",
       "signUp":"Sign Up",
-      "signInToWizer":"Sign In To Wizer",
+      "logInToWizer":"Log in To Wizer",
       "discoverWizer":"Discover more with a Wizer account",
-      "signIn":"Sign In",
-      "forgotPassword":"Forgot Password?"
+      "signIn":"Log In",
+      "forgotPassword":"Forgot Password?",
+      "connect":{
+        "google":"Connect with Google",
+        "microsoft":"Connect with Microsoft"
+      },
+      "orText":"or"
     }
   }
 }
