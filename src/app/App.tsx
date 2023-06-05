@@ -10,6 +10,7 @@ import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
 
 function App() {
+  //Connecting websocket
   useWebSocket(getWSEnv(), {
     onOpen: () => {
       console.log("WebSocket connection established.");
