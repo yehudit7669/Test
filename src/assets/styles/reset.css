@@ -103,6 +103,9 @@ section {
 }
 
 body {
+  /* Adding default fonts - Source Sans Pro */
+  font-family: 'Source Sans Pro', sans-serif;
+  /* Adding default fonts - Source Sans Pro */
   line-height: 1;
 }
 
@@ -128,3 +131,4 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
+
