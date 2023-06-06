@@ -12,6 +12,13 @@
         "microsoft":"Connect with Microsoft"
       },
       "orText":"or"
+    },
+    "BirthDate": {
+      "birthDate": "What is your birth date?",
+      "submit":"Submit",
+      "dayTitle":"Day",
+      "monthTitle":"Month",
+      "yearTitle":"Year"
     }
   }
 }

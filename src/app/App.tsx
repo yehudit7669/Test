@@ -8,6 +8,7 @@ import { routes } from "../constants";
 import AuthRoute from "./authRoutes/AuthRoute";
 import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
+import BirthDateComponent from "../components/pages/Auth/BirthDateComponent";
 
 function App() {
   //Connecting websocket
@@ -23,6 +24,7 @@ function App() {
         {/* Auth routes */}
         <Route path={routes.AUTH} element={<AuthLayout />}>
           <Route index element={<SignIn />} />
+          <Route path={routes.BIRTH_DATE} element={<BirthDateComponent />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
