@@ -47,7 +47,8 @@ function SignIn() {
 
   const renderSignUpButton = () => (
     <div className="Navigation">
-      {t("SignIn.newToWizer")} <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
+      {t("SignIn.newToWizer")}{" "}
+      <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (
@@ -164,7 +165,6 @@ function SignIn() {
     }
     if (validInputs) {
       //TODO : ADD api call code
-<<<<<<< HEAD
       // dispatch(getUser("email", "password", true))
       //   .then((response) => {
       //     if (response.status === 200) {
@@ -178,25 +178,6 @@ function SignIn() {
       //   .catch((error) => {
       //     setError(error.response.data.message);
       //   });
-=======
-      dispatch(getUser("email", "password", true))
-        .then(async(response) => {
-          if (response.status === 200) {
-            console.log(response.data,'response.data.token')
-            const { token, isBirthDate } = response.data;
-            setToken(token);
-            // Navigate based on role and first sign in
-            if(!isBirthDate){
-              navigate(routes.AUTH + "/" + routes.BIRTH_DATE);
-            }
-          }
-        })
-        .catch((error) => {
-          setError(error.response.data.message);
-        });
->>>>>>> 89bcaf120befcde8d14a4675148ca5d6d9fdb925
-
-      //Temp solution
 
       const response = {
         token:

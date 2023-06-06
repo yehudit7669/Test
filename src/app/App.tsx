@@ -7,13 +7,10 @@ import { routes } from "../constants";
 import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
 import RequireAuth from "./requireAuth/RequireAuth";
-<<<<<<< HEAD
 import useUser from "../hooks/useUser";
 import renderRoleRoutes from "./routes/renderRoleRoutes";
 import { useAppSelector } from "../hooks/redux-hooks";
-=======
 import BirthDateComponent from "../components/pages/Auth/BirthDateComponent";
->>>>>>> 89bcaf120befcde8d14a4675148ca5d6d9fdb925
 
 function App() {
   const [user] = useUser();

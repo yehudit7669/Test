@@ -2,6 +2,7 @@ import { Navigate, Route } from "react-router-dom";
 import MainLayout from "../../components/layouts/MainLayout";
 import AuthLayout from "../../components/layouts/AuthLayout";
 import { routes } from "../../constants";
+import BirthDateComponent from "../../components/pages/Auth/BirthDateComponent";
 
 type Props = {
   userRole: string;
@@ -18,7 +19,7 @@ const renderStudentRoutes = ({ userRole }: Props) => {
       </Route>
       <Route path={routes.GET_STARTED} element={<AuthLayout />}>
         <Route index element={<Navigate to={routes.STUDENT_DOB} replace />} />
-        <Route path={routes.STUDENT_DOB} element={<h2>Student DOB</h2>} />
+        <Route path={routes.STUDENT_DOB} element={<BirthDateComponent />} />
         {/* <Route
           path={routes.ANY}
           element={<Navigate to={routes.GET_STARTED} replace />}
