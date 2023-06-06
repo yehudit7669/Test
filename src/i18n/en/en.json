@@ -27,6 +27,15 @@
       "send":"Send",
       "backTo":"Back to",
       "login":"Login"
+    },
+    "SignUp": {
+      "joinAs":"Join as",
+      "joinAsTeacher":"Teacher",
+      "joinAsTeacherDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsStudent":"Student",
+      "joinAsStudentDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsParent":"Parent",
+      "joinAsParentDescription":"I want to be up to date with progres of my children."
     }
   }
 }

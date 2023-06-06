@@ -271,5 +271,87 @@
   line-height: 24px;
   letter-spacing: -0.011em;
   color: #1B68FF
-}
+} 
 /****** Forgot password dependencies ******/
+
+
+
+
+
+
+/****** Sign Up dependencies ******/
+.SignUp {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.SignUp .Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 424px;
+  gap: 1rem;
+}
+
+.SignUp .Title {
+  width: 424px;
+  height: 60px;
+  left: calc(50% - 424px / 2 + 212px);
+  top: 253px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 60px;
+  text-align: center;
+  color: #212121;
+}
+
+.SignUp .Subtitle {
+  width: 369px;
+  font-style: normal;
+  font-weight: 400;
+  text-align: center;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.011em;
+  color: #808080
+}
+
+
+.SignUp .RoleCard{
+  width: 312px;
+  height: 230px;
+  border: 1px solid #FFC046;
+  border-radius: 10px;
+  display: flex;
+  gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+
+.SignUp .RoleCard > :nth-child(2) > *{
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.SignUp .RoleCard > :nth-child(2) > :nth-child(2){
+  font-weight: 600;
+}
+
+.SignUp .RoleCard > :last-child{
+  text-align: center;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+}
+
+.SignUp .RoleWrapper{
+  display: flex;
+  gap: 1.2rem;
+}
+/****** Sign Up dependencies ******/
