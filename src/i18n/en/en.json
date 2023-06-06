@@ -12,6 +12,30 @@
         "microsoft":"Connect with Microsoft"
       },
       "orText":"or"
+    },
+    "BirthDate": {
+      "birthDate": "What is your birth date?",
+      "submit":"Submit",
+      "dayTitle":"Day",
+      "monthTitle":"Month",
+      "yearTitle":"Year"
+    },
+    "ForgotPassword": {
+      "forgotPassword":"Forgot Password?",
+      "noWorries":"No worries!",
+      "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
+      "send":"Send",
+      "backTo":"Back to",
+      "login":"Login"
+    },
+    "SignUp": {
+      "joinAs":"Join as",
+      "joinAsTeacher":"Teacher",
+      "joinAsTeacherDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsStudent":"Student",
+      "joinAsStudentDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsParent":"Parent",
+      "joinAsParentDescription":"I want to be up to date with progres of my children."
     }
   }
 }
