@@ -169,6 +169,7 @@ function SignIn() {
       //     if (response.status === 200) {
       //       const { token } = response.data;
       //       setToken(token);
+      //       setUser(response.data);
       //Navigate based on role and first sign in
       //       navigate(routes.ROOT);
       //     }
@@ -181,7 +182,11 @@ function SignIn() {
       let jwt =
         "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM";
       setToken(jwt);
-      navigate(from, { replace: true });
+
+      navigate(routes.ROOT);
+
+      // navigate(from, { replace: true });
+
       console.log("Log in successful");
     }
   };
