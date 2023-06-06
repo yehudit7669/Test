@@ -67,7 +67,7 @@ function SignIn() {
             {t("SignIn.signIn")}
           </Button>
         </form>
-        <Link className="ForgotPassword" to="forgot-password">
+        <Link className="ForgotPasswordLink" to="/auth/forgot-password">
           {t("SignIn.forgotPassword")}
         </Link>
       </div>

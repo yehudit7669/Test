@@ -19,6 +19,14 @@
       "dayTitle":"Day",
       "monthTitle":"Month",
       "yearTitle":"Year"
+    },
+    "ForgotPassword": {
+      "forgotPassword":"Forgot Password?",
+      "noWorries":"No worries!",
+      "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
+      "send":"Send",
+      "backTo":"Back to",
+      "login":"Login"
     }
   }
 }

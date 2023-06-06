@@ -25,6 +25,7 @@ function App() {
         <Route path={routes.AUTH} element={<AuthLayout />}>
           <Route index element={<SignIn />} />
           <Route path={routes.BIRTH_DATE} element={<BirthDateComponent />} />
+          <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
