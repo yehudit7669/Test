@@ -1,11 +1,4 @@
-import {
-  Routes,
-  Route,
-  Link,
-  Navigate,
-  useLocation,
-  useNavigate,
-} from "react-router-dom";
+import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 import SignIn from "../components/pages/Auth/SignIn";
 import SignUp from "../components/pages/Auth/SignUp";
 import ForgotPassword from "../components/pages/Auth/ForgotPassword";
@@ -16,34 +9,22 @@ import { getWSEnv } from "../utils/envUtil";
 import RequireAuth from "./requireAuth/RequireAuth";
 import useUser from "../hooks/useUser";
 import renderRoleRoutes from "./routes/renderRoleRoutes";
-import { useEffect } from "react";
+import { useAppSelector } from "../hooks/redux-hooks";
 
 function App() {
   const [user] = useUser();
-  const userRole = user?.role;
-  const hasUserSignedInBefore: boolean | undefined = user?.hasSignedInBefore;
+  const userInfo = useAppSelector((state) => state.auth.user);
+  const userRole = user?.role || userInfo?.role;
   const location = useLocation();
-  const navigate = useNavigate();
+
+  console.log(location);
+
   //Connecting websocket
   useWebSocket(getWSEnv(), {
     onOpen: () => {
       console.log("WebSocket connection established.");
     },
   });
-  const checkUser = () => {
-    if (location.pathname === routes.ROOT) {
-      console.log(location.pathname, user);
-      if (userRole && hasUserSignedInBefore) {
-        navigate(userRole);
-      } else {
-        navigate(routes.GET_STARTED);
-      }
-    }
-  };
-
-  useEffect(() => {
-    checkUser();
-  }, [navigate, userRole, hasUserSignedInBefore]);
 
   return (
     <div className="App">
@@ -64,28 +45,12 @@ function App() {
 
         <Route path={routes.ROOT} element={<RequireAuth />}>
           {/* To redirect to get started or dashboard */}
-          {/* <Route
-            index
-            element={
-              <Navigate
-                to={hasUserSignedInBefore ? userRole : routes.GET_STARTED}
-                replace
-              />
-            }
-          /> */}
+          <Route index element={<Navigate to={userRole} replace />} />
           {renderRoleRoutes()}
         </Route>
 
         {/* Any other route page */}
-        <Route
-          path="/*"
-          element={
-            <Navigate
-              to={hasUserSignedInBefore ? userRole : routes.GET_STARTED}
-              replace
-            />
-          }
-        />
+        <Route path="*" element={<Navigate to={userRole} replace />} />
       </Routes>
     </div>
   );

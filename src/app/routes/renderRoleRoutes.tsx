@@ -1,26 +1,27 @@
 import { userRoles } from "../../constants";
+import { useAppSelector } from "../../hooks/redux-hooks";
 import useUser from "../../hooks/useUser";
 import renderStudentRoutes from "./studentRoutes";
 import renderTeacherRoutes from "./teacherRoutes";
 
 const renderRoleRoutes = () => {
   const [user] = useUser();
-  const userRole = user?.role;
-  const hasUserSignedInBefore: boolean | undefined = user?.hasSignedInBefore;
-  console.log("useruseruseruseruseruser", user);
+  const userInfo = useAppSelector((state) => state.auth.user);
+  const userRole = user?.role || userInfo?.role;
+
   switch (userRole) {
     case userRoles.STUDENT:
-      return renderStudentRoutes({ hasUserSignedInBefore, userRole });
+      return renderStudentRoutes({ userRole });
 
     case userRoles.TEACHER:
-      return renderTeacherRoutes({ hasUserSignedInBefore, userRole });
+      return renderTeacherRoutes({ userRole });
 
     case userRoles.PARENT:
       return;
     //TODO : Add parent routes function
     //   return renderTeacherRoutes({ hasUserSignedInBefore, userRole });
     default:
-      return renderStudentRoutes({ hasUserSignedInBefore, userRole });
+      return;
   }
 };
 

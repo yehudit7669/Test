@@ -179,15 +179,15 @@ function SignIn() {
       //   });
 
       //Temp solution
-      let jwt =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM";
-      setToken(jwt);
 
-      navigate(routes.ROOT);
-
-      // navigate(from, { replace: true });
-
-      console.log("Log in successful");
+      const response = {
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
+        role: "student",
+      };
+      setToken(response.token);
+      dispatch(Actions.createAction(Actions.SET_USER_ROLE, response.role));
+      navigate("/" + response.role, { replace: true });
     }
   };
 
