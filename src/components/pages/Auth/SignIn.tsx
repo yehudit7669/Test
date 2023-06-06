@@ -47,7 +47,8 @@ function SignIn() {
 
   const renderSignUpButton = () => (
     <div className="Navigation">
-      {t("SignIn.newToWizer")} <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
+      {t("SignIn.newToWizer")}{" "}
+      <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (
@@ -164,28 +165,28 @@ function SignIn() {
     }
     if (validInputs) {
       //TODO : ADD api call code
-      dispatch(getUser("email", "password", true))
-        .then(async(response) => {
-          if (response.status === 200) {
-            console.log(response.data,'response.data.token')
-            const { token, isBirthDate } = response.data;
-            setToken(token);
-            // Navigate based on role and first sign in
-            if(!isBirthDate){
-              navigate(routes.AUTH + "/" + routes.BIRTH_DATE);
-            }
-          }
-        })
-        .catch((error) => {
-          setError(error.response.data.message);
-        });
+      // dispatch(getUser("email", "password", true))
+      //   .then((response) => {
+      //     if (response.status === 200) {
+      //       const { token } = response.data;
+      //       setToken(token);
+      //       setUser(response.data);
+      //Navigate based on role and first sign in
+      //       navigate(routes.ROOT);
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     setError(error.response.data.message);
+      //   });
 
-      //Temp solution
-      let jwt =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM";
-      setToken(jwt);
-      navigate(from, { replace: true });
-      console.log("Log in successful");
+      const response = {
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
+        role: "student",
+      };
+      setToken(response.token);
+      dispatch(Actions.createAction(Actions.SET_USER_ROLE, response.role));
+      navigate("/" + response.role, { replace: true });
     }
   };
 

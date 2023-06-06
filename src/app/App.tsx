@@ -1,16 +1,25 @@
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Routes, Route, Link, Navigate, useLocation } from "react-router-dom";
 import SignIn from "../components/pages/Auth/SignIn";
 import SignUp from "../components/pages/Auth/SignUp";
 import ForgotPassword from "../components/pages/Auth/ForgotPassword";
-import MainLayout from "../components/layouts/MainLayout";
 import AuthLayout from "../components/layouts/AuthLayout";
 import { routes } from "../constants";
 import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
 import RequireAuth from "./requireAuth/RequireAuth";
+import useUser from "../hooks/useUser";
+import renderRoleRoutes from "./routes/renderRoleRoutes";
+import { useAppSelector } from "../hooks/redux-hooks";
 import BirthDateComponent from "../components/pages/Auth/BirthDateComponent";
 
 function App() {
+  const [user] = useUser();
+  const userInfo = useAppSelector((state) => state.auth.user);
+  const userRole = user?.role || userInfo?.role;
+  const location = useLocation();
+
+  console.log(location);
+
   //Connecting websocket
   useWebSocket(getWSEnv(), {
     onOpen: () => {
@@ -36,48 +45,15 @@ function App() {
 
         {/* Protected Main layout routes */}
 
-        <Route element={<RequireAuth allowedRoles={["student"]} />}>
-          <Route path={routes.ROOT} element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route
-              path={routes.FIRST_TIME_SIGN_IN_STUDENT}
-              element={<Home />}
-            />
-
-            <Route
-              path={routes.STUDENT_DASHBOARD}
-              element={<h1>Hello teacher</h1>}
-            />
-          </Route>
-        </Route>
-
-        <Route element={<RequireAuth allowedRoles={["teacher"]} />}>
-          <Route path={routes.ROOT} element={<MainLayout />}>
-            <Route index element={<Home />} />
-
-            <Route
-              path={routes.FIRST_TIME_SIGN_IN_TEACHER}
-              element={<h1>Hello teacher</h1>}
-            />
-
-            <Route
-              path={routes.TEACHER_DASHBOARD}
-              element={<h1>Hello teacher</h1>}
-            />
-          </Route>
+        <Route path={routes.ROOT} element={<RequireAuth />}>
+          {/* To redirect to get started or dashboard */}
+          <Route index element={<Navigate to={userRole} replace />} />
+          {renderRoleRoutes()}
         </Route>
 
         {/* Any other route page */}
-        <Route path="/*" element={<NoMatch />} />
+        <Route path="*" element={<Navigate to={userRole} replace />} />
       </Routes>
-    </div>
-  );
-}
-
-function Home() {
-  return (
-    <div>
-      <h2>Home</h2>
     </div>
   );
 }
