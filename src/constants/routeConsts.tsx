@@ -1,8 +1,14 @@
-export const routes={
-  ROOT:"/",
-  AUTH:"/auth",
-  SIGN_IN:"sign-in",
+export const routes: any = {
+  ROOT: "/",
+  AUTH: "/auth",
+  SIGN_IN: "sign-in",
   BIRTH_DATE:"birth-date",
-  FORGOT_PASSWORD:"forgot-password",
-  SIGN_UP:"sign-up",
-}
+  FORGOT_PASSWORD: "forgot-password",
+  SIGN_UP: "sign-up",
+  FIRST_TIME_SIGN_IN_STUDENT: "get-started/student",
+  FIRST_TIME_SIGN_IN_PARENT: "get-started/parent",
+  FIRST_TIME_SIGN_IN_TEACHER: "get-started/teacher",
+  PARENT_DASHBOARD: "parent-dashboard",
+  STUDENT_DASHBOARD: "student-dashboard",
+  TEACHER_DASHBOARD: "teacher-dashboard"
+};
