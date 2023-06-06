@@ -1,5 +1,11 @@
-import { Link } from "react-router-dom";
-import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Typography,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useEffect, useState } from "react";
@@ -10,14 +16,30 @@ import {
   GoogleIcon,
   MicrosoftIcon,
 } from "../../../assets/svgs/svg-components.tsx";
+import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
+import useUser from "../../../hooks/useUser.tsx";
+import { routes } from "../../../constants/routeConsts.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state: any) => state.auth.user);
+  const [, setToken] = useLocalStorage();
+  const isAuthenticated = useUser();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location?.state?.from?.pathname || routes.ROOT;
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (isAuthenticated[0]) {
+      navigate(routes.ROOT);
+    }
+  }, [navigate]);
 
   useEffect(() => {
     dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
@@ -115,26 +137,53 @@ function SignIn() {
     </Link>
   );
 
-  const validateSignIn = () => {
-    let error: any = {};
-    const emailRegex =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (!email) {
-      error.email = "Please enter email and password";
-    }
-    if (!password) {
-      error.password = "Please enter password";
-    }
-    if (!email.toLowerCase().match(emailRegex)) {
-      error.email = "Please enter a valid email";
-    }
-    console.log(error);
-    return error;
+  const renderError = () => {
+    if (error)
+      return (
+        <Typography variant="body1" component="span" color={"red"}>
+          {error}
+        </Typography>
+      );
   };
 
   const handleSignIn = () => {
-    validateSignIn();
-    // dispatch(getUser("email", "password", true));
+    let validInputs = true;
+    if (!email || !password) {
+      validInputs = false;
+      setError("Please fill all details.");
+    } else if (
+      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
+        email
+      )
+    ) {
+      validInputs = false;
+      setError("Please enter valid email address.");
+    } else {
+      validInputs = true;
+      setError("");
+    }
+    if (validInputs) {
+      //TODO : ADD api call code
+      // dispatch(getUser("email", "password", true))
+      //   .then((response) => {
+      //     if (response.status === 200) {
+      //       const { token } = response.data;
+      //       setToken(token);
+      //Navigate based on role and first sign in
+      //       navigate(routes.ROOT);
+      //     }
+      //   })
+      //   .catch((error) => {
+      //     setError(error.response.data.message);
+      //   });
+
+      //Temp solution
+      let jwt =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM";
+      setToken(jwt);
+      navigate(from, { replace: true });
+      console.log("Log in successful");
+    }
   };
 
   return (
@@ -146,6 +195,7 @@ function SignIn() {
         {renderSocialSignIn()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
         {renderSignInForm()}
+        {renderError()}
         {renderForgotPassword()}
       </div>
     </div>
