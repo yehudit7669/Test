@@ -52,39 +52,49 @@ function SignIn() {
   }, []);
 
   const renderTitle = () => (
-    <Typography className="Title">{t("SignIn.logInToWizer")}</Typography>
+    <Typography className="Title">{t("SignUp.registerToWizer")}</Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("SignIn.discoverWizer")}
+      {t("SignUp.discoverWizer")}
     </Typography>
   );
 
+  /* Select role data dependency */
   const roleData = [
     {
-      title: t("SignUp.joinAsTeacher"),
+      title: t("Role.teacher"),
       description: t("SignUp.joinAsTeacherDescription"),
       icon: <JoinAsTeacherIcon />,
+      role:"teacher"
     },
     {
-      title: t("SignUp.joinAsStudent"),
+      title: t("Role.student"),
       description: t("SignUp.joinAsStudentDescription"),
       icon: <JoinAsStudentIcon />,
+      role:"student"
     },
     {
-      title: t("SignUp.joinAsParent"),
+      title: t("Role.parent"),
       description: t("SignUp.joinAsParentDescription"),
       icon: <JoinAsParentIcon />,
+      role:"parent"
     },
   ];
-
-  const handleSelectRole = () => {
+  /* Select role data dependency */
+  
+  /* Role tabs component */
+  const selectRoleTabs = () => {
+    const handleSelectRole = (role:string) => {
+      console.log(role,'role')
+      navigate(`/auth/sign-up/select-role/${role}`)
+    }
     return (
       <>
         <div className="RoleWrapper">
           {roleData?.map((_data) => {
             return (
-              <Card className="RoleCard">
+              <Card className="RoleCard" onClick={()=>handleSelectRole(_data.role)}>
                 <div>{_data.icon}</div>
                 <div>
                   <Typography>{t("SignUp.joinAs")}</Typography>
@@ -98,13 +108,14 @@ function SignIn() {
       </>
     );
   };
+  /* Role tabs component */
 
   return (
     <div className="SignUp">
       <div className="Wrapper">
         {renderTitle()}
         {renderSubTitle()}
-        {handleSelectRole()}
+        {selectRoleTabs()}
       </div>
     </div>
   );

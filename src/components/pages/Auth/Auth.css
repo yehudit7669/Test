@@ -38,8 +38,8 @@
   color: #212121;
 }
 
-.SignIn .Subtitle[data-subtitle]{
-  width: 369px
+.SignIn .Subtitle[data-subtitle] {
+  width: 369px;
 }
 
 .SignIn .Subtitle {
@@ -48,11 +48,11 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.011em;
-  color: #808080
+  color: #808080;
 }
 
 /* Common button style */
-.SignIn .Button{
+.SignIn .Button {
   width: 424px;
   font-style: normal;
   font-weight: 600;
@@ -66,15 +66,15 @@
 .SignIn .Button[data-auth] {
   display: flex;
   justify-content: flex-start;
-  background: #F5F5F5;
+  background: #f5f5f5;
   box-shadow: none;
 }
-.SignIn .Button[data-auth]:hover{
+.SignIn .Button[data-auth]:hover {
   box-shadow: none;
 }
 /* If the button is for auth then apply these styles using data-auth attribute */
 
-.SignIn .Button .IconContainer{
+.SignIn .Button .IconContainer {
   width: 40px;
   display: flex;
   place-content: center;
@@ -90,7 +90,7 @@
 }
 /* Overriding the default CSS for text-transform */
 
-.SignInForm{
+.SignInForm {
   display: grid;
   gap: 0.8rem;
 }
@@ -109,11 +109,8 @@
 
 /****** Sign In component dependencies ******/
 
-
-
-
 /****** BirthDate component dependencies ******/
-.BirthDate{
+.BirthDate {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -141,33 +138,33 @@
   color: #212121;
 }
 
-.BirthDate .DateContainer{
+.BirthDate .DateContainer {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   gap: 1rem;
 }
 
-.BirthDate .DateContainer .DatePicker{
+.BirthDate .DateContainer .DatePicker {
   width: 130.54px;
   height: 40px;
 }
 
-.BirthDate .DateContainer .DatePickerLabel{
+.BirthDate .DateContainer .DatePickerLabel {
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
   color: #212121;
 }
 
-.BirthDate .BirthDateForm{
+.BirthDate .BirthDateForm {
   width: 424px;
   display: flex;
   flex-direction: column;
   gap: 3rem;
 }
 
-.BirthDate .BirthDateForm .DatePickerContainer{
+.BirthDate .BirthDateForm .DatePickerContainer {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -179,7 +176,7 @@
 }
 /* Overriding the default CSS for text-transform */
 
-.BirthDate .Button{
+.BirthDate .Button {
   width: 424px;
   font-style: normal;
   font-weight: 600;
@@ -188,10 +185,6 @@
   gap: 0.8rem;
 }
 /****** BirthDate component dependencies ******/
-
-
-
-
 
 /****** Forgot password dependencies ******/
 .ForgotPassword {
@@ -230,15 +223,15 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.011em;
-  color: #808080
+  color: #808080;
 }
-.ForgotPasswordForm{
+.ForgotPasswordForm {
   width: 100%;
   display: grid;
   gap: 1rem;
 }
 
-.ForgotPassword .Button{
+.ForgotPassword .Button {
   width: 424px;
   font-style: normal;
   font-weight: 600;
@@ -247,37 +240,32 @@
   gap: 0.8rem;
 }
 
-.BackToLoginLinkContainer{
+.BackToLoginLinkContainer {
   margin-top: 10px;
   display: flex;
   gap: 0.4rem;
 }
 
-.BackToLoginLinkContainer > :nth-child(1){
+.BackToLoginLinkContainer > :nth-child(1) {
   font-style: normal;
   font-weight: 400;
   text-align: center;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.011em;
-  color: #808080
+  color: #808080;
 }
 
-.BackToLoginLinkContainer > :nth-child(2){
+.BackToLoginLinkContainer > :nth-child(2) {
   font-style: normal;
   font-weight: 400;
   text-align: center;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.011em;
-  color: #1B68FF
-} 
+  color: #1b68ff;
+}
 /****** Forgot password dependencies ******/
-
-
-
-
-
 
 /****** Sign Up dependencies ******/
 .SignUp {
@@ -291,12 +279,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 424px;
   gap: 1rem;
 }
 
 .SignUp .Title {
-  width: 424px;
   height: 60px;
   left: calc(50% - 424px / 2 + 212px);
   top: 253px;
@@ -309,21 +295,19 @@
 }
 
 .SignUp .Subtitle {
-  width: 369px;
   font-style: normal;
   font-weight: 400;
   text-align: center;
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -0.011em;
-  color: #808080
+  color: #808080;
 }
 
-
-.SignUp .RoleCard{
+.SignUp .RoleCard {
   width: 312px;
   height: 230px;
-  border: 1px solid #FFC046;
+  border: 1px solid #ffc046;
   border-radius: 10px;
   display: flex;
   gap: 0.5rem;
@@ -331,27 +315,54 @@
   align-items: center;
   justify-content: flex-end;
   cursor: pointer;
+  transition: transform 0.3s;
 }
 
-.SignUp .RoleCard > :nth-child(2) > *{
+.SignUp .RoleCard:hover {
+  transform: scale(1.05);
+}
+
+.SignUp .RoleCard > :nth-child(2) > * {
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
 }
 
-.SignUp .RoleCard > :nth-child(2) > :nth-child(2){
+.SignUp .RoleCard > :nth-child(2) > :nth-child(2) {
   font-weight: 600;
 }
 
-.SignUp .RoleCard > :last-child{
+.SignUp .RoleCard > :last-child {
   text-align: center;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
 }
 
-.SignUp .RoleWrapper{
+.SignUp .RoleWrapper {
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
 }
 /****** Sign Up dependencies ******/
+
+/****** Join Wizer Sign Up dependencies ******/
+.JoinWizerSignUpForm {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.TermsAndPolicyWrapper > * {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 30px;
+  letter-spacing: -0.011em;
+  color: #808080;
+}
+.TermsAndPolicyWrapper > .TermsAndPolicyLink,
+.ChangeLink {
+  color: #1b68ff;
+}
+.TermsAndPolicyWrapper {
+  width: 424px;
+}
+/****** Join Wizer Sign Up dependencies ******/

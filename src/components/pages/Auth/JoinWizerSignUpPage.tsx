@@ -1,15 +1,14 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   TextField,
   Button,
   Checkbox,
   FormControlLabel,
   Typography,
-  useFormControl,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Actions from "../../../actions";
 import { getUser } from "../../../services/auth/authServices";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
@@ -21,46 +20,55 @@ import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
 import useUser from "../../../hooks/useUser.tsx";
 import { routes } from "../../../constants/routeConsts.tsx";
 
-function SignIn() {
+function JoinWizerSignUpPage() {
+
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
   const user = useAppSelector((state: any) => state.auth.user);
-  const [, setToken] = useLocalStorage();
+  const [token, setToken] = useLocalStorage();
   const isAuthenticated = useUser();
+
+  /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
   const location = useLocation();
+  const params = useParams()
+  /* Routing, navigation and param dependencies */
   const from = location?.state?.from?.pathname || routes.ROOT;
-
+  
+  /* Form submission dependencies */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(true);
+  const [classCode, setClassCode] = useState("");
   const [error, setError] = useState("");
+  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
+  /* Form submission dependencies */
 
   useEffect(() => {
     if (isAuthenticated[0]) {
       navigate(routes.ROOT);
     }
+    const { role } = params;
+    setSignUpRole(role)
   }, [navigate]);
 
   useEffect(() => {
-    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
+
   }, []);
 
-  const renderSignUpButton = () => (
+  const renderLogInButton = () => (
     <div className="Navigation">
-      {t("SignIn.newToWizer")}{" "}
-      <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
+      {t("JoinWizerSignUp.haveAccount")} <Link to="/auth/sign-in" className="ChangeLink">{t("JoinWizerSignUp.signIn")}</Link>
     </div>
   );
   const renderTitle = () => (
-    <div className="Title">{t("SignIn.logInToWizer")}</div>
+    <Typography className="Title"> {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)} </Typography>
   );
   const renderSubTitle = () => (
-    <label className="Subtitle" data-subtitle>
-      {t("SignIn.discoverWizer")}
-    </label>
+    <Typography className="Subtitle" data-subtitle>
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}? <Link to="/auth/sign-up" className="ChangeLink">{t("JoinWizerSignUp.change")}</Link>
+    </Typography> 
   );
-  const renderSocialSignIn = () => {
+  const renderSocialSignUp = () => {
     return (
       <>
         <Button
@@ -90,11 +98,10 @@ function SignIn() {
       </>
     );
   };
-
-  const renderSignInForm = () => {
+  const renderJoinWizerSignUpForm = () => {
     return (
       <>
-        <form className="SignInForm">
+        <form className="JoinWizerSignUpForm">
           <TextField
             onChange={(e) => setEmail(e.target.value)}
             type="email"
@@ -102,7 +109,6 @@ function SignIn() {
             label="Email"
             variant="outlined"
             fullWidth
-            required
           />
           <TextField
             onChange={(e) => setPassword(e.target.value)}
@@ -111,35 +117,45 @@ function SignIn() {
             label="Password"
             variant="outlined"
             fullWidth
-            required
           />
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
-                defaultChecked
-              />
-            }
-            label="Remember Me"
-          />
+          {
+            signUpRole === "student" &&
+            <TextField
+              onChange={(e) => setClassCode(e.target.value)}
+              value={classCode}
+              placeholder="Enter class code (optional)"
+              label="Class code"
+              variant="outlined"
+              fullWidth
+            />
+          }
           <Button
             className="Button"
             variant="contained"
             fullWidth
             color="secondary"
-            onClick={() => handleSignIn()}
+            onClick={() => {}}
           >
-            {t("SignIn.signIn")}
+            {t("JoinWizerSignUp.signUp")}
           </Button>
         </form>
       </>
     );
   };
-  const renderForgotPassword = () => (
-    <Link className="ForgotPasswordLink" to="/auth/forgot-password">
-      {t("SignIn.forgotPassword")}
+  const renderTermsAndPolicy = () => (
+    <div className="TermsAndPolicyWrapper">
+    <span>
+    {t("JoinWizerSignUp.termsAndPolicyDescription")}  
+    </span>
+    <Link className="TermsAndPolicyLink" to="#">
+      {t("JoinWizerSignUp.termsOfService")}
     </Link>
+    <span> & </span>
+    <Link className="TermsAndPolicyLink" to="#">
+      {t("JoinWizerSignUp.privacyPolicy")}
+    </Link>
+    <span>.</span>
+    </div>
   );
 
   const renderError = () => {
@@ -151,65 +167,21 @@ function SignIn() {
       );
   };
 
-  const handleSignIn = () => {
-    let validInputs = true;
-    if (!email || !password) {
-      validInputs = false;
-      setError("Please fill all details.");
-    } else if (
-      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      validInputs = false;
-      setError("Please enter valid email address.");
-    } else {
-      validInputs = true;
-      setError("");
-    }
-    if (validInputs) {
-      //TODO : ADD api call code
-      // dispatch(getUser("email", "password", true))
-      //   .then((response) => {
-      //     if (response.status === 200) {
-      //       const { token } = response.data;
-      //       setToken(token);
-      //       setUser(response.data);
-      //Navigate based on role and first sign in
-      //       navigate(routes.ROOT);
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     setError(error.response.data.message);
-      //   });
-
-      const response = {
-        name: "Karan Mishra",
-        hasSignedInBefore: true,
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
-        role: "student",
-      };
-      setToken(response.token);
-      dispatch(Actions.createAction(Actions.SET_USER_ROLE, response.role));
-      navigate("/" + response.role, { replace: true });
-    }
-  };
 
   return (
     <div className="SignIn">
-      {renderSignUpButton()}
+      {renderLogInButton()}
       <div className="Wrapper">
         {renderTitle()}
         {renderSubTitle()}
-        {renderSocialSignIn()}
+        {renderSocialSignUp()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
-        {renderSignInForm()}
+        {renderJoinWizerSignUpForm()}
         {renderError()}
-        {renderForgotPassword()}
+        {renderTermsAndPolicy()}
       </div>
     </div>
   );
 }
 
-export default SignIn;
+export default JoinWizerSignUpPage;
