@@ -180,6 +180,8 @@ function SignIn() {
       //   });
 
       const response = {
+        name: "Karan Mishra",
+        hasSignedInBefore: true,
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
         role: "student",
