@@ -15,7 +15,7 @@ const renderTeacherRoutes = ({ userRole }: Props) => {
         <Route index element={<Navigate to={routes.DASHBOARD} replace />} />
         <Route
           path={routes.DASHBOARD}
-          element={<h1>HELLO TEACHER {userRole}</h1>}
+          element={<h1>HELLO Parent {userRole}</h1>}
         />
         <Route path={routes.ANY} element={<Navigate to={userRole} replace />} />
       </Route>

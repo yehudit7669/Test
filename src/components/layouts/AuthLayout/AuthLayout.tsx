@@ -1,19 +1,23 @@
-import { Outlet, useLocation, useParams } from "react-router-dom";
+import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "@fontsource/mansalva";
 import "./AuthLayout.css";
 import { routes } from "../../../constants";
+import { useEffect } from "react";
+import useUser from "../../../hooks/useUser";
 
 function AuthLayout() {
   /* Route dependencies */
   const location = useLocation();
   const params = useParams();
+  const isAuthenticated = useUser();
+  const navigate = useNavigate();
   /* Route dependencies */
 
   /* Function definition to get the title of side navbar dynamically based on route */
   const getSideNavTitleBasedOnRoute = () => {
     const { pathname } = location;
     const { role } = params;
-    
+
     switch (pathname || role) {
       case routes.AUTH + "/" + routes.BIRTH_DATE:
         return "Join the community of passionate students!";
@@ -21,7 +25,7 @@ function AuthLayout() {
       case routes.AUTH + "/" + routes.SIGN_UP:
         return "Join the Wizer community";
 
-      case routes.AUTH + "/" + `sign-up/select-role/${role}`:
+      case routes.AUTH + "/" + `sign-up/${role}`:
         return "Join the Wizer community";
 
       default:
@@ -29,6 +33,12 @@ function AuthLayout() {
     }
   };
   /* Function definition to get the title of side navbar dynamically based on route */
+
+  useEffect(() => {
+    if (isAuthenticated[0]) {
+      navigate(routes.ROOT);
+    }
+  }, [navigate]);
 
   return (
     <div className="AuthLayout">

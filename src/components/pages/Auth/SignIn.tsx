@@ -37,19 +37,13 @@ function SignIn() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
-    }
-  }, [navigate]);
-
-  useEffect(() => {
     dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
   }, []);
 
   const renderSignUpButton = () => (
     <div className="Navigation">
       {t("SignIn.newToWizer")}{" "}
-      <Link to="/auth/sign-up">{t("SignIn.signUp")}</Link>
+      <Link to={routes.AUTH + "/" + routes.SIGN_UP}>{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (

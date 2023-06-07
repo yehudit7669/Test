@@ -1,72 +1,62 @@
-import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
-import {
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-} from "@mui/material";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { TextField, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useEffect, useState } from "react";
 import Actions from "../../../actions";
-import { getUser } from "../../../services/auth/authServices";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
   GoogleIcon,
   MicrosoftIcon,
 } from "../../../assets/svgs/svg-components.tsx";
-import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
-import useUser from "../../../hooks/useUser.tsx";
+
 import { routes } from "../../../constants/routeConsts.tsx";
+import userRoles from "../../../constants/userRolesConsts.tsx";
 
 function JoinWizerSignUpPage() {
-
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state: any) => state.auth.user);
-  const [token, setToken] = useLocalStorage();
-  const isAuthenticated = useUser();
 
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
   const location = useLocation();
-  const params = useParams()
+  const params = useParams();
   /* Routing, navigation and param dependencies */
   const from = location?.state?.from?.pathname || routes.ROOT;
-  
   /* Form submission dependencies */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [classCode, setClassCode] = useState("");
   const [error, setError] = useState("");
   const [signUpRole, setSignUpRole] = useState<string | undefined>("");
+  const { role } = params;
   /* Form submission dependencies */
 
   useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
-    }
-    const { role } = params;
-    setSignUpRole(role)
+    setSignUpRole(role);
   }, [navigate]);
-
-  useEffect(() => {
-
-  }, []);
 
   const renderLogInButton = () => (
     <div className="Navigation">
-      {t("JoinWizerSignUp.haveAccount")} <Link to="/auth/sign-in" className="ChangeLink">{t("JoinWizerSignUp.signIn")}</Link>
+      {t("JoinWizerSignUp.haveAccount")}{" "}
+      <Link to={routes.AUTH + "/" + routes.SIGN_IN} className="ChangeLink">
+        {t("JoinWizerSignUp.signIn")}
+      </Link>
     </div>
   );
   const renderTitle = () => (
-    <Typography className="Title"> {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)} </Typography>
+    <Typography className="Title">
+      {" "}
+      {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)}{" "}
+    </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}? <Link to="/auth/sign-up" className="ChangeLink">{t("JoinWizerSignUp.change")}</Link>
-    </Typography> 
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}?{" "}
+      <Link to={routes.AUTH + "/" + routes.SIGN_UP} className="ChangeLink">
+        {t("JoinWizerSignUp.change")}
+      </Link>
+    </Typography>
   );
   const renderSocialSignUp = () => {
     return (
@@ -118,8 +108,7 @@ function JoinWizerSignUpPage() {
             variant="outlined"
             fullWidth
           />
-          {
-            signUpRole === "student" &&
+          {signUpRole === userRoles.STUDENT && (
             <TextField
               onChange={(e) => setClassCode(e.target.value)}
               value={classCode}
@@ -128,7 +117,7 @@ function JoinWizerSignUpPage() {
               variant="outlined"
               fullWidth
             />
-          }
+          )}
           <Button
             className="Button"
             variant="contained"
@@ -144,17 +133,15 @@ function JoinWizerSignUpPage() {
   };
   const renderTermsAndPolicy = () => (
     <div className="TermsAndPolicyWrapper">
-    <span>
-    {t("JoinWizerSignUp.termsAndPolicyDescription")}  
-    </span>
-    <Link className="TermsAndPolicyLink" to="#">
-      {t("JoinWizerSignUp.termsOfService")}
-    </Link>
-    <span> & </span>
-    <Link className="TermsAndPolicyLink" to="#">
-      {t("JoinWizerSignUp.privacyPolicy")}
-    </Link>
-    <span>.</span>
+      <span>{t("JoinWizerSignUp.termsAndPolicyDescription")}</span>
+      <Link className="TermsAndPolicyLink" to="#">
+        {t("JoinWizerSignUp.termsOfService")}
+      </Link>
+      <span> & </span>
+      <Link className="TermsAndPolicyLink" to="#">
+        {t("JoinWizerSignUp.privacyPolicy")}
+      </Link>
+      <span>.</span>
     </div>
   );
 
@@ -166,7 +153,6 @@ function JoinWizerSignUpPage() {
         </Typography>
       );
   };
-
 
   return (
     <div className="SignIn">
