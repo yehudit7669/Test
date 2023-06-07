@@ -5,10 +5,11 @@ import {
   Checkbox,
   FormControlLabel,
   Typography,
+  useFormControl,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Actions from "../../../actions";
 import { getUser } from "../../../services/auth/authServices";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
@@ -89,6 +90,7 @@ function SignIn() {
       </>
     );
   };
+
   const renderSignInForm = () => {
     return (
       <>
@@ -100,6 +102,7 @@ function SignIn() {
             label="Email"
             variant="outlined"
             fullWidth
+            required
           />
           <TextField
             onChange={(e) => setPassword(e.target.value)}
@@ -108,6 +111,7 @@ function SignIn() {
             label="Password"
             variant="outlined"
             fullWidth
+            required
           />
           <FormControlLabel
             control={

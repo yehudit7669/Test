@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -28,23 +28,27 @@ function JoinWizerSignUpPage() {
   const [, setToken] = useLocalStorage();
   const isAuthenticated = useUser();
 
-  /* Routing and navigation dependencies */
+  /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
   const location = useLocation();
-  /* Routing and navigation dependencies */
+  const params = useParams()
+  /* Routing, navigation and param dependencies */
   const from = location?.state?.from?.pathname || routes.ROOT;
   
   /* Form submission dependencies */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [rememberMe, setRememberMe] = useState(true);
+  const [classCode, setClassCode] = useState("");
   const [error, setError] = useState("");
+  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
   /* Form submission dependencies */
 
   useEffect(() => {
     if (isAuthenticated[0]) {
       navigate(routes.ROOT);
     }
+    const { role } = params;
+    setSignUpRole(role)
   }, [navigate]);
 
   useEffect(() => {
@@ -53,15 +57,15 @@ function JoinWizerSignUpPage() {
 
   const renderLogInButton = () => (
     <div className="Navigation">
-      {t("JoinWizerSignUp.haveAccount")} <Link to="/auth/sign-in">{t("JoinWizerSignUp.signIn")}</Link>
+      {t("JoinWizerSignUp.haveAccount")} <Link to="/auth/sign-in" className="ChangeLink">{t("JoinWizerSignUp.signIn")}</Link>
     </div>
   );
   const renderTitle = () => (
-    <Typography className="Title">{t("JoinWizerSignUp.joinWizerAsParent")}</Typography>
+    <Typography className="Title"> {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)} </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("SignIn.discoverWizer")} <Link to="/auth/sign-up">{t("JoinWizerSignUp.change")}</Link>
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}? <Link to="/auth/sign-up" className="ChangeLink">{t("JoinWizerSignUp.change")}</Link>
     </Typography> 
   );
   const renderSocialSignUp = () => {
@@ -94,7 +98,7 @@ function JoinWizerSignUpPage() {
       </>
     );
   };
-  const renderSignInForm = () => {
+  const renderJoinWizerSignUpForm = () => {
     return (
       <>
         <form className="JoinWizerSignUpForm">
@@ -114,6 +118,17 @@ function JoinWizerSignUpPage() {
             variant="outlined"
             fullWidth
           />
+          {
+            signUpRole === "student" &&
+            <TextField
+              onChange={(e) => setClassCode(e.target.value)}
+              value={classCode}
+              placeholder="Enter class code (optional)"
+              label="Class code"
+              variant="outlined"
+              fullWidth
+            />
+          }
           <Button
             className="Button"
             variant="contained"
@@ -128,17 +143,19 @@ function JoinWizerSignUpPage() {
     );
   };
   const renderTermsAndPolicy = () => (
-    <>
-    <Typography>
-    {t("JoinWizerSignUp.TermsAndPolicy")}  
-    </Typography>
+    <div className="TermsAndPolicyWrapper">
+    <span>
+    {t("JoinWizerSignUp.termsAndPolicyDescription")}  
+    </span>
     <Link className="TermsAndPolicyLink" to="#">
-      {t("JoinWizerSignUp.TermsOfService")}
+      {t("JoinWizerSignUp.termsOfService")}
     </Link>
+    <span> & </span>
     <Link className="TermsAndPolicyLink" to="#">
-      {t("JoinWizerSignUp.PrivacyPolicy")}
+      {t("JoinWizerSignUp.privacyPolicy")}
     </Link>
-    </>
+    <span>.</span>
+    </div>
   );
 
   const renderError = () => {
@@ -171,7 +188,6 @@ function JoinWizerSignUpPage() {
       dispatch(getUser("email", "password", true))
         .then(async(response) => {
           if (response.status === 200) {
-            console.log(response.data,'response.data.token')
             const { token, isBirthDate } = response.data;
             setToken(token);
             // Navigate based on role and first sign in
@@ -194,14 +210,14 @@ function JoinWizerSignUpPage() {
   };
 
   return (
-    <div className="JoinWizerSignUpPage">
+    <div className="SignIn">
       {renderLogInButton()}
       <div className="Wrapper">
         {renderTitle()}
         {renderSubTitle()}
         {renderSocialSignUp()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
-        {renderSignInForm()}
+        {renderJoinWizerSignUpForm()}
         {renderError()}
         {renderTermsAndPolicy()}
       </div>

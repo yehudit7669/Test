@@ -11,6 +11,7 @@ import useUser from "../hooks/useUser";
 import renderRoleRoutes from "./routes/renderRoleRoutes";
 import { useAppSelector } from "../hooks/redux-hooks";
 import BirthDateComponent from "../components/pages/Auth/BirthDateComponent";
+import JoinWizerSignUpPage from "../components/pages/Auth/JoinWizerSignUpPage";
 
 function App() {
   const [user] = useUser();
@@ -36,6 +37,7 @@ function App() {
           <Route path={routes.SIGN_IN} element={<SignIn />} />
           <Route path={routes.BIRTH_DATE} element={<BirthDateComponent />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
+          <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
           <Route
             path={"*"}
