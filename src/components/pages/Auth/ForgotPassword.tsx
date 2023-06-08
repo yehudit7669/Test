@@ -1,10 +1,12 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
 import { forgotPasswordAction } from "../../../services/auth/authServices";
 import { useAppDispatch } from "../../../hooks/redux-hooks";
 import { routes } from "../../../constants";
+import SingleLineColorText from "../../common/errorText/SingleLineColorText";
+import { forgotPasswordValidations } from "../../../validations/authValidations";
 
 function ForgotPassword() {
   const { t } = useTranslation();
@@ -16,22 +18,10 @@ function ForgotPassword() {
 
   const handleForgotPassword = (e: any) => {
     e.preventDefault();
-    let validInputs = true;
-    if (!email) {
-      validInputs = false;
-      setError("Please enter email address");
-    } else if (
-      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      validInputs = false;
-      setError("Please enter valid email address.");
+    let validate = forgotPasswordValidations(email);
+    if (validate.status) {
+      setError(validate.message);
     } else {
-      validInputs = true;
-      setError("");
-    }
-    if (validInputs) {
       //TODO : ADD api call code
       dispatch(forgotPasswordAction(email))
         .then((response: any) => {
@@ -50,33 +40,6 @@ function ForgotPassword() {
           setError(error.message);
         });
     }
-  };
-
-  const renderSuccess = () => {
-    if (successMessage)
-      return (
-        <Typography
-          align="center"
-          variant="body1"
-          component="span"
-          color={"green"}
-        >
-          {successMessage}
-        </Typography>
-      );
-  };
-  const renderError = () => {
-    if (error)
-      return (
-        <Typography
-          align="center"
-          variant="body1"
-          component="span"
-          color={"red"}
-        >
-          {error}
-        </Typography>
-      );
   };
 
   return (
@@ -104,11 +67,24 @@ function ForgotPassword() {
               variant="contained"
               fullWidth
               color="secondary"
+              type="submit"
             >
               {t("ForgotPassword.send")}
             </Button>
-            {renderSuccess()}
-            {renderError()}
+            <SingleLineColorText
+              text={successMessage}
+              variant={"body1"}
+              component={"span"}
+              color="green"
+              align="center"
+            />
+            <SingleLineColorText
+              text={error}
+              variant={"body1"}
+              component={"span"}
+              color="red"
+              align="center"
+            />
           </form>
           <div className="BackToLoginLinkContainer">
             <label>{t("ForgotPassword.backTo")}</label>

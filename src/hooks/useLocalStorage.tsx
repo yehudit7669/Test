@@ -7,7 +7,7 @@ const useLocalStorage = (): [string | null, (newToken: string) => void] => {
     // Retrieve the token from the local storage
     const decodedToken = localStorage.getItem("token");
     // Decode the token using the decode function
-    console.log(decodeURIComponent(decodedToken || ""));
+
     return decodedToken ? decodeURIComponent(decodedToken) : null;
   });
 

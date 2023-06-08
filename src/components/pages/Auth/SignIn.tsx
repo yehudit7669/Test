@@ -1,11 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import {
-  TextField,
-  Button,
-  Checkbox,
-  FormControlLabel,
-  Typography,
-} from "@mui/material";
+import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useState } from "react";
@@ -18,6 +12,9 @@ import {
 } from "../../../assets/svgs/svg-components.tsx";
 import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
 import { routes } from "../../../constants/routeConsts.tsx";
+
+import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
+import { loginValidations } from "../../../validations/authValidations.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
@@ -122,33 +119,13 @@ function SignIn() {
     </Link>
   );
 
-  const renderError = () => {
-    if (error)
-      return (
-        <Typography variant="body1" component="span" color={"red"}>
-          {error}
-        </Typography>
-      );
-  };
-
   const handleSignIn = (e: any) => {
     e.preventDefault();
-    let validInputs = true;
-    if (!email || !password) {
-      validInputs = false;
-      setError("Please fill all details.");
-    } else if (
-      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      validInputs = false;
-      setError("Please enter valid email address.");
+    let validate = loginValidations(email, password);
+    if (validate.status) {
+      setError(validate.message);
     } else {
-      validInputs = true;
       setError("");
-    }
-    if (validInputs) {
       //TODO : ADD api call code
       dispatch(getUserAction(email, password, rememberMe))
         .then((response: any) => {
@@ -179,7 +156,13 @@ function SignIn() {
         {renderSocialSignIn()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
         {renderSignInForm()}
-        {renderError()}
+        <SingleLineColorText
+          text={error}
+          variant={"body1"}
+          component={"span"}
+          color="red"
+          align="center"
+        />
         {renderForgotPassword()}
       </div>
     </div>
