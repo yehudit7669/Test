@@ -18,7 +18,7 @@ function AuthLayout() {
     const { pathname } = location;
     const { role } = params;
 
-    switch (pathname || role) {
+    switch (pathname) {
       case routes.AUTH + "/" + routes.BIRTH_DATE:
         return "Join the community of passionate students!";
 

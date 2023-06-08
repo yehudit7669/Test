@@ -19,7 +19,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
   );
 };
 
-export const forgotPassowrd = (email: string) => {
+export const forgotPassword = (email: string) => {
   return axios.post(
     FORGOT_PASSWORD_URL,
     {

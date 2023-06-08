@@ -34,7 +34,7 @@ function ForgotPassword() {
     if (validInputs) {
       //TODO : ADD api call code
       dispatch(forgotPasswordAction(email))
-        .then((response) => {
+        .then((response: any) => {
           console.log("response", response);
           if (response.status === 200) {
             setSuccessMessage(response.data.message);
@@ -112,7 +112,7 @@ function ForgotPassword() {
           </form>
           <div className="BackToLoginLinkContainer">
             <label>{t("ForgotPassword.backTo")}</label>
-            <Link className="BackToLoginLink" to={"/" + routes.SIGN_IN}>
+            <Link className="BackToLoginLink" to={`/${routes.SIGN_IN}`}>
               {t("ForgotPassword.login")}
             </Link>
           </div>

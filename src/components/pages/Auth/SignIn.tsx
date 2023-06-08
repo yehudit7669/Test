@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Actions from "../../../actions";
 import { getUserAction } from "../../../services/auth/authServices";
 import { useAppDispatch } from "../../../hooks/redux-hooks";
@@ -24,8 +24,6 @@ function SignIn() {
   const dispatch = useAppDispatch();
   const [, setToken] = useLocalStorage();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || routes.ROOT;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -35,7 +33,7 @@ function SignIn() {
   const renderSignUpButton = () => (
     <div className="Navigation">
       {t("SignIn.newToWizer")}{" "}
-      <Link to={"/" + routes.SIGN_UP}>{t("SignIn.signUp")}</Link>
+      <Link to={`/${routes.SIGN_UP}`}>{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (
@@ -119,7 +117,7 @@ function SignIn() {
     );
   };
   const renderForgotPassword = () => (
-    <Link className="ForgotPasswordLink" to={"/" + routes.FORGOT_PASSWORD}>
+    <Link className="ForgotPasswordLink" to={`/${routes.FORGOT_PASSWORD}`}>
       {t("SignIn.forgotPassword")}
     </Link>
   );
@@ -153,14 +151,14 @@ function SignIn() {
     if (validInputs) {
       //TODO : ADD api call code
       dispatch(getUserAction(email, password, rememberMe))
-        .then((response) => {
+        .then((response: any) => {
           console.log("response", response);
           if (response.status === 200) {
             const { token, role } = response.data;
             setToken(token);
             dispatch(Actions.createAction(Actions.SET_USER_ROLE, role));
             // Navigate based on role
-            navigate("/" + role, { replace: true });
+            navigate(`/${role}`, { replace: true });
           } else {
             setError(response.response.data.message);
           }
