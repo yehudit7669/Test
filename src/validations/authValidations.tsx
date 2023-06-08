@@ -1,4 +1,4 @@
-var emailRegex: any =
+const emailRegex: any =
   /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
 export const loginValidations = (email: string, password: string) => {
