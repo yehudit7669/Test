@@ -39,7 +39,7 @@ function JoinWizerSignUpPage() {
   const renderLogInButton = () => (
     <div className="Navigation">
       {t("JoinWizerSignUp.haveAccount")}{" "}
-      <Link to={routes.AUTH + "/" + routes.SIGN_IN} className="ChangeLink">
+      <Link to={"/" + routes.SIGN_IN} className="ChangeLink">
         {t("JoinWizerSignUp.signIn")}
       </Link>
     </div>
@@ -52,7 +52,7 @@ function JoinWizerSignUpPage() {
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
       {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}?
-      <Link to={routes.AUTH + "/" + routes.SIGN_UP} className="ChangeLink">
+      <Link to={"/" + routes.SIGN_UP} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
     </Typography>

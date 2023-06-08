@@ -32,17 +32,17 @@ function App() {
     <div className="App">
       <Routes>
         {/* Public Auth routes */}
-        <Route path={routes.AUTH} element={<AuthLayout />}>
+        <Route element={<AuthLayout />}>
           <Route index element={<Navigate to={routes.SIGN_IN} replace />} />
           <Route path={routes.SIGN_IN} element={<SignIn />} />
           <Route path={routes.BIRTH_DATE} element={<BirthDateComponent />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
-          <Route
+          {/* <Route
             path={"*"}
             element={<Navigate to={routes.SIGN_IN} replace />}
-          />
+          /> */}
         </Route>
 
         {/* Protected Main layout routes */}

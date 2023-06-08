@@ -13,7 +13,7 @@ const RequireAuth = () => {
   return isAuthorized ? (
     <Outlet />
   ) : (
-    <Navigate to={routes.AUTH} state={{ from: location }} replace />
+    <Navigate to={routes.SIGN_IN} state={{ from: location }} replace />
   );
 };
 

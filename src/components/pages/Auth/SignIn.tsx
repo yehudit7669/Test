@@ -35,7 +35,7 @@ function SignIn() {
   const renderSignUpButton = () => (
     <div className="Navigation">
       {t("SignIn.newToWizer")}{" "}
-      <Link to={routes.AUTH + "/" + routes.SIGN_UP}>{t("SignIn.signUp")}</Link>
+      <Link to={"/" + routes.SIGN_UP}>{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (
@@ -119,7 +119,7 @@ function SignIn() {
     );
   };
   const renderForgotPassword = () => (
-    <Link className="ForgotPasswordLink" to="/auth/forgot-password">
+    <Link className="ForgotPasswordLink" to={"/" + routes.FORGOT_PASSWORD}>
       {t("SignIn.forgotPassword")}
     </Link>
   );
