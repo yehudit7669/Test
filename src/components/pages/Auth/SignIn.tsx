@@ -1,9 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
-import { TextField, Button, Checkbox, FormControlLabel } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  CircularProgress,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useState } from "react";
-import Actions from "../../../actions";
 import { getUserAction } from "../../../services/auth/authServices";
 import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
@@ -26,6 +31,7 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const renderSignUpButton = () => (
     <div className="Navigation">
@@ -107,8 +113,9 @@ function SignIn() {
           fullWidth
           color="secondary"
           type="submit"
+          disabled={loading}
         >
-          {t("SignIn.signIn")}
+          {loading ? <CircularProgress /> : t("SignIn.signIn")}
         </Button>
       </form>
     );
@@ -119,31 +126,26 @@ function SignIn() {
     </Link>
   );
 
-  const handleSignIn = (e: any) => {
+  const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
     let validate = loginValidations(email, password);
+    // Check validation
     if (validate.status) {
       setError(validate.message);
     } else {
       setError("");
-      //TODO : ADD api call code
-      dispatch(getUserAction(email, password, rememberMe))
-        .then((response: any) => {
-          console.log("response", response);
-          if (response.status === 200) {
-            const { token, role } = response.data;
-            setToken(token);
-            dispatch(Actions.createAction(Actions.SET_USER_ROLE, role));
-            // Navigate based on role
-            navigate(`/${role}`, { replace: true });
-          } else {
-            setError(response.response.data.message);
-          }
-        })
-        .catch((error) => {
-          console.log("error", error);
-          setError(error.message);
-        });
+      // Calling login api , setting user toke, navigating to dashboard and setting error
+      dispatch(
+        getUserAction(
+          email,
+          password,
+          rememberMe,
+          setToken,
+          navigate,
+          setError,
+          setLoading
+        )
+      );
     }
   };
 

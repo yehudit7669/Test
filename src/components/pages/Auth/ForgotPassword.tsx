@@ -1,4 +1,4 @@
-import { Button, TextField } from "@mui/material";
+import { Button, CircularProgress, TextField } from "@mui/material";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,30 +15,25 @@ function ForgotPassword() {
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
   const navigate = useNavigate();
+  const [loader, setLoader] = useState(false);
 
-  const handleForgotPassword = (e: any) => {
+  const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault();
     let validate = forgotPasswordValidations(email);
     if (validate.status) {
       setError(validate.message);
     } else {
-      //TODO : ADD api call code
-      dispatch(forgotPasswordAction(email))
-        .then((response: any) => {
-          console.log("response", response);
-          if (response.status === 200) {
-            setSuccessMessage(response.data.message);
-            setTimeout(() => {
-              navigate(routes.SIGN_IN);
-            }, 3000);
-          } else {
-            setError(response.response.data.message);
-          }
-        })
-        .catch((error) => {
-          console.log("error", error);
-          setError(error.message);
-        });
+      setError("");
+      // Calling forgot password api, setting error/success message, navigating to sign in and showing loader
+      dispatch(
+        forgotPasswordAction(
+          email,
+          setSuccessMessage,
+          setError,
+          navigate,
+          setLoader
+        )
+      );
     }
   };
 
@@ -68,8 +63,9 @@ function ForgotPassword() {
               fullWidth
               color="secondary"
               type="submit"
+              disabled={loader}
             >
-              {t("ForgotPassword.send")}
+              {loader ? <CircularProgress /> : t("ForgotPassword.send")}
             </Button>
             <SingleLineColorText
               text={successMessage}
