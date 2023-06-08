@@ -5,28 +5,24 @@ import {
   Checkbox,
   FormControlLabel,
   Typography,
-  useFormControl,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Actions from "../../../actions";
-import { getUser } from "../../../services/auth/authServices";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import { getUserAction } from "../../../services/auth/authServices";
+import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
   GoogleIcon,
   MicrosoftIcon,
 } from "../../../assets/svgs/svg-components.tsx";
 import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
-import useUser from "../../../hooks/useUser.tsx";
 import { routes } from "../../../constants/routeConsts.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state: any) => state.auth.user);
   const [, setToken] = useLocalStorage();
-  const isAuthenticated = useUser();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || routes.ROOT;
@@ -35,10 +31,6 @@ function SignIn() {
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
-  }, []);
 
   const renderSignUpButton = () => (
     <div className="Navigation">
@@ -87,47 +79,43 @@ function SignIn() {
 
   const renderSignInForm = () => {
     return (
-      <>
-        <form className="SignInForm">
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            value={email}
-            label="Email"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            value={password}
-            label="Password"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
-                defaultChecked
-              />
-            }
-            label="Remember Me"
-          />
-          <Button
-            className="Button"
-            variant="contained"
-            fullWidth
-            color="secondary"
-            onClick={() => handleSignIn()}
-          >
-            {t("SignIn.signIn")}
-          </Button>
-        </form>
-      </>
+      <form className="SignInForm" onSubmit={(e) => handleSignIn(e)}>
+        <TextField
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          value={email}
+          label="Email"
+          variant="outlined"
+          fullWidth
+        />
+        <TextField
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          value={password}
+          label="Password"
+          variant="outlined"
+          fullWidth
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              value={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+              defaultChecked
+            />
+          }
+          label="Remember Me"
+        />
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="secondary"
+          type="submit"
+        >
+          {t("SignIn.signIn")}
+        </Button>
+      </form>
     );
   };
   const renderForgotPassword = () => (
@@ -145,7 +133,8 @@ function SignIn() {
       );
   };
 
-  const handleSignIn = () => {
+  const handleSignIn = (e: any) => {
+    e.preventDefault();
     let validInputs = true;
     if (!email || !password) {
       validInputs = false;
@@ -163,30 +152,23 @@ function SignIn() {
     }
     if (validInputs) {
       //TODO : ADD api call code
-      // dispatch(getUser("email", "password", true))
-      //   .then((response) => {
-      //     if (response.status === 200) {
-      //       const { token } = response.data;
-      //       setToken(token);
-      //       setUser(response.data);
-      //Navigate based on role and first sign in
-      //       navigate(routes.ROOT);
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     setError(error.response.data.message);
-      //   });
-
-      const response = {
-        name: "Karan Mishra",
-        hasSignedInBefore: true,
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
-        role: "student",
-      };
-      setToken(response.token);
-      dispatch(Actions.createAction(Actions.SET_USER_ROLE, response.role));
-      navigate("/" + response.role, { replace: true });
+      dispatch(getUserAction(email, password, rememberMe))
+        .then((response) => {
+          console.log("response", response);
+          if (response.status === 200) {
+            const { token, role } = response.data;
+            setToken(token);
+            dispatch(Actions.createAction(Actions.SET_USER_ROLE, role));
+            // Navigate based on role
+            navigate("/" + role, { replace: true });
+          } else {
+            setError(response.response.data.message);
+          }
+        })
+        .catch((error) => {
+          console.log("error", error);
+          setError(error.message);
+        });
     }
   };
 
