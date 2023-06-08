@@ -19,13 +19,11 @@ function AuthLayout() {
     const { role } = params;
 
     switch (pathname) {
-      case routes.AUTH + "/" + routes.BIRTH_DATE:
+      case `${routes.GET_STARTED}/${routes.BIRTH_DATE}`:
         return "Join the community of passionate students!";
 
-      case routes.AUTH + "/" + routes.SIGN_UP:
-        return "Join the Wizer community";
-
-      case routes.AUTH + "/" + `sign-up/${role}`:
+      case `/${routes.SIGN_UP}`:
+      case `/${routes.SIGN_UP}/${role}`:
         return "Join the Wizer community";
 
       default:
