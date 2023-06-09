@@ -51,6 +51,25 @@
       "haveAccount" : "Have account?",
       "signIn" : "Log In",
       "signUp" : "Sign up"
+    },
+    "FirstLoginParent" : {
+      "stepOne" : {
+        "title" : "Tell us more about you",
+        "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
+      },
+      "stepTwo" : {
+        "title" : "Tell us about your children",
+        "subTitle" : "So we can personalize the learning experience  based on your child needs."
+      },
+      "stepThree" : {
+        "title" : "How do you support your child's education?",
+        "subTitle" : "You can select more than 1."
+      },
+      "stepFour" : {
+        "title" : "What are your teaching goals?",
+        "subTitle" : "You can select more than 1."
+      },
+      "next" : "Next"
     }
   }
 }

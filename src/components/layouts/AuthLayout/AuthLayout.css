@@ -5,7 +5,7 @@
 
   .SideNav {
     width: 424px;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,5 +21,6 @@
   }
 
   .Outlet {
-    width: calc(100% - 484px);
+    width: calc(100% - 424px);
+    overflow: auto;
   }

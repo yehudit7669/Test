@@ -1,0 +1,130 @@
+import { useNavigate, useParams } from "react-router-dom";
+import {
+  Button,
+  Typography,
+  MobileStepper,
+  IconButton,
+} from "@mui/material";
+import { useTranslation } from "react-i18next";
+import "../Auth.css";
+import React, { useEffect, useState } from "react";
+import { useAppDispatch } from "../../../../hooks/redux-hooks.ts";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import StepperOne from "./stepper-one/StepperOne.tsx";
+import StepperTwo from "./stepper-two/StepperTwo.tsx";
+import StepperThree from "./stepper-three/StepperThree.tsx";
+import StepperFour from "./stepper-four/StepperFour.tsx";
+
+export const ChildData = React.createContext({});
+
+function FirstLoginParent() {
+  const { t } = useTranslation();
+
+  const dispatch = useAppDispatch();
+
+  /* Routing, navigation and param dependencies */
+  const navigate = useNavigate();
+  const params = useParams();
+  /* Routing, navigation and param dependencies */
+
+  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
+  const { role } = params;
+
+  /* Dependencies for stepper component */
+  const [activeStep, setActiveStep] = useState(0);
+  const [totalSteps, setTotalSteps] = useState(4);
+
+  const handleStepperNext = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+  };
+
+  const handleStepperBack = () => {
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
+  };
+  /* Dependencies for stepper component */
+
+  useEffect(() => {
+    setSignUpRole(role);
+  }, [navigate]);
+
+
+  /* Stepper component dependencies */
+  const stepperComponent = () => {
+    return (
+      <div className="StepperContainer">
+        <div className="StepperBackButton">
+          {activeStep > 0 && (
+            <>
+              <IconButton
+                onClick={handleStepperBack}
+                sx={{
+                  ml: 1,
+                  "&.MuiButtonBase-root:hover": {
+                    bgcolor: "transparent",
+                  },
+                }}
+              >
+                <ArrowBackIosNewIcon fontSize="small" />
+              </IconButton>
+              <Typography>Back</Typography>
+            </>
+          )}
+        </div>
+        <div className="MainStepper">
+          <MobileStepper
+            className="MobileStepper"
+            variant="progress"
+            steps={totalSteps}
+            position="static"
+            activeStep={activeStep}
+            nextButton={<></>}
+            backButton={<></>}
+          />
+          <div className="StepperNoInfo">
+            {activeStep + 1} of {totalSteps}
+          </div>
+        </div>
+      </div>
+    );
+  };
+  /* Stepper component dependencies */
+
+  return (
+    <div className="FirstLoginParent">
+      <div className="Wrapper">
+        {stepperComponent()}
+        {activeStep === 0 && (
+          <>
+            <StepperOne />
+          </>
+        )}
+        {activeStep === 1 && (
+          <>
+            <StepperTwo />
+          </>
+        )}
+        {activeStep === 2 && (
+          <>
+          <StepperThree/>
+          </>
+        )}
+        {activeStep === 3 && (
+          <>
+            <StepperFour/>
+          </>
+        )}
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="secondary"
+          onClick={handleStepperNext}
+        >
+          {t("FirstLoginParent.next")}
+        </Button>
+      </div>
+    </div>
+  );
+}
+
+export default FirstLoginParent;
