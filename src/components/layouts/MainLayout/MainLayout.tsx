@@ -1,6 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
 
-type Props = {}
+type Props = {};
 
 const MainLayout = (props: Props) => {
   return (
@@ -31,7 +31,7 @@ const MainLayout = (props: Props) => {
           the child routes we defined above. */}
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

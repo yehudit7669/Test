@@ -1,10 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Typography,
-  MobileStepper,
-  IconButton,
-} from "@mui/material";
+import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginTeacher.css";
 import React, { useEffect, useState } from "react";
@@ -44,7 +39,6 @@ function FirstLoginTeacher() {
   useEffect(() => {
     setSignUpRole(role);
   }, [navigate]);
-
 
   /* Stepper component dependencies */
   const stepperComponent = () => {
@@ -101,14 +95,8 @@ function FirstLoginTeacher() {
             <AboutYourRoleStepperTwo />
           </>
         )}
-        {activeStep === 2 && (
-          <>
-          </>
-        )}
-        {activeStep === 3 && (
-          <>
-          </>
-        )}
+        {activeStep === 2 && <></>}
+        {activeStep === 3 && <></>}
         <Button
           className="Button"
           variant="contained"

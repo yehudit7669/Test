@@ -41,8 +41,14 @@ function App() {
           <Route path={routes.SIGN_IN} element={<SignIn />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
-          <Route path={routes.FIRST_LOGIN_TEACHER} element={<FirstLoginTeacher />} />
-          <Route path={routes.FIRST_LOGIN_PARENT} element={<FirstLoginParent />} />
+          <Route
+            path={routes.FIRST_LOGIN_TEACHER}
+            element={<FirstLoginTeacher />}
+          />
+          <Route
+            path={routes.FIRST_LOGIN_PARENT}
+            element={<FirstLoginParent />}
+          />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
 

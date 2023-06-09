@@ -19,8 +19,7 @@ const renderTeacherRoutes = ({ userRole }: Props) => {
         />
         <Route path={routes.ANY} element={<Navigate to={userRole} replace />} />
       </Route>
-      <Route path={routes.GET_STARTED} element={<AuthLayout />}>
-      </Route>
+      <Route path={routes.GET_STARTED} element={<AuthLayout />}></Route>
     </>
   );
 };

@@ -1,10 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Typography,
-  MobileStepper,
-  IconButton,
-} from "@mui/material";
+import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginParent.css";
 import React, { useEffect, useState } from "react";
@@ -46,7 +41,6 @@ function FirstLoginParent() {
   useEffect(() => {
     setSignUpRole(role);
   }, [navigate]);
-
 
   /* Stepper component dependencies */
   const stepperComponent = () => {
@@ -105,12 +99,12 @@ function FirstLoginParent() {
         )}
         {activeStep === 2 && (
           <>
-          <ChildSupportStepperThree/>
+            <ChildSupportStepperThree />
           </>
         )}
         {activeStep === 3 && (
           <>
-            <TeachingGoalsStepperFour/>
+            <TeachingGoalsStepperFour />
           </>
         )}
         <Button

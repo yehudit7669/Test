@@ -91,11 +91,11 @@ const StepperOne = () => {
                 disablePortal
                 options={[{ id: 1, label: "India" }]}
                 renderInput={(params) => (
-                  <TextField 
-                  className="GenericFormFieldMargin"
-                  {...params}
-                  fullWidth 
-                  placeholder="Select"
+                  <TextField
+                    className="GenericFormFieldMargin"
+                    {...params}
+                    fullWidth
+                    placeholder="Select"
                   />
                 )}
               />
