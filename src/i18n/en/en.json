@@ -75,6 +75,17 @@
         "subTitle" : "You can select more than 1."
       },
       "next" : "Next"
+    },
+    "FirstLoginTeacher" : {
+      "stepOne" : {
+        "title" : "Tell us more about you",
+        "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
+      },
+      "stepTwo" : {
+        "title" : "What’s your role?",
+        "subTitle" : "What’s your role?",
+        "otherRole" : "Other role"
+      }
     }
   }
 }
