@@ -27,30 +27,8 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Slack Notify
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-
       - name: Checkout
         uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: |-
-          npm install
-
-      - name: Run prettier
-        run: |-
-          npm run prettify
-      
-      - name: Run eslint
-        run: |-
-          npm run lint
-      
-      - name: Run tsc
-        working-directory: src
-        run: |-
-          tsc
 
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
@@ -86,3 +64,8 @@ jobs:
 
       - name: 'Use output'
         run: 'curl "${{ steps.deploy.outputs.url }}"'
+
+      - name: Slack Notify
+        uses: rtCamp/action-slack-notify@v2.2.0
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
