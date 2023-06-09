@@ -1,10 +1,9 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { TextField, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useEffect, useState } from "react";
-import Actions from "../../../actions";
-import { useAppDispatch } from "../../../hooks/redux-hooks";
+
 import {
   GoogleIcon,
   MicrosoftIcon,
@@ -15,19 +14,17 @@ import userRoles from "../../../constants/userRolesConsts.tsx";
 
 function JoinWizerSignUpPage() {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
-  const location = useLocation();
   const params = useParams();
   /* Routing, navigation and param dependencies */
-  const from = location?.state?.from?.pathname || routes.ROOT;
+
   /* Form submission dependencies */
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [classCode, setClassCode] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
   const [signUpRole, setSignUpRole] = useState<string | undefined>("");
   const { role } = params;
   /* Form submission dependencies */
@@ -143,14 +140,14 @@ function JoinWizerSignUpPage() {
       <span>.</span>
     </div>
   );
-  const renderError = () => {
-    if (error)
-      return (
-        <Typography variant="body1" component="span" color={"red"}>
-          {error}
-        </Typography>
-      );
-  };
+  // const renderError = () => {
+  //   if (error)
+  //     return (
+  //       <Typography variant="body1" component="span" color={"red"}>
+  //         {error}
+  //       </Typography>
+  //     );
+  // };
 
   return (
     <div className="SignIn">
@@ -161,7 +158,7 @@ function JoinWizerSignUpPage() {
         {renderSocialSignUp()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
         {renderJoinWizerSignUpForm()}
-        {renderError()}
+        {/* {renderError()} */}
         {renderTermsAndPolicy()}
       </div>
     </div>

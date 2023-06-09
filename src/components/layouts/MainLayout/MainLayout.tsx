@@ -1,8 +1,6 @@
 import { Link, Outlet } from "react-router-dom";
 
-type Props = {};
-
-const MainLayout = (props: Props) => {
+const MainLayout = () => {
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to

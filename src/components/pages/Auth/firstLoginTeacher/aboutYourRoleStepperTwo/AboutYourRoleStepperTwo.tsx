@@ -1,26 +1,11 @@
-import {
-  Autocomplete,
-  Grid,
-  TextField,
-  Typography,
-  Chip,
-  Stack,
-} from "@mui/material";
+import { Grid, TextField, Typography, Chip, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate, useParams } from "react-router";
 import React, { useState } from "react";
 import FormLabel from "@mui/material/FormLabel";
 
 const AboutYourRoleStepperTwo = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
-  /* i18n translation dependencies */
-
-  /* Routing, navigation and param dependencies */
-  const navigate = useNavigate();
-  const location = useLocation();
-  const params = useParams();
-  /* Routing, navigation and param dependencies */
 
   /* Form submission dependencies */
   const [formData, setFormData] = useState({
@@ -28,18 +13,6 @@ const AboutYourRoleStepperTwo = () => {
     supportChildEducationTags: [],
   });
   /* Form submission dependencies */
-
-  /* OnChange dependencies */
-  const handleChangeFormData = (e: React.SyntheticEvent) => {
-    setFormData((prevData) => {
-      return {
-        ...prevData,
-        [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
-          .value,
-      };
-    });
-  };
-  /* OnChange dependencies */
 
   /* Stepper Three component dependencies */
   const renderTitle = () => (
