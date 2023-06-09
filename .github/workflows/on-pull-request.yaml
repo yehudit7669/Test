@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    name: Run Tests, Lint and Prettier
+    name: Run Lint and Prettier
     runs-on: ubuntu-latest
 
     permissions:
@@ -23,6 +23,7 @@ jobs:
       - name: Install dependencies
         run: |-
           npm install
+          npm install tsc
 
       - name: Run prettier
         run: |-
