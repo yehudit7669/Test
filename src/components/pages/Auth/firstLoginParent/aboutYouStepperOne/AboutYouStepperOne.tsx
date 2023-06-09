@@ -92,6 +92,7 @@ const StepperOne = () => {
                 options={[{ id: 1, label: "India" }]}
                 renderInput={(params) => (
                   <TextField 
+                  className="GenericFormFieldMargin"
                   {...params}
                   fullWidth 
                   placeholder="Select"
