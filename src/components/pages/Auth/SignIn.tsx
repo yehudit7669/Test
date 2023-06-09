@@ -1,41 +1,171 @@
-import { Link } from "react-router-dom";
-import { TextField, Button } from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  TextField,
+  Button,
+  Checkbox,
+  FormControlLabel,
+  CircularProgress,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useEffect } from "react";
-import Actions from "../../../actions";
-import { getUser } from "../../../services/auth/authServices";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import { useState } from "react";
+import { getUserAction } from "../../../services/auth/authServices";
+import { useAppDispatch } from "../../../hooks/redux-hooks";
+import {
+  GoogleIcon,
+  MicrosoftIcon,
+} from "../../../assets/svgs/svg-components.tsx";
+import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
+import { routes } from "../../../constants/routeConsts.tsx";
+
+import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
+import { loginValidations } from "../../../validations/authValidations.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
-  const user = useAppSelector((state: any) => state.auth.user);
   const dispatch = useAppDispatch();
+  const [, setToken] = useLocalStorage();
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
-  }, []);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [rememberMe, setRememberMe] = useState(true);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSignIn = () => {
-    dispatch(getUser("email", "password", true));
+  const renderSignUpButton = () => (
+    <div className="Navigation">
+      {t("SignIn.newToWizer")}{" "}
+      <Link to={`/${routes.SIGN_UP}`}>{t("SignIn.signUp")}</Link>
+    </div>
+  );
+  const renderTitle = () => (
+    <div className="Title">{t("SignIn.logInToWizer")}</div>
+  );
+  const renderSubTitle = () => (
+    <label className="Subtitle" data-subtitle>
+      {t("SignIn.discoverWizer")}
+    </label>
+  );
+  const renderSocialSignIn = () => {
+    return (
+      <>
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="inherit"
+          data-auth
+        >
+          <div className="IconContainer">
+            <GoogleIcon />
+          </div>{" "}
+          {t("SignIn.connect.google")}
+        </Button>
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="inherit"
+          data-auth
+        >
+          <div className="IconContainer">
+            <MicrosoftIcon />
+          </div>{" "}
+          {t("SignIn.connect.microsoft")}
+        </Button>
+      </>
+    );
   };
-  console.log(user);
+
+  const renderSignInForm = () => {
+    return (
+      <form className="SignInForm" onSubmit={(e) => handleSignIn(e)}>
+        <TextField
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          value={email}
+          label="Email"
+          variant="outlined"
+          fullWidth
+        />
+        <TextField
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          value={password}
+          label="Password"
+          variant="outlined"
+          fullWidth
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              value={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+              defaultChecked
+            />
+          }
+          label="Remember Me"
+        />
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="secondary"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? <CircularProgress /> : t("SignIn.signIn")}
+        </Button>
+      </form>
+    );
+  };
+  const renderForgotPassword = () => (
+    <Link className="ForgotPasswordLink" to={`/${routes.FORGOT_PASSWORD}`}>
+      {t("SignIn.forgotPassword")}
+    </Link>
+  );
+
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    let validate = loginValidations(email, password);
+    // Check validation
+    if (validate.status) {
+      setError(validate.message);
+    } else {
+      setError("");
+      // Calling login api , setting user toke, navigating to dashboard and setting error
+      dispatch(
+        getUserAction(
+          email,
+          password,
+          rememberMe,
+          setToken,
+          navigate,
+          setError,
+          setLoading
+        )
+      );
+    }
+  };
+
   return (
     <div className="SignIn">
-      <div className="Navigation">
-        {t("SignIn.newToWizer")} <Link to="sign-up">{t("SignIn.signUp")}</Link>
-      </div>
+      {renderSignUpButton()}
       <div className="Wrapper">
-        <div className="Title">{t("SignIn.signInToWizer")}</div>
-        <div className="Subtitle">{t("SignIn.discoverWizer")}</div>
-        <TextField label="Email" variant="outlined" fullWidth />
-        <TextField label="Password" variant="outlined" fullWidth />
-        <Button variant="contained" fullWidth>
-          {t("SignIn.signIn")}
-        </Button>
-        <Link className="ForgotPassword" to="forgot-password">
-          {t("SignIn.forgotPassword")}
-        </Link>
+        {renderTitle()}
+        {renderSubTitle()}
+        {renderSocialSignIn()}
+        <div className="Subtitle">{t("SignIn.orText")}</div>
+        {renderSignInForm()}
+        <SingleLineColorText
+          text={error}
+          variant={"body1"}
+          component={"span"}
+          color="red"
+          align="center"
+        />
+        {renderForgotPassword()}
       </div>
     </div>
   );

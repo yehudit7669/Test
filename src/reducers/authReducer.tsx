@@ -2,11 +2,15 @@ import Actions from "../actions";
 import { produce } from "immer";
 
 interface State {
-  user: {};
+  user: {
+    role: string;
+  };
 }
 
 const initialState: State = {
-  user: {},
+  user: {
+    role: "",
+  },
 };
 
 export default produce((draft: State, action: any) => {
@@ -15,6 +19,10 @@ export default produce((draft: State, action: any) => {
   switch (action.type) {
     case Actions.USER_LOGIN: {
       draft.user = payload;
+      break;
+    }
+    case Actions.SET_USER_ROLE: {
+      draft.user = { ...draft.user, role: payload };
       break;
     }
 

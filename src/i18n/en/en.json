@@ -1,12 +1,56 @@
 {
   "translation": {
+    "Role" : {
+      "parent" : "Parent",
+      "teacher" : "Teacher",
+      "student" : "Student"
+    },
     "SignIn": {
       "newToWizer": "New to Wizer?",
       "signUp":"Sign Up",
-      "signInToWizer":"Sign In To Wizer",
+      "logInToWizer":"Log in To Wizer",
       "discoverWizer":"Discover more with a Wizer account",
-      "signIn":"Sign In",
-      "forgotPassword":"Forgot Password?"
+      "signIn":"Log In",
+      "forgotPassword":"Forgot Password?",
+      "connect":{
+        "google":"Connect with Google",
+        "microsoft":"Connect with Microsoft"
+      },
+      "orText":"or"
+    },
+    "BirthDate": {
+      "birthDate": "What is your birth date?",
+      "submit":"Submit",
+      "dayTitle":"Day",
+      "monthTitle":"Month",
+      "yearTitle":"Year"
+    },
+    "ForgotPassword": {
+      "forgotPassword":"Forgot Password?",
+      "noWorries":"No worries!",
+      "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
+      "send":"Send",
+      "backTo":"Back to",
+      "login":"Login"
+    },
+    "SignUp": {
+      "joinAs":"Join as",
+      "joinAsTeacherDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsStudentDescription":"I will create worksheets, assign to students and grade their work.",
+      "joinAsParentDescription":"I want to be up to date with progres of my children.",
+      "registerToWizer":"Register to Wizer",
+      "discoverWizer":"Join Wizer and discover the full potential of digital worksheets."
+    },
+    "JoinWizerSignUp" : {
+      "title":"Join Wizer as ",
+      "notA":"Not a",
+      "change": "Change",
+      "termsAndPolicyDescription" : "By clicking 'Sign up', you agree to our ",
+      "termsOfService" : "Terms of Service",
+      "privacyPolicy" : "Privacy Policy",
+      "haveAccount" : "Have account?",
+      "signIn" : "Log In",
+      "signUp" : "Sign up"
     }
   }
 }

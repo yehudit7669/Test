@@ -1,1 +1,2 @@
-export const USER_LOGIN = "USER_LOGIN";
+export const USER_LOGIN = null;
+export const SET_USER_ROLE = null;

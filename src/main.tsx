@@ -16,6 +16,9 @@ import { Provider } from "react-redux";
 import { store } from "./store/store.tsx";
 import { theme } from "./assets/styles/theme.tsx";
 import App from "./app/App.tsx";
+import axios from "axios";
+
+axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL;
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
