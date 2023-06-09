@@ -12,8 +12,11 @@ env:
   SERVICE: wizer-fe
   REGISTRY: gcr.io
 
-
 jobs:
+  concurrency:
+    group: ${{ github.ref }}
+    cancel-in-progress: true
+
   setup-build-publish-deploy:
     permissions:
       contents: 'read'
@@ -31,6 +34,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - name: Run prettier
+      working-directory: src
+      run: |-
+        npx prettier --check './**/*.{js,jsx,ts,tsx,css,scss,md}'
+    
+    - name: Run tsc
+      working-directory: src
+      run: |-
+        npx tsc
 
     - id: 'auth'
       uses: 'google-github-actions/auth@v1'
