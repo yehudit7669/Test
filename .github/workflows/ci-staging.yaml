@@ -40,6 +40,11 @@ jobs:
         run: |-
           npx prettier --check './**/*.{js,jsx,ts,tsx,css,scss,md}'
       
+      - name: Run eslint
+        working-directory: src
+        run: |-
+          eslint --ext ts,tsx --report-unused-disable-directives --max-warnings 0
+      
       - name: Run tsc
         working-directory: src
         run: |-
