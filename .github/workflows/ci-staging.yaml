@@ -41,7 +41,7 @@ jobs:
 
       - name: Run prettier
         run: |-
-          npm run pretty
+          npm run prettify
       
       - name: Run eslint
         run: |-
