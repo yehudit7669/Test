@@ -35,18 +35,22 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
+      - name: Install dependencies
+        run: |-
+          npm install
+
       - name: Run prettier
         run: |-
-          npx prettier --check 'src/**/*.{js,jsx,ts,tsx,css,scss,md}'
-
+          npm run pretty
+      
       - name: Run eslint
         run: |-
-          npx eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0
-
+          npm run lint
+      
       - name: Run tsc
         working-directory: src
         run: |-
-          npx tsc
+          tsc
 
       - id: 'auth'
         uses: 'google-github-actions/auth@v1'
