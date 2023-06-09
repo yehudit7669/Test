@@ -17,9 +17,7 @@ const renderRoleRoutes = () => {
       return renderTeacherRoutes({ userRole });
 
     case userRoles.PARENT:
-      return;
-    //TODO : Add parent routes function
-    //   return renderTeacherRoutes({ hasUserSignedInBefore, userRole });
+      return renderTeacherRoutes({ userRole });
     default:
       return;
   }

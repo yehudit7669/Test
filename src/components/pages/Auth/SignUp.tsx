@@ -2,9 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { Typography, Card, CardContent } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import Actions from "../../../actions";
-
-import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
   JoinAsParentIcon,
   JoinAsStudentIcon,
@@ -13,7 +10,6 @@ import {
 
 function SignIn() {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const renderTitle = () => (

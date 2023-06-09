@@ -1,49 +1,42 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   TextField,
   Button,
   Checkbox,
   FormControlLabel,
-  Typography,
-  useFormControl,
+  CircularProgress,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import React, { useEffect, useState } from "react";
-import Actions from "../../../actions";
-import { getUser } from "../../../services/auth/authServices";
-import { useAppDispatch, useAppSelector } from "../../../hooks/redux-hooks";
+import { useState } from "react";
+import { getUserAction } from "../../../services/auth/authServices";
+import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
   GoogleIcon,
   MicrosoftIcon,
 } from "../../../assets/svgs/svg-components.tsx";
 import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
-import useUser from "../../../hooks/useUser.tsx";
 import { routes } from "../../../constants/routeConsts.tsx";
+
+import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
+import { loginValidations } from "../../../validations/authValidations.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
   const dispatch = useAppDispatch();
-  const user = useAppSelector((state: any) => state.auth.user);
   const [, setToken] = useLocalStorage();
-  const isAuthenticated = useUser();
   const navigate = useNavigate();
-  const location = useLocation();
-  const from = location?.state?.from?.pathname || routes.ROOT;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
-
-  useEffect(() => {
-    dispatch(Actions.createAction(Actions.USER_LOGIN, { name: "karan" }));
-  }, []);
+  const [loading, setLoading] = useState(false);
 
   const renderSignUpButton = () => (
     <div className="Navigation">
       {t("SignIn.newToWizer")}{" "}
-      <Link to={routes.AUTH + "/" + routes.SIGN_UP}>{t("SignIn.signUp")}</Link>
+      <Link to={`/${routes.SIGN_UP}`}>{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (
@@ -87,106 +80,72 @@ function SignIn() {
 
   const renderSignInForm = () => {
     return (
-      <>
-        <form className="SignInForm">
-          <TextField
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            value={email}
-            label="Email"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <TextField
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            value={password}
-            label="Password"
-            variant="outlined"
-            fullWidth
-            required
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                value={rememberMe}
-                onChange={() => setRememberMe(!rememberMe)}
-                defaultChecked
-              />
-            }
-            label="Remember Me"
-          />
-          <Button
-            className="Button"
-            variant="contained"
-            fullWidth
-            color="secondary"
-            onClick={() => handleSignIn()}
-          >
-            {t("SignIn.signIn")}
-          </Button>
-        </form>
-      </>
+      <form className="SignInForm" onSubmit={(e) => handleSignIn(e)}>
+        <TextField
+          onChange={(e) => setEmail(e.target.value)}
+          type="email"
+          value={email}
+          label="Email"
+          variant="outlined"
+          fullWidth
+        />
+        <TextField
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          value={password}
+          label="Password"
+          variant="outlined"
+          fullWidth
+        />
+        <FormControlLabel
+          control={
+            <Checkbox
+              value={rememberMe}
+              onChange={() => setRememberMe(!rememberMe)}
+              defaultChecked
+            />
+          }
+          label="Remember Me"
+        />
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="secondary"
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? <CircularProgress /> : t("SignIn.signIn")}
+        </Button>
+      </form>
     );
   };
   const renderForgotPassword = () => (
-    <Link className="ForgotPasswordLink" to="/auth/forgot-password">
+    <Link className="ForgotPasswordLink" to={`/${routes.FORGOT_PASSWORD}`}>
       {t("SignIn.forgotPassword")}
     </Link>
   );
 
-  const renderError = () => {
-    if (error)
-      return (
-        <Typography variant="body1" component="span" color={"red"}>
-          {error}
-        </Typography>
-      );
-  };
-
-  const handleSignIn = () => {
-    let validInputs = true;
-    if (!email || !password) {
-      validInputs = false;
-      setError("Please fill all details.");
-    } else if (
-      !/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(
-        email
-      )
-    ) {
-      validInputs = false;
-      setError("Please enter valid email address.");
+  const handleSignIn = (e: React.FormEvent) => {
+    e.preventDefault();
+    let validate = loginValidations(email, password);
+    // Check validation
+    if (validate.status) {
+      setError(validate.message);
     } else {
-      validInputs = true;
       setError("");
-    }
-    if (validInputs) {
-      //TODO : ADD api call code
-      // dispatch(getUser("email", "password", true))
-      //   .then((response) => {
-      //     if (response.status === 200) {
-      //       const { token } = response.data;
-      //       setToken(token);
-      //       setUser(response.data);
-      //Navigate based on role and first sign in
-      //       navigate(routes.ROOT);
-      //     }
-      //   })
-      //   .catch((error) => {
-      //     setError(error.response.data.message);
-      //   });
-
-      const response = {
-        name: "Karan Mishra",
-        hasSignedInBefore: true,
-        token:
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiBEb2UiLCJyb2xlIjoic3R1ZGVudCIsImhhc1NpZ25lZEluQmVmb3JlIjp0cnVlfQ.1DhPob3HaXa22UEWn6Wn5aSBt8KuCwJdJa169b_J7tM",
-        role: "student",
-      };
-      setToken(response.token);
-      dispatch(Actions.createAction(Actions.SET_USER_ROLE, response.role));
-      navigate("/" + response.role, { replace: true });
+      // Calling login api , setting user toke, navigating to dashboard and setting error
+      dispatch(
+        getUserAction(
+          email,
+          password,
+          rememberMe,
+          setToken,
+          navigate,
+          setError,
+          setLoading
+        )
+      );
     }
   };
 
@@ -199,7 +158,13 @@ function SignIn() {
         {renderSocialSignIn()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
         {renderSignInForm()}
-        {renderError()}
+        <SingleLineColorText
+          text={error}
+          variant={"body1"}
+          component={"span"}
+          color="red"
+          align="center"
+        />
         {renderForgotPassword()}
       </div>
     </div>

@@ -39,21 +39,20 @@ function JoinWizerSignUpPage() {
   const renderLogInButton = () => (
     <div className="Navigation">
       {t("JoinWizerSignUp.haveAccount")}{" "}
-      <Link to={routes.AUTH + "/" + routes.SIGN_IN} className="ChangeLink">
+      <Link to={`/${routes.SIGN_IN}`} className="ChangeLink">
         {t("JoinWizerSignUp.signIn")}
       </Link>
     </div>
   );
   const renderTitle = () => (
     <Typography className="Title">
-      {" "}
-      {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)}{" "}
+      {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)}
     </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}?{" "}
-      <Link to={routes.AUTH + "/" + routes.SIGN_UP} className="ChangeLink">
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}?
+      <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
     </Typography>
@@ -70,7 +69,7 @@ function JoinWizerSignUpPage() {
         >
           <div className="IconContainer">
             <GoogleIcon />
-          </div>{" "}
+          </div>
           {t("SignIn.connect.google")}
         </Button>
         <Button
@@ -82,7 +81,7 @@ function JoinWizerSignUpPage() {
         >
           <div className="IconContainer">
             <MicrosoftIcon />
-          </div>{" "}
+          </div>
           {t("SignIn.connect.microsoft")}
         </Button>
       </>
@@ -144,7 +143,6 @@ function JoinWizerSignUpPage() {
       <span>.</span>
     </div>
   );
-
   const renderError = () => {
     if (error)
       return (
