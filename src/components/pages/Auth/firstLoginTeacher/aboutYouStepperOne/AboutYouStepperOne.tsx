@@ -6,23 +6,11 @@ import {
   FormLabel,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate, useParams } from "react-router";
 import React, { useState } from "react";
-
-type Props = {
-  handleStepperData: (e: { firstName: string; lastName: string }) => void;
-};
 
 const StepperOne = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
-  /* i18n translation dependencies */
-
-  /* Routing, navigation and param dependencies */
-  const navigate = useNavigate();
-  const location = useLocation();
-  const params = useParams();
-  /* Routing, navigation and param dependencies */
 
   /* Form submission dependencies */
   const [formData, setFormData] = useState({
@@ -91,11 +79,11 @@ const StepperOne = () => {
                 disablePortal
                 options={[{ id: 1, label: "India" }]}
                 renderInput={(params) => (
-                  <TextField 
-                  className="GenericFormFieldMargin"
-                  {...params}
-                  fullWidth 
-                  placeholder="Select"
+                  <TextField
+                    className="GenericFormFieldMargin"
+                    {...params}
+                    fullWidth
+                    placeholder="Select"
                   />
                 )}
               />

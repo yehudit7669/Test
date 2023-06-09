@@ -1,14 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Typography,
-  MobileStepper,
-  IconButton,
-} from "@mui/material";
+import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginTeacher.css";
-import React, { useEffect, useState } from "react";
-import { useAppDispatch } from "../../../../hooks/redux-hooks.ts";
+import React, { useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
@@ -18,19 +11,11 @@ export const ChildData = React.createContext({});
 function FirstLoginTeacher() {
   const { t } = useTranslation();
 
-  const dispatch = useAppDispatch();
-
   /* Routing, navigation and param dependencies */
-  const navigate = useNavigate();
-  const params = useParams();
-  /* Routing, navigation and param dependencies */
-
-  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
-  const { role } = params;
 
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
-  const [totalSteps, setTotalSteps] = useState(7);
+  const totalSteps = 7;
 
   const handleStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -40,11 +25,6 @@ function FirstLoginTeacher() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   /* Dependencies for stepper component */
-
-  useEffect(() => {
-    setSignUpRole(role);
-  }, [navigate]);
-
 
   /* Stepper component dependencies */
   const stepperComponent = () => {
@@ -101,14 +81,8 @@ function FirstLoginTeacher() {
             <AboutYourRoleStepperTwo />
           </>
         )}
-        {activeStep === 2 && (
-          <>
-          </>
-        )}
-        {activeStep === 3 && (
-          <>
-          </>
-        )}
+        {activeStep === 2 && <></>}
+        {activeStep === 3 && <></>}
         <Button
           className="Button"
           variant="contained"

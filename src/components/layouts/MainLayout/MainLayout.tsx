@@ -1,8 +1,6 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet } from "react-router-dom";
 
-type Props = {}
-
-const MainLayout = (props: Props) => {
+const MainLayout = () => {
   return (
     <div>
       {/* A "layout route" is a good place to put markup you want to
@@ -31,7 +29,7 @@ const MainLayout = (props: Props) => {
           the child routes we defined above. */}
       <Outlet />
     </div>
-  )
-}
+  );
+};
 
-export default MainLayout
+export default MainLayout;

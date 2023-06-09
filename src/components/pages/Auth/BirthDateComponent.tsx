@@ -2,14 +2,12 @@ import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useState } from "react";
-import { useAppDispatch } from "../../../hooks/redux-hooks.ts";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 function BirthDateComponent() {
   const { t } = useTranslation();
-  const dispatch = useAppDispatch();
 
   const [birthDateValue, setBirthDateValue] = useState();
 
