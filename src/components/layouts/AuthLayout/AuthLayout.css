@@ -1,28 +1,28 @@
-  .AuthLayout {
-    display: flex;
-    flex-direction: row;
-  }
+.AuthLayout {
+  display: flex;
+  flex-direction: row;
+}
 
-  .SideNav {
-    width: 424px;
-    height: 100vh;
-    display: flex;
-    position: sticky;
-    top: 0;
-    justify-content: center;
-    align-items: center;
-    background-image: url("../../../assets/images/auth_bg.png");
-  }
+.SideNav {
+  width: 424px;
+  height: 100vh;
+  display: flex;
+  position: sticky;
+  top: 0;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../assets/images/auth_bg.png");
+}
 
-  .SideNav .Title {
-    width: 300px;
-    font-size: 70px;
-    line-height: 80px;
-    font-family: Mansalva;
-    color: white;
-  }
+.SideNav .Title {
+  width: 300px;
+  font-size: 70px;
+  line-height: 80px;
+  font-family: Mansalva;
+  color: white;
+}
 
-  .Outlet {
-    width: calc(100% - 424px);
-    overflow: auto;
-  }
+.Outlet {
+  width: calc(100% - 424px);
+  overflow: auto;
+}

@@ -1,10 +1,9 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
-import en  from "./en/en.json"
-
+import en from "./en/en.json";
 
 const resources = {
- en
+  en,
 };
 
 i18n
@@ -16,8 +15,8 @@ i18n
     // if you're using a language detector, do not define the lng option
 
     interpolation: {
-      escapeValue: false // react already safes from xss
-    }
+      escapeValue: false, // react already safes from xss
+    },
   });
 
-  export default i18n;
+export default i18n;
