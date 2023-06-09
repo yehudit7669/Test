@@ -6,14 +6,14 @@ import {
   IconButton,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import "../Auth.css";
+import "./FirstLoginParent.css";
 import React, { useEffect, useState } from "react";
 import { useAppDispatch } from "../../../../hooks/redux-hooks.ts";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import StepperOne from "./stepper-one/StepperOne.tsx";
-import StepperTwo from "./stepper-two/StepperTwo.tsx";
-import StepperThree from "./stepper-three/StepperThree.tsx";
-import StepperFour from "./stepper-four/StepperFour.tsx";
+import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
+import AboutYourChildrenStepperTwo from "./aboutYourChildrenStepperTwo/AboutYourChildrenStepperTwo.tsx";
+import ChildSupportStepperThree from "./childSupportStepperThree/ChildSupportStepperThree.tsx";
+import TeachingGoalsStepperFour from "./teachingGoalsStepperFour/TeachingGoalsStepperFour.tsx";
 
 export const ChildData = React.createContext({});
 
@@ -95,22 +95,22 @@ function FirstLoginParent() {
         {stepperComponent()}
         {activeStep === 0 && (
           <>
-            <StepperOne />
+            <AboutYouStepperOne />
           </>
         )}
         {activeStep === 1 && (
           <>
-            <StepperTwo />
+            <AboutYourChildrenStepperTwo />
           </>
         )}
         {activeStep === 2 && (
           <>
-          <StepperThree/>
+          <ChildSupportStepperThree/>
           </>
         )}
         {activeStep === 3 && (
           <>
-            <StepperFour/>
+            <TeachingGoalsStepperFour/>
           </>
         )}
         <Button
@@ -119,6 +119,7 @@ function FirstLoginParent() {
           fullWidth
           color="secondary"
           onClick={handleStepperNext}
+          disabled={activeStep === 3}
         >
           {t("FirstLoginParent.next")}
         </Button>

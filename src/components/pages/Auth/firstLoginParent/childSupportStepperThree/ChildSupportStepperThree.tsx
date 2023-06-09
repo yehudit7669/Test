@@ -75,6 +75,7 @@ const StepperThree = () => {
             <Grid item xs={4} sm={6} md={12}>
               <FormLabel className="FormLabel">Other</FormLabel>
               <TextField
+                className="GenericFormFieldMargin"
                 onChange={(e: React.SyntheticEvent) =>
                   setFormData((prevValue) => {
                     return {

@@ -11,13 +11,13 @@ import useUser from "../hooks/useUser";
 import renderRoleRoutes from "./routes/renderRoleRoutes";
 import { useAppSelector } from "../hooks/redux-hooks";
 import JoinWizerSignUpPage from "../components/pages/Auth/JoinWizerSignUpPage";
-import FirstLoginParent from "../components/pages/Auth/first-login-parent/FirstLoginParent";
+import FirstLoginParent from "../components/pages/Auth/firstLoginParent";
 
 function App() {
   const [user] = useUser();
   const userInfo = useAppSelector((state) => state.auth.user);
   const userRole = user?.role || userInfo?.role;
-
+  console.log(userRole,'userRole')
   //Connecting websocket
   useWebSocket(getWSEnv(), {
     onOpen: () => {
@@ -41,6 +41,7 @@ function App() {
           <Route path={routes.SIGN_IN} element={<SignIn />} />
           <Route path={routes.SIGN_UP} element={<SignUp />} />
           <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
+          <Route path={routes.FIRST_LOGIN_PARENT} element={<FirstLoginParent />} />
           <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
         </Route>
 

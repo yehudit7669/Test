@@ -59,7 +59,12 @@
       },
       "stepTwo" : {
         "title" : "Tell us about your children",
-        "subTitle" : "So we can personalize the learning experience  based on your child needs."
+        "subTitle" : "So we can personalize the learning experience  based on your child needs.",
+        "childStrengths" : "What are the Strengths of your child (optional)",
+        "challenges" : "Challenges (optional)",
+        "preferences" : "Preferences (optional)",
+        "passionsAndHobbies" : "Passions and hobbies (optional)",
+        "addAChild" : "Add a Child"
       },
       "stepThree" : {
         "title" : "How do you support your child's education?",

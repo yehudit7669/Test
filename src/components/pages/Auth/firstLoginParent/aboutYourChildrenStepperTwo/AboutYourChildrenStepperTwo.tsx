@@ -12,7 +12,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, useParams } from "react-router";
 import React, { useState, useEffect } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-
+import AddIcon from '@mui/icons-material/Add';
 
 const StepperTwo = () => {
   /* i18n translation dependencies */
@@ -71,7 +71,7 @@ const StepperTwo = () => {
   const renderFirstLoginParentForm = () => {
     return (
       <>
-        <TabContext value={tabValue}>
+        <TabContext value={tabValue} >
           <Box
             sx={{
               flexGrow: 1,
@@ -82,44 +82,51 @@ const StepperTwo = () => {
           >
             <TabList
               onChange={handleChange}
-              aria-label="lab API tabs example"
-              sx={{ borderBottom: "1px solid black", width: "100%" }}
+              className="TabList"
+              variant="scrollable"
             >
-              <Tab label="Child 1" value="1" />
-              <Button>Add a Child</Button>
+              <Tab label="Child 1" value="1" className="Tab" />
+              <Button className="Button">
+                <AddIcon/>
+                {t("FirstLoginParent.stepTwo.addAChild")}
+                </Button>
             </TabList>
           </Box>
-          <TabPanel value="1" sx={{padding:0}}>
+          <TabPanel value="1" sx={{ padding: 0 }}>
             <Grid container spacing={2}>
-                <Grid item xs={8}>
-                  <TextField
-                    onChange={(e) => handleChangeFormData(e)}
-                    value={formData.nickName}
-                    label="Nickname"
-                    variant="outlined"
-                    fullWidth
-                    name="nickName"
-                  />
-                </Grid>
+              <Grid item xs={8}>
+                <TextField
+                  onChange={(e) => handleChangeFormData(e)}
+                  value={formData.nickName}
+                  placeholder="Nickname"
+                  variant="outlined"
+                  fullWidth
+                  name="nickName"
+                />
+              </Grid>
 
-                <Grid item xs={4}>
-                  <Autocomplete
-                    disablePortal
-                    options={[]}
-                    renderInput={(params) => (
-                      <TextField {...params} fullWidth label="Country" />
-                    )}
-                  />
+              <Grid item xs={4}>
+                <Autocomplete
+                  disablePortal
+                  options={[]}
+                  renderInput={(params) => (
+                    <TextField 
+                    {...params} 
+                    fullWidth 
+                    />
+                  )}
+                />
               </Grid>
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                  What are the Strengths of your child (optional)
+                {t("FirstLoginParent.stepTwo.childStrengths")}
                 </FormLabel>
                 <TextField
+                  className="GenericFormFieldMargin"
                   onChange={(e) => handleChangeFormData(e)}
                   value={formData.childStrengths}
-                  label="Add Text"
+                  placeholder="Add Text"
                   variant="outlined"
                   fullWidth
                   name="childStrengths"
@@ -128,12 +135,13 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                  Challenges (optional)
+                {t("FirstLoginParent.stepTwo.challenges")}
                 </FormLabel>
                 <TextField
+                  className="GenericFormFieldMargin"
                   onChange={(e) => handleChangeFormData(e)}
                   value={formData.challenges}
-                  label="Any Text"
+                  placeholder="Any Text"
                   variant="outlined"
                   fullWidth
                   multiline
@@ -144,12 +152,13 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                  Preferences (optional)
+                {t("FirstLoginParent.stepTwo.preferences")}
                 </FormLabel>
                 <TextField
+                  className="GenericFormFieldMargin"
                   onChange={(e) => handleChangeFormData(e)}
                   value={formData.preferences}
-                  label="Any Text"
+                  placeholder="Any Text"
                   variant="outlined"
                   fullWidth
                   multiline
@@ -160,12 +169,13 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                  Passions and hobbies (optional)
+                {t("FirstLoginParent.stepTwo.passionsAndHobbies")}
                 </FormLabel>
                 <TextField
+                  className="GenericFormFieldMargin"
                   onChange={(e) => handleChangeFormData(e)}
                   value={formData.passionsAndHobbies}
-                  label="Any Text"
+                  placeholder="Any Text"
                   variant="outlined"
                   fullWidth
                   multiline

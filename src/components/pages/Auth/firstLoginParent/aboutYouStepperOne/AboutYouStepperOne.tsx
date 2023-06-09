@@ -1,17 +1,22 @@
-import { Autocomplete, Grid, TextField, Typography } from "@mui/material";
+import {
+  Autocomplete,
+  Grid,
+  TextField,
+  Typography,
+  FormLabel,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate, useParams } from "react-router";
 import React, { useState } from "react";
 
 type Props = {
-    handleStepperData:(e:{firstName:string,lastName:string})=>void
-}
+  handleStepperData: (e: { firstName: string; lastName: string }) => void;
+};
 
 const StepperOne = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
-
 
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
@@ -31,7 +36,8 @@ const StepperOne = () => {
     setFormData((prevData) => {
       return {
         ...prevData,
-        [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value,
+        [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
+          .value,
       };
     });
   };
@@ -56,37 +62,40 @@ const StepperOne = () => {
         <form className="">
           <Grid container spacing={2}>
             <Grid item xs={4} sm={6} md={12}>
+              <FormLabel className="FormLabel">First Name</FormLabel>
               <TextField
+                className="GenericFormFieldMargin"
                 onChange={(e) => handleChangeFormData(e)}
                 value={formData.firstName}
-                label="First Name"
+                placeholder="Type here"
                 variant="outlined"
                 fullWidth
                 name="firstName"
-                // onBlur={()=>handleStepperData(formData)}
-                />
+              />
             </Grid>
             <Grid item xs={4} sm={6} md={12}>
+              <FormLabel className="FormLabel">Last Name</FormLabel>
               <TextField
+                className="GenericFormFieldMargin"
                 onChange={(e) => handleChangeFormData(e)}
                 value={formData.lastName}
-                label="Last Name"
+                placeholder="Type here"
                 variant="outlined"
                 fullWidth
                 name="lastName"
-                // onBlur={()=>handleStepperData(formData)}
-                />
+              />
             </Grid>
-            <Grid item xs={4} sm={6} md={12}>  
+            <Grid item xs={4} sm={6} md={12}>
+              <FormLabel className="FormLabel">Country</FormLabel>
               <Autocomplete
                 disablePortal
-                options={[{id:1,label:'India'}]}
+                options={[{ id: 1, label: "India" }]}
                 renderInput={(params) => (
-                    <TextField 
-                    {...params} 
-                    fullWidth 
-                    // onBlur={()=>handleStepperData(formData)}
-                    label="Country" />
+                  <TextField 
+                  {...params}
+                  fullWidth 
+                  placeholder="Select"
+                  />
                 )}
               />
             </Grid>
