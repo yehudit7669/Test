@@ -366,3 +366,26 @@
   width: 424px;
 }
 /****** Join Wizer Sign Up dependencies ******/
+
+
+/****** Mobile stepper default CSS ******/
+.MobileStepper {
+  max-width: 142px;
+  flex-grow: 1;
+  border-radius: 10px;
+  width: 100%;
+}
+.MobileStepper .MuiLinearProgress-bar {
+  background: #FDBD10;
+}
+
+.MobileStepper .css-pmu9cm-MuiLinearProgress-root-MuiMobileStepper-progress{
+  height: 11px;
+  border-radius: 10px;
+  background: #EEEEEE;
+  width: 100%;
+}
+.css-1msswm6-MuiPaper-root-MuiMobileStepper-root{
+  padding: 0 !important;
+}
+/****** Mobile stepper default CSS ******/

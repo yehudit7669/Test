@@ -7,6 +7,8 @@
     width: 424px;
     height: 100vh;
     display: flex;
+    position: sticky;
+    top: 0;
     justify-content: center;
     align-items: center;
     background-image: url("../../../assets/images/auth_bg.png");
@@ -21,5 +23,6 @@
   }
 
   .Outlet {
-    width: calc(100% - 484px);
+    width: calc(100% - 424px);
+    overflow: auto;
   }

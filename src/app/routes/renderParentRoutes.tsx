@@ -20,12 +20,7 @@ const renderTeacherRoutes = ({ userRole }: Props) => {
         <Route path={routes.ANY} element={<Navigate to={userRole} replace />} />
       </Route>
       <Route path={routes.GET_STARTED} element={<AuthLayout />}>
-        {/* <Route index element={<Navigate to={routes.STUDENT_DOB} replace />} />
-        <Route path={routes.STUDENT_DOB} element={<h2>Student DOB</h2>} /> */}
-        {/* <Route
-          path={routes.ANY}
-          element={<Navigate to={routes.GET_STARTED} replace />}
-        /> */}
+        {/* <Route index element={<Navigate to={routes.FIRST_LOGIN_PARENT} replace />} /> */}
       </Route>
     </>
   );

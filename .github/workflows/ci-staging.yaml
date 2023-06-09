@@ -1,6 +1,7 @@
 name: Staging - Build and Push to GCR
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - develop
