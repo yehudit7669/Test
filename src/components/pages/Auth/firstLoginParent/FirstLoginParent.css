@@ -1,0 +1,102 @@
+/***** First Login Parent dependencies *****/
+.FirstLoginParent{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .FirstLoginParent .Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 424px;
+    gap: 1rem;
+    margin: 100px 0px;
+  }
+  .FirstLoginParent .Title {
+    width: 424px;
+    left: calc(50% - 424px / 2 + 212px);
+    top: 253px;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 60px;
+    color: #212121;
+  }
+  
+  .FirstLoginParent .Subtitle {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: -0.011em;
+    color: #808080;
+  }
+  
+  .FirstLoginParent .StepperContainer{
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  .FirstLoginParent .MainStepper{
+    display: flex;
+    gap: 0.9rem;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+  }
+  .FirstLoginParent .StepperNoInfo{
+    color: #666666;
+  }
+  
+  .FirstLoginParent .FirstLoginParentForm{
+    display: grid;
+    gap: 1.4rem;
+    width: 100%;
+  }
+  
+  .FirstLoginParent .Button {
+    width: 424px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    border-radius: 10px;
+    gap: 0.8rem;
+  }
+  
+  .FirstLoginParent .StepperContainer .StepperBackButton{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 100%;
+    font-size: 16px;
+    color: #666666;
+  }
+  
+  .FirstLoginParent .FormLabel{
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #212121;
+  }
+
+  .FirstLoginParent .GenericFormFieldMargin{
+    margin-top: 0.5rem;
+  }
+
+  .FirstLoginParent .Tab{
+    text-transform: none;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .FirstLoginParent .TabList{
+    border-bottom: 1px solid #200343;
+    width: 100%;
+  }
+
+  .FirstLoginParent .Button{
+    text-transform: none;
+  }
+  /***** First Login Parent dependencies *****/
