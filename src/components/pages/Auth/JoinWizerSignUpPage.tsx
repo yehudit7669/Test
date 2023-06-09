@@ -31,7 +31,7 @@ function JoinWizerSignUpPage() {
 
   useEffect(() => {
     setSignUpRole(role);
-  }, [navigate]);
+  }, [navigate,role]);
 
   const renderLogInButton = () => (
     <div className="Navigation">
@@ -119,7 +119,6 @@ function JoinWizerSignUpPage() {
             variant="contained"
             fullWidth
             color="secondary"
-            onClick={() => {}}
           >
             {t("JoinWizerSignUp.signUp")}
           </Button>

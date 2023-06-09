@@ -128,7 +128,7 @@ function SignIn() {
 
   const handleSignIn = (e: React.FormEvent) => {
     e.preventDefault();
-    let validate = loginValidations(email, password);
+    const validate = loginValidations(email, password);
     // Check validation
     if (validate.status) {
       setError(validate.message);

@@ -32,7 +32,7 @@ function App() {
         <Route path={routes.ROOT} element={<RequireAuth />}>
           {/* To redirect to get started or dashboard */}
           <Route index element={<Navigate to={userRole} replace />} />
-          {renderRoleRoutes()}
+          {renderRoleRoutes(userRole)}
         </Route>
 
         {/* Public Auth routes */}

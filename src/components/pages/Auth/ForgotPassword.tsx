@@ -19,7 +19,7 @@ function ForgotPassword() {
 
   const handleForgotPassword = (e: React.FormEvent) => {
     e.preventDefault();
-    let validate = forgotPasswordValidations(email);
+    const validate = forgotPasswordValidations(email);
     if (validate.status) {
       setError(validate.message);
     } else {
