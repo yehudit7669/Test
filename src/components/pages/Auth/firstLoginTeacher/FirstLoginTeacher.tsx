@@ -12,6 +12,9 @@ import { useAppDispatch } from "../../../../hooks/redux-hooks.ts";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
+import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/SubjectInterestsStepperThree.tsx";
+import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
+import SchoolStepperFive from "./schoolStepperFive/SchoolStepperFive.tsx";
 
 export const ChildData = React.createContext({});
 
@@ -30,7 +33,7 @@ function FirstLoginTeacher() {
 
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
-  const [totalSteps, setTotalSteps] = useState(7);
+  const [totalSteps, setTotalSteps] = useState(5);
 
   const handleStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -103,10 +106,17 @@ function FirstLoginTeacher() {
         )}
         {activeStep === 2 && (
           <>
+          <SubjectInterestsStepperThree/>
           </>
         )}
         {activeStep === 3 && (
           <>
+          <StudentsGradeStepperFour/>
+          </>
+        )}
+        {activeStep === 4 && (
+          <>
+          <SchoolStepperFive/>
           </>
         )}
         <Button
@@ -115,9 +125,8 @@ function FirstLoginTeacher() {
           fullWidth
           color="secondary"
           onClick={handleStepperNext}
-          disabled={activeStep === 3}
         >
-          {t("FirstLoginTeacher.next")}
+          {activeStep === 4 ? t("FirstLoginTeacher.joinThisSchool") : t("FirstLoginTeacher.next")}
         </Button>
       </div>
     </div>

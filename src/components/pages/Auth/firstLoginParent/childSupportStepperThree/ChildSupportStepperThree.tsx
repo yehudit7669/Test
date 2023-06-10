@@ -50,7 +50,7 @@ const StepperThree = () => {
   const renderSupportChildEducationTags = () => {
     return (
       <>
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" gap={1} flexWrap="wrap">
           <Chip
             variant="outlined"
             size="medium"

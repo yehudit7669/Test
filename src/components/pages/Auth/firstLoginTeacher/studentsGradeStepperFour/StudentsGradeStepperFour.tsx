@@ -4,7 +4,7 @@ import { useLocation, useNavigate, useParams } from "react-router";
 import React, { useState } from "react";
 import FormLabel from "@mui/material/FormLabel";
 
-const AboutYourRoleStepperTwo = () => {
+const StudentsGradeStepperFour = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
@@ -18,7 +18,7 @@ const AboutYourRoleStepperTwo = () => {
   /* Form submission dependencies */
   const [formData, setFormData] = useState({
     other: "",
-    supportChildEducationTags: [],
+    gradeTags: [],
   });
   /* Form submission dependencies */
 
@@ -34,20 +34,20 @@ const AboutYourRoleStepperTwo = () => {
   };
   /* OnChange dependencies */
 
-  /* Stepper Two component dependencies */
+  /* Stepper Three component dependencies */
   const renderTitle = () => (
     <Typography className="Title">
       {" "}
-      {t("FirstLoginTeacher.stepTwo.title")}
+      {t("FirstLoginTeacher.stepFour.title")}
     </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("FirstLoginTeacher.stepTwo.subTitle")}
+      {t("FirstLoginTeacher.stepFour.subTitle")}
     </Typography>
   );
 
-  const renderSupportChildEducationTags = () => {
+  const renderGradeTags = () => {
     return (
       <>
         <Stack direction="row" gap={1} flexWrap="wrap">
@@ -55,19 +55,25 @@ const AboutYourRoleStepperTwo = () => {
             variant="outlined"
             size="medium"
             sx={{ height: "40px" }}
-            label="Elementary"
+            label="Premade worksheets"
           />
           <Chip
             variant="outlined"
             size="medium"
             sx={{ height: "40px" }}
-            label="Middle School"
+            label="To digitize pdf worksheet"
           />
           <Chip
             variant="outlined"
             size="medium"
             sx={{ height: "40px" }}
-            label="Principal"
+            label="Easy way to differentiate assignments"
+          />
+          <Chip
+            variant="outlined"
+            size="medium"
+            sx={{ height: "40px" }}
+            label="Create fun worksheets for my students"
           />
         </Stack>
       </>
@@ -79,7 +85,7 @@ const AboutYourRoleStepperTwo = () => {
       <>
           <Grid container spacing={2}>
             <Grid item xs={4} sm={6} md={12}>
-              <FormLabel className="FormLabel">{t("FirstLoginTeacher.stepTwo.otherRole")}</FormLabel>
+              <FormLabel className="FormLabel">{t("FirstLoginTeacher.stepFour.otherReason")}?</FormLabel>
               <TextField
                 className="GenericFormFieldMargin"
                 onChange={(e: React.SyntheticEvent) =>
@@ -100,16 +106,16 @@ const AboutYourRoleStepperTwo = () => {
       </>
     );
   };
-  /* Stepper Two component dependencies */
+  /* Stepper Three component dependencies */
 
   return (
     <>
       {renderTitle()}
       {renderSubTitle()}
-      {renderSupportChildEducationTags()}
+      {renderGradeTags()}
       {renderFirstLoginTeacherForm()}
     </>
   );
 };
 
-export default AboutYourRoleStepperTwo;
+export default StudentsGradeStepperFour;

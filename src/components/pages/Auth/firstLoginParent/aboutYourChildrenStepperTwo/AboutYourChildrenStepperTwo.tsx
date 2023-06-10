@@ -51,6 +51,7 @@ const StepperTwo = () => {
   const [tabValue, setTabValue] = useState("1");
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    console.log(newValue,'newvalue')
     setTabValue(newValue);
   };
   /* Tab dependencies */
@@ -71,7 +72,7 @@ const StepperTwo = () => {
   const renderFirstLoginParentForm = () => {
     return (
       <>
-        <TabContext value={tabValue} >
+        <TabContext value={tabValue}>
           <Box
             sx={{
               flexGrow: 1,
@@ -86,6 +87,7 @@ const StepperTwo = () => {
               variant="scrollable"
             >
               <Tab label="Child 1" value="1" className="Tab" />
+              <Tab label="Child 1" value="2" className="Tab" />
               <Button className="Button">
                 <AddIcon/>
                 {t("FirstLoginParent.stepTwo.addAChild")}
