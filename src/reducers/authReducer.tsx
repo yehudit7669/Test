@@ -13,7 +13,7 @@ const initialState: State = {
   },
 };
 
-export default produce((draft: State, action: any) => {
+const auth =produce((draft: State, action: any) => {
   const { payload } = action;
 
   switch (action.type) {
@@ -32,3 +32,5 @@ export default produce((draft: State, action: any) => {
     }
   }
 }, initialState);
+
+export default auth

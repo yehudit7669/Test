@@ -82,27 +82,10 @@
         "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
       },
       "stepTwo" : {
-        "title" : "What's your role?",
-        "subTitle" : "You can select more than 1.",
+        "title" : "What’s your role?",
+        "subTitle" : "What’s your role?",
         "otherRole" : "Other role"
-      },
-      "stepThree" : {
-        "title" : "What subjects interest you the most?",
-        "subTitle" : "You can select more than 1.",
-        "otherSubjects" : "Other subjects"
-      },
-      "stepFour" : {
-        "title" : "What are you looking for in Wizer?",
-        "subTitle" : "You can select more than 1.",
-        "otherReason" : "Other reason"
-      },
-      "stepFive" : {
-        "title" : "What is your school?",
-        "searchSchool" : "Search for your school name",
-        "noSchoolLink" : "Don't see your school? Please share Wizer.Me with your supervisor"
-      },
-      "next" : "Next",
-      "joinThisSchool" : "Join this school"
+      }
     }
   }
 }

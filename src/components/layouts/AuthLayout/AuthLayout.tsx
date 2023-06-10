@@ -42,7 +42,7 @@ function AuthLayout() {
     if (isAuthenticated[0]) {
       navigate(routes.ROOT);
     }
-  }, [navigate]);
+  }, [navigate,isAuthenticated]);
 
   return (
     <div className="AuthLayout">

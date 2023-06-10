@@ -9,21 +9,13 @@ import {
   Typography,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import { useLocation, useNavigate, useParams } from "react-router";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
-import AddIcon from '@mui/icons-material/Add';
+import AddIcon from "@mui/icons-material/Add";
 
 const StepperTwo = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
-  /* i18n translation dependencies */
-
-  /* Routing, navigation and param dependencies */
-  const navigate = useNavigate();
-  const location = useLocation();
-  const params = useParams();
-  /* Routing, navigation and param dependencies */
 
   /* Form submission dependencies */
   const [formData, setFormData] = useState({
@@ -48,11 +40,10 @@ const StepperTwo = () => {
   /* OnChange dependencies */
 
   /* Tab dependencies */
-  const [tabValue, setTabValue] = useState("1");
+  const [tabValue, setTabValue] = useState(1);
 
-  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-    console.log(newValue,'newvalue')
-    setTabValue(newValue);
+  const handleChange = (event: React.SyntheticEvent) => {
+    setTabValue((event.target as HTMLInputElement).tabIndex);
   };
   /* Tab dependencies */
 
@@ -72,7 +63,7 @@ const StepperTwo = () => {
   const renderFirstLoginParentForm = () => {
     return (
       <>
-        <TabContext value={tabValue}>
+        <TabContext value={tabValue.toString()}>
           <Box
             sx={{
               flexGrow: 1,
@@ -86,12 +77,12 @@ const StepperTwo = () => {
               className="TabList"
               variant="scrollable"
             >
-              <Tab label="Child 1" value="1" className="Tab" />
-              <Tab label="Child 1" value="2" className="Tab" />
+              <Tab label="Child 1" tabIndex={1} value="1" className="Tab" />
+              <Tab label="Child 2" tabIndex={5} value="2" className="Tab" />
               <Button className="Button">
-                <AddIcon/>
+                <AddIcon />
                 {t("FirstLoginParent.stepTwo.addAChild")}
-                </Button>
+              </Button>
             </TabList>
           </Box>
           <TabPanel value="1" sx={{ padding: 0 }}>
@@ -111,18 +102,13 @@ const StepperTwo = () => {
                 <Autocomplete
                   disablePortal
                   options={[]}
-                  renderInput={(params) => (
-                    <TextField 
-                    {...params} 
-                    fullWidth 
-                    />
-                  )}
+                  renderInput={(params) => <TextField {...params} fullWidth />}
                 />
               </Grid>
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                {t("FirstLoginParent.stepTwo.childStrengths")}
+                  {t("FirstLoginParent.stepTwo.childStrengths")}
                 </FormLabel>
                 <TextField
                   className="GenericFormFieldMargin"
@@ -137,7 +123,7 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                {t("FirstLoginParent.stepTwo.challenges")}
+                  {t("FirstLoginParent.stepTwo.challenges")}
                 </FormLabel>
                 <TextField
                   className="GenericFormFieldMargin"
@@ -154,7 +140,7 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                {t("FirstLoginParent.stepTwo.preferences")}
+                  {t("FirstLoginParent.stepTwo.preferences")}
                 </FormLabel>
                 <TextField
                   className="GenericFormFieldMargin"
@@ -171,7 +157,7 @@ const StepperTwo = () => {
 
               <Grid item xs={4} sm={6} md={12}>
                 <FormLabel className="FormLabel">
-                {t("FirstLoginParent.stepTwo.passionsAndHobbies")}
+                  {t("FirstLoginParent.stepTwo.passionsAndHobbies")}
                 </FormLabel>
                 <TextField
                   className="GenericFormFieldMargin"

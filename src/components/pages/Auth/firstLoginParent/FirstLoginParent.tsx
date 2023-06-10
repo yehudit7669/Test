@@ -1,14 +1,7 @@
-import { useNavigate, useParams } from "react-router-dom";
-import {
-  Button,
-  Typography,
-  MobileStepper,
-  IconButton,
-} from "@mui/material";
+import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginParent.css";
-import React, { useEffect, useState } from "react";
-import { useAppDispatch } from "../../../../hooks/redux-hooks.ts";
+import React, { useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourChildrenStepperTwo from "./aboutYourChildrenStepperTwo/AboutYourChildrenStepperTwo.tsx";
@@ -20,19 +13,9 @@ export const ChildData = React.createContext({});
 function FirstLoginParent() {
   const { t } = useTranslation();
 
-  const dispatch = useAppDispatch();
-
-  /* Routing, navigation and param dependencies */
-  const navigate = useNavigate();
-  const params = useParams();
-  /* Routing, navigation and param dependencies */
-
-  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
-  const { role } = params;
-
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
-  const [totalSteps, setTotalSteps] = useState(4);
+  const totalSteps = 4;
 
   const handleStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -42,11 +25,6 @@ function FirstLoginParent() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   /* Dependencies for stepper component */
-
-  useEffect(() => {
-    setSignUpRole(role);
-  }, [navigate]);
-
 
   /* Stepper component dependencies */
   const stepperComponent = () => {
@@ -105,12 +83,12 @@ function FirstLoginParent() {
         )}
         {activeStep === 2 && (
           <>
-          <ChildSupportStepperThree/>
+            <ChildSupportStepperThree />
           </>
         )}
         {activeStep === 3 && (
           <>
-            <TeachingGoalsStepperFour/>
+            <TeachingGoalsStepperFour />
           </>
         )}
         <Button

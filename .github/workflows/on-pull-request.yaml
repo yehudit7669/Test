@@ -1,0 +1,39 @@
+name: Prettify And Lint
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  build:
+    name: Run Lint and Prettier
+    runs-on: ubuntu-latest
+
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: |-
+          npm install
+          npm install tsc
+
+      - name: Run prettier
+        run: |-
+          npm run prettify
+      
+      - name: Run eslint
+        run: |-
+          npm run lint
+      
+      - name: Run tsc
+        working-directory: src
+        run: |-
+          tsc
