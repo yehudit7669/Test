@@ -10,11 +10,8 @@ import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
 
-type Props = {
-  setFirstLoginParentDetails:(value:object)=>void
-}
 
-const StepperOne = ({setFirstLoginParentDetails}:Props) => {
+const StepperOne = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
@@ -25,32 +22,16 @@ const StepperOne = ({setFirstLoginParentDetails}:Props) => {
   console.log(firstLoginParentDetails,'firstLoginParent')
   /* Routing, navigation and param dependencies */
 
-  /* Form submission dependencies */
-  const [formData, setFormData] = useState({
-    fname: "",
-    lname: "",
-  });
-  /* Form submission dependencies */
-
   /* Searchable select dependencies */
   // const [countries, setCountries] = useState([])
-  const [selectedCountryObj, setSelectedCountryObj] = useState<any>(null)
   /* Searchable select dependencies */
 
   /* OnChange formData dependencies */
   const handleChangeFormData = (e: React.SyntheticEvent) => {
-    setFormData((prevData) => {
-      return {
-        ...prevData,
-        [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement).value,
-          country:selectedCountryObj ? selectedCountryObj.label : ""
-      };
-    });
-
     const dataToBeSent = {
       [(e.target as HTMLInputElement).name] : (e.target as HTMLInputElement).value
     }
-    dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS_FOR_STEPPER_ONE,dataToBeSent))
+    dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS,dataToBeSent))
   };
   /* OnChange formData dependencies */
   
@@ -60,11 +41,7 @@ const StepperOne = ({setFirstLoginParentDetails}:Props) => {
       const dataToBeSent = {
         country:changedValue.label || ""
       }
-      dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS_FOR_STEPPER_ONE,dataToBeSent))
-      setSelectedCountryObj(changedValue)
-    }
-    else{
-      setSelectedCountryObj(null)
+      dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS,dataToBeSent))
     }
   }
   /* On Country changed setSelectedCountryObj */

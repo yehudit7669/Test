@@ -1,4 +1,3 @@
-import React, { Dispatch, SetStateAction } from 'react';
 import { Chip, Stack } from "@mui/material";
 
 
@@ -8,15 +7,14 @@ type Props = {
     label:string, 
     selected:boolean
     }[],
-    setMultipleSelectableChipsDetails:Dispatch<SetStateAction<{id:string,label:string,selected:boolean}[]>>,
     handleGetSelectedChipsDetails:(value:{id:string,label:string,selected:boolean}[])=>void
 }
 
-const MultipleSelectableChips = ({multipleSelectableChipDetails, setMultipleSelectableChipsDetails, handleGetSelectedChipsDetails}:Props) => {
+const MultipleSelectableChips = ({multipleSelectableChipDetails, handleGetSelectedChipsDetails}:Props) => {
     
     /* Function definition to select the tag on click */
     const handleSelectTags = (selectedvalue:{id:string,label:string,selected:boolean}, index:number) => {
-        const newMultipleSelectableChipDetails = [...multipleSelectableChipDetails]
+        const newMultipleSelectableChipDetails =[...JSON.parse(JSON.stringify(multipleSelectableChipDetails))]
         if(selectedvalue.selected === false)
         {
             newMultipleSelectableChipDetails[index].selected = true
@@ -25,8 +23,7 @@ const MultipleSelectableChips = ({multipleSelectableChipDetails, setMultipleSele
         {
             newMultipleSelectableChipDetails[index].selected = false
         }
-        setMultipleSelectableChipsDetails([...newMultipleSelectableChipDetails])
-  
+        
         handleGetSelectedChipsDetails(newMultipleSelectableChipDetails)
       }
       /* Function definition to select the tag on click */

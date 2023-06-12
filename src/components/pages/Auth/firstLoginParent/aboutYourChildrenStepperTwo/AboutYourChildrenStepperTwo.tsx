@@ -12,15 +12,16 @@ import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
+import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
+import Actions from "../../../../../actions";
 
-type Props = {
-  setFirstLoginParentDetails:(value:object)=>void
-}
-
-const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
+const StepperTwo = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
+
+  const dispatch = useAppDispatch()
+  const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
 
   /* Form submission dependencies */
   const [formData, setFormData] = useState<{[key:string]:any}[]>([
@@ -36,16 +37,15 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
 
   /* OnChange dependencies */
   const handleChangeFormData = (e: React.SyntheticEvent, index:number) => {
-    const newFormData =[...formData]
+    /* If you're using Redux / NgRX, there's a chance your selector could be returning a readonly object with a reference to the store so do the following parsing and stringify */
+    const newFormData =[...JSON.parse(JSON.stringify(firstLoginParentDetails.childrens))]
     const eventTargetName = (e.target as HTMLInputElement).name;
-    newFormData[index][eventTargetName] = (e.target as HTMLInputElement).value,
-    setFormData([...newFormData])
-    setFirstLoginParentDetails((prevValue:any)=>{
-      return {
-        ...prevValue,
-        childrens:newFormData
-      }
-    }) 
+    const eventTargetValue = (e.target as HTMLInputElement).value;
+    newFormData[index][eventTargetName] = eventTargetValue
+    const dataToBeSent = {
+      childrens: [...newFormData]
+    }
+    dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS,dataToBeSent)) 
   };
   /* OnChange dependencies */
 
@@ -73,18 +73,15 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
   const renderFirstLoginParentForm = () => {
     /* Function definition on button click - Add a child */
     const handleAddChildren = () => {
-      setFormData((prevValue)=>{
-        return [
-          ...prevValue,
-          {
-            nickName: "",
-            strengths: "",
-            challenges: "",
-            preferences: "",
-            hobbies: "",
-          }
-        ]
-      })
+      const dataToBeSent = {
+          nickname: "",
+          strengths: "",
+          challenges: "",
+          preferences: "",
+          hobbies: ""
+      }
+      dispatch(Actions.createAction(Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_ADD_CHILDREN,dataToBeSent))
+      
     }
     /* Function definition on button click - Add a child */
     return (
@@ -103,7 +100,7 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
               className="TabList"
               variant="scrollable"
             >
-              {formData?.map((_data,index)=>{
+              {firstLoginParentDetails?.childrens?.map((_data,index)=>{
                 return (
                   <Tab label={`Child ${index + 1}`} tabIndex={index + 1} value={(index + 1).toString()} className="Tab" />
                 )
@@ -121,18 +118,18 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
           </Box>
 
           {
-            formData?.map((_data,index)=>{
+            firstLoginParentDetails?.childrens?.map((_data,index)=>{
               return (
               <TabPanel value={(index + 1).toString()} sx={{ padding: 0 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={8}>
                     <TextField
                       onChange={(e) => handleChangeFormData(e,index)}
-                      value={formData[index].nickName}
+                      value={firstLoginParentDetails.childrens[index].nickname || ""}
                       placeholder="Nickname"
                       variant="outlined"
                       fullWidth
-                      name="nickName"
+                      name="nickname"
                     />
                   </Grid>
 
@@ -151,7 +148,7 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
                     <TextField
                       className="GenericFormFieldMargin"
                       onChange={(e) => handleChangeFormData(e,index)}
-                      value={formData[index].strengths}
+                      value={firstLoginParentDetails?.childrens[index].strengths}
                       placeholder="Add Text"
                       variant="outlined"
                       fullWidth
@@ -166,7 +163,7 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
                     <TextField
                       className="GenericFormFieldMargin"
                       onChange={(e) => handleChangeFormData(e,index)}
-                      value={formData[index].challenges}
+                      value={firstLoginParentDetails?.childrens[index].challenges}
                       placeholder="Any Text"
                       variant="outlined"
                       fullWidth
@@ -183,7 +180,7 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
                     <TextField
                       className="GenericFormFieldMargin"
                       onChange={(e) => handleChangeFormData(e,index)}
-                      value={formData[index].preferences}
+                      value={firstLoginParentDetails?.childrens[index].preferences}
                       placeholder="Any Text"
                       variant="outlined"
                       fullWidth
@@ -200,7 +197,7 @@ const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
                     <TextField
                       className="GenericFormFieldMargin"
                       onChange={(e) => handleChangeFormData(e,index)}
-                      value={formData[index].hobbies}
+                      value={firstLoginParentDetails?.childrens[index].hobbies}
                       placeholder="Any Text"
                       variant="outlined"
                       fullWidth

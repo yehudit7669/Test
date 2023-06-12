@@ -7,7 +7,8 @@ import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
 import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/SubjectInterestsStepperThree.tsx";
 import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
-import SchoolStepperFive from "./schoolStepperFive/SchoolStepperFive.tsx";
+import SchoolStepperSix from "./schoolStepperSix/SchoolStepperSix.tsx";
+import WizerInterestsStepperFive from "./wizerInterestsStepperFive/WizerInterestsStepperFive.tsx";
 
 export const ChildData = React.createContext({});
 
@@ -18,7 +19,7 @@ function FirstLoginTeacher() {
 
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
-  const totalSteps = 7;
+  const totalSteps = 6;
 
   const handleStepperNext = () => {
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
@@ -92,7 +93,10 @@ function FirstLoginTeacher() {
         <StudentsGradeStepperFour/>
         </>}
         {activeStep === 4 && <>
-        <SchoolStepperFive/>
+        <WizerInterestsStepperFive/>
+        </>}
+        {activeStep === 5 && <>
+        <SchoolStepperSix/>
         </>}
         <Button
           className="Button"
@@ -101,7 +105,7 @@ function FirstLoginTeacher() {
           color="secondary"
           onClick={handleStepperNext}
         >
-          {t("FirstLoginTeacher.next")}
+          { activeStep === 5 ? t("FirstLoginTeacher.stepSix.joinThisSchool") : t("FirstLoginTeacher.next")}
         </Button>
       </div>
     </div>

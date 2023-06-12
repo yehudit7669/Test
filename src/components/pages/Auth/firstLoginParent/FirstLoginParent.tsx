@@ -86,22 +86,17 @@ function FirstLoginParent() {
         {stepperComponent()}
         {activeStep === 0 && (
           <>
-            <AboutYouStepperOne 
-            // setFirstLoginParentDetails={setFirstLoginParentDetails} 
-            />
+            <AboutYouStepperOne />
           </>
         )}
         {activeStep === 1 && (
           <>
-            <AboutYourChildrenStepperTwo
-            // setFirstLoginParentDetails={setFirstLoginParentDetails}
-            />
+            <AboutYourChildrenStepperTwo/>
           </>
         )}
         {activeStep === 2 && (
           <>
-            <ChildSupportStepperThree 
-            setFirstLoginParentDetails={setFirstLoginParentDetails}/>
+            <ChildSupportStepperThree />
           </>
         )}
         {activeStep === 3 && (

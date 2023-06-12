@@ -93,14 +93,20 @@
         "otherSubjects" : "Other subjects"
       },
       "stepFour" : {
-        "title" : "What are you looking for in Wizer?",
+        "title" : "What grade are your students?",
         "subTitle" : "You can select more than 1.",
-        "otherReason" : "Other reason"
+        "otherGrades" : "Other grades"
       },
       "stepFive" : {
+        "title" : "What are you looking for in Wizer?",
+        "subTitle" : "You can select more than 1.",
+        "otherReason" : "Other Reason"
+      },
+      "stepSix" : {
         "title" : "What is your school?",
         "searchSchool" : "Search for your school name",
-        "noSchoolLink" : "Don't see your school? Please share Wizer.Me with your supervisor"
+        "noSchoolLink" : "Don't see your school? Please share Wizer.Me with your supervisor",
+        "joinThisSchool" : "Join this school"
       },
       "next" : "Next",
       "joinThisSchool" : "Join this school"

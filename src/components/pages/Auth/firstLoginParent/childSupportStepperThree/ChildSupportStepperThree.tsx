@@ -3,28 +3,17 @@ import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import FormLabel from "@mui/material/FormLabel";
 import MultipleSelectableChips from "../../../../common/multipleSelectableChips/MultipleSelectableChips";
+import Actions from "../../../../../actions";
+import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 
-type Props = {
-  setFirstLoginParentDetails:(value:object)=>void
-}
 
-const StepperThree = ({setFirstLoginParentDetails}:Props) => {
+const StepperThree = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
 
-  /* Form submission dependencies */
-  const [other, setOther] = useState("");
-  /* Form submission dependencies */
-
-  /* Temporary static data for chips - This will be obtained by an API call */
-  type childEducationChipTypes = {
-    id:string,
-    label:string, 
-    selected:boolean
-  }[]
-  const [childEducationChips, setChildEducationChips] = useState<childEducationChipTypes>([{id:'1',label:'Clickable',selected:false},{id:'2',label:'Another',selected:false}])
-  /* Temporary static data for chips - This will be obtained by an API call */
+  const dispatch = useAppDispatch();
+  const {firstLoginParentDetails, childEducationChipDetails} = useAppSelector((state)=>state.firstLoginParent)
   
   /* Stepper Three component dependencies */
   const renderTitle = () => (
@@ -42,22 +31,22 @@ const StepperThree = ({setFirstLoginParentDetails}:Props) => {
   const renderSupportChildEducationSelectableChips = () => {
     /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
     const handleGetSelectedChipsDetails = (multipleSelectableChipsArr:{id:string,label:string,selected:boolean}[]) => {
-      setFirstLoginParentDetails((prevValue:any)=>{
-        return {
-          ...prevValue,
-          childEducation:{
-            ...prevValue?.childEducation,
-            teachingMethod: multipleSelectableChipsArr.filter((data)=>data.selected).map((data)=>data.id)
-          }
+      /* Dispatching an action to update the selected state of the selectable chips */
+      dispatch(Actions.createAction(Actions.FIRST_LOGIN_PARENT_UPDATE_CHILD_EDUCATION_CHIP_DETAILS,{multipleSelectableChipsArr}))
+      /* Dispatching an action to update the selected state of the selectable chips */
+      const dataToBeSent = {
+        childEducation:{
+          ...firstLoginParentDetails.childEducation,
+          teachingMethod: multipleSelectableChipsArr.filter((data)=>data.selected).map((data)=>data.id)
         }
-      })
+      }
+      dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS,dataToBeSent))
     }
     /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
     return (
       <>
         <MultipleSelectableChips 
-        multipleSelectableChipDetails={childEducationChips} 
-        setMultipleSelectableChipsDetails={setChildEducationChips} 
+        multipleSelectableChipDetails={childEducationChipDetails}  
         handleGetSelectedChipsDetails={handleGetSelectedChipsDetails} />  
       </>
     );
@@ -72,18 +61,15 @@ const StepperThree = ({setFirstLoginParentDetails}:Props) => {
             <TextField
               className="GenericFormFieldMargin"
               onChange={(e: React.SyntheticEvent) =>{
-                setOther((e.target as HTMLInputElement).value)
-                setFirstLoginParentDetails((prevValue:any)=>{
-                  return {
-                    ...prevValue,
-                    childEducation:{
-                          ...prevValue?.childEducation,
-                          other:(e.target as HTMLInputElement).value
-                        }
-                    }
-                })
+                const dataToBeSent = {
+                  childEducation:{
+                    ...firstLoginParentDetails.childEducation,
+                    other:(e.target as HTMLInputElement).value
+                  }
+                }
+                dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS,dataToBeSent))
               }}
-              value={other}
+              value={firstLoginParentDetails.childEducation.other}
               label="Type here (seperate by comma)"
               variant="outlined"
               fullWidth

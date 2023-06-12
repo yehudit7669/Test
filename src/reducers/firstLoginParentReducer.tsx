@@ -6,10 +6,20 @@ interface State {
         fname:string,
         lname:string,
         country:string,
-        childrens: {nickname:string,strenghts:string,challenges:string,preferences:string,hobbies:string}[],
+        childrens: {[key:string]:any}[],
         childEducation:{teachingMethod:string[],other:string},
-        goals:{options:string[],other:string}
-    }
+        goals:{options:string[],otherGoals:string}
+    },
+    childEducationChipDetails:{
+      id:string,
+      label:string, 
+      selected:boolean
+    }[],
+    teachingGoalsChipDetails:{
+      id:string,
+      label:string, 
+      selected:boolean
+    }[],
 }
 
 const initialState: State = {
@@ -17,17 +27,44 @@ const initialState: State = {
         fname:"",
         lname:"",
         country:"",
-        childrens:[],
+        childrens:[
+          {
+            nickname: "",
+            strengths: "",
+            challenges: "",
+            preferences: "",
+            hobbies: "",
+          }
+        ],
         childEducation:{teachingMethod:[],other:""},
-        goals:{options:[],other:""}
-    }
+        goals:{options:[],otherGoals:""}
+  },
+  // Temporary data - This data will be attained from API call
+  childEducationChipDetails:[{id:'1',label:'Clickable',selected:false},{id:'2',label:'Another',selected:false}],
+  // Temporary data - This data will be attained from API call
+  
+  // Temporary data - This data will be attained from API call
+  teachingGoalsChipDetails:[{id:'1',label:'Keep up on my child class activity',selected:false},{id:'2',label:'To advance  my child beyond class program',selected:false}]
+  // Temporary data - This data will be attained from API call
 };
 
 const firstLoginParent = produce((draft: State, action: any) => {
   const { payload } = action;
   switch (action.type) {
-    case Actions.SET_FIRST_LOGIN_PARENT_DETAILS_FOR_STEPPER_ONE: 
+    case Actions.SET_FIRST_LOGIN_PARENT_DETAILS: 
       draft.firstLoginParentDetails = { ...draft.firstLoginParentDetails,...payload };
+      break;
+
+    case Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_ADD_CHILDREN:
+      draft.firstLoginParentDetails.childrens = [...draft.firstLoginParentDetails.childrens,{...payload}]
+      break;
+
+    case Actions.FIRST_LOGIN_PARENT_UPDATE_CHILD_EDUCATION_CHIP_DETAILS:
+      draft.childEducationChipDetails = [...payload.multipleSelectableChipsArr]
+      break;
+      
+      case Actions.FIRST_LOGIN_PARENT_UPDATE_TEACHING_GOALS_CHIP_DETAILS:
+      draft.teachingGoalsChipDetails = [...payload.multipleSelectableChipsArr]
       break;
 
     default: 
