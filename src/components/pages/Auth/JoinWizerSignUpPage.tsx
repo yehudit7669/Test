@@ -31,7 +31,7 @@ function JoinWizerSignUpPage() {
 
   useEffect(() => {
     setSignUpRole(role);
-  }, [navigate,role]);
+  }, [navigate, role]);
 
   const renderLogInButton = () => (
     <div className="Navigation">

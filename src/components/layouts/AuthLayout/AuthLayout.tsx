@@ -28,7 +28,6 @@ function AuthLayout() {
   /* Function definition to get the title of side navbar dynamically based on route */
 
 
-
   return (
     <div className="AuthLayout">
       <div className="SideNav">
