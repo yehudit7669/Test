@@ -2,10 +2,7 @@ import { userRoles } from "../../constants";
 import renderStudentRoutes from "./studentRoutes";
 import renderTeacherRoutes from "./teacherRoutes";
 
-
-
-const renderRoleRoutes = (userRole:string) => {
-
+const renderRoleRoutes = (userRole: string) => {
   switch (userRole) {
     case userRoles.STUDENT:
       return renderStudentRoutes({ userRole });
