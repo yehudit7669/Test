@@ -54,25 +54,21 @@ const StudentsGradeStepperFour = () => {
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Premade worksheets"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="To digitize pdf worksheet"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Easy way to differentiate assignments"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Create fun worksheets for my students"
           />
         </Stack>

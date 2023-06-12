@@ -13,6 +13,17 @@ export const ChildData = React.createContext({});
 function FirstLoginParent() {
   const { t } = useTranslation();
 
+  type firstLoginParentDetailTypes = {
+    fname:string,
+    lname:string,
+    country:string,
+    childrens: {nickname:string,strenghts:string,challenges:string,preferences:string,hobbies:string}[],
+    childEducation:{teachingMethod:string,other:string},
+    goals:{options:string[],other:string}
+  }
+  const [firstLoginParentDetails, setFirstLoginParentDetails] = useState<Partial<firstLoginParentDetailTypes>>({})
+  // const [firstLoginParentDetails, setFirstLoginParentDetails] = useState<{[key:string]:any}>({})
+
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
   const totalSteps = 4;
@@ -67,28 +78,36 @@ function FirstLoginParent() {
   };
   /* Stepper component dependencies */
 
+  console.log(firstLoginParentDetails,'firstLoginParentDetails')
+
   return (
     <div className="FirstLoginParent">
       <div className="Wrapper">
         {stepperComponent()}
         {activeStep === 0 && (
           <>
-            <AboutYouStepperOne />
+            <AboutYouStepperOne 
+            // setFirstLoginParentDetails={setFirstLoginParentDetails} 
+            />
           </>
         )}
         {activeStep === 1 && (
           <>
-            <AboutYourChildrenStepperTwo />
+            <AboutYourChildrenStepperTwo
+            // setFirstLoginParentDetails={setFirstLoginParentDetails}
+            />
           </>
         )}
         {activeStep === 2 && (
           <>
-            <ChildSupportStepperThree />
+            <ChildSupportStepperThree 
+            setFirstLoginParentDetails={setFirstLoginParentDetails}/>
           </>
         )}
         {activeStep === 3 && (
           <>
-            <TeachingGoalsStepperFour />
+            <TeachingGoalsStepperFour 
+            setFirstLoginParentDetails={setFirstLoginParentDetails} />
           </>
         )}
         <Button

@@ -30,23 +30,20 @@ const AboutYourRoleStepperTwo = () => {
   const renderSupportChildEducationTags = () => {
     return (
       <>
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" gap={1} flexWrap="wrap">
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Elementary"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Middle School"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Principal"
           />
         </Stack>

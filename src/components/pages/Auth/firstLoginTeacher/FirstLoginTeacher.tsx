@@ -5,6 +5,9 @@ import React, { useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
+import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/SubjectInterestsStepperThree.tsx";
+import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
+import SchoolStepperFive from "./schoolStepperFive/SchoolStepperFive.tsx";
 
 export const ChildData = React.createContext({});
 
@@ -81,15 +84,22 @@ function FirstLoginTeacher() {
             <AboutYourRoleStepperTwo />
           </>
         )}
-        {activeStep === 2 && <></>}
-        {activeStep === 3 && <></>}
+        {activeStep === 2 && 
+        <>
+        <SubjectInterestsStepperThree/>
+        </>}
+        {activeStep === 3 && <>
+        <StudentsGradeStepperFour/>
+        </>}
+        {activeStep === 4 && <>
+        <SchoolStepperFive/>
+        </>}
         <Button
           className="Button"
           variant="contained"
           fullWidth
           color="secondary"
           onClick={handleStepperNext}
-          disabled={activeStep === 3}
         >
           {t("FirstLoginTeacher.next")}
         </Button>

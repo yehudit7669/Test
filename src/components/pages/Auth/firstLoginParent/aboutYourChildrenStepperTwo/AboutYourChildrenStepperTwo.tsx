@@ -13,36 +13,46 @@ import React, { useState } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
 
-const StepperTwo = () => {
+type Props = {
+  setFirstLoginParentDetails:(value:object)=>void
+}
+
+const StepperTwo = ({setFirstLoginParentDetails}:Props) => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
+  /* i18n translation dependencies */
 
   /* Form submission dependencies */
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<{[key:string]:any}[]>([
+    {
     nickName: "",
-    childStrengths: "",
+    strengths: "",
     challenges: "",
     preferences: "",
-    passionsAndHobbies: "",
-  });
+    hobbies: "",
+    }
+  ]);
   /* Form submission dependencies */
 
   /* OnChange dependencies */
-  const handleChangeFormData = (e: React.SyntheticEvent) => {
-    setFormData((prevData) => {
+  const handleChangeFormData = (e: React.SyntheticEvent, index:number) => {
+    const newFormData =[...formData]
+    const eventTargetName = (e.target as HTMLInputElement).name;
+    newFormData[index][eventTargetName] = (e.target as HTMLInputElement).value,
+    setFormData([...newFormData])
+    setFirstLoginParentDetails((prevValue:any)=>{
       return {
-        ...prevData,
-        [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
-          .value,
-      };
-    });
+        ...prevValue,
+        childrens:newFormData
+      }
+    }) 
   };
   /* OnChange dependencies */
 
   /* Tab dependencies */
   const [tabValue, setTabValue] = useState(1);
 
-  const handleChange = (event: React.SyntheticEvent) => {
+  const handleTabChange = (event: React.SyntheticEvent) => {
     setTabValue((event.target as HTMLInputElement).tabIndex);
   };
   /* Tab dependencies */
@@ -61,6 +71,22 @@ const StepperTwo = () => {
   );
 
   const renderFirstLoginParentForm = () => {
+    /* Function definition on button click - Add a child */
+    const handleAddChildren = () => {
+      setFormData((prevValue)=>{
+        return [
+          ...prevValue,
+          {
+            nickName: "",
+            strengths: "",
+            challenges: "",
+            preferences: "",
+            hobbies: "",
+          }
+        ]
+      })
+    }
+    /* Function definition on button click - Add a child */
     return (
       <>
         <TabContext value={tabValue.toString()}>
@@ -73,106 +99,122 @@ const StepperTwo = () => {
             }}
           >
             <TabList
-              onChange={handleChange}
+              onChange={handleTabChange}
               className="TabList"
               variant="scrollable"
             >
-              <Tab label="Child 1" tabIndex={1} value="1" className="Tab" />
-              <Tab label="Child 2" tabIndex={5} value="2" className="Tab" />
-              <Button className="Button">
+              {formData?.map((_data,index)=>{
+                return (
+                  <Tab label={`Child ${index + 1}`} tabIndex={index + 1} value={(index + 1).toString()} className="Tab" />
+                )
+              })}
+              <Button className=" AddAChildButton" onClick={handleAddChildren}>
                 <AddIcon />
                 {t("FirstLoginParent.stepTwo.addAChild")}
               </Button>
+
+              {/* <Button className=" RemoveAChildButton" onClick={handleRemoveChildren}>
+                <RemoveIcon />
+                {t("FirstLoginParent.stepTwo.removeAChild")}
+              </Button> */}
             </TabList>
           </Box>
-          <TabPanel value="1" sx={{ padding: 0 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={8}>
-                <TextField
-                  onChange={(e) => handleChangeFormData(e)}
-                  value={formData.nickName}
-                  placeholder="Nickname"
-                  variant="outlined"
-                  fullWidth
-                  name="nickName"
-                />
-              </Grid>
 
-              <Grid item xs={4}>
-                <Autocomplete
-                  disablePortal
-                  options={[]}
-                  renderInput={(params) => <TextField {...params} fullWidth />}
-                />
-              </Grid>
+          {
+            formData?.map((_data,index)=>{
+              return (
+              <TabPanel value={(index + 1).toString()} sx={{ padding: 0 }}>
+                <Grid container spacing={2}>
+                  <Grid item xs={8}>
+                    <TextField
+                      onChange={(e) => handleChangeFormData(e,index)}
+                      value={formData[index].nickName}
+                      placeholder="Nickname"
+                      variant="outlined"
+                      fullWidth
+                      name="nickName"
+                    />
+                  </Grid>
 
-              <Grid item xs={4} sm={6} md={12}>
-                <FormLabel className="FormLabel">
-                  {t("FirstLoginParent.stepTwo.childStrengths")}
-                </FormLabel>
-                <TextField
-                  className="GenericFormFieldMargin"
-                  onChange={(e) => handleChangeFormData(e)}
-                  value={formData.childStrengths}
-                  placeholder="Add Text"
-                  variant="outlined"
-                  fullWidth
-                  name="childStrengths"
-                />
-              </Grid>
+                  <Grid item xs={4}>
+                    <Autocomplete
+                      disablePortal
+                      options={[]}
+                      renderInput={(params) => <TextField {...params} fullWidth />}
+                    />
+                  </Grid>
 
-              <Grid item xs={4} sm={6} md={12}>
-                <FormLabel className="FormLabel">
-                  {t("FirstLoginParent.stepTwo.challenges")}
-                </FormLabel>
-                <TextField
-                  className="GenericFormFieldMargin"
-                  onChange={(e) => handleChangeFormData(e)}
-                  value={formData.challenges}
-                  placeholder="Any Text"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  rows={1.5}
-                  name="challenges"
-                />
-              </Grid>
+                  <Grid item xs={4} sm={6} md={12}>
+                    <FormLabel className="FormLabel">
+                      {t("FirstLoginParent.stepTwo.childStrengths")}
+                    </FormLabel>
+                    <TextField
+                      className="GenericFormFieldMargin"
+                      onChange={(e) => handleChangeFormData(e,index)}
+                      value={formData[index].strengths}
+                      placeholder="Add Text"
+                      variant="outlined"
+                      fullWidth
+                      name="strengths"
+                    />
+                  </Grid>
 
-              <Grid item xs={4} sm={6} md={12}>
-                <FormLabel className="FormLabel">
-                  {t("FirstLoginParent.stepTwo.preferences")}
-                </FormLabel>
-                <TextField
-                  className="GenericFormFieldMargin"
-                  onChange={(e) => handleChangeFormData(e)}
-                  value={formData.preferences}
-                  placeholder="Any Text"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  rows={1.5}
-                  name="preferences"
-                />
-              </Grid>
+                  <Grid item xs={4} sm={6} md={12}>
+                    <FormLabel className="FormLabel">
+                      {t("FirstLoginParent.stepTwo.challenges")}
+                    </FormLabel>
+                    <TextField
+                      className="GenericFormFieldMargin"
+                      onChange={(e) => handleChangeFormData(e,index)}
+                      value={formData[index].challenges}
+                      placeholder="Any Text"
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      rows={1.5}
+                      name="challenges"
+                    />
+                  </Grid>
 
-              <Grid item xs={4} sm={6} md={12}>
-                <FormLabel className="FormLabel">
-                  {t("FirstLoginParent.stepTwo.passionsAndHobbies")}
-                </FormLabel>
-                <TextField
-                  className="GenericFormFieldMargin"
-                  onChange={(e) => handleChangeFormData(e)}
-                  value={formData.passionsAndHobbies}
-                  placeholder="Any Text"
-                  variant="outlined"
-                  fullWidth
-                  multiline
-                  rows={1.5}
-                  name="passionsAndHobbies"
-                />
-              </Grid>
-            </Grid>
-          </TabPanel>
+                  <Grid item xs={4} sm={6} md={12}>
+                    <FormLabel className="FormLabel">
+                      {t("FirstLoginParent.stepTwo.preferences")}
+                    </FormLabel>
+                    <TextField
+                      className="GenericFormFieldMargin"
+                      onChange={(e) => handleChangeFormData(e,index)}
+                      value={formData[index].preferences}
+                      placeholder="Any Text"
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      rows={1.5}
+                      name="preferences"
+                    />
+                  </Grid>
+
+                  <Grid item xs={4} sm={6} md={12}>
+                    <FormLabel className="FormLabel">
+                      {t("FirstLoginParent.stepTwo.passionsAndHobbies")}
+                    </FormLabel>
+                    <TextField
+                      className="GenericFormFieldMargin"
+                      onChange={(e) => handleChangeFormData(e,index)}
+                      value={formData[index].hobbies}
+                      placeholder="Any Text"
+                      variant="outlined"
+                      fullWidth
+                      multiline
+                      rows={1.5}
+                      name="hobbies"
+                    />
+                  </Grid>
+                </Grid>
+              </TabPanel>
+
+              )
+            })
+          }
         </TabContext>
       </>
     );

@@ -99,4 +99,19 @@
 .FirstLoginParent .Button {
   text-transform: none;
 }
+.FirstLoginParent .AddAChildButton, .FirstLoginParent .RemoveAChildButton {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  text-transform: none;
+  border-radius: 10px;
+}
+.FirstLoginParent .AddAChildButton {
+  min-width: 150px;
+  width: 150px;
+}
+.FirstLoginParent .RemoveAChildButton {
+  min-width: 180px;
+  width: 180px;
+}
 /***** First Login Parent dependencies *****/

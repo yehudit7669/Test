@@ -54,43 +54,36 @@ const SubjectInterestsStepperThree = () => {
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Arts"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Biology"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="History"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Maths"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Language - English"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Language - English"
           />
           <Chip
             variant="outlined"
             size="medium"
-            sx={{ height: "40px" }}
             label="Language - English"
           />
         </Stack>

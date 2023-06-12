@@ -2,18 +2,30 @@ import { Grid, TextField, Typography, Chip, Stack } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
 import FormLabel from "@mui/material/FormLabel";
+import MultipleSelectableChips from "../../../../common/multipleSelectableChips/MultipleSelectableChips";
 
-const StepperThree = () => {
+type Props = {
+  setFirstLoginParentDetails:(value:object)=>void
+}
+
+const StepperThree = ({setFirstLoginParentDetails}:Props) => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
+  /* i18n translation dependencies */
 
   /* Form submission dependencies */
-  const [formData, setFormData] = useState({
-    other: "",
-    supportChildEducationTags: [],
-  });
+  const [other, setOther] = useState("");
   /* Form submission dependencies */
 
+  /* Temporary static data for chips - This will be obtained by an API call */
+  type childEducationChipTypes = {
+    id:string,
+    label:string, 
+    selected:boolean
+  }[]
+  const [childEducationChips, setChildEducationChips] = useState<childEducationChipTypes>([{id:'1',label:'Clickable',selected:false},{id:'2',label:'Another',selected:false}])
+  /* Temporary static data for chips - This will be obtained by an API call */
+  
   /* Stepper Three component dependencies */
   const renderTitle = () => (
     <Typography className="Title">
@@ -27,23 +39,26 @@ const StepperThree = () => {
     </Typography>
   );
 
-  const renderSupportChildEducationTags = () => {
+  const renderSupportChildEducationSelectableChips = () => {
+    /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
+    const handleGetSelectedChipsDetails = (multipleSelectableChipsArr:{id:string,label:string,selected:boolean}[]) => {
+      setFirstLoginParentDetails((prevValue:any)=>{
+        return {
+          ...prevValue,
+          childEducation:{
+            ...prevValue?.childEducation,
+            teachingMethod: multipleSelectableChipsArr.filter((data)=>data.selected).map((data)=>data.id)
+          }
+        }
+      })
+    }
+    /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
     return (
       <>
-        <Stack direction="row" spacing={1}>
-          <Chip
-            variant="outlined"
-            size="medium"
-            sx={{ height: "40px" }}
-            label="Clickable"
-          />
-          <Chip
-            variant="outlined"
-            size="medium"
-            sx={{ height: "40px" }}
-            label="Another"
-          />
-        </Stack>
+        <MultipleSelectableChips 
+        multipleSelectableChipDetails={childEducationChips} 
+        setMultipleSelectableChipsDetails={setChildEducationChips} 
+        handleGetSelectedChipsDetails={handleGetSelectedChipsDetails} />  
       </>
     );
   };
@@ -56,15 +71,19 @@ const StepperThree = () => {
             <FormLabel className="FormLabel">Other</FormLabel>
             <TextField
               className="GenericFormFieldMargin"
-              onChange={(e: React.SyntheticEvent) =>
-                setFormData((prevValue) => {
+              onChange={(e: React.SyntheticEvent) =>{
+                setOther((e.target as HTMLInputElement).value)
+                setFirstLoginParentDetails((prevValue:any)=>{
                   return {
                     ...prevValue,
-                    other: (e.target as HTMLInputElement).value,
-                  };
+                    childEducation:{
+                          ...prevValue?.childEducation,
+                          other:(e.target as HTMLInputElement).value
+                        }
+                    }
                 })
-              }
-              value={formData.other}
+              }}
+              value={other}
               label="Type here (seperate by comma)"
               variant="outlined"
               fullWidth
@@ -80,7 +99,7 @@ const StepperThree = () => {
     <>
       {renderTitle()}
       {renderSubTitle()}
-      {renderSupportChildEducationTags()}
+      {renderSupportChildEducationSelectableChips()}
       {renderFirstLoginParentForm()}
     </>
   );

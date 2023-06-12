@@ -1,4 +1,4 @@
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Navigate, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import "@fontsource/mansalva";
 import "./AuthLayout.css";
 import { routes } from "../../../constants";
@@ -50,7 +50,7 @@ function AuthLayout() {
         <div className="Title">{getSideNavTitleBasedOnRoute()}</div>
       </div>
       <div className="Outlet">
-        <Outlet />
+          <Outlet />
       </div>
     </div>
   );

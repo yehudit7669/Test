@@ -13,7 +13,7 @@ const initialState: State = {
   },
 };
 
-const auth =produce((draft: State, action: any) => {
+const auth = produce((draft: State, action: any) => {
   const { payload } = action;
 
   switch (action.type) {
