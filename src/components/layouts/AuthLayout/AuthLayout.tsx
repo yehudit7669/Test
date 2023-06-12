@@ -1,17 +1,12 @@
-import { Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Outlet, useLocation, useParams } from "react-router-dom";
 import "@fontsource/mansalva";
 import "./AuthLayout.css";
 import { routes } from "../../../constants";
-import { useEffect } from "react";
-import useUser from "../../../hooks/useUser";
 
 function AuthLayout() {
   /* Route dependencies */
   const location = useLocation();
   const params = useParams();
-  const isAuthenticated = useUser();
-  const navigate = useNavigate();
-  /* Route dependencies */
 
   /* Function definition to get the title of side navbar dynamically based on route */
   const getSideNavTitleBasedOnRoute = () => {
@@ -32,11 +27,7 @@ function AuthLayout() {
   };
   /* Function definition to get the title of side navbar dynamically based on route */
 
-  useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
-    }
-  }, [navigate,isAuthenticated]);
+
 
   return (
     <div className="AuthLayout">

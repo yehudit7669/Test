@@ -7,10 +7,20 @@ import {
   JoinAsStudentIcon,
   JoinAsTeacherIcon,
 } from "../../../assets/svgs/svg-components.tsx";
+import { useEffect } from "react";
+import useUser from "../../../hooks/useUser.tsx";
+import { routes } from "../../../constants/routeConsts.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+    const isAuthenticated = useUser();
+
+      useEffect(() => {
+    if (isAuthenticated[0]) {
+      navigate(routes.ROOT);
+    }
+  }, [navigate,isAuthenticated]);
 
   const renderTitle = () => (
     <Typography className="Title">{t("SignUp.registerToWizer")}</Typography>
