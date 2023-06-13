@@ -7,6 +7,7 @@ import {
   Tab,
   TextField,
   Typography,
+  IconButton
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import React, { useState } from "react";
@@ -14,6 +15,7 @@ import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
+import CloseIcon from '@mui/icons-material/Close';
 
 const StepperTwo = () => {
   /* i18n translation dependencies */
@@ -50,10 +52,12 @@ const StepperTwo = () => {
   /* OnChange dependencies */
 
   /* Tab dependencies */
-  const [tabValue, setTabValue] = useState(1);
+  const [tabValue, setTabValue] = useState('1');
 
-  const handleTabChange = (event: React.SyntheticEvent) => {
-    setTabValue((event.target as HTMLInputElement).tabIndex);
+  const handleTabChange = (event: React.SyntheticEvent, tabValue:string) => {
+    if(event && tabValue && tabValue!=="" && tabValue!==undefined){
+      setTabValue(tabValue)
+    }
   };
   /* Tab dependencies */
 
@@ -86,7 +90,7 @@ const StepperTwo = () => {
     /* Function definition on button click - Add a child */
     return (
       <>
-        <TabContext value={tabValue.toString()}>
+        <TabContext value={tabValue}>
           <Box
             sx={{
               flexGrow: 1,
@@ -102,7 +106,13 @@ const StepperTwo = () => {
             >
               {firstLoginParentDetails?.childrens?.map((_data,index)=>{
                 return (
-                  <Tab label={`Child ${index + 1}`} tabIndex={index + 1} value={(index + 1).toString()} className="Tab" />
+                  <Tab label={
+                    <div style={{minWidth:'100px', display:"flex",justifyContent:'space-between',alignItems:'center'}}>
+                    <span>{`Child ${index + 1}`}</span>
+                    <IconButton style={{zIndex:999, border:'1px solid #200343', borderRadius:'50%',color:'#200343',margin:0,padding:0}} onClick={()=>console.log('removed')}><CloseIcon fontSize="small"/></IconButton>
+                    </div>
+                  } 
+                  tabIndex={index} value={`${index + 1}`} className="Tab" />
                 )
               })}
               <Button className=" AddAChildButton" onClick={handleAddChildren}>
@@ -120,7 +130,7 @@ const StepperTwo = () => {
           {
             firstLoginParentDetails?.childrens?.map((_data,index)=>{
               return (
-              <TabPanel value={(index + 1).toString()} sx={{ padding: 0 }}>
+              <TabPanel value={`${index + 1}`} sx={{ padding: 0 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={8}>
                     <TextField

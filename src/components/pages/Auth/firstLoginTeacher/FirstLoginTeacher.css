@@ -180,4 +180,10 @@
   align-items: center;
   justify-content: center;
 }
+
+.WelcomeToWizerDialogBg{
+  background-image: url("../../../../assets/images/welcomeToWizer_bg.png");
+  max-width: 500px;
+  height: auto;
+}
 /***** First Login Parent dependencies *****/

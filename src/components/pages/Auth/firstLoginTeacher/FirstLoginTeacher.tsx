@@ -9,16 +9,30 @@ import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/Subject
 import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
 import SchoolStepperSix from "./schoolStepperSix/SchoolStepperSix.tsx";
 import WizerInterestsStepperFive from "./wizerInterestsStepperFive/WizerInterestsStepperFive.tsx";
-
+import { styled } from "@mui/material";
+import WelcomeToWizerDialog from "./welcomeToWizerDialog/WelcomeToWizerDialog.tsx";
 export const ChildData = React.createContext({});
 
 function FirstLoginTeacher() {
+  /* i18n translation dependencies */
   const { t } = useTranslation();
+  /* i18n translation dependencies */
 
-  /* Routing, navigation and param dependencies */
+  // const MyStepper = styled(MobileStepper)({
+  //   background:'red',
+  //   maxWidth: '142px',
+  //   flexGrow: 1,
+  //   borderRadius: '10px',
+  //   width: '100%',
+  //   color:'yellow'
+  // })
+
+  /* Welcome To Wizer Dialog dependencies */
+  const [welcomeToWizerDialog, setWelcomeToWizerDialog] = useState<boolean>(false)
+  /* Welcome To Wizer Dialog dependencies */
 
   /* Dependencies for stepper component */
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(5);
   const totalSteps = 6;
 
   const handleStepperNext = () => {
@@ -29,6 +43,8 @@ function FirstLoginTeacher() {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
   /* Dependencies for stepper component */
+
+
 
   /* Stepper component dependencies */
   const stepperComponent = () => {
@@ -54,7 +70,7 @@ function FirstLoginTeacher() {
         </div>
         <div className="MainStepper">
           <MobileStepper
-            className="MobileStepper"
+          className="MobileStepper"
             variant="progress"
             steps={totalSteps}
             position="static"
@@ -71,7 +87,16 @@ function FirstLoginTeacher() {
   };
   /* Stepper component dependencies */
 
+  const handleWelcomeToWizerDialogOpen = () => {
+    setWelcomeToWizerDialog(true)
+  }
+
+  const handleWelcomeToWizerDialogClose = () => {
+    setWelcomeToWizerDialog(false)
+  }
+
   return (
+    <>
     <div className="FirstLoginTeacher">
       <div className="Wrapper">
         {stepperComponent()}
@@ -98,6 +123,17 @@ function FirstLoginTeacher() {
         {activeStep === 5 && <>
         <SchoolStepperSix/>
         </>}
+        {
+          activeStep === 5 ?
+        <Button
+          className="Button"
+          variant="contained"
+          fullWidth
+          color="secondary"
+          onClick={handleWelcomeToWizerDialogOpen}
+        >
+          {t("FirstLoginTeacher.stepSix.joinThisSchool")}
+        </Button> :
         <Button
           className="Button"
           variant="contained"
@@ -105,10 +141,18 @@ function FirstLoginTeacher() {
           color="secondary"
           onClick={handleStepperNext}
         >
-          { activeStep === 5 ? t("FirstLoginTeacher.stepSix.joinThisSchool") : t("FirstLoginTeacher.next")}
+          {t("FirstLoginTeacher.next")}
         </Button>
+        }
       </div>
     </div>
+    {
+      <WelcomeToWizerDialog
+      open={welcomeToWizerDialog}
+      handleClose={handleWelcomeToWizerDialogClose}
+      />
+    }
+    </>
   );
 }
 

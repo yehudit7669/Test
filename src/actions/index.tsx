@@ -1,4 +1,5 @@
 import * as authActions from "./authActions";
+import * as signupActions from "./signupActions";
 import * as firstLoginParentActions from "./firstLoginParentActions";
 import * as firstLoginTeacherActions from "./firstLoginTeacherActions";
 import * as createAction from "./createAction";
@@ -8,7 +9,8 @@ import keyMirror from "keymirror";
 const actions = keyMirror({
   ...authActions,
   ...firstLoginParentActions,
-  ...firstLoginTeacherActions
+  ...firstLoginTeacherActions,
+  ...signupActions
 });
 
 //Exporting all the actions from folder

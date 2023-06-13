@@ -36,3 +36,21 @@ export const forgotPasswordValidations = (email: string) => {
     return { message, status };
   }
 };
+
+export const signUpValidations = (email: string, password: string, classCode:string) => {
+  let status;
+  let message;
+  if (!email || !password || !classCode) {
+    status = true;
+    message = "Please fill all the details.";
+    return {message, status};
+  } else if (!emailRegex.test(email)) {
+    status = true;
+    message = "Please enter valid email address.";
+    return { message, status };
+  } else {
+    status = false;
+    message = "";
+    return { message, status };
+  }
+};

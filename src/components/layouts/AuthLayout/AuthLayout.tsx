@@ -38,11 +38,6 @@ function AuthLayout() {
   };
   /* Function definition to get the title of side navbar dynamically based on route */
 
-  useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
-    }
-  }, [navigate,isAuthenticated]);
 
   return (
     <div className="AuthLayout">

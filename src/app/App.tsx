@@ -1,6 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "../components/pages/Auth/SignIn";
-import SignUp from "../components/pages/Auth/SignUp";
+import SignUpTabs from "../components/pages/Auth/SignUpTabs";
 import ForgotPassword from "../components/pages/Auth/ForgotPassword";
 import AuthLayout from "../components/layouts/AuthLayout";
 import { routes } from "../constants";
@@ -10,7 +10,7 @@ import RequireAuth from "./requireAuth/RequireAuth";
 import useUser from "../hooks/useUser";
 import renderRoleRoutes from "./routes/renderRoleRoutes";
 import { useAppSelector } from "../hooks/redux-hooks";
-import JoinWizerSignUpPage from "../components/pages/Auth/JoinWizerSignUpPage";
+import SignUp from "../components/pages/Auth/SignUp";
 import FirstLoginParent from "../components/pages/Auth/firstLoginParent";
 import FirstLoginTeacher from "../components/pages/Auth/firstLoginTeacher";
 
@@ -39,8 +39,8 @@ function App() {
         <Route element={<AuthLayout />}>
           <Route index element={<Navigate to={routes.SIGN_IN} replace />} />
           <Route path={routes.SIGN_IN} element={<SignIn />} />
-          <Route path={routes.SIGN_UP} element={<SignUp />} />
-          <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
+          <Route path={routes.SIGN_UP} element={<SignUpTabs />} />
+          <Route path={routes.SELECT_ROLE} element={<SignUp />} />
           <Route
             path={routes.FIRST_LOGIN_TEACHER}
             element={<FirstLoginTeacher />}
