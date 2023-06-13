@@ -56,7 +56,8 @@ function FirstLoginTeacher() {
               <IconButton
                 onClick={handleStepperBack}
                 sx={{
-                  ml: 1,
+                  margin:0,
+                  padding:0,
                   "&.MuiButtonBase-root:hover": {
                     bgcolor: "transparent",
                   },
@@ -145,13 +146,13 @@ function FirstLoginTeacher() {
         </Button>
         }
       </div>
-    </div>
     {
       <WelcomeToWizerDialog
       open={welcomeToWizerDialog}
       handleClose={handleWelcomeToWizerDialogClose}
       />
     }
+    </div>
     </>
   );
 }

@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-import { Navigate, Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
-=======
 import { Outlet, useLocation, useParams } from "react-router-dom";
->>>>>>> 6abd88664dfeadee8fa052b95fa08b5d18b6e11f
 import "@fontsource/mansalva";
 import "./AuthLayout.css";
 import { routes } from "../../../constants";

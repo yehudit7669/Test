@@ -25,6 +25,7 @@
 }
 
 .FirstLoginParent .Subtitle {
+  width: 100%;
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -66,6 +67,7 @@
 
 .FirstLoginParent .StepperContainer .StepperBackButton {
   display: flex;
+  gap: 0.5rem;
   align-items: center;
   justify-content: start;
   width: 100%;
@@ -89,6 +91,14 @@
   font-style: normal;
   font-weight: 600;
   font-size: 16px;
+  min-width: 100px;
+  width: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 5px !important;
+  padding: 2px !important;
 }
 
 .FirstLoginParent .TabList {

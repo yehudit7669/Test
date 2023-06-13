@@ -59,6 +59,14 @@ const firstLoginParent = produce((draft: State, action: any) => {
       draft.firstLoginParentDetails.childrens = [...draft.firstLoginParentDetails.childrens,{...payload}]
       break;
 
+    case Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_REMOVE_CHILDREN:
+      const newChildrensArr = draft.firstLoginParentDetails.childrens.filter((element,index)=>{
+        
+        return index !==payload.index && element!==payload.data
+      })
+      draft.firstLoginParentDetails.childrens = newChildrensArr
+      break;
+
     case Actions.FIRST_LOGIN_PARENT_UPDATE_CHILD_EDUCATION_CHIP_DETAILS:
       draft.childEducationChipDetails = [...payload.multipleSelectableChipsArr]
       break;

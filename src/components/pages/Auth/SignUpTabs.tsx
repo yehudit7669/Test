@@ -8,7 +8,7 @@ import {
   JoinAsTeacherIcon,
 } from "../../../assets/svgs/svg-components.tsx";
 
-function SignIn() {
+function SignUpTabs() {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
@@ -52,6 +52,7 @@ function SignIn() {
     return (
       <>
         <div className="RoleWrapper">
+          <div className="RoleWrapperContainer">
           {roleData?.map((_data, index) => {
             return (
               <Card
@@ -68,6 +69,7 @@ function SignIn() {
               </Card>
             );
           })}
+          </div>
         </div>
       </>
     );
@@ -85,4 +87,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUpTabs;

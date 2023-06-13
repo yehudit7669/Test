@@ -10,12 +10,12 @@ import {
   IconButton
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
-import CloseIcon from '@mui/icons-material/Close';
+import { CancelIcon } from "../../../../../assets/svgs/svg-components";
 
 const StepperTwo = () => {
   /* i18n translation dependencies */
@@ -24,18 +24,6 @@ const StepperTwo = () => {
 
   const dispatch = useAppDispatch()
   const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
-
-  /* Form submission dependencies */
-  const [formData, setFormData] = useState<{[key:string]:any}[]>([
-    {
-    nickName: "",
-    strengths: "",
-    challenges: "",
-    preferences: "",
-    hobbies: "",
-    }
-  ]);
-  /* Form submission dependencies */
 
   /* OnChange dependencies */
   const handleChangeFormData = (e: React.SyntheticEvent, index:number) => {
@@ -52,12 +40,13 @@ const StepperTwo = () => {
   /* OnChange dependencies */
 
   /* Tab dependencies */
-  const [tabValue, setTabValue] = useState('1');
+  const [selectedTab, setSelectedTab] = useState('1');
 
   const handleTabChange = (event: React.SyntheticEvent, tabValue:string) => {
-    if(event && tabValue && tabValue!=="" && tabValue!==undefined){
-      setTabValue(tabValue)
-    }
+      console.log(event.target,'event.target');
+      if(event && tabValue && tabValue!=="" && tabValue!==undefined){
+        setSelectedTab(tabValue)
+      }
   };
   /* Tab dependencies */
 
@@ -88,9 +77,21 @@ const StepperTwo = () => {
       
     }
     /* Function definition on button click - Add a child */
+
+    /* Function definition on cancel button click - Remove a child */
+    const handleRemoveAChildren = (data:{[key:string]:any},index:number) => {
+      console.log(index.toString(),'index.toString()')
+      if(index >= 1){
+        const dataToBeSent = {data,index}
+        dispatch(Actions.createAction(Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_REMOVE_CHILDREN,dataToBeSent))
+        setSelectedTab(`${index}`)
+      }
+    }
+    /* Function definition on cancel button click - Remove a child */
+
     return (
       <>
-        <TabContext value={tabValue}>
+        <TabContext value={selectedTab}>
           <Box
             sx={{
               flexGrow: 1,
@@ -107,30 +108,27 @@ const StepperTwo = () => {
               {firstLoginParentDetails?.childrens?.map((_data,index)=>{
                 return (
                   <Tab label={
-                    <div style={{minWidth:'100px', display:"flex",justifyContent:'space-between',alignItems:'center'}}>
+                    <>
                     <span>{`Child ${index + 1}`}</span>
-                    <IconButton style={{zIndex:999, border:'1px solid #200343', borderRadius:'50%',color:'#200343',margin:0,padding:0}} onClick={()=>console.log('removed')}><CloseIcon fontSize="small"/></IconButton>
-                    </div>
+                    <IconButton style={{zIndex:999,margin:0,padding:0}} disabled={selectedTab !== (index + 1).toString()} onClick={()=>handleRemoveAChildren(_data,index)}>
+                      <CancelIcon/>
+                    </IconButton>
+                    </>
                   } 
-                  tabIndex={index} value={`${index + 1}`} className="Tab" />
+                  value={`${index + 1}`} key={index} className="Tab" />
                 )
               })}
               <Button className=" AddAChildButton" onClick={handleAddChildren}>
                 <AddIcon />
                 {t("FirstLoginParent.stepTwo.addAChild")}
               </Button>
-
-              {/* <Button className=" RemoveAChildButton" onClick={handleRemoveChildren}>
-                <RemoveIcon />
-                {t("FirstLoginParent.stepTwo.removeAChild")}
-              </Button> */}
             </TabList>
           </Box>
 
           {
             firstLoginParentDetails?.childrens?.map((_data,index)=>{
               return (
-              <TabPanel value={`${index + 1}`} sx={{ padding: 0 }}>
+              <TabPanel value={`${index + 1}`} key={index} sx={{ padding: 0 }}>
                 <Grid container spacing={2}>
                   <Grid item xs={8}>
                     <TextField

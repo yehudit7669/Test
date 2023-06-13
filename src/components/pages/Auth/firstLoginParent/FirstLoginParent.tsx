@@ -1,4 +1,4 @@
-import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
+import { Button, Typography, MobileStepper, IconButton, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginParent.css";
 import React, { useState } from "react";
@@ -7,22 +7,25 @@ import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourChildrenStepperTwo from "./aboutYourChildrenStepperTwo/AboutYourChildrenStepperTwo.tsx";
 import ChildSupportStepperThree from "./childSupportStepperThree/ChildSupportStepperThree.tsx";
 import TeachingGoalsStepperFour from "./teachingGoalsStepperFour/TeachingGoalsStepperFour.tsx";
+import { useAppDispatch, useAppSelector } from "../../../../hooks/redux-hooks.ts";
+import { getFirstLoginParentAction } from "../../../../services/firstLoginParent/firstLoginParentServices.tsx";
+import { useNavigate } from "react-router";
 
 export const ChildData = React.createContext({});
 
 function FirstLoginParent() {
   const { t } = useTranslation();
 
-  type firstLoginParentDetailTypes = {
-    fname:string,
-    lname:string,
-    country:string,
-    childrens: {nickname:string,strenghts:string,challenges:string,preferences:string,hobbies:string}[],
-    childEducation:{teachingMethod:string,other:string},
-    goals:{options:string[],other:string}
-  }
-  const [firstLoginParentDetails, setFirstLoginParentDetails] = useState<Partial<firstLoginParentDetailTypes>>({})
-  // const [firstLoginParentDetails, setFirstLoginParentDetails] = useState<{[key:string]:any}>({})
+  /* Form submission dependencies */
+  const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false)
+  /* Form submission dependencies */
+
+  /* Routing, navigation and param dependencies */
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  /* Routing, navigation and param dependencies */
 
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0);
@@ -47,7 +50,8 @@ function FirstLoginParent() {
               <IconButton
                 onClick={handleStepperBack}
                 sx={{
-                  ml: 1,
+                  margin:0,
+                  padding:0,
                   "&.MuiButtonBase-root:hover": {
                     bgcolor: "transparent",
                   },
@@ -78,7 +82,19 @@ function FirstLoginParent() {
   };
   /* Stepper component dependencies */
 
-  console.log(firstLoginParentDetails,'firstLoginParentDetails')
+  /* Form submission dependencies */  
+  const handleSubmitFirstLoginParentForm = () => {
+    console.log(firstLoginParentDetails,'firstLoginParentDetails')
+    dispatch(
+      getFirstLoginParentAction(
+        firstLoginParentDetails,
+        navigate,
+        setError,
+        setLoading
+        )
+        )
+      }
+  /* Form submission dependencies */  
 
   return (
     <div className="FirstLoginParent">
@@ -101,8 +117,7 @@ function FirstLoginParent() {
         )}
         {activeStep === 3 && (
           <>
-            <TeachingGoalsStepperFour 
-            setFirstLoginParentDetails={setFirstLoginParentDetails} />
+            <TeachingGoalsStepperFour />
           </>
         )}
         <Button
@@ -110,10 +125,10 @@ function FirstLoginParent() {
           variant="contained"
           fullWidth
           color="secondary"
-          onClick={handleStepperNext}
-          disabled={activeStep === 3}
+          disabled={loading}
+          onClick={activeStep === 3 ? handleSubmitFirstLoginParentForm : handleStepperNext}
         >
-          {t("FirstLoginParent.next")}
+          {loading ? <CircularProgress /> : t("FirstLoginParent.next")}
         </Button>
       </div>
     </div>

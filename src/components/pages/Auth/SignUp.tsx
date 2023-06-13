@@ -11,7 +11,7 @@ import {
 import useUser from "../../../hooks/useUser.tsx";
 import { routes } from "../../../constants/routeConsts.tsx";
 import userRoles from "../../../constants/userRolesConsts.tsx";
-import { signUpValidations } from "../../../validations/authValidations.tsx";
+import { signUpValidations } from "../../../validations/signupValidations.tsx";
 import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
 import { getSignUpAction } from "../../../services/signup/signupServices.tsx";
 import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
@@ -62,7 +62,7 @@ function SignUp() {
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${role}`)}?
+      {t("JoinWizerSignUp.notA")} {t(`Role.${role}`)}?{" "}
       <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
@@ -115,25 +115,42 @@ function SignUp() {
     const handleSignUp = (e: React.FormEvent) => {
       e.preventDefault();
       const {email, password, classCode} = formDetails;
-      const validate = signUpValidations(email, password, classCode);
+      const validate = signUpValidations(email, password, classCode, role);
+      
       // Check validation
       if (validate.status) {
         setError(validate.message);
       } else {
         setError("");
         // Calling signup api , setting user toke, navigating to dashboard and setting error
-        dispatch(
-          getSignUpAction(
-            email,
-            password,
-            classCode,
-            role,
-            setToken,
-            navigate,
-            setError,
-            setLoading
-          )
-        );
+        if(role === 'student'){
+          dispatch(
+            getSignUpAction(
+              email,
+              password,
+              role,
+              setToken,
+              navigate,
+              setError,
+              setLoading,
+              classCode
+            )
+          );
+        }
+        else {
+          dispatch(
+            getSignUpAction(
+              email,
+              password,
+              role,
+              setToken,
+              navigate,
+              setError,
+              setLoading
+            )
+          );
+
+        }
       }
     };
     /* Function definition for Sign Up */
@@ -161,8 +178,7 @@ function SignUp() {
           />
           {role === userRoles.STUDENT && (
             <TextField
-              onChange={(e) => handleInputChange(e)
-              }
+              onChange={(e) => handleInputChange(e)}
               value={formDetails.classCode}
               placeholder="Enter class code (optional)"
               label="Class code"
@@ -200,7 +216,7 @@ function SignUp() {
   );
 
   return (
-    <div className="SignIn">
+    <div className="JoinWizerSignUp">
       {renderLogInButton()}
       <div className="Wrapper">
         {renderTitle()}

@@ -9,12 +9,12 @@ export const getSignUpAction =
   (
     email: string,
     password: string,
-    classCode: string,
     role: string | undefined,
     setToken: (newToken: string) => void,
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    classCode?: string,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -23,8 +23,8 @@ export const getSignUpAction =
       const response: AxiosResponse<any> = await requestFromServer.signup(
         email,
         password,
+        role,
         classCode,
-        role
       );
 
       if (response.status === 200) {
@@ -32,9 +32,14 @@ export const getSignUpAction =
         const { token, role } = response.data;
         setToken(token);
         dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data));
-        // navigate(`/${role}`, { replace: true });
         if(role === "student"){
-          navigate('/get-started/birth-date')
+          navigate(routes.ROOT,{replace:true})
+        }
+        else if(role === "teacher"){
+          navigate(`/${routes.SIGN_UP}/${role}/teacher-details`,{replace:true})
+        }
+        else if(role === "parent"){
+          navigate(`/${routes.SIGN_UP}/${role}/parent-details`,{replace:true})
         }
         return response;
       } else {

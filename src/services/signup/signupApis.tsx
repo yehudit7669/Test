@@ -2,15 +2,29 @@ import axios from "axios";
 
 export const SIGN_UP_URL = `auth/register`;
 
-export const signup = (email: string, password: string, classCode: string, role:string | undefined) => {
-  return axios.post(
-    SIGN_UP_URL,
-    {
-      email,
-      password,
-      classCode,
-      role
-    }
-    // { headers: {} }
-  );
+export const signup = (email: string, password: string, role:any, classCode?: string) => {
+  console.log(role,'role signup')
+  if(role === "student"){
+    return axios.post(
+      SIGN_UP_URL,
+      {
+        email,
+        password,
+        role,
+        classCode,
+      }
+      // { headers: {} }
+    );
+  }
+  else{
+    return axios.post(
+      SIGN_UP_URL,
+      {
+        email,
+        password,
+        role
+      }
+      // { headers: {} }
+    );
+  }
 };

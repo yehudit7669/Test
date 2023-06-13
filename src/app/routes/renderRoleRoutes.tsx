@@ -3,6 +3,7 @@ import renderStudentRoutes from "./studentRoutes";
 import renderTeacherRoutes from "./teacherRoutes";
 
 const renderRoleRoutes = (userRole: string) => {
+  console.log(userRole,'userRole')
   switch (userRole) {
     case userRoles.STUDENT:
       return renderStudentRoutes({ userRole });

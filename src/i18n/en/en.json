@@ -26,7 +26,7 @@
       "yearTitle":"Year"
     },
     "ForgotPassword": {
-      "forgotPassword":"Forgot Password?",
+      "forgotPassword":"Forgot password?",
       "noWorries":"No worries!",
       "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
       "send":"Send",
@@ -110,6 +110,10 @@
       },
       "next" : "Next",
       "joinThisSchool" : "Join this school"
+    },
+    "WelcomeToWizerDialog":{
+      "title" : "Welcome To",
+      "letsStart" : "Let's start"
     }
   }
 }
