@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getUserAction } from "../../../services/auth/authServices";
 import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
@@ -20,6 +20,7 @@ import { routes } from "../../../constants/routeConsts.tsx";
 
 import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
 import { loginValidations } from "../../../validations/authValidations.tsx";
+import useUser from "../../../hooks/useUser.tsx";
 
 function SignIn() {
   const { t } = useTranslation();
@@ -32,6 +33,14 @@ function SignIn() {
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+    const isAuthenticated = useUser();
+
+
+    useEffect(() => {
+    if (isAuthenticated[0]) {
+      navigate(routes.ROOT);
+    }
+  }, [navigate,isAuthenticated]);
 
   const renderSignUpButton = () => (
     <div className="Navigation">

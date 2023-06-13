@@ -10,7 +10,7 @@ export const getSignUpAction =
     email: string,
     password: string,
     classCode: string,
-    role: string,
+    role: string | undefined,
     setToken: (newToken: string) => void,
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,

@@ -1,5 +1,5 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { TextField, Button, Typography, CircularProgress } from "@mui/material";
+import { TextField, Button, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
 import { useEffect, useState } from "react";
@@ -8,44 +8,30 @@ import {
   GoogleIcon,
   MicrosoftIcon,
 } from "../../../assets/svgs/svg-components.tsx";
-import useUser from "../../../hooks/useUser.tsx";
+
 import { routes } from "../../../constants/routeConsts.tsx";
 import userRoles from "../../../constants/userRolesConsts.tsx";
-import { signUpValidations } from "../../../validations/authValidations.tsx";
-import SingleLineColorText from "../../common/errorText/SingleLineColorText.tsx";
-import { getSignUpAction } from "../../../services/signup/signupServices.tsx";
-import useLocalStorage from "../../../hooks/useLocalStorage.tsx";
-import { useAppDispatch } from "../../../hooks/redux-hooks.ts";
 
-
-function SignUp() {
+function JoinWizerSignUpPage() {
   const { t } = useTranslation();
-  
+
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
   const params = useParams();
-  const [, setToken] = useLocalStorage();
-  const isAuthenticated = useUser();
-  const dispatch = useAppDispatch();
   /* Routing, navigation and param dependencies */
 
-  useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
-    }
-  }, [navigate,isAuthenticated]);
-
   /* Form submission dependencies */
-  const [formDetails, setFormDetails] = useState({
-    email:"",
-    password:"",
-    classCode:""
-  })
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false)
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [classCode, setClassCode] = useState("");
+  // const [error, setError] = useState("");
+  const [signUpRole, setSignUpRole] = useState<string | undefined>("");
   const { role } = params;
   /* Form submission dependencies */
-  
+
+  useEffect(() => {
+    setSignUpRole(role);
+  }, [navigate, role]);
 
   const renderLogInButton = () => (
     <div className="Navigation">
@@ -57,15 +43,15 @@ function SignUp() {
   );
   const renderTitle = () => (
     <Typography className="Title">
-      {t("JoinWizerSignUp.title")} {t(`Role.${role}`)}
+      {t("JoinWizerSignUp.title")} {t(`Role.${signUpRole}`)}
     </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${role}`)}?
-      <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}? <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
+      
     </Typography>
   );
   const renderSocialSignUp = () => {
@@ -99,76 +85,33 @@ function SignUp() {
     );
   };
   const renderJoinWizerSignUpForm = () => {
-
-    /* On change dependencies for form details */
-    const handleInputChange = (event:React.SyntheticEvent) => {
-      setFormDetails((prevValue)=>{
-        return {
-          ...prevValue,
-          [(event.target as HTMLInputElement).name]: (event.target as HTMLInputElement).value
-        }
-      })  
-    /* On change dependencies for form details */
-    }
-
-    /* Function definition for Sign Up */
-    const handleSignUp = (e: React.FormEvent) => {
-      e.preventDefault();
-      const {email, password, classCode} = formDetails;
-      const validate = signUpValidations(email, password, classCode);
-      // Check validation
-      if (validate.status) {
-        setError(validate.message);
-      } else {
-        setError("");
-        // Calling signup api , setting user toke, navigating to dashboard and setting error
-        dispatch(
-          getSignUpAction(
-            email,
-            password,
-            classCode,
-            role,
-            setToken,
-            navigate,
-            setError,
-            setLoading
-          )
-        );
-      }
-    };
-    /* Function definition for Sign Up */
-
     return (
       <>
-        <form className="JoinWizerSignUpForm" onSubmit={(e)=>handleSignUp(e)}>
+        <form className="JoinWizerSignUpForm">
           <TextField
-            onChange={(e) =>  handleInputChange(e)}
+            onChange={(e) => setEmail(e.target.value)}
             type="email"
-            value={formDetails.email}
+            value={email}
             label="Email"
             variant="outlined"
             fullWidth
-            name="email"
           />
           <TextField
-            onChange={(e) => handleInputChange(e)}
+            onChange={(e) => setPassword(e.target.value)}
             type="password"
-            value={formDetails.password}
+            value={password}
             label="Password"
             variant="outlined"
             fullWidth
-            name="password"
           />
-          {role === userRoles.STUDENT && (
+          {signUpRole === userRoles.STUDENT && (
             <TextField
-              onChange={(e) => handleInputChange(e)
-              }
-              value={formDetails.classCode}
+              onChange={(e) => setClassCode(e.target.value)}
+              value={classCode}
               placeholder="Enter class code (optional)"
               label="Class code"
               variant="outlined"
               fullWidth
-              name="classCode"
             />
           )}
           <Button
@@ -176,10 +119,8 @@ function SignUp() {
             variant="contained"
             fullWidth
             color="secondary"
-            type="submit"
-            disabled={loading}
           >
-            {loading ? <CircularProgress /> : t("JoinWizerSignUp.signUp")}
+            {t("JoinWizerSignUp.signUp")}
           </Button>
         </form>
       </>
@@ -198,6 +139,14 @@ function SignUp() {
       <span>.</span>
     </div>
   );
+  // const renderError = () => {
+  //   if (error)
+  //     return (
+  //       <Typography variant="body1" component="span" color={"red"}>
+  //         {error}
+  //       </Typography>
+  //     );
+  // };
 
   return (
     <div className="SignIn">
@@ -208,17 +157,11 @@ function SignUp() {
         {renderSocialSignUp()}
         <div className="Subtitle">{t("SignIn.orText")}</div>
         {renderJoinWizerSignUpForm()}
-        <SingleLineColorText
-          text={error}
-          variant={"body1"}
-          component={"span"}
-          color="red"
-          align="center"
-        />
+        {/* {renderError()} */}
         {renderTermsAndPolicy()}
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default JoinWizerSignUpPage;

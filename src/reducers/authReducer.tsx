@@ -33,4 +33,4 @@ const auth = produce((draft: State, action: any) => {
   }
 }, initialState);
 
-export default auth
+export default auth;
