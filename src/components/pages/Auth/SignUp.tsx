@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { TextField, Button, Typography, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
@@ -24,6 +24,8 @@ function SignUp() {
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
   const params = useParams();
+  const location = useLocation()
+  const from = location.state?.from?.pathname;
   const [, setToken] = useLocalStorage();
   const isAuthenticated = useUser();
   const dispatch = useAppDispatch();

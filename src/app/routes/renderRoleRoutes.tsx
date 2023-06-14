@@ -1,9 +1,10 @@
 import { userRoles } from "../../constants";
-import renderStudentRoutes from "./studentRoutes";
-import renderTeacherRoutes from "./teacherRoutes";
+import renderStudentRoutes from "./renderStudentRoutes";
+import renderTeacherRoutes from "./renderTeacherRoutes";
+import renderParentRoutes from "./renderParentRoutes"
 
-const renderRoleRoutes = (userRole: string) => {
-  console.log(userRole,'userRole')
+
+const renderRoleRoutes = (userRole:string ) => {
   switch (userRole) {
     case userRoles.STUDENT:
       return renderStudentRoutes({ userRole });
@@ -12,7 +13,7 @@ const renderRoleRoutes = (userRole: string) => {
       return renderTeacherRoutes({ userRole });
 
     case userRoles.PARENT:
-      return renderTeacherRoutes({ userRole });
+      return renderParentRoutes({ userRole });
     default:
       return;
   }

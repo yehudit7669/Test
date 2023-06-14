@@ -33,7 +33,7 @@ export const getSignUpAction =
         setToken(token);
         dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data));
         if(role === "student"){
-          navigate(routes.ROOT,{replace:true})
+          navigate(`/${routes.SIGN_UP}/${role}/student-details`,{replace:true})
         }
         else if(role === "teacher"){
           navigate(`/${routes.SIGN_UP}/${role}/teacher-details`,{replace:true})

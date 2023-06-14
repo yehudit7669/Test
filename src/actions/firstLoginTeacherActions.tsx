@@ -4,3 +4,7 @@ export const FIRST_LOGIN_TEACHER_UPDATE_SUBJECTS_INTEREST_CHIP_DETAILS = null
 export const FIRST_LOGIN_TEACHER_UPDATE_STUDENTS_GRADE_CHIP_DETAILS = null
 export const FIRST_LOGIN_TEACHER_UPDATE_WIZER_INTERESTS_CHIP_DETAILS = null
 export const FIRST_LOGIN_TEACHER_UPDATE_SCHOOL_DETAILS = null
+
+/* API call action dependencies */
+export const FIRST_LOGIN_TEACHER = null
+/* API call action dependencies */

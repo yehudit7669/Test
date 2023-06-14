@@ -8,11 +8,12 @@ import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
 import RequireAuth from "./requireAuth/RequireAuth";
 import useUser from "../hooks/useUser";
-import renderRoleRoutes from "./routes/renderRoleRoutes";
 import { useAppSelector } from "../hooks/redux-hooks";
 import SignUp from "../components/pages/Auth/SignUp";
 import FirstLoginParent from "../components/pages/Auth/firstLoginParent";
 import FirstLoginTeacher from "../components/pages/Auth/firstLoginTeacher";
+import FirstLoginStudent from "../components/pages/Auth/firstLoginStudent";
+import renderRoleRoutes from "./routes/renderRoleRoutes";
 
 function App() {
   const [user] = useUser();
@@ -41,6 +42,10 @@ function App() {
           <Route path={routes.SIGN_IN} element={<SignIn />} />
           <Route path={routes.SIGN_UP} element={<SignUpTabs />} />
           <Route path={routes.SELECT_ROLE} element={<SignUp />} />
+          <Route
+            path={routes.FIRST_LOGIN_STUDENT}
+            element={<FirstLoginStudent />}
+          />
           <Route
             path={routes.FIRST_LOGIN_TEACHER}
             element={<FirstLoginTeacher />}

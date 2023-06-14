@@ -18,7 +18,7 @@
       },
       "orText":"or"
     },
-    "BirthDate": {
+    "FirstLoginStudent": {
       "birthDate": "What is your birth date?",
       "submit":"Submit",
       "dayTitle":"Day",
@@ -105,8 +105,10 @@
       "stepSix" : {
         "title" : "What is your school?",
         "searchSchool" : "Search for your school name",
-        "noSchoolLink" : "Don't see your school? Please share Wizer.Me with your supervisor",
-        "joinThisSchool" : "Join this school"
+        "didntSeeYourSchoolLink" : "Don't see your school?",
+        "shareWizerMeLink" : "Please share Wizer.Me with your supervisor",
+        "joinThisSchool" : "Join this school",
+        "skipLink" : "Skip"
       },
       "next" : "Next",
       "joinThisSchool" : "Join this school"

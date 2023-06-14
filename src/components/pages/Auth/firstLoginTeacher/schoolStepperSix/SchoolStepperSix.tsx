@@ -9,11 +9,15 @@ import FormLabel from "@mui/material/FormLabel";
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
+import Loader from "../../../../common/loader";
+import {useState, useEffect} from 'react';
 
 const SchoolStepperFive = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
   /* i18n translation dependencies */
+
+  const [loading, setLoading] = useState(false)
 
   const dispatch = useAppDispatch();
   const {firstLoginTeacherDetails, schoolDetails} = useAppSelector((state)=>state.firstLoginTeacher)
@@ -28,17 +32,34 @@ const SchoolStepperFive = () => {
 
 
   const renderFirstLoginTeacherForm = () => {
+
+    /* Function definition for when the school is selected */
     const handleChangeSchool = (event:React.SyntheticEvent) => {
       /* Dispatching an action to update the selected state of the schools */
       const eventTargetValue = (event.target as HTMLInputElement).value
       dispatch(Actions.createAction(Actions.FIRST_LOGIN_TEACHER_UPDATE_SCHOOL_DETAILS,{eventTargetValue}))
       /* Dispatching an action to update the selected state of the schools */
-
+      
       const dataToBeSent = {
-        school_id:eventTargetValue
+        school_Id:eventTargetValue
       }
       dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,dataToBeSent))
     }
+    /* Function definition for when the school is selected */
+
+    useEffect(() => {
+      if (loading) {
+        setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      }
+    }, [loading]);
+
+    /* Function definition for searching a school */
+    const handleSearchSchool = () => {
+      setLoading(true)
+    }
+    /* Function definition for searching a school */
 
     return (
       <>
@@ -51,10 +72,12 @@ const SchoolStepperFive = () => {
               className="GenericFormFieldMargin"
               variant="outlined"
               fullWidth
+              onChange={handleSearchSchool}
             />
           </Grid>
           <div className="SchoolsContainer">
             {
+              !loading &&
               schoolDetails?.map((_data)=>{
                 return (
                   <>
@@ -82,10 +105,19 @@ const SchoolStepperFive = () => {
                 )
               })
             }
+            {
+              loading &&
+              <Loader/>
+            }
           </div>
-          <Grid item xs={4} sm={6} md={12}>
+          <Grid item xs={4} sm={6} md={12} textAlign='center'>
             <Link to="#" className="DidntSeeYourSchoolLink">
-              {t("FirstLoginTeacher.stepSix.noSchoolLink")}
+              {t("FirstLoginTeacher.stepSix.didntSeeYourSchoolLink")}
+            </Link>
+          </Grid>
+          <Grid item xs={4} sm={6} md={12} textAlign='center'>
+            <Link to="#" className="ShareWizerMeLink">
+              {t("FirstLoginTeacher.stepSix.shareWizerMeLink")}
             </Link>
           </Grid>
         </Grid>

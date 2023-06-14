@@ -13,13 +13,11 @@ const renderTeacherRoutes = ({ userRole }: Props) => {
     <>
       <Route path={userRole} element={<MainLayout />}>
         <Route index element={<Navigate to={routes.DASHBOARD} replace />} />
-        <Route
-          path={routes.DASHBOARD}
-          element={<h1>HELLO TEACHER {userRole}</h1>}
-        />
+        <Route path={routes.DASHBOARD} element={<h1>HELLO {userRole}</h1>} />
         <Route path={routes.ANY} element={<Navigate to={userRole} replace />} />
       </Route>
-      <Route path={routes.GET_STARTED} element={<AuthLayout />}></Route>
+      
+      {/* <Route path={routes.GET_STARTED} element={<AuthLayout />}></Route> */}
     </>
   );
 };

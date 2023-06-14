@@ -30,7 +30,7 @@ export const getUserAction =
         const { token, role } = response.data;
         setToken(token);
         dispatch(Actions.createAction(Actions.USER_LOGIN, response.data));
-        navigate(`/${role}`, { replace: true });
+        navigate(`/${role}`, { replace: true })
         return response;
       } else {
         setLoading(false);

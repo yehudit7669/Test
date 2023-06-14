@@ -1,10 +1,14 @@
 import Dialog from '@mui/material/Dialog';
-import {Button, IconButton} from '@mui/material';
+import {Button, IconButton, CircularProgress} from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 import Confetti from '../confetti/Confetti';
-import { CancelIcon, CloseIcon, WizerLogo } from '../../../../../assets/svgs/svg-components';
+import { CloseIcon, WizerLogoWithName } from '../../../../../assets/svgs/svg-components';
 import '../FirstLoginTeacher.css';
 import { useTranslation } from 'react-i18next';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/redux-hooks';
+import {useState} from 'react';
+import { useNavigate } from 'react-router';
+import { getFirstLoginTeacherAction } from '../../../../../services/firstLoginTeacher/firstLoginTeacherServices';
 
 type Props = {
     open:boolean;
@@ -13,6 +17,31 @@ type Props = {
 
 const WelcomeToWizerDialog = ({open,handleClose}:Props) => {
     const {t} = useTranslation();
+
+    /* Form submission dependencies */
+  const {firstLoginTeacherDetails} = useAppSelector((state)=>state.firstLoginTeacher)
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false)
+  /* Form submission dependencies */
+
+  /* Routing, navigation and param dependencies */
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  /* Routing, navigation and param dependencies */
+
+    /* Form submission dependencies */  
+  const handleSubmitFirstLoginTeacherForm = () => {
+    console.log(firstLoginTeacherDetails,'firstLoginTeacherDetails')
+    dispatch(
+      getFirstLoginTeacherAction(
+        firstLoginTeacherDetails,
+        navigate,
+        setError,
+        setLoading
+        ))
+      }
+  /* Form submission dependencies */
+
     return (
         <>
         <Dialog className='WelcomeToWizerDialog' open={open} onClose={handleClose} fullWidth maxWidth={'sm'} sx={{ '& .MuiDialog-paper': { minHeight: '386px' } }}>
@@ -27,11 +56,11 @@ const WelcomeToWizerDialog = ({open,handleClose}:Props) => {
                 {t("WelcomeToWizerDialog.title")}
             </div>
             <div className='WizerLogo'>
-                <WizerLogo/>
+                <WizerLogoWithName/>
             </div>
             <div className='WelcomeToWizerLetsStartButtonContainer'>
-                <Button className="WelcomeToWizerLetsStartButton">
-                {t("WelcomeToWizerDialog.letsStart")}
+                <Button className="WelcomeToWizerLetsStartButton" onClick={handleSubmitFirstLoginTeacherForm}>
+                {loading ? <CircularProgress /> : t("WelcomeToWizerDialog.letsStart")}
                 </Button>
             </div>
         </DialogContent>

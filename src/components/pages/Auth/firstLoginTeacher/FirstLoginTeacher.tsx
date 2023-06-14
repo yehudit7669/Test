@@ -1,4 +1,10 @@
-import { Button, Typography, MobileStepper, IconButton } from "@mui/material";
+import {
+  Button,
+  Typography,
+  MobileStepper,
+  IconButton,
+  Grid,
+} from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginTeacher.css";
 import React, { useState } from "react";
@@ -9,8 +15,8 @@ import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/Subject
 import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
 import SchoolStepperSix from "./schoolStepperSix/SchoolStepperSix.tsx";
 import WizerInterestsStepperFive from "./wizerInterestsStepperFive/WizerInterestsStepperFive.tsx";
-import { styled } from "@mui/material";
 import WelcomeToWizerDialog from "./welcomeToWizerDialog/WelcomeToWizerDialog.tsx";
+import { Link } from "react-router-dom";
 export const ChildData = React.createContext({});
 
 function FirstLoginTeacher() {
@@ -18,21 +24,13 @@ function FirstLoginTeacher() {
   const { t } = useTranslation();
   /* i18n translation dependencies */
 
-  // const MyStepper = styled(MobileStepper)({
-  //   background:'red',
-  //   maxWidth: '142px',
-  //   flexGrow: 1,
-  //   borderRadius: '10px',
-  //   width: '100%',
-  //   color:'yellow'
-  // })
-
   /* Welcome To Wizer Dialog dependencies */
-  const [welcomeToWizerDialog, setWelcomeToWizerDialog] = useState<boolean>(false)
+  const [welcomeToWizerDialog, setWelcomeToWizerDialog] =
+    useState<boolean>(false);
   /* Welcome To Wizer Dialog dependencies */
 
   /* Dependencies for stepper component */
-  const [activeStep, setActiveStep] = useState(5);
+  const [activeStep, setActiveStep] = useState(0);
   const totalSteps = 6;
 
   const handleStepperNext = () => {
@@ -44,8 +42,6 @@ function FirstLoginTeacher() {
   };
   /* Dependencies for stepper component */
 
-
-
   /* Stepper component dependencies */
   const stepperComponent = () => {
     return (
@@ -56,8 +52,8 @@ function FirstLoginTeacher() {
               <IconButton
                 onClick={handleStepperBack}
                 sx={{
-                  margin:0,
-                  padding:0,
+                  margin: 0,
+                  padding: 0,
                   "&.MuiButtonBase-root:hover": {
                     bgcolor: "transparent",
                   },
@@ -71,7 +67,7 @@ function FirstLoginTeacher() {
         </div>
         <div className="MainStepper">
           <MobileStepper
-          className="MobileStepper"
+            className="MobileStepper"
             variant="progress"
             steps={totalSteps}
             position="static"
@@ -88,71 +84,87 @@ function FirstLoginTeacher() {
   };
   /* Stepper component dependencies */
 
+  /* Dialog dependencies */
   const handleWelcomeToWizerDialogOpen = () => {
-    setWelcomeToWizerDialog(true)
-  }
+    setWelcomeToWizerDialog(true);
+  };
 
   const handleWelcomeToWizerDialogClose = () => {
-    setWelcomeToWizerDialog(false)
-  }
+    setWelcomeToWizerDialog(false);
+  };
+  /* Dialog dependencies */
 
   return (
     <>
-    <div className="FirstLoginTeacher">
-      <div className="Wrapper">
-        {stepperComponent()}
-        {activeStep === 0 && (
-          <>
-            <AboutYouStepperOne />
-          </>
-        )}
-        {activeStep === 1 && (
-          <>
-            <AboutYourRoleStepperTwo />
-          </>
-        )}
-        {activeStep === 2 && 
-        <>
-        <SubjectInterestsStepperThree/>
-        </>}
-        {activeStep === 3 && <>
-        <StudentsGradeStepperFour/>
-        </>}
-        {activeStep === 4 && <>
-        <WizerInterestsStepperFive/>
-        </>}
-        {activeStep === 5 && <>
-        <SchoolStepperSix/>
-        </>}
+      <div className="FirstLoginTeacher">
+        <div className="Wrapper">
+          {stepperComponent()}
+          {activeStep === 0 && (
+            <>
+              <AboutYouStepperOne />
+            </>
+          )}
+          {activeStep === 1 && (
+            <>
+              <AboutYourRoleStepperTwo />
+            </>
+          )}
+          {activeStep === 2 && (
+            <>
+              <SubjectInterestsStepperThree />
+            </>
+          )}
+          {activeStep === 3 && (
+            <>
+              <StudentsGradeStepperFour />
+            </>
+          )}
+          {activeStep === 4 && (
+            <>
+              <WizerInterestsStepperFive />
+            </>
+          )}
+          {activeStep === 5 && (
+            <>
+              <SchoolStepperSix />
+            </>
+          )}
+          {activeStep === 5 ? (
+            <div className="JoinThisSchoolButtonWrapper">
+              <Button
+                className="Button"
+                variant="contained"
+                fullWidth
+                color="secondary"
+                onClick={handleWelcomeToWizerDialogOpen}
+              >
+                {t("FirstLoginTeacher.stepSix.joinThisSchool")}
+              </Button>
+              <Grid item xs={4} sm={6} md={12}>
+                <Link to="#" className="SkipLink">
+                  {t("FirstLoginTeacher.stepSix.skipLink")}
+                </Link>
+              </Grid>
+            </div>
+          ) : (
+            <Button
+              className="Button"
+              variant="contained"
+              fullWidth
+              color="secondary"
+              onClick={handleStepperNext}
+            >
+              {t("FirstLoginTeacher.next")}
+            </Button>
+          )}
+        </div>
         {
-          activeStep === 5 ?
-        <Button
-          className="Button"
-          variant="contained"
-          fullWidth
-          color="secondary"
-          onClick={handleWelcomeToWizerDialogOpen}
-        >
-          {t("FirstLoginTeacher.stepSix.joinThisSchool")}
-        </Button> :
-        <Button
-          className="Button"
-          variant="contained"
-          fullWidth
-          color="secondary"
-          onClick={handleStepperNext}
-        >
-          {t("FirstLoginTeacher.next")}
-        </Button>
+          <WelcomeToWizerDialog
+            open={welcomeToWizerDialog}
+            handleClose={handleWelcomeToWizerDialogClose}
+          />
         }
       </div>
-    {
-      <WelcomeToWizerDialog
-      open={welcomeToWizerDialog}
-      handleClose={handleWelcomeToWizerDialogClose}
-      />
-    }
-    </div>
     </>
   );
 }
