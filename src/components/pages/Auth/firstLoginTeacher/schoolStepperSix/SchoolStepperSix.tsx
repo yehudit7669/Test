@@ -20,7 +20,7 @@ const SchoolStepperFive = () => {
   const [loading, setLoading] = useState(false)
 
   const dispatch = useAppDispatch();
-  const {firstLoginTeacherDetails, schoolDetails} = useAppSelector((state)=>state.firstLoginTeacher)
+  const { schoolDetails} = useAppSelector((state)=>state.firstLoginTeacher)
 
   /* Stepper Three component dependencies */
   const renderTitle = () => (

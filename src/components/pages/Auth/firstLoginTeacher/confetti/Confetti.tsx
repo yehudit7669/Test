@@ -20,9 +20,6 @@ export default function Confetti() {
   }, []);
 
   useEffect(()=>{
-    // setInterval(()=>{
-    //     fire()
-    // },2000)
     fire()
   },[])
 

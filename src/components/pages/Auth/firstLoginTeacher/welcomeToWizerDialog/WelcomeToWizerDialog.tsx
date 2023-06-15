@@ -31,7 +31,6 @@ const WelcomeToWizerDialog = ({open,handleClose}:Props) => {
 
     /* Form submission dependencies */  
   const handleSubmitFirstLoginTeacherForm = () => {
-    console.log(firstLoginTeacherDetails,'firstLoginTeacherDetails')
     dispatch(
       getFirstLoginTeacherAction(
         firstLoginTeacherDetails,

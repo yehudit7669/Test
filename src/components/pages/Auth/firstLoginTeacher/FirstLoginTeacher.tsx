@@ -17,7 +17,6 @@ import SchoolStepperSix from "./schoolStepperSix/SchoolStepperSix.tsx";
 import WizerInterestsStepperFive from "./wizerInterestsStepperFive/WizerInterestsStepperFive.tsx";
 import WelcomeToWizerDialog from "./welcomeToWizerDialog/WelcomeToWizerDialog.tsx";
 import { Link } from "react-router-dom";
-export const ChildData = React.createContext({});
 
 function FirstLoginTeacher() {
   /* i18n translation dependencies */

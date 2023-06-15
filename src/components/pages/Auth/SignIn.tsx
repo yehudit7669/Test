@@ -40,7 +40,6 @@ function SignIn() {
     if (user) {
       navigate(`/${user?.role}`);
     }
-    
   }, [navigate,user]);
   /* If user is authenticated then navigate him to dashboard */
 
@@ -180,8 +179,6 @@ function SignIn() {
       </div>
     </div>
   )
-  
-
 }
 
 export default SignIn;

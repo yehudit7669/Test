@@ -10,7 +10,7 @@ import {
   IconButton
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import AddIcon from "@mui/icons-material/Add";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
@@ -43,7 +43,6 @@ const StepperTwo = () => {
   const [selectedTab, setSelectedTab] = useState('1');
 
   const handleTabChange = (event: React.SyntheticEvent, tabValue:string) => {
-      console.log(event.target,'event.target');
       if(event && tabValue && tabValue!=="" && tabValue!==undefined){
         setSelectedTab(tabValue)
       }
@@ -80,7 +79,6 @@ const StepperTwo = () => {
 
     /* Function definition on cancel button click - Remove a child */
     const handleRemoveAChildren = (data:{[key:string]:any},index:number) => {
-      console.log(index.toString(),'index.toString()')
       if(index >= 1){
         const dataToBeSent = {data,index}
         dispatch(Actions.createAction(Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_REMOVE_CHILDREN,dataToBeSent))

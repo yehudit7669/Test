@@ -6,7 +6,7 @@ import {
   FormLabel,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
 
@@ -19,7 +19,6 @@ const StepperOne = () => {
   const dispatch = useAppDispatch()
   const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
 
-  console.log(firstLoginParentDetails,'firstLoginParent')
   /* Routing, navigation and param dependencies */
 
   /* Searchable select dependencies */

@@ -6,7 +6,7 @@ import {
   FormLabel,
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React from "react";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
 import Actions from "../../../../../actions";
 
@@ -17,7 +17,6 @@ const StepperOne = () => {
 
   const dispatch = useAppDispatch()
   const {firstLoginTeacherDetails} = useAppSelector((state)=>state.firstLoginTeacher)
-  console.log(firstLoginTeacherDetails,'firstLoginTeacherDetails')
 
   /* OnChange formData dependencies */
   const handleChangeFormData = (e: React.SyntheticEvent) => {

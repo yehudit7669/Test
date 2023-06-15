@@ -1,6 +1,6 @@
-import { Grid, TextField, Typography, Chip, Stack } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React from "react";
 import FormLabel from "@mui/material/FormLabel";
 import MultipleSelectableChips from "../../../../common/multipleSelectableChips/MultipleSelectableChips";
 import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
