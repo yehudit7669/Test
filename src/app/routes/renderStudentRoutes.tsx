@@ -1,26 +1,37 @@
 import { Navigate, Route } from "react-router-dom";
 import MainLayout from "../../components/layouts/MainLayout";
-import AuthLayout from "../../components/layouts/AuthLayout";
-import { routes } from "../../constants";
+import { routes, userLayouts } from "../../constants";
+import FirstLoginStudent from "../../components/pages/Auth/firstLoginStudent";
+import StudentDashboard from "../../components/pages/Dashboard/studentDashboard";
 
 type Props = {
-  userRole: string;
+  layout: string;
 };
 
-const renderStudentRoutes = ({ userRole }: Props) => {
-  // Render routes for students who have signed in before
-  return (
-    <>
-      <Route path={userRole} element={<MainLayout />}>
-        <Route index element={<Navigate to={routes.DASHBOARD} replace />} />
-        <Route path={routes.DASHBOARD} element={<h1>HELLO {userRole}</h1>} />
-        <Route path={routes.ANY} element={<Navigate to={userRole} replace />} />
-      </Route>
-
-      {/* <Route path={routes.GET_STARTED} element={<AuthLayout />}>
-      </Route> */}
-    </>
-  );
+const renderStudentRoutes = ({layout}:Props) => {
+  switch (layout) {
+    case userLayouts.IS_AUTH:
+      return (
+        <>
+          <Route path={`/${routes.GET_STARTED}`}>
+            <Route index element={<Navigate to={routes.STUDENT} replace />} />
+            <Route
+              path={`/${routes.FIRST_LOGIN_STUDENT}`}
+              element={<FirstLoginStudent />}
+            />
+          </Route>
+        </>
+      );
+    case userLayouts.IS_MAIN:
+      return (
+        <>
+          <Route path={`/${routes.STUDENT}`} element={<MainLayout />}>
+            <Route index element={<Navigate to={routes.DASHBOARD} replace />} />
+            <Route path={routes.DASHBOARD} element={<StudentDashboard />} />
+          </Route>
+        </>
+      );
+  }
 };
 
 export default renderStudentRoutes;

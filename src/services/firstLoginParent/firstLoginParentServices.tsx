@@ -23,7 +23,7 @@ export const getFirstLoginParentAction =
       if (response.status === 200) {
         setLoading(false);
         dispatch(Actions.createAction(Actions.FIRST_LOGIN_PARENT, response.data))
-        navigate(routes.ROOT)
+        navigate(`/${routes.PARENT}`, { replace: true });
 
         return response;
       } else {

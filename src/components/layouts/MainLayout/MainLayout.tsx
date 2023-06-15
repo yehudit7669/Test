@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import {Avatar, TextField, IconButton} from '@mui/material';
@@ -18,7 +18,7 @@ interface Props {
    * You won't need it on your project.
    */
   window?: () => Window;
-  children: React.ReactElement;
+  children?: React.ReactElement;
 }
 
 function ScrollTop(props: Props) {

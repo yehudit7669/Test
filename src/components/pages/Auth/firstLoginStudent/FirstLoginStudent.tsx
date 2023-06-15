@@ -10,6 +10,7 @@ import { getFirstLoginStudentAction } from "../../../../services/firstLoginStude
 import { useNavigate } from "react-router";
 import { useAppDispatch } from "../../../../hooks/redux-hooks";
 import { CalendarIcon } from "../../../../assets/svgs/svg-components";
+import useUser from "../../../../hooks/useUser";
 
 function FirstLoginStudent() {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ function FirstLoginStudent() {
   const [formattedDateValue, setFormattedDateValue] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
+  const [user] = useUser()
   /* Form submission, loading and display error dependencies */
 
   /* Function definition for on change event of date picker */
@@ -45,7 +47,8 @@ function FirstLoginStudent() {
         DOB,
         navigate,
         setError,
-        setLoading
+        setLoading,
+        user?.role
         )
         );
       }

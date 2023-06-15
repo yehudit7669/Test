@@ -3,14 +3,14 @@ import Actions from "../../actions";
 import * as requestFromServer from "./firstLoginStudentApis";
 import { Dispatch, SetStateAction } from "react";
 import { AxiosResponse } from "axios";
-import { routes } from "../../constants";
 
 export const getFirstLoginStudentAction =
   (
     DOB: string,
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    role: string | undefined
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -23,8 +23,7 @@ export const getFirstLoginStudentAction =
       if (response.status === 200) {
         setLoading(false);
         dispatch(Actions.createAction(Actions.FIRST_LOGIN_STUDENT, response.data));
-        // navigate(`/${role}`, { replace: true });
-          navigate(routes.ROOT)
+        navigate(`/${role}`, { replace: true });
         
         return response;
       } else {

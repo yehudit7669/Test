@@ -23,7 +23,7 @@ export const getFirstLoginTeacherAction =
       if (response.status === 200) {
         setLoading(false);
         dispatch(Actions.createAction(Actions.FIRST_LOGIN_TEACHER, response.data));
-        navigate(routes.ROOT)
+        navigate(`/${routes.TEACHER}`, { replace: true });
         
         return response;
       } else {

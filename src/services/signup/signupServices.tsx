@@ -32,15 +32,8 @@ export const getSignUpAction =
         const { token, role } = response.data;
         setToken(token);
         dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data));
-        if(role === "student"){
-          navigate(`/${routes.GET_STARTED}/${routes.FIRST_LOGIN_STUDENT}`,{replace:true})
-        }
-        else if(role === "teacher"){
-          navigate(`${routes.SIGN_UP}/${role}/teacher-details`,{replace:true})
-        }
-        else if(role === "parent"){
-          navigate(`${routes.SIGN_UP}/${role}/parent-details`,{replace:true})
-        }
+        navigate(`/${routes.GET_STARTED}/${role}`,{replace:true})
+        
         return response;
       } else {
         setLoading(false);

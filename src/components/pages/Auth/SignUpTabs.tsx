@@ -7,10 +7,22 @@ import {
   JoinAsStudentIcon,
   JoinAsTeacherIcon,
 } from "../../../assets/svgs/svg-components.tsx";
+import { routes } from "../../../constants/routeConsts.tsx";
+import useUser from "../../../hooks/useUser.tsx";
+import { useLayoutEffect } from "react";
 
 function SignUpTabs() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [user] = useUser();
+
+  /* If user is authenticated then navigate him to dashboard */
+  useLayoutEffect(() => {
+    if (user) {
+      navigate(`/${user?.role}`);
+    }
+  }, [navigate,user]);
+  /* If user is authenticated then navigate him to dashboard */
 
   const renderTitle = () => (
     <Typography className="Title">{t("SignUp.registerToWizer")}</Typography>
@@ -47,7 +59,7 @@ function SignUpTabs() {
   /* Role tabs component */
   const selectRoleTabs = () => {
     const handleSelectRole = (role: string) => {
-      navigate(role);
+      navigate(`/${routes.SIGN_UP}`,{state:{role}})
     };
     return (
       <>

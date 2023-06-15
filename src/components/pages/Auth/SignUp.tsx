@@ -1,8 +1,8 @@
-import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { TextField, Button, Typography, CircularProgress } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
 import {
   GoogleIcon,
@@ -23,19 +23,20 @@ function SignUp() {
   
   /* Routing, navigation and param dependencies */
   const navigate = useNavigate();
-  const params = useParams();
-  const location = useLocation()
-  const from = location.state?.from?.pathname;
+  const location = useLocation();
+  const authRole = location?.state?.role;
   const [, setToken] = useLocalStorage();
-  const isAuthenticated = useUser();
+  const [user] = useUser();
   const dispatch = useAppDispatch();
   /* Routing, navigation and param dependencies */
 
-  useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
+  /* If user is authenticated then navigate him to dashboard */
+  useLayoutEffect(() => {
+    if (user) {
+      navigate(`/${user?.role}`);
     }
-  }, [navigate,isAuthenticated]);
+  }, [navigate,user]);
+  /* If user is authenticated then navigate him to dashboard */
 
   /* Form submission dependencies */
   const [formDetails, setFormDetails] = useState({
@@ -45,7 +46,6 @@ function SignUp() {
   })
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false)
-  const { role } = params;
   /* Form submission dependencies */
   
 
@@ -59,13 +59,13 @@ function SignUp() {
   );
   const renderTitle = () => (
     <Typography className="Title">
-      {t("JoinWizerSignUp.title")} {t(`Role.${role}`)}
+      {t("JoinWizerSignUp.title")} {t(`Role.${authRole}`)}
     </Typography>
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${role}`)}?{" "}
-      <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
+      {t("JoinWizerSignUp.notA")} {t(`Role.${authRole}`)}?{" "}
+      <Link to={`/${routes.SELECT_ROLE}`} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
     </Typography>
@@ -117,7 +117,7 @@ function SignUp() {
     const handleSignUp = (e: React.FormEvent) => {
       e.preventDefault();
       const {email, password, classCode} = formDetails;
-      const validate = signUpValidations(email, password, classCode, role);
+      const validate = signUpValidations(email, password, classCode, authRole);
       
       // Check validation
       if (validate.status) {
@@ -125,12 +125,12 @@ function SignUp() {
       } else {
         setError("");
         // Calling signup api , setting user toke, navigating to dashboard and setting error
-        if(role === 'student'){
+        if(authRole === 'student'){
           dispatch(
             getSignUpAction(
               email,
               password,
-              role,
+              authRole,
               setToken,
               navigate,
               setError,
@@ -144,7 +144,7 @@ function SignUp() {
             getSignUpAction(
               email,
               password,
-              role,
+              authRole,
               setToken,
               navigate,
               setError,
@@ -178,7 +178,7 @@ function SignUp() {
             fullWidth
             name="password"
           />
-          {role === userRoles.STUDENT && (
+          {authRole === userRoles.STUDENT && (
             <TextField
               onChange={(e) => handleInputChange(e)}
               value={formDetails.classCode}
