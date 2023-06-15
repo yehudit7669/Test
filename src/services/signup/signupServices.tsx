@@ -33,13 +33,13 @@ export const getSignUpAction =
         setToken(token);
         dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data));
         if(role === "student"){
-          navigate(`/${routes.SIGN_UP}/${role}/student-details`,{replace:true})
+          navigate(`/${routes.GET_STARTED}/${routes.FIRST_LOGIN_STUDENT}`,{replace:true})
         }
         else if(role === "teacher"){
-          navigate(`/${routes.SIGN_UP}/${role}/teacher-details`,{replace:true})
+          navigate(`${routes.SIGN_UP}/${role}/teacher-details`,{replace:true})
         }
         else if(role === "parent"){
-          navigate(`/${routes.SIGN_UP}/${role}/parent-details`,{replace:true})
+          navigate(`${routes.SIGN_UP}/${role}/parent-details`,{replace:true})
         }
         return response;
       } else {

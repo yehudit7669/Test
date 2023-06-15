@@ -2,7 +2,7 @@ import Dialog from '@mui/material/Dialog';
 import {Button, IconButton, CircularProgress} from '@mui/material';
 import DialogContent from '@mui/material/DialogContent';
 import Confetti from '../confetti/Confetti';
-import { CloseIcon, WizerLogoWithName } from '../../../../../assets/svgs/svg-components';
+import { CloseIcon, WizerLogoWithNameForDialog } from '../../../../../assets/svgs/svg-components';
 import '../FirstLoginTeacher.css';
 import { useTranslation } from 'react-i18next';
 import { useAppDispatch, useAppSelector } from '../../../../../hooks/redux-hooks';
@@ -56,7 +56,7 @@ const WelcomeToWizerDialog = ({open,handleClose}:Props) => {
                 {t("WelcomeToWizerDialog.title")}
             </div>
             <div className='WizerLogo'>
-                <WizerLogoWithName/>
+                <WizerLogoWithNameForDialog/>
             </div>
             <div className='WelcomeToWizerLetsStartButtonContainer'>
                 <Button className="WelcomeToWizerLetsStartButton" onClick={handleSubmitFirstLoginTeacherForm}>

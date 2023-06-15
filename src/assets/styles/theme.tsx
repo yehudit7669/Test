@@ -23,5 +23,14 @@ export const theme = createTheme({
     success: {
       main: "#0AB813",
     },
+  },
+  components : {
+    MuiAppBar : {
+      styleOverrides : {
+        root : {
+          background : '#F3EEE9'
+        }
+      }
+    }
   }
 });
