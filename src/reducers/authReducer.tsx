@@ -15,7 +15,6 @@ const initialState: State = {
 
 const auth = produce((draft: State, action: any) => {
   const { payload } = action;
-  console.log(payload,'payload')
   switch (action.type) {
     case Actions.USER_LOGIN: {
       draft.user = payload;

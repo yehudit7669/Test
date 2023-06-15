@@ -3,7 +3,6 @@ import axios from "axios";
 export const SIGN_UP_URL = `auth/register`;
 
 export const signup = (email: string, password: string, role:any, classCode?: string) => {
-  console.log(role,'role signup')
   if(role === "student"){
     return axios.post(
       SIGN_UP_URL,

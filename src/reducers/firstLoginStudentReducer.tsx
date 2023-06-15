@@ -11,7 +11,6 @@ const initialState: State = {
 
 const firstLoginStudent = produce((draft: State, action: any) => {
   const { payload } = action;
-  console.log(payload,'payload first login student')
   switch (action.type) {
     case Actions.FIRST_LOGIN_STUDENT: {
       draft.user = {...payload};
