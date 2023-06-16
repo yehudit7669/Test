@@ -18,7 +18,7 @@ function FirstLoginParent() {
 
   /* Form submission dependencies */
   const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [loading, setLoading] = useState(false)
   /* Form submission dependencies */
 

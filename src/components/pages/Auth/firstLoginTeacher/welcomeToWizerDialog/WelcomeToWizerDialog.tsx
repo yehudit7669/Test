@@ -20,7 +20,7 @@ const WelcomeToWizerDialog = ({open,handleClose}:Props) => {
 
     /* Form submission dependencies */
   const {firstLoginTeacherDetails} = useAppSelector((state)=>state.firstLoginTeacher)
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [loading, setLoading] = useState(false)
   /* Form submission dependencies */
 

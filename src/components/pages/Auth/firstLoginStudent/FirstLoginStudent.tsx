@@ -24,7 +24,7 @@ function FirstLoginStudent() {
   /* Form submission, loading and display error dependencies */
   const [birthDateValue, setBirthDateValue] = useState<Dayjs | null>(null);
   const [formattedDateValue, setFormattedDateValue] = useState("");
-  const [error, setError] = useState("");
+  const [, setError] = useState("");
   const [loading, setLoading] = useState(false)
   const [user] = useUser()
   /* Form submission, loading and display error dependencies */

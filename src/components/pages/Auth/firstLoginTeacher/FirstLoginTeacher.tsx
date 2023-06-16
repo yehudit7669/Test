@@ -7,7 +7,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./FirstLoginTeacher.css";
-import React, { useState } from "react";
+import  { useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
 import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
