@@ -4,8 +4,8 @@ ARG wsUrl
 WORKDIR /app
 COPY . /app
 RUN npm install
-RUN export VITE_REACT_APP_URL=${appUrl} && \
-    export VITE_WS_URL=${wsUrl} && \
+RUN export VITE_REACT_APP_URL=$appUrl && \
+    export VITE_WS_URL=$wsUrl && \
     npm run build
 
 FROM nginx:1.25.1
