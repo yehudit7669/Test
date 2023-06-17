@@ -12,9 +12,14 @@ env:
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
   SERVICE: wizer-fe
   REGISTRY: gcr.io
+  VITE_REACT_APP_URL: ${{ env.VITE_REACT_APP_URL_PROD }}
+  VITE_WS_URL: ${{ env.VITE_WS_URL_PROD }}
 
 jobs:
   setup-build-publish-deploy:
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     
     permissions:
       contents: 'read'
@@ -46,7 +51,10 @@ jobs:
       # Build the Docker image
       - name: Build
         run: |
-          docker build -t $REGISTRY/$GCP_PROJECT_ID/$SERVICE:${GITHUB_SHA} .
+          docker build \
+            --build-arg appUrl=$VITE_REACT_APP_URL \
+            --build-arg wsUrl=$VITE_WS_URL \
+            -t $REGISTRY/$GCP_PROJECT_ID/$SERVICE:${GITHUB_SHA} .
 
       # Push the Docker image to Google Container Registry
       - name: Publish
