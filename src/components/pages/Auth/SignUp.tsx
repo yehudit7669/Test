@@ -14,13 +14,13 @@ import { routes } from "../../../constants/routeConsts.tsx";
 function SignIn() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-    const isAuthenticated = useUser();
+  const isAuthenticated = useUser();
 
-      useEffect(() => {
+  useEffect(() => {
     if (isAuthenticated[0]) {
       navigate(routes.ROOT);
     }
-  }, [navigate,isAuthenticated]);
+  }, [navigate, isAuthenticated]);
 
   const renderTitle = () => (
     <Typography className="Title">{t("SignUp.registerToWizer")}</Typography>

@@ -48,10 +48,10 @@ function JoinWizerSignUpPage() {
   );
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}? <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
+      {t("JoinWizerSignUp.notA")} {t(`Role.${signUpRole}`)}?{" "}
+      <Link to={`/${routes.SIGN_UP}`} className="ChangeLink">
         {t("JoinWizerSignUp.change")}
       </Link>
-      
     </Typography>
   );
   const renderSocialSignUp = () => {
