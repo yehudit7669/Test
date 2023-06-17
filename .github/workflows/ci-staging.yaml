@@ -12,8 +12,8 @@ env:
   GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
   SERVICE: wizer-fe
   REGISTRY: gcr.io
-  VITE_REACT_APP_URL: ${{ env.VITE_REACT_APP_URL_STAGING }}
-  VITE_WS_URL: ${{ env.VITE_WS_URL_STAGING }}
+  VITE_REACT_APP_URL: $VITE_REACT_APP_URL_STAGING
+  VITE_WS_URL: $VITE_WS_URL_STAGING
 
 jobs:
   setup-build-publish-deploy:
