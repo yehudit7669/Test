@@ -14,10 +14,6 @@ env:
   REGISTRY: gcr.io
 
 jobs:
-  concurrency:
-    group: ${{ github.ref }}
-    cancel-in-progress: true
-
   setup-build-publish-deploy:
     
     permissions:
