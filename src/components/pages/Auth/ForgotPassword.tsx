@@ -41,8 +41,10 @@ function ForgotPassword() {
     <>
       <div className="ForgotPassword">
         <div className="Wrapper">
-          <div className="Title">{t("ForgotPassword.forgotPassword")}</div>
-          <div className="Title">{t("ForgotPassword.noWorries")}</div>
+          <div className="TitleContainer">
+            <div className="Title">{t("ForgotPassword.forgotPassword")}</div>
+            <div className="Title">{t("ForgotPassword.noWorries")}</div>
+          </div>
           <label className="Subtitle" data-subtitle>
             {t("ForgotPassword.submitYourEmail")}
           </label>

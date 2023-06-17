@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import "./Auth.css";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { getUserAction } from "../../../services/auth/authServices";
 import { useAppDispatch } from "../../../hooks/redux-hooks";
 import {
@@ -27,24 +27,26 @@ function SignIn() {
   const dispatch = useAppDispatch();
   const [, setToken] = useLocalStorage();
   const navigate = useNavigate();
+  const [user] = useUser();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(true);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const isAuthenticated = useUser();
 
-  useEffect(() => {
-    if (isAuthenticated[0]) {
-      navigate(routes.ROOT);
+  /* If user is authenticated then navigate him to dashboard */
+  useLayoutEffect(() => {
+    if (user) {
+      navigate(`/${user?.role}`);
     }
-  }, [navigate, isAuthenticated]);
+  }, [navigate, user]);
+  /* If user is authenticated then navigate him to dashboard */
 
   const renderSignUpButton = () => (
     <div className="Navigation">
       {t("SignIn.newToWizer")}{" "}
-      <Link to={`/${routes.SIGN_UP}`}>{t("SignIn.signUp")}</Link>
+      <Link to={`/${routes.SELECT_ROLE}`}>{t("SignIn.signUp")}</Link>
     </div>
   );
   const renderTitle = () => (

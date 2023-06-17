@@ -1,0 +1,76 @@
+/****** FirstLoginStudent component dependencies ******/
+.FirstLoginStudent {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.FirstLoginStudent .Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 424px;
+  gap: 3rem;
+}
+
+.FirstLoginStudent .Title {
+  width: 424px;
+  height: 60px;
+  left: calc(50% - 424px / 2 + 212px);
+  top: 253px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 37px;
+  line-height: 60px;
+  text-align: center;
+  color: #212121;
+}
+
+.FirstLoginStudent .DateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+}
+
+.FirstLoginStudent .DateContainer .DatePicker {
+  width: 130.54px;
+  height: 40px;
+}
+
+.FirstLoginStudent .DateContainer .DatePickerLabel {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #212121;
+}
+
+.FirstLoginStudent .FirstLoginStudentForm {
+  width: 424px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.FirstLoginStudent .FirstLoginStudentForm .DatePickerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Overriding the default CSS for text-transform */
+.FirstLoginStudent .MuiButton-contained {
+  text-transform: none !important;
+}
+/* Overriding the default CSS for text-transform */
+
+.FirstLoginStudent .Button {
+  width: 424px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  gap: 0.8rem;
+}
+/****** FirstLoginStudent component dependencies ******/

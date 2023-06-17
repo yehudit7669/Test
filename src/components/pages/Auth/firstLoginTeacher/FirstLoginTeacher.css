@@ -1,0 +1,246 @@
+/***** First Login Parent dependencies *****/
+.FirstLoginTeacher {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  -ms-overflow-style: none;
+}
+
+.FirstLoginTeacher .SchoolsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+.FirstLoginTeacher .Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 424px;
+  gap: 1rem;
+  margin: 100px 0px;
+}
+.FirstLoginTeacher .Title {
+  width: 424px;
+  left: calc(50% - 424px / 2 + 212px);
+  top: 253px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  color: #212121;
+}
+
+.FirstLoginTeacher .Subtitle {
+  width: 100%;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.011em;
+  color: #808080;
+}
+
+.FirstLoginTeacher .StepperContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.FirstLoginTeacher .MainStepper {
+  display: flex;
+  gap: 0.9rem;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+}
+.FirstLoginTeacher .StepperNoInfo {
+  color: #666666;
+}
+
+.FirstLoginTeacher .FirstLoginParentForm {
+  display: grid;
+  gap: 1.4rem;
+  width: 100%;
+}
+
+.FirstLoginTeacher .Button {
+  width: 424px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  gap: 0.8rem;
+}
+
+.FirstLoginTeacher .StepperContainer .StepperBackButton {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  font-size: 16px;
+  color: #666666;
+}
+
+.FirstLoginTeacher .FormLabel {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  color: #212121;
+}
+
+.FirstLoginTeacher .GenericFormFieldMargin {
+  margin-top: 0.5rem;
+}
+
+.FirstLoginTeacher .Tab {
+  text-transform: none;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.FirstLoginTeacher .TabList {
+  border-bottom: 1px solid #200343;
+  width: 100%;
+}
+
+.FirstLoginTeacher .Button {
+  text-transform: none;
+}
+
+.FirstLoginTeacher .DidntSeeYourSchoolLink,
+.ShareWizerMeLink {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+  color: #1b68ff;
+  text-decoration: none;
+  letter-spacing: -0.011em;
+}
+
+.FirstLoginTeacher .JoinThisSchoolButtonWrapper .SkipLink {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.011em;
+  text-decoration-line: underline;
+  color: #666666;
+}
+.FirstLoginTeacher .JoinThisSchoolButtonWrapper {
+  display: flex;
+  margin-top: 1rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.FirstLoginTeacher .SchoolsContainer {
+  width: 100%;
+  height: 240px;
+  margin-top: 16px;
+  padding-left: 16px;
+  padding-top: 16px;
+  overflow-y: auto;
+  display: grid;
+  gap: 1rem;
+}
+.FirstLoginTeacher .SchoolElement {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+}
+.FirstLoginTeacher .SchoolDataContainer {
+  padding: 5px 0px;
+}
+.FirstLoginTeacher .SchoolDataContainer > * {
+  font-style: normal;
+  line-height: 24px;
+  letter-spacing: -0.011em;
+  color: #212121;
+}
+
+.FirstLoginTeacher .SchoolDataContainer > :nth-child(1) {
+  font-weight: 600;
+  font-size: 16px;
+}
+.FirstLoginTeacher .SchoolDataContainer > :nth-child(2) {
+  font-weight: 400;
+  font-size: 14px;
+}
+.FirstLoginTeacher .RadioButtonContainer {
+  width: 100%;
+  display: grid;
+  place-content: center;
+}
+
+.FirstLoginTeacher .RadioButton {
+  margin: 0 !important;
+}
+.FirstLoginTeacher .NoOfTeachersContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+}
+.FirstLoginTeacher .NoOfTeachersContainer > * {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: -0.011em;
+  color: #212121;
+  width: 74px;
+  height: 22px;
+  background: #eeeeee;
+  border-radius: 3px 0px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.WelcomeToWizerDialog .WelcomeToWizerTitle {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 45px;
+  color: #212121;
+  text-align: center;
+}
+
+.WelcomeToWizerDialog .WizerLogo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.WelcomeToWizerDialog .WelcomeToWizerLetsStartButtonContainer {
+  text-align: center;
+}
+.WelcomeToWizerDialog .WelcomeToWizerLetsStartButton {
+  width: 186px;
+  height: 40px;
+  background: #ffc046;
+  border-radius: 10px;
+  text-transform: none;
+}
+.WelcomeToWizerDialog .WelcomeToWizerDialogContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  position: relative;
+}
+.WelcomeToWizerDialog .CloseIconContainer {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+/***** First Login Parent dependencies *****/

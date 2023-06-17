@@ -18,7 +18,7 @@
       },
       "orText":"or"
     },
-    "BirthDate": {
+    "FirstLoginStudent": {
       "birthDate": "What is your birth date?",
       "submit":"Submit",
       "dayTitle":"Day",
@@ -26,7 +26,7 @@
       "yearTitle":"Year"
     },
     "ForgotPassword": {
-      "forgotPassword":"Forgot Password?",
+      "forgotPassword":"Forgot password?",
       "noWorries":"No worries!",
       "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
       "send":"Send",
@@ -64,7 +64,8 @@
         "challenges" : "Challenges (optional)",
         "preferences" : "Preferences (optional)",
         "passionsAndHobbies" : "Passions and hobbies (optional)",
-        "addAChild" : "Add a Child"
+        "addAChild" : "Add a Child",
+        "removeAChild" : "Remove a Child"
       },
       "stepThree" : {
         "title" : "How do you support your child's education?",
@@ -82,10 +83,39 @@
         "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
       },
       "stepTwo" : {
-        "title" : "What’s your role?",
-        "subTitle" : "What’s your role?",
+        "title" : "What's your role?",
+        "subTitle" : "You can select more than 1.",
         "otherRole" : "Other role"
-      }
+      },
+      "stepThree" : {
+        "title" : "What subjects interest you the most?",
+        "subTitle" : "You can select more than 1.",
+        "otherSubjects" : "Other subjects"
+      },
+      "stepFour" : {
+        "title" : "What grade are your students?",
+        "subTitle" : "You can select more than 1.",
+        "otherGrades" : "Other grades"
+      },
+      "stepFive" : {
+        "title" : "What are you looking for in Wizer?",
+        "subTitle" : "You can select more than 1.",
+        "otherReason" : "Other Reason"
+      },
+      "stepSix" : {
+        "title" : "What is your school?",
+        "searchSchool" : "Search for your school name",
+        "didntSeeYourSchoolLink" : "Don't see your school?",
+        "shareWizerMeLink" : "Please share Wizer.Me with your supervisor",
+        "joinThisSchool" : "Join this school",
+        "skipLink" : "Skip"
+      },
+      "next" : "Next",
+      "joinThisSchool" : "Join this school"
+    },
+    "WelcomeToWizerDialog":{
+      "title" : "Welcome To",
+      "letsStart" : "Let's start"
     }
   }
 }

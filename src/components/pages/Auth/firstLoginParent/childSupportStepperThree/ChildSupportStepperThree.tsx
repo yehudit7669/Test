@@ -1,18 +1,23 @@
-import { Grid, TextField, Typography, Chip, Stack } from "@mui/material";
+import { Grid, TextField, Typography } from "@mui/material";
 import { useTranslation } from "react-i18next";
-import React, { useState } from "react";
+import React from "react";
 import FormLabel from "@mui/material/FormLabel";
+import MultipleSelectableChips from "../../../../common/multipleSelectableChips/MultipleSelectableChips";
+import Actions from "../../../../../actions";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../../../hooks/redux-hooks";
 
 const StepperThree = () => {
   /* i18n translation dependencies */
   const { t } = useTranslation();
+  /* i18n translation dependencies */
 
-  /* Form submission dependencies */
-  const [formData, setFormData] = useState({
-    other: "",
-    supportChildEducationTags: [],
-  });
-  /* Form submission dependencies */
+  const dispatch = useAppDispatch();
+  const { firstLoginParentDetails, childEducationChipDetails } = useAppSelector(
+    (state) => state.firstLoginParent
+  );
 
   /* Stepper Three component dependencies */
   const renderTitle = () => (
@@ -27,23 +32,45 @@ const StepperThree = () => {
     </Typography>
   );
 
-  const renderSupportChildEducationTags = () => {
+  const renderSupportChildEducationSelectableChips = () => {
+    /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
+    const handleGetSelectedChipsDetails = (
+      multipleSelectableChipsArr: {
+        id: string;
+        label: string;
+        selected: boolean;
+      }[]
+    ) => {
+      /* Dispatching an action to update the selected state of the selectable chips */
+      dispatch(
+        Actions.createAction(
+          Actions.FIRST_LOGIN_PARENT_UPDATE_CHILD_EDUCATION_CHIP_DETAILS,
+          { multipleSelectableChipsArr }
+        )
+      );
+      /* Dispatching an action to update the selected state of the selectable chips */
+      const dataToBeSent = {
+        childEducation: {
+          ...firstLoginParentDetails.childEducation,
+          teachingMethod: multipleSelectableChipsArr
+            .filter((data) => data.selected)
+            .map((data) => data.id),
+        },
+      };
+      dispatch(
+        Actions.createAction(
+          Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
+          dataToBeSent
+        )
+      );
+    };
+    /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
     return (
       <>
-        <Stack direction="row" spacing={1}>
-          <Chip
-            variant="outlined"
-            size="medium"
-            sx={{ height: "40px" }}
-            label="Clickable"
-          />
-          <Chip
-            variant="outlined"
-            size="medium"
-            sx={{ height: "40px" }}
-            label="Another"
-          />
-        </Stack>
+        <MultipleSelectableChips
+          multipleSelectableChipDetails={childEducationChipDetails}
+          handleGetSelectedChipsDetails={handleGetSelectedChipsDetails}
+        />
       </>
     );
   };
@@ -56,15 +83,21 @@ const StepperThree = () => {
             <FormLabel className="FormLabel">Other</FormLabel>
             <TextField
               className="GenericFormFieldMargin"
-              onChange={(e: React.SyntheticEvent) =>
-                setFormData((prevValue) => {
-                  return {
-                    ...prevValue,
+              onChange={(e: React.SyntheticEvent) => {
+                const dataToBeSent = {
+                  childEducation: {
+                    ...firstLoginParentDetails.childEducation,
                     other: (e.target as HTMLInputElement).value,
-                  };
-                })
-              }
-              value={formData.other}
+                  },
+                };
+                dispatch(
+                  Actions.createAction(
+                    Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
+                    dataToBeSent
+                  )
+                );
+              }}
+              value={firstLoginParentDetails.childEducation.other}
               label="Type here (seperate by comma)"
               variant="outlined"
               fullWidth
@@ -80,7 +113,7 @@ const StepperThree = () => {
     <>
       {renderTitle()}
       {renderSubTitle()}
-      {renderSupportChildEducationTags()}
+      {renderSupportChildEducationSelectableChips()}
       {renderFirstLoginParentForm()}
     </>
   );

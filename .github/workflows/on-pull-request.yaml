@@ -37,3 +37,7 @@ jobs:
         working-directory: src
         run: |-
           tsc
+
+      - name: Run vite build
+        run: |-
+          npx vite build

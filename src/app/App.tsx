@@ -1,23 +1,14 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import SignIn from "../components/pages/Auth/SignIn";
-import SignUp from "../components/pages/Auth/SignUp";
-import ForgotPassword from "../components/pages/Auth/ForgotPassword";
+import SignUpTabs from "../components/pages/Auth/SignUpTabs";
 import AuthLayout from "../components/layouts/AuthLayout";
-import { routes } from "../constants";
+import { routes, userLayouts } from "../constants";
 import useWebSocket from "react-use-websocket";
 import { getWSEnv } from "../utils/envUtil";
-import RequireAuth from "./requireAuth/RequireAuth";
-import useUser from "../hooks/useUser";
-import renderRoleRoutes from "./routes/renderRoleRoutes";
-import { useAppSelector } from "../hooks/redux-hooks";
-import JoinWizerSignUpPage from "../components/pages/Auth/JoinWizerSignUpPage";
-import FirstLoginParent from "../components/pages/Auth/firstLoginParent";
-import FirstLoginTeacher from "../components/pages/Auth/firstLoginTeacher";
+import SignUp from "../components/pages/Auth/SignUp";
+import renderRoutes from "./routes/renderRoutes";
 
 function App() {
-  const [user] = useUser();
-  const userInfo = useAppSelector((state) => state.auth.user);
-  const userRole = user?.role || userInfo?.role;
   //Connecting websocket
   useWebSocket(getWSEnv(), {
     onOpen: () => {
@@ -28,37 +19,34 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        {/* Protected Main layout routes */}
-        <Route path={routes.ROOT} element={<RequireAuth />}>
-          {/* To redirect to get started or dashboard */}
-          <Route index element={<Navigate to={userRole} replace />} />
-          {renderRoleRoutes(userRole)}
-        </Route>
-
-        {/* Public Auth routes */}
         <Route element={<AuthLayout />}>
-          <Route index element={<Navigate to={routes.SIGN_IN} replace />} />
-          <Route path={routes.SIGN_IN} element={<SignIn />} />
-          <Route path={routes.SIGN_UP} element={<SignUp />} />
-          <Route path={routes.SELECT_ROLE} element={<JoinWizerSignUpPage />} />
+          {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route
-            path={routes.FIRST_LOGIN_TEACHER}
-            element={<FirstLoginTeacher />}
+            index
+            element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
           />
-          <Route
-            path={routes.FIRST_LOGIN_PARENT}
-            element={<FirstLoginParent />}
-          />
-          <Route path={routes.FORGOT_PASSWORD} element={<ForgotPassword />} />
+          {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
+
+          {/* Public routes */}
+          <Route path={`/${routes.SIGN_IN}`} element={<SignIn />} />
+          <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
+          <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />
+          {/* Public routes */}
+          <Route path="*" element={<Navigate to={routes.SIGN_IN} replace />} />
         </Route>
 
-        {/* Any other route page */}
-        <Route
+        {/* Protect these routes for auth layout */}
+        {renderRoutes(userLayouts.IS_AUTH)}
+        {/* Protect these routes for auth layout */}
+
+        {/* Protected routes for main layout */}
+        {renderRoutes(userLayouts.IS_MAIN)}
+        {/* Protected routes for main layout */}
+
+        {/* <Route
           path="*"
-          element={
-            <Navigate to={userRole ? routes.ROOT : routes.SIGN_IN} replace />
-          }
-        />
+          element={<Navigate to={ routes.SIGN_IN} replace />}
+          />   */}
       </Routes>
     </div>
   );

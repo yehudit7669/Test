@@ -109,83 +109,6 @@
 
 /****** Sign In component dependencies ******/
 
-/****** BirthDate component dependencies ******/
-.BirthDate {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.BirthDate .Wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 424px;
-  gap: 3rem;
-}
-
-.BirthDate .Title {
-  width: 424px;
-  height: 60px;
-  left: calc(50% - 424px / 2 + 212px);
-  top: 253px;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 37px;
-  line-height: 60px;
-  text-align: center;
-  color: #212121;
-}
-
-.BirthDate .DateContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 1rem;
-}
-
-.BirthDate .DateContainer .DatePicker {
-  width: 130.54px;
-  height: 40px;
-}
-
-.BirthDate .DateContainer .DatePickerLabel {
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  color: #212121;
-}
-
-.BirthDate .BirthDateForm {
-  width: 424px;
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.BirthDate .BirthDateForm .DatePickerContainer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Overriding the default CSS for text-transform */
-.BirthDate .MuiButton-contained {
-  text-transform: none !important;
-}
-/* Overriding the default CSS for text-transform */
-
-.BirthDate .Button {
-  width: 424px;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  border-radius: 10px;
-  gap: 0.8rem;
-}
-/****** BirthDate component dependencies ******/
-
 /****** Forgot password dependencies ******/
 .ForgotPassword {
   height: 100vh;
@@ -269,7 +192,7 @@
 
 /****** Sign Up dependencies ******/
 .SignUp {
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -326,6 +249,7 @@
   font-style: normal;
   font-weight: 400;
   font-size: 24px;
+  color: #323232;
 }
 
 .SignUp .RoleCard > :nth-child(2) > :nth-child(2) {
@@ -341,11 +265,93 @@
 
 .SignUp .RoleWrapper {
   display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.SignUp .RoleWrapperContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 1.5rem;
 }
 /****** Sign Up dependencies ******/
 
 /****** Join Wizer Sign Up dependencies ******/
+.JoinWizerSignUp {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.JoinWizerSignUp .Wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 424px;
+  gap: 1rem;
+}
+
+.JoinWizerSignUp .Navigation {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 36px;
+  letter-spacing: -0.011em;
+  color: #808080;
+}
+
+.JoinWizerSignUp .Title {
+  width: 424px;
+  height: 60px;
+  left: calc(50% - 424px / 2 + 212px);
+  top: 253px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 60px;
+  text-align: center;
+  color: #212121;
+}
+
+.JoinWizerSignUp .Subtitle[data-subtitle] {
+  width: 369px;
+}
+
+.JoinWizerSignUp .Subtitle {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: -0.011em;
+  color: #808080;
+  text-align: center;
+}
+
+/* Common button style */
+.JoinWizerSignUp .Button {
+  width: 424px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  border-radius: 10px;
+  gap: 0.8rem;
+}
+/* Common button style */
+
+.JoinWizerSignUp .Button[data-auth] {
+  display: flex;
+  justify-content: flex-start;
+  background: #f5f5f5;
+  box-shadow: none;
+}
+.JoinWizerSignUp .Button[data-auth]:hover {
+  box-shadow: none;
+}
+
 .JoinWizerSignUpForm {
   display: grid;
   gap: 0.8rem;
