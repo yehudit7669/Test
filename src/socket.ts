@@ -1,4 +1,12 @@
-import { io, Socket } from 'socket.io-client';
+import { io, Socket } from 'socket.io-client'
 import { getWSEnv } from './utils/envUtil'
 
-export const socket: Socket = io(getWSEnv());
+let socket: Socket
+
+export const connect = (): void => {
+  socket = io(getWSEnv())
+}
+
+export const getSocket = (): Socket => {
+  return socket
+}

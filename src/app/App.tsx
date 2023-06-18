@@ -4,27 +4,13 @@ import SignIn from '../components/pages/Auth/SignIn'
 import SignUpTabs from '../components/pages/Auth/SignUpTabs'
 import AuthLayout from '../components/layouts/AuthLayout'
 import { routes, userLayouts } from '../constants'
-import { socket } from '../socket'
+import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
 
 function App() {
   useEffect(() => {
-    function onConnect() {
-      console.log('Socket Connected!');
-    }
-
-    function onDisconnect() {
-      console.log('Socket Disconnected!');
-    }
-
-    socket.on('connect', onConnect);
-    socket.on('disconnect', onDisconnect);
-
-    return () => {
-      socket.off('connect', onConnect);
-      socket.off('disconnect', onDisconnect);
-    };
+    WSConnect()
   }, [])
   return (
     <div className="App">
