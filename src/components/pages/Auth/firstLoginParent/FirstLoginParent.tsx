@@ -95,7 +95,6 @@ function FirstLoginParent() {
 
   /* Form submission dependencies */
   const handleSubmitFirstLoginParentForm = () => {
-    console.log(firstLoginParentDetails, 'firstLoginParentDetails')
     dispatch(
       getFirstLoginParentAction(
         firstLoginParentDetails,
