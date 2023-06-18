@@ -3,11 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "lint-staged": {
-    "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
-      "prettier --write"
-    ]
-  },
   "scripts": {
     "start": "cross-env vite",
     "build": "cross-env tsc && vite build",
