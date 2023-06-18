@@ -19,6 +19,8 @@ on:
         required: true
       GCP_SA_KEY:
         required: true
+      SLACK_WEBHOOK:
+        required: true
 
 env:
   GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}

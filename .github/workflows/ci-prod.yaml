@@ -12,7 +12,7 @@ jobs:
       id-token: write
       contents: read
     uses: ./.github/workflows/ci.yaml
-    name: ci
+    name: Prod CI
     with:
       env: prod
       backendURL: https://wizer-be-prod-g372w7tgka-uc.a.run.app
@@ -21,3 +21,4 @@ jobs:
       GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
       GCP_SA_EMAIL: ${{ secrets.GCP_SA_EMAIL }}
       GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
