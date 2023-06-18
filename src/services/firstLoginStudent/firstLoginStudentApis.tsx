@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const FIRST_LOGIN_STUDENT_URL = `auth/student/details`;
+export const FIRST_LOGIN_STUDENT_URL = `auth/student/details`
 
 export const firstLoginStudent = (DOB: string) => {
   return axios.post(
@@ -9,5 +9,5 @@ export const firstLoginStudent = (DOB: string) => {
       DOB,
     }
     // { headers: {} }
-  );
-};
+  )
+}

@@ -1,5 +1,5 @@
-import { WizerLogoForLoader } from "../../../assets/svgs/svg-components";
-import "./Loader.css";
+import { WizerLogoForLoader } from '../../../assets/svgs/svg-components'
+import './Loader.css'
 
 const Loader = () => {
   return (
@@ -15,7 +15,7 @@ const Loader = () => {
         <div></div>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Loader;
+export default Loader

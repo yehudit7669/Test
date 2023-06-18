@@ -1,12 +1,12 @@
-import { Navigate, Route } from "react-router-dom";
-import MainLayout from "../../components/layouts/MainLayout";
-import { routes, userLayouts } from "../../constants";
-import FirstLoginStudent from "../../components/pages/Auth/firstLoginStudent";
-import StudentDashboard from "../../components/pages/Dashboard/studentDashboard";
+import { Navigate, Route } from 'react-router-dom'
+import MainLayout from '../../components/layouts/MainLayout'
+import { routes, userLayouts } from '../../constants'
+import FirstLoginStudent from '../../components/pages/Auth/firstLoginStudent'
+import StudentDashboard from '../../components/pages/Dashboard/studentDashboard'
 
 type Props = {
-  layout: string;
-};
+  layout: string
+}
 
 const renderStudentRoutes = ({ layout }: Props) => {
   switch (layout) {
@@ -21,7 +21,7 @@ const renderStudentRoutes = ({ layout }: Props) => {
             />
           </Route>
         </>
-      );
+      )
     case userLayouts.IS_MAIN:
       return (
         <>
@@ -30,8 +30,8 @@ const renderStudentRoutes = ({ layout }: Props) => {
             <Route path={routes.DASHBOARD} element={<StudentDashboard />} />
           </Route>
         </>
-      );
+      )
   }
-};
+}
 
-export default renderStudentRoutes;
+export default renderStudentRoutes

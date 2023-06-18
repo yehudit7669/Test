@@ -1,1 +1,1 @@
-export const USER_SIGN_UP = null;
+export const USER_SIGN_UP = null

@@ -1,9 +1,9 @@
-import { NavigateFunction } from "react-router";
-import Actions from "../../actions";
-import * as requestFromServer from "./authApis";
-import { Dispatch, SetStateAction } from "react";
-import { AxiosResponse } from "axios";
-import { routes } from "../../constants";
+import { NavigateFunction } from 'react-router'
+import Actions from '../../actions'
+import * as requestFromServer from './authApis'
+import { Dispatch, SetStateAction } from 'react'
+import { AxiosResponse } from 'axios'
+import { routes } from '../../constants'
 
 export const getUserAction =
   (
@@ -17,32 +17,32 @@ export const getUserAction =
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
-      setLoading(true);
+      setLoading(true)
 
       const response: AxiosResponse<any> = await requestFromServer.login(
         email,
         password,
         rememberMe
-      );
+      )
 
       if (response.status === 200) {
-        setLoading(false);
-        const { token, role } = response.data;
-        setToken(token);
-        dispatch(Actions.createAction(Actions.USER_LOGIN, response.data));
-        navigate(`/${role}`, { replace: true });
-        return response;
+        setLoading(false)
+        const { token, role } = response.data
+        setToken(token)
+        dispatch(Actions.createAction(Actions.USER_LOGIN, response.data))
+        navigate(`/${role}`, { replace: true })
+        return response
       } else {
-        setLoading(false);
-        setError(response?.data?.message);
-        return null;
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
       }
     } catch (err: any) {
-      setLoading(false);
-      setError(err?.response?.data?.message);
-      throw err;
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
     }
-  };
+  }
 
 export const forgotPasswordAction =
   (
@@ -54,25 +54,25 @@ export const forgotPasswordAction =
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {
-      setLoader(true);
+      setLoader(true)
       const response: AxiosResponse<any> =
-        await requestFromServer.forgotPassword(email);
+        await requestFromServer.forgotPassword(email)
 
       if (response.status === 200) {
-        setLoader(false);
-        setSuccessMessage(response.data.message);
+        setLoader(false)
+        setSuccessMessage(response.data.message)
         setTimeout(() => {
-          navigate(routes.SIGN_IN);
-        }, 3000);
-        return response;
+          navigate(routes.SIGN_IN)
+        }, 3000)
+        return response
       } else {
-        setLoader(false);
-        setError(response?.data?.message);
-        return null;
+        setLoader(false)
+        setError(response?.data?.message)
+        return null
       }
     } catch (err: any) {
-      setLoader(false);
-      setError(err?.response?.data?.message);
-      throw err;
+      setLoader(false)
+      setError(err?.response?.data?.message)
+      throw err
     }
-  };
+  }

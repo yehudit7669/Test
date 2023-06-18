@@ -1,10 +1,10 @@
-import { userLayouts, userRoles } from "../../constants";
-import { Route } from "react-router-dom";
-import RequireAuth from "../requireAuth/RequireAuth";
-import renderStudentRoutes from "./renderStudentRoutes";
-import renderParentRoutes from "./renderParentRoutes";
-import renderTeacherRoutes from "./renderTeacherRoutes";
-import AuthLayout from "../../components/layouts/AuthLayout";
+import { userLayouts, userRoles } from '../../constants'
+import { Route } from 'react-router-dom'
+import RequireAuth from '../requireAuth/RequireAuth'
+import renderStudentRoutes from './renderStudentRoutes'
+import renderParentRoutes from './renderParentRoutes'
+import renderTeacherRoutes from './renderTeacherRoutes'
+import AuthLayout from '../../components/layouts/AuthLayout'
 
 const renderRoutes = (layout: string) => {
   switch (layout) {
@@ -26,7 +26,7 @@ const renderRoutes = (layout: string) => {
             </Route>
           </Route>
         </>
-      );
+      )
 
     /* Render protected routes for MainLayout */
     case userLayouts.IS_MAIN:
@@ -44,10 +44,10 @@ const renderRoutes = (layout: string) => {
             {renderTeacherRoutes({ layout })}
           </Route>
         </>
-      );
+      )
     default:
-      return;
+      return
   }
-};
+}
 
-export default renderRoutes;
+export default renderRoutes

@@ -1,21 +1,31 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import SignIn from "../components/pages/Auth/SignIn";
-import SignUpTabs from "../components/pages/Auth/SignUpTabs";
-import AuthLayout from "../components/layouts/AuthLayout";
-import { routes, userLayouts } from "../constants";
-import useWebSocket from "react-use-websocket";
-import { getWSEnv } from "../utils/envUtil";
-import SignUp from "../components/pages/Auth/SignUp";
-import renderRoutes from "./routes/renderRoutes";
+import { useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import SignIn from '../components/pages/Auth/SignIn'
+import SignUpTabs from '../components/pages/Auth/SignUpTabs'
+import AuthLayout from '../components/layouts/AuthLayout'
+import { routes, userLayouts } from '../constants'
+import { socket } from '../socket'
+import SignUp from '../components/pages/Auth/SignUp'
+import renderRoutes from './routes/renderRoutes'
 
 function App() {
-  //Connecting websocket
-  useWebSocket(getWSEnv(), {
-    onOpen: () => {
-      console.log("WebSocket connection established.");
-    },
-  });
+  useEffect(() => {
+    function onConnect() {
+      console.log('Socket Connected!');
+    }
 
+    function onDisconnect() {
+      console.log('Socket Disconnected!');
+    }
+
+    socket.on('connect', onConnect);
+    socket.on('disconnect', onDisconnect);
+
+    return () => {
+      socket.off('connect', onConnect);
+      socket.off('disconnect', onDisconnect);
+    };
+  }, [])
   return (
     <div className="App">
       <Routes>
@@ -49,7 +59,7 @@ function App() {
           />   */}
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

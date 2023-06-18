@@ -1,3 +1,3 @@
-import FirstLoginTeacher from "./FirstLoginTeacher";
+import FirstLoginTeacher from './FirstLoginTeacher'
 
-export default FirstLoginTeacher;
+export default FirstLoginTeacher

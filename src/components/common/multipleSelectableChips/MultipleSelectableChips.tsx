@@ -1,15 +1,15 @@
-import { Chip, Stack } from "@mui/material";
+import { Chip, Stack } from '@mui/material'
 
 type Props = {
   multipleSelectableChipDetails: {
-    id: string;
-    label: string;
-    selected: boolean;
-  }[];
+    id: string
+    label: string
+    selected: boolean
+  }[]
   handleGetSelectedChipsDetails: (
     value: { id: string; label: string; selected: boolean }[]
-  ) => void;
-};
+  ) => void
+}
 
 const MultipleSelectableChips = ({
   multipleSelectableChipDetails,
@@ -22,15 +22,15 @@ const MultipleSelectableChips = ({
   ) => {
     const newMultipleSelectableChipDetails = [
       ...JSON.parse(JSON.stringify(multipleSelectableChipDetails)),
-    ];
+    ]
     if (selectedvalue.selected === false) {
-      newMultipleSelectableChipDetails[index].selected = true;
+      newMultipleSelectableChipDetails[index].selected = true
     } else {
-      newMultipleSelectableChipDetails[index].selected = false;
+      newMultipleSelectableChipDetails[index].selected = false
     }
 
-    handleGetSelectedChipsDetails(newMultipleSelectableChipDetails);
-  };
+    handleGetSelectedChipsDetails(newMultipleSelectableChipDetails)
+  }
   /* Function definition to select the tag on click */
 
   return (
@@ -46,21 +46,21 @@ const MultipleSelectableChips = ({
                 <Chip
                   onClick={() => handleSelectTags(tag, index)}
                   size="medium"
-                  color={tag.selected ? "secondary" : "default"}
-                  variant={tag.selected ? "filled" : "outlined"}
+                  color={tag.selected ? 'secondary' : 'default'}
+                  variant={tag.selected ? 'filled' : 'outlined'}
                   sx={{
-                    color: tag.selected ? "white" : "default",
-                    fontSize: "16px",
+                    color: tag.selected ? 'white' : 'default',
+                    fontSize: '16px',
                   }}
                   label={tag.label}
                 />
               </>
-            );
+            )
           }
         )}
       </Stack>
     </>
-  );
-};
+  )
+}
 
-export default MultipleSelectableChips;
+export default MultipleSelectableChips

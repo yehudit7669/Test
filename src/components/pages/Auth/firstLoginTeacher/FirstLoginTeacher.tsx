@@ -4,41 +4,41 @@ import {
   MobileStepper,
   IconButton,
   Grid,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
-import "./FirstLoginTeacher.css";
-import { useState } from "react";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
-import AboutYourRoleStepperTwo from "./aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx";
-import SubjectInterestsStepperThree from "./subjectInterestsStepperThree/SubjectInterestsStepperThree.tsx";
-import StudentsGradeStepperFour from "./studentsGradeStepperFour/StudentsGradeStepperFour.tsx";
-import SchoolStepperSix from "./schoolStepperSix/SchoolStepperSix.tsx";
-import WizerInterestsStepperFive from "./wizerInterestsStepperFive/WizerInterestsStepperFive.tsx";
-import WelcomeToWizerDialog from "./welcomeToWizerDialog/WelcomeToWizerDialog.tsx";
-import { Link } from "react-router-dom";
+} from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import './FirstLoginTeacher.css'
+import { useState } from 'react'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import AboutYouStepperOne from './aboutYouStepperOne/AboutYouStepperOne.tsx'
+import AboutYourRoleStepperTwo from './aboutYourRoleStepperTwo/AboutYourRoleStepperTwo.tsx'
+import SubjectInterestsStepperThree from './subjectInterestsStepperThree/SubjectInterestsStepperThree.tsx'
+import StudentsGradeStepperFour from './studentsGradeStepperFour/StudentsGradeStepperFour.tsx'
+import SchoolStepperSix from './schoolStepperSix/SchoolStepperSix.tsx'
+import WizerInterestsStepperFive from './wizerInterestsStepperFive/WizerInterestsStepperFive.tsx'
+import WelcomeToWizerDialog from './welcomeToWizerDialog/WelcomeToWizerDialog.tsx'
+import { Link } from 'react-router-dom'
 
 function FirstLoginTeacher() {
   /* i18n translation dependencies */
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   /* i18n translation dependencies */
 
   /* Welcome To Wizer Dialog dependencies */
   const [welcomeToWizerDialog, setWelcomeToWizerDialog] =
-    useState<boolean>(false);
+    useState<boolean>(false)
   /* Welcome To Wizer Dialog dependencies */
 
   /* Dependencies for stepper component */
-  const [activeStep, setActiveStep] = useState(0);
-  const totalSteps = 6;
+  const [activeStep, setActiveStep] = useState(0)
+  const totalSteps = 6
 
   const handleStepperNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
   const handleStepperBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
   /* Dependencies for stepper component */
 
   /* Stepper component dependencies */
@@ -53,8 +53,8 @@ function FirstLoginTeacher() {
                 sx={{
                   margin: 0,
                   padding: 0,
-                  "&.MuiButtonBase-root:hover": {
-                    bgcolor: "transparent",
+                  '&.MuiButtonBase-root:hover': {
+                    bgcolor: 'transparent',
                   },
                 }}
               >
@@ -79,18 +79,18 @@ function FirstLoginTeacher() {
           </div>
         </div>
       </div>
-    );
-  };
+    )
+  }
   /* Stepper component dependencies */
 
   /* Dialog dependencies */
   const handleWelcomeToWizerDialogOpen = () => {
-    setWelcomeToWizerDialog(true);
-  };
+    setWelcomeToWizerDialog(true)
+  }
 
   const handleWelcomeToWizerDialogClose = () => {
-    setWelcomeToWizerDialog(false);
-  };
+    setWelcomeToWizerDialog(false)
+  }
   /* Dialog dependencies */
 
   return (
@@ -137,11 +137,11 @@ function FirstLoginTeacher() {
                 color="secondary"
                 onClick={handleWelcomeToWizerDialogOpen}
               >
-                {t("FirstLoginTeacher.stepSix.joinThisSchool")}
+                {t('FirstLoginTeacher.stepSix.joinThisSchool')}
               </Button>
               <Grid item xs={4} sm={6} md={12}>
                 <Link to="#" className="SkipLink">
-                  {t("FirstLoginTeacher.stepSix.skipLink")}
+                  {t('FirstLoginTeacher.stepSix.skipLink')}
                 </Link>
               </Grid>
             </div>
@@ -153,7 +153,7 @@ function FirstLoginTeacher() {
               color="secondary"
               onClick={handleStepperNext}
             >
-              {t("FirstLoginTeacher.next")}
+              {t('FirstLoginTeacher.next')}
             </Button>
           )}
         </div>
@@ -165,7 +165,7 @@ function FirstLoginTeacher() {
         }
       </div>
     </>
-  );
+  )
 }
 
-export default FirstLoginTeacher;
+export default FirstLoginTeacher

@@ -1,7 +1,7 @@
 const userRoles = {
-  STUDENT: "student",
-  TEACHER: "teacher",
-  PARENT: "parent",
-};
+  STUDENT: 'student',
+  TEACHER: 'teacher',
+  PARENT: 'parent',
+}
 
-export default userRoles;
+export default userRoles

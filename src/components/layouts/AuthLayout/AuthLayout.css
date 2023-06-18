@@ -11,7 +11,7 @@
   top: 0;
   justify-content: center;
   align-items: center;
-  background-image: url("https://storage.googleapis.com/wizer-public-assets/images/auth_bg.png");
+  background-image: url('https://storage.googleapis.com/wizer-public-assets/images/auth_bg.png');
   text-align: center;
 }
 

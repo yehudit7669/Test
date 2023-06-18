@@ -1,8 +1,8 @@
-import { NavigateFunction } from "react-router";
-import Actions from "../../actions";
-import * as requestFromServer from "./firstLoginStudentApis";
-import { Dispatch, SetStateAction } from "react";
-import { AxiosResponse } from "axios";
+import { NavigateFunction } from 'react-router'
+import Actions from '../../actions'
+import * as requestFromServer from './firstLoginStudentApis'
+import { Dispatch, SetStateAction } from 'react'
+import { AxiosResponse } from 'axios'
 
 export const getFirstLoginStudentAction =
   (
@@ -14,27 +14,27 @@ export const getFirstLoginStudentAction =
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
-      setLoading(true);
+      setLoading(true)
 
       const response: AxiosResponse<any> =
-        await requestFromServer.firstLoginStudent(DOB);
+        await requestFromServer.firstLoginStudent(DOB)
 
       if (response.status === 200) {
-        setLoading(false);
+        setLoading(false)
         dispatch(
           Actions.createAction(Actions.FIRST_LOGIN_STUDENT, response.data)
-        );
-        navigate(`/${role}`, { replace: true });
+        )
+        navigate(`/${role}`, { replace: true })
 
-        return response;
+        return response
       } else {
-        setLoading(false);
-        setError(response?.data?.message);
-        return null;
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
       }
     } catch (err: any) {
-      setLoading(false);
-      setError(err?.response?.data?.message);
-      throw err;
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
     }
-  };
+  }

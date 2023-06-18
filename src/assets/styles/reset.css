@@ -104,7 +104,7 @@ section {
 
 body {
   /* Adding default fonts - Source Sans Pro */
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
   /* Adding default fonts - Source Sans Pro */
   line-height: 1;
 }
@@ -123,7 +123,7 @@ blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-  content: "";
+  content: '';
   content: none;
 }
 

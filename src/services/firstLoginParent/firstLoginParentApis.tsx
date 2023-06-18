@@ -1,9 +1,9 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const FIRST_LOGIN_PARENT_URL = `auth/parent/details`;
+export const FIRST_LOGIN_PARENT_URL = `auth/parent/details`
 
 export const firstLoginParent = (firstLoginParentDetails: {
-  [key: string]: any;
+  [key: string]: any
 }) => {
   return axios.post(
     FIRST_LOGIN_PARENT_URL,
@@ -11,5 +11,5 @@ export const firstLoginParent = (firstLoginParentDetails: {
       ...firstLoginParentDetails,
     }
     // { headers: {} }
-  );
-};
+  )
+}

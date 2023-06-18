@@ -1,8 +1,8 @@
-import { combineReducers } from "redux";
-import auth from "./authReducer";
-import firstLoginParent from "./firstLoginParentReducer";
-import firstLoginTeacher from "./firstLoginTeacherReducer";
-import firstLoginStudent from "./firstLoginStudentReducer";
+import { combineReducers } from 'redux'
+import auth from './authReducer'
+import firstLoginParent from './firstLoginParentReducer'
+import firstLoginTeacher from './firstLoginTeacherReducer'
+import firstLoginStudent from './firstLoginStudentReducer'
 
 const rootReducer = () =>
   combineReducers({
@@ -10,6 +10,6 @@ const rootReducer = () =>
     firstLoginParent,
     firstLoginTeacher,
     firstLoginStudent,
-  });
+  })
 
-export default rootReducer;
+export default rootReducer

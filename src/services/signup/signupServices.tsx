@@ -1,9 +1,9 @@
-import { NavigateFunction } from "react-router";
-import Actions from "../../actions";
-import * as requestFromServer from "./signupApis";
-import { Dispatch, SetStateAction } from "react";
-import { AxiosResponse } from "axios";
-import { routes } from "../../constants";
+import { NavigateFunction } from 'react-router'
+import Actions from '../../actions'
+import * as requestFromServer from './signupApis'
+import { Dispatch, SetStateAction } from 'react'
+import { AxiosResponse } from 'axios'
+import { routes } from '../../constants'
 
 export const getSignUpAction =
   (
@@ -18,31 +18,31 @@ export const getSignUpAction =
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
-      setLoading(true);
+      setLoading(true)
 
       const response: AxiosResponse<any> = await requestFromServer.signup(
         email,
         password,
         role,
         classCode
-      );
+      )
 
       if (response.status === 200) {
-        setLoading(false);
-        const { token, role } = response.data;
-        setToken(token);
-        dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data));
-        navigate(`/${routes.GET_STARTED}/${role}`, { replace: true });
+        setLoading(false)
+        const { token, role } = response.data
+        setToken(token)
+        dispatch(Actions.createAction(Actions.USER_SIGN_UP, response.data))
+        navigate(`/${routes.GET_STARTED}/${role}`, { replace: true })
 
-        return response;
+        return response
       } else {
-        setLoading(false);
-        setError(response?.data?.message);
-        return null;
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
       }
     } catch (err: any) {
-      setLoading(false);
-      setError(err?.response?.data?.message);
-      throw err;
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
     }
-  };
+  }

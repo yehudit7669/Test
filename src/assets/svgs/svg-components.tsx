@@ -34,8 +34,8 @@ export const GoogleIcon = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Svg icon of Microsoft
 export const MicrosoftIcon = () => {
@@ -68,8 +68,8 @@ export const MicrosoftIcon = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Teacher in Sign Up page
 export const JoinAsTeacherIcon = () => {
@@ -88,8 +88,8 @@ export const JoinAsTeacherIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Student in Sign Up page
 export const JoinAsStudentIcon = () => {
@@ -108,8 +108,8 @@ export const JoinAsStudentIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Parent in Sign Up page
 export const JoinAsParentIcon = () => {
@@ -128,8 +128,8 @@ export const JoinAsParentIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Cancel Icon
 export const CancelIcon = () => {
@@ -151,8 +151,8 @@ export const CancelIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // CalendarIcon
 export const CalendarIcon = () => {
@@ -171,8 +171,8 @@ export const CalendarIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // WizerLogoWithNameForDialog
 export const WizerLogoWithNameForDialog = () => {
@@ -250,8 +250,8 @@ export const WizerLogoWithNameForDialog = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Wizer Logo with name
 export const WizerLogoWithName = () => {
@@ -287,8 +287,8 @@ export const WizerLogoWithName = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Close Icon for dialog
 export const CloseIcon = () => {
@@ -309,8 +309,8 @@ export const CloseIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Wizer Logo for loader
 export const WizerLogoForLoader = () => {
@@ -349,5 +349,5 @@ export const WizerLogoForLoader = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}

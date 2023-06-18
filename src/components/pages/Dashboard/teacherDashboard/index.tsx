@@ -1,3 +1,3 @@
-import TeacherDashboard from "./TeacherDashboard";
+import TeacherDashboard from './TeacherDashboard'
 
-export default TeacherDashboard;
+export default TeacherDashboard
