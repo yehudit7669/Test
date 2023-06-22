@@ -1,5 +1,5 @@
 
-import StudentDashboardImg from "../../../../assets/images/div.cover-image.png";
+import StudentDashboardImg from "../../../../assets/images/studentDashboard_bg.png";
 import OpenQuestionWidget from "./openQuestionWidget";
 import "./StudentDashboard.css"
 

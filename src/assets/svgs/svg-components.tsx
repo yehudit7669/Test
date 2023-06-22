@@ -428,3 +428,54 @@ export const RecordAudioIcon = () => {
     </>
   );
 };
+
+export const PauseRecordingIcon = () => {
+  return (
+    <>
+      <svg
+        width="33"
+        height="33"
+        viewBox="0 0 33 33"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="33" height="33" fill="white" />
+      </svg>
+    </>
+  );
+};
+
+export const PlayAudioIcon = () => {
+  return (
+    <>
+      <svg
+        width="31"
+        height="37"
+        viewBox="0 0 31 37"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M31 18.5L0.249998 36.2535L0.25 0.746478L31 18.5Z"
+          fill="white"
+        />
+      </svg>
+    </>
+  );
+};
+
+export const PlayIconForRecordedAnswers = () => {
+  return (
+    <>
+      <svg
+        width="19"
+        height="25"
+        viewBox="0 0 19 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path d="M0.129883 -0.5L18.8799 12L0.129883 24.5V-0.5Z" fill="white" />
+      </svg>
+    </>
+  );
+};

@@ -78,3 +78,7 @@
 .OpenQuestionWidget_Container .Button[data-handInWork]:hover {
     background-color: rgb(57,73,171);
 }
+
+.PaddingForPlayIcon_Container{
+    padding-left: 8px;
+}

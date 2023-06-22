@@ -20,6 +20,7 @@
     justify-content: center;
 }
 
+
 .AudioRecorderDialog .UploadAudioFileDesctiption{
     font-family: 'Rubik';
     font-style: normal;
@@ -34,4 +35,10 @@
 .AudioRecorderDialog .UploadAudioFileText{
     text-decoration: underline;
     cursor: pointer;
+}
+.AudioRecorderDialog .UploadButton{
+    text-transform: none;
+    width: 110px;
+    border-radius: 100vw;
+    padding: 2px 20px;
 }

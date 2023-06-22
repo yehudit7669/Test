@@ -116,6 +116,13 @@
     "WelcomeToWizerDialog":{
       "title" : "Welcome To",
       "letsStart" : "Let's start"
+    },
+    "AudioRecorder" : {
+      "header" : "Record Audio",
+      "UploadAudioFileDesctiption" : "Simply click on the recording button and fire away! or",
+      "uploadAnAudio" : "upload an audio file",
+      "startOver" : "Start Over",
+      "upload" : "Upload" 
     }
   }
 }
