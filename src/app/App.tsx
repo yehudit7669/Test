@@ -7,6 +7,7 @@ import { routes, userLayouts } from '../constants'
 import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
+import Worksheet from '../components/pages/Worksheet'
 
 function App() {
   useEffect(() => {
@@ -15,34 +16,26 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path={routes.WORKSHEET} element={<Worksheet />} />
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route
             index
             element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
           />
-          {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
 
           {/* Public routes */}
           <Route path={`/${routes.SIGN_IN}`} element={<SignIn />} />
           <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
           <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />
-          {/* Public routes */}
           <Route path="*" element={<Navigate to={routes.SIGN_IN} replace />} />
         </Route>
 
         {/* Protect these routes for auth layout */}
         {renderRoutes(userLayouts.IS_AUTH)}
-        {/* Protect these routes for auth layout */}
 
         {/* Protected routes for main layout */}
         {renderRoutes(userLayouts.IS_MAIN)}
-        {/* Protected routes for main layout */}
-
-        {/* <Route
-          path="*"
-          element={<Navigate to={ routes.SIGN_IN} replace />}
-          />   */}
       </Routes>
     </div>
   )

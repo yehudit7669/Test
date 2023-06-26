@@ -3,6 +3,7 @@ import * as signupActions from './signupActions'
 import * as firstLoginParentActions from './firstLoginParentActions'
 import * as firstLoginTeacherActions from './firstLoginTeacherActions'
 import * as firstLoginStudentActions from './firstLoginStudentActions'
+import * as worksheetActions from './worksheetActions'
 import * as createAction from './createAction'
 import keyMirror from 'keymirror'
 
@@ -13,6 +14,7 @@ const actions = keyMirror({
   ...firstLoginTeacherActions,
   ...signupActions,
   ...firstLoginStudentActions,
+  ...worksheetActions,
 })
 
 //Exporting all the actions from folder

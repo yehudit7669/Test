@@ -3,6 +3,7 @@ import auth from './authReducer'
 import firstLoginParent from './firstLoginParentReducer'
 import firstLoginTeacher from './firstLoginTeacherReducer'
 import firstLoginStudent from './firstLoginStudentReducer'
+import worksheet from './worksheetReducer'
 
 const rootReducer = () =>
   combineReducers({
@@ -10,6 +11,7 @@ const rootReducer = () =>
     firstLoginParent,
     firstLoginTeacher,
     firstLoginStudent,
+    worksheet,
   })
 
 export default rootReducer

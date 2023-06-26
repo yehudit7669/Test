@@ -19,4 +19,5 @@ export const routes: any = {
   PARENT_DASHBOARD: 'parent/dashboard',
   TEACHER_DASHBOARD: 'teacher/dashboard',
   STUDENT_DOB: 'date-of-birth',
+  WORKSHEET: 'worksheet/:id',
 }
