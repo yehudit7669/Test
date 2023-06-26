@@ -123,6 +123,17 @@
       "uploadAnAudio" : "upload an audio file",
       "startOver" : "Start Over",
       "upload" : "Upload" 
+    },
+    "VideoRecorder" : {
+      "header" : "Record Video",
+      "videoFileDescription" : "Simply click on the recording button to start your camera, then fire away!"
+    },
+    "Widget" : {
+      "answerRecorder" : "Answer recorder (optional) :",
+      "recordedAnswers" : "Recorded Answers :",
+      "voiceAnswer" : "Voice Answer",
+      "saved" : "Saved",
+      "handInWork" : "Hand In Work"
     }
   }
 }

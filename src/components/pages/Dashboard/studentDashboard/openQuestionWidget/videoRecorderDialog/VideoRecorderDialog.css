@@ -1,0 +1,33 @@
+
+
+.VideoRecorderDialog .Video_Player_Container {
+    background: rgba(0, 0, 0, 0.3);
+}
+.VideoRecorderDialog .Video_Player{
+    display: block;
+    max-width: 100%;
+    opacity: 0.5;
+}
+
+.VideoRecorderDialog .RecordIcon_Container{
+    width: 70px;
+    aspect-ratio: 1;
+    background: #5BBBB7;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.26);
+    border-radius: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.VideoRecorderDialog .Video_Player_Container{
+    position: relative;
+}
+.VideoRecorderDialog .RecordIcon_Button{
+    position: absolute;
+    top: 0;
+    left: 0;
+    inset: 0;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+}

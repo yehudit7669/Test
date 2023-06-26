@@ -84,9 +84,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
   const [isPlayingRecordedAudio, setIsPlayingRecordedAudio] = useState(false);
   /* Record audio dependencies */
 
-  
-
-  
   /* Condition to check if the playing duration is equal to the recorded duration */
   useEffect(() => {
     if (playAudioDuration > recordAudioDuration) {
@@ -96,7 +93,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     }
   }, [playAudioDuration, recordAudioDuration]);
   /* Condition to check if the playing duration is equal to the recorded duration */
-
 
   /* Function definition to reset the default values when dialog is closed - Dialog close dependencies */
   const onDialogClose = () => {
@@ -108,7 +104,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     setLoading(false);
   };
   /* Function definition to reset the default values when dialog is closed - Dialog close dependencies */
-  
 
   /***** Dialog title dependencies *****/
   const renderDialogTitle = () => {
@@ -134,8 +129,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     );
   };
   /***** Dialog title dependencies *****/
-
-
 
   /***** Dialog Content Phase 1 - Get permissions and click on the button to start recording *****/
   const renderGetPermissionsAndStartRecordingOnClick = () => {
@@ -209,8 +202,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
   };
   /***** Dialog Content Phase 1 - Get permissions and click on the button to start recording *****/
 
-
-
   /***** Dialog Content Phase 2 - Click on the button to stop recording *****/
   const renderStopRecordingOnClick = () => {
     /* Function definition to stop recording */
@@ -254,29 +245,10 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     );
   };
   /***** Dialog Content Phase 2 - Click on the button to stop recording *****/
-  
-
 
   /***** Dialog Content Phase 3 - Click on the button to listen, pause, record again and upload recording *****/
   const renderPlayPauseUploadAndStartOverRecording = () => {
-    
-    /* Function definition to play audio file which is recorded */
-    const handlePlayAudioRecorded = () => {
-      audioRef.current.play();
-      setIsPlayingRecordedAudio(true);
-      handlePlayAudio();
-    };
-    /* Function definition to play audio file which is recorded */
-    
-    /* Function definition to pause audio file which is recorded */
-    const handlePauseAudioRecorded = () => {
-      audioRef.current.pause();
-      setIsPlayingRecordedAudio(false);
-      handlePauseAudio();
-      handleResetAudio();
-    };
-    /* Function definition to pause audio file which is recorded */
-    
+
     /* Function definition to record the audio again */
     const onStartOver = () => {
       setRecordingStatus("inactive");
@@ -286,8 +258,7 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
       setLoading(false);
     };
     /* Function definition to record the audio again */
-    
-    
+
     /* Function definition for API call - On Submit handler */
     const onSubmit = () => {
       setLoading(true);
@@ -303,26 +274,14 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
             flexDirection="column"
             alignItems="center"
             justifyContent="center"
-            >
-            {isPlayingRecordedAudio === false ? (
-              <IconButton onClick={handlePlayAudioRecorded}>
-                <div className="RecordIcon_Container PaddingForPlayIcon_Container">
-                  <PlayAudioIcon />
-                </div>
-              </IconButton>
-            ) : (
-              <IconButton onClick={handlePauseAudioRecorded}>
-                <div className="RecordIcon_Container">
-                  <PauseRecordingIcon />
-                </div>
-              </IconButton>
-            )}
+          >
+            <PlayPauseRecordingIconButtons/>
             <Button
               className="UploadButton"
               variant="outlined"
               size="small"
               onClick={onStartOver}
-              >
+            >
               {t("AudioRecorder.startOver")}
             </Button>
             <div className="stopwatch-card">
@@ -335,7 +294,7 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
               variant="outlined"
               size="small"
               onClick={onSubmit}
-              >
+            >
               {t("AudioRecorder.upload")}
             </Button>
           </Stack>
@@ -344,6 +303,49 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     );
   };
   /***** Dialog Content Phase 3 - Click on the button to listen, pause, record again and upload recording *****/
+
+
+
+  /***** Seperate component for Play Pause Buttons *****/
+  const PlayIconButton = () => {
+    /* Function definition to play audio file which is recorded */
+    const handlePlayAudioRecorded = () => {
+      audioRef.current.play();
+      setIsPlayingRecordedAudio(true);
+      handlePlayAudio();
+    };
+    /* Function definition to play audio file which is recorded */
+    return (
+      <IconButton onClick={handlePlayAudioRecorded}>
+        <div className="RecordIcon_Container PaddingForPlayIcon_Container">
+          <PlayAudioIcon />
+        </div>
+      </IconButton>
+    );
+  };
+  
+  const PauseIconButton = () => {
+    /* Function definition to pause audio file which is recorded */
+    const handlePauseAudioRecorded = () => {
+      audioRef.current.pause();
+      setIsPlayingRecordedAudio(false);
+      handlePauseAudio();
+      handleResetAudio();
+    };
+    /* Function definition to pause audio file which is recorded */
+    return (
+      <IconButton onClick={handlePauseAudioRecorded}>
+        <div className="RecordIcon_Container">
+          <PauseRecordingIcon />
+        </div>
+      </IconButton>
+    );
+  };
+  
+  const PlayPauseRecordingIconButtons = () => {
+    return isPlayingRecordedAudio === false ? <PlayIconButton/> : <PauseIconButton/>
+  };
+  /***** Seperate component for Play Pause Buttons *****/
   
   return (
     <>
