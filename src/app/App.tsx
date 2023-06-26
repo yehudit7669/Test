@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom'
 import SignIn from '../components/pages/Auth/SignIn'
 import SignUpTabs from '../components/pages/Auth/SignUpTabs'
 import AuthLayout from '../components/layouts/AuthLayout'
@@ -10,6 +10,8 @@ import renderRoutes from './routes/renderRoutes'
 import Worksheet from '../components/pages/Worksheet'
 
 function App() {
+  const path = useLocation()
+  console.log(path)
   useEffect(() => {
     WSConnect()
   }, [])

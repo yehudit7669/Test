@@ -19,6 +19,13 @@ import App from './app/App.tsx'
 import axios from 'axios'
 
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL
+//Setting default authorization headers
+axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
+  'token'
+)}`
+axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem(
+  'token'
+)}`
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

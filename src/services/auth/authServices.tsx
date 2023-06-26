@@ -2,7 +2,7 @@ import { NavigateFunction } from 'react-router'
 import Actions from '../../actions'
 import * as requestFromServer from './authApis'
 import { Dispatch, SetStateAction } from 'react'
-import axios, { AxiosResponse } from 'axios'
+import { AxiosResponse } from 'axios'
 import { routes } from '../../constants'
 
 export const getUserAction =
@@ -29,12 +29,6 @@ export const getUserAction =
         setLoading(false)
         const { token, role } = response.data
         setToken(token)
-        //Setting Axios default authorization token
-        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
-        axios.defaults.headers.post[
-          'Authorization'
-        ] = `Bearer ${localStorage.getItem('token')}`
-
         dispatch(Actions.createAction(Actions.USER_LOGIN, response.data))
         navigate(`/${role}`, { replace: true })
         return response
