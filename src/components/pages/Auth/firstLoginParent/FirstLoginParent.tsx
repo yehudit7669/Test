@@ -38,6 +38,17 @@ function FirstLoginParent() {
   const navigate = useNavigate()
   /* Routing, navigation and param dependencies */
 
+  /* Form submission dependencies */
+  const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
+  const [, setError] = useState("");
+  const [loading, setLoading] = useState(false)
+  /* Form submission dependencies */
+
+  /* Routing, navigation and param dependencies */
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate();
+  /* Routing, navigation and param dependencies */
+
   /* Dependencies for stepper component */
   const [activeStep, setActiveStep] = useState(0)
   const totalSteps = 4
@@ -117,7 +128,7 @@ function FirstLoginParent() {
         )}
         {activeStep === 1 && (
           <>
-            <AboutYourChildrenStepperTwo />
+            <AboutYourChildrenStepperTwo/>
           </>
         )}
         {activeStep === 2 && (

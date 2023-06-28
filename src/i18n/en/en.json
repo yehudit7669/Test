@@ -116,6 +116,25 @@
     "WelcomeToWizerDialog":{
       "title" : "Welcome To",
       "letsStart" : "Let's start"
+    },
+    "AudioRecorder" : {
+      "header" : "Record Audio",
+      "UploadAudioFileDesctiption" : "Simply click on the recording button and fire away! or",
+      "uploadAnAudio" : "upload an audio file",
+      "startOver" : "Start Over",
+      "upload" : "Upload" 
+    },
+    "VideoRecorder" : {
+      "header" : "Record Video",
+      "videoFileDescription" : "Simply click on the recording button to start your camera, then fire away!"
+    },
+    "Widget" : {
+      "answerRecorder" : "Answer recorder (optional) :",
+      "recordedAnswers" : "Recorded Answers :",
+      "voiceAnswer" : "Voice Answer",
+      "saved" : "Saved",
+      "handInWork" : "Hand In Work",
+      "videoQuestion" : "Video Question"
     }
   }
 }

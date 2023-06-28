@@ -13,6 +13,8 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@emoji-mart/data": "^1.1.2",
+    "@emoji-mart/react": "^1.1.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/mansalva": "^5.0.2",
@@ -24,9 +26,11 @@
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "dayjs": "^1.11.8",
+    "emoji-mart": "^5.5.2",
     "husky": "^8.0.3",
     "i18next": "^23.0.0",
     "immer": "^10.0.2",
+    "jodit-react": "^1.3.39",
     "keymirror": "^0.1.1",
     "react": "^18.2.0",
     "react-canvas-confetti": "^1.4.0",
