@@ -5,19 +5,13 @@ type Props = {
 };
 export default function RenderPlayPauseVideo({ videoSrcRef }: Props) {
   /* Context dependencies */
-  let { videoPlayerRef } = useVideoPlayerContext();
+  // let { videoPlayerRef } = useVideoPlayerContext();
   /* Context dependencies */
 
 
   /* Function definition to play and pause video player */
   const handlePlayPauseToggleButton = () => {
-    let ref;
-    if (videoSrcRef && videoSrcRef !== undefined && videoSrcRef !== null) {
-      ref = videoSrcRef;
-    } else {
-      ref = videoPlayerRef;
-    }
-    ref.current.paused ? ref.current.play() : ref.current.pause();
+    videoSrcRef.current.paused ? videoSrcRef.current.play() : videoSrcRef.current.pause();
   };
   /* Function definition to play and pause video player */
 

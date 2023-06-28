@@ -26,7 +26,7 @@ export default function AudioVideoInstructions() {
   /* i18n dependencies */
 
   const [expanded, setExpanded] = useState<string | false>(false);
-  const videoSrcRef = useRef<any>(null);
+  // const videoSrcRef = useRef<any>(null);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
@@ -35,7 +35,7 @@ export default function AudioVideoInstructions() {
 
   return (
     <div className="AudioVideoInstructions_Container">
-      <Grid item xs={6}>
+      <Grid item xs={5}>
         <Accordion
           className="Video_Instructions_Accordion"
           expanded={expanded === "panel1"}
@@ -47,7 +47,7 @@ export default function AudioVideoInstructions() {
             aria-controls="panel1bh-content"
             id="panel1bh-header"
           >
-            <IconButton onClick={() => {}}>
+            <IconButton>
               <div className="AudioVideoIcon_Container PaddingForPlayIcon_Container">
                 <PlayIconForRecordedAnswers />
               </div>
@@ -57,7 +57,7 @@ export default function AudioVideoInstructions() {
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <VideoPlayer videoSrc={video} videoSrcRef={videoSrcRef}/>
+            <VideoPlayer videoSrc={video} />
           </AccordionDetails>
         </Accordion>
       </Grid>
