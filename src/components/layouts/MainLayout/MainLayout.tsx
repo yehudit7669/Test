@@ -81,9 +81,9 @@ const MainLayout = (props: Props) => {
           </Toolbar>
         </AppBar>
         <Toolbar id="back-to-top-anchor" />
-        <Container>
+        
           <Outlet />
-        </Container>
+
         <ScrollTop {...props}>
           <Fab size="small" aria-label="scroll back to top">
             <KeyboardArrowUpIcon />

@@ -14,7 +14,6 @@ export default function RenderTimeline({ videoSrcRef }: Props) {
     setTimelineSliderValue,
     videoPlayerMaxTimeForSliderValue,
   } = useVideoPlayerContext();
-  let { videoPlayerRef } = useVideoPlayerContext();
   /* Context dependencies */
 
   const handleSliderTimelineChange = (
@@ -22,12 +21,6 @@ export default function RenderTimeline({ videoSrcRef }: Props) {
     newValue: number | number[]
   ) => {
     setTimelineSliderValue(newValue);
-    let ref;
-    if (videoSrcRef && videoSrcRef !== null && videoSrcRef !== undefined) {
-      ref = videoSrcRef;
-    } else {
-      ref = videoPlayerRef;
-    }
     videoSrcRef.current.currentTime = (event.target as HTMLInputElement).value;
   };
   return (
