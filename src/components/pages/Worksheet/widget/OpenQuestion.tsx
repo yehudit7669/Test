@@ -27,12 +27,17 @@ const OpenQuestion: React.FC<OpenQuestionProps> = ({ data }) => {
 
   return (
     <div>
-      <h2>{data.title}</h2>
-      <p>{data.description}</p>
-      {data.audio && <audio src={data.audio.url} controls />}
-      {data.video && <video src={data.video.url} controls />}
-      <input type="text" value={response} onChange={handleInputChange} />
-      <button onClick={handleSubmit}>Submit</button>
+      <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
+      <p dangerouslySetInnerHTML={{ __html: data.description }}></p>
+      <div>{data.audio && <audio src={data.audio.url} controls />}</div>
+      <div>{data.video && <video src={data.video.url} controls />}</div>
+      <div
+        className="worksheet-form-container"
+        style={{ display: 'flex', flexDirection: 'column' }}
+      >
+        <input type="text" value={response} onChange={handleInputChange} />
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
   )
 }

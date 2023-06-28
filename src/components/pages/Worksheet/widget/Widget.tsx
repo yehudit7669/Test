@@ -1,9 +1,21 @@
+import LinkWidget from './Link'
 import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 
 const widgetTypes = {
   openQuestion: 'Open Question',
   multipleChoice: 'Multiple Choice',
+  content: 'content',
+  question: 'question',
+  video: 'Video',
+  matching: 'Matching',
+  sorting: 'Sorting',
+  blanks: 'Blanks',
+  link: 'Link',
+  embed: 'Embed',
+  discussion: 'Discussion',
+  reflection: 'Reflection',
+  wordPuzzle: 'Word Search Puzzle',
 }
 
 const Widget = ({ widget }: any) => {
@@ -12,8 +24,10 @@ const Widget = ({ widget }: any) => {
       return <OpenQuestion data={widget.data} />
     case widgetTypes.multipleChoice:
       return <MultipleChoice data={widget.data} />
+    case widgetTypes.link:
+      return <LinkWidget data={widget.data} />
     default:
-      return null
+      return <h1>Component not found!!</h1>
   }
 }
 

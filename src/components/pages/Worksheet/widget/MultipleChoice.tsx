@@ -35,9 +35,12 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ data }) => {
 
   return (
     <div>
-      <h2>{data.title}</h2>
+      <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
       {data.options.map((option) => (
-        <div key={option.index}>
+        <div
+          style={{ display: 'flex', justifyContent: 'center' }}
+          key={option.index}
+        >
           <input
             type="radio"
             name="option"
@@ -45,13 +48,15 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ data }) => {
             checked={selectedOption === option.text}
             onChange={handleOptionChange}
           />
-          <label>{option.text}</label>
+          <label dangerouslySetInnerHTML={{ __html: option.text }}></label>
           {option.imageUrl && <img src={option.imageUrl} alt="Option" />}
         </div>
       ))}
-      {data.audio && <audio src={data.audio.url} controls />}
-      {data.video && <video src={data.video.url} controls />}
-      <button onClick={handleSubmit}>Submit</button>
+      <div>{data.audio && <audio src={data.audio.url} controls />}</div>
+      <div>{data.video && <video src={data.video.url} controls />}</div>
+      <div>
+        <button onClick={handleSubmit}>Submit</button>
+      </div>
     </div>
   )
 }
