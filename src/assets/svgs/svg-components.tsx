@@ -34,8 +34,8 @@ export const GoogleIcon = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Svg icon of Microsoft
 export const MicrosoftIcon = () => {
@@ -68,8 +68,8 @@ export const MicrosoftIcon = () => {
         </defs>
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Teacher in Sign Up page
 export const JoinAsTeacherIcon = () => {
@@ -88,8 +88,8 @@ export const JoinAsTeacherIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Student in Sign Up page
 export const JoinAsStudentIcon = () => {
@@ -108,8 +108,8 @@ export const JoinAsStudentIcon = () => {
         />
       </svg>
     </>
-  );
-};
+  )
+}
 
 // Icon for Join as Parent in Sign Up page
 export const JoinAsParentIcon = () => {
@@ -128,8 +128,13 @@ export const JoinAsParentIcon = () => {
         />
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // Cancel Icon
 export const CancelIcon = () => {
@@ -151,8 +156,13 @@ export const CancelIcon = () => {
         />
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // CalendarIcon
 export const CalendarIcon = () => {
@@ -171,8 +181,13 @@ export const CalendarIcon = () => {
         />
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // WizerLogoWithNameForDialog
 export const WizerLogoWithNameForDialog = () => {
@@ -250,8 +265,13 @@ export const WizerLogoWithNameForDialog = () => {
         </defs>
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // Wizer Logo with name
 export const WizerLogoWithName = () => {
@@ -287,8 +307,13 @@ export const WizerLogoWithName = () => {
         </defs>
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // Close Icon for dialog
 export const CloseIcon = () => {
@@ -309,8 +334,13 @@ export const CloseIcon = () => {
         />
       </svg>
     </>
+<<<<<<< HEAD
   );
 };
+=======
+  )
+}
+>>>>>>> d41f6f68068a20d585141eb32d06707fa2e67428
 
 // Wizer Logo for loader
 export const WizerLogoForLoader = () => {

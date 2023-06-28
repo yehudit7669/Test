@@ -107,7 +107,8 @@
   text-transform: none;
 }
 
-.FirstLoginTeacher .DidntSeeYourSchoolLink,.ShareWizerMeLink {
+.FirstLoginTeacher .DidntSeeYourSchoolLink,
+.ShareWizerMeLink {
   font-style: normal;
   font-weight: 600;
   font-size: 15px;

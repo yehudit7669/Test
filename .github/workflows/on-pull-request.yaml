@@ -27,7 +27,7 @@ jobs:
 
       - name: Run prettier
         run: |-
-          npm run prettify
+          npm run prettier-check
       
       - name: Run eslint
         run: |-
@@ -37,3 +37,7 @@ jobs:
         working-directory: src
         run: |-
           tsc
+
+      - name: Run vite build
+        run: |-
+          npx vite build

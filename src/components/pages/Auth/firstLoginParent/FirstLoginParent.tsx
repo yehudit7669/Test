@@ -1,20 +1,42 @@
-import { Button, Typography, MobileStepper, IconButton, CircularProgress } from "@mui/material";
-import { useTranslation } from "react-i18next";
-import "./FirstLoginParent.css";
-import React, { useState } from "react";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import AboutYouStepperOne from "./aboutYouStepperOne/AboutYouStepperOne.tsx";
-import AboutYourChildrenStepperTwo from "./aboutYourChildrenStepperTwo/AboutYourChildrenStepperTwo.tsx";
-import ChildSupportStepperThree from "./childSupportStepperThree/ChildSupportStepperThree.tsx";
-import TeachingGoalsStepperFour from "./teachingGoalsStepperFour/TeachingGoalsStepperFour.tsx";
-import { useAppDispatch, useAppSelector } from "../../../../hooks/redux-hooks.ts";
-import { getFirstLoginParentAction } from "../../../../services/firstLoginParent/firstLoginParentServices.tsx";
-import { useNavigate } from "react-router";
+import {
+  Button,
+  Typography,
+  MobileStepper,
+  IconButton,
+  CircularProgress,
+} from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import './FirstLoginParent.css'
+import React, { useState } from 'react'
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew'
+import AboutYouStepperOne from './aboutYouStepperOne/AboutYouStepperOne.tsx'
+import AboutYourChildrenStepperTwo from './aboutYourChildrenStepperTwo/AboutYourChildrenStepperTwo.tsx'
+import ChildSupportStepperThree from './childSupportStepperThree/ChildSupportStepperThree.tsx'
+import TeachingGoalsStepperFour from './teachingGoalsStepperFour/TeachingGoalsStepperFour.tsx'
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../hooks/redux-hooks.ts'
+import { getFirstLoginParentAction } from '../../../../services/firstLoginParent/firstLoginParentServices.tsx'
+import { useNavigate } from 'react-router'
 
-export const ChildData = React.createContext({});
+export const ChildData = React.createContext({})
 
 function FirstLoginParent() {
-  const { t } = useTranslation();
+  const { t } = useTranslation()
+
+  /* Form submission dependencies */
+  const { firstLoginParentDetails } = useAppSelector(
+    (state) => state.firstLoginParent
+  )
+  const [, setError] = useState('')
+  const [loading, setLoading] = useState(false)
+  /* Form submission dependencies */
+
+  /* Routing, navigation and param dependencies */
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
+  /* Routing, navigation and param dependencies */
 
   /* Form submission dependencies */
   const {firstLoginParentDetails} = useAppSelector((state)=>state.firstLoginParent)
@@ -28,16 +50,16 @@ function FirstLoginParent() {
   /* Routing, navigation and param dependencies */
 
   /* Dependencies for stepper component */
-  const [activeStep, setActiveStep] = useState(0);
-  const totalSteps = 4;
+  const [activeStep, setActiveStep] = useState(0)
+  const totalSteps = 4
 
   const handleStepperNext = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep + 1)
+  }
 
   const handleStepperBack = () => {
-    setActiveStep((prevActiveStep) => prevActiveStep - 1);
-  };
+    setActiveStep((prevActiveStep) => prevActiveStep - 1)
+  }
   /* Dependencies for stepper component */
 
   /* Stepper component dependencies */
@@ -50,10 +72,10 @@ function FirstLoginParent() {
               <IconButton
                 onClick={handleStepperBack}
                 sx={{
-                  margin:0,
-                  padding:0,
-                  "&.MuiButtonBase-root:hover": {
-                    bgcolor: "transparent",
+                  margin: 0,
+                  padding: 0,
+                  '&.MuiButtonBase-root:hover': {
+                    bgcolor: 'transparent',
                   },
                 }}
               >
@@ -78,23 +100,22 @@ function FirstLoginParent() {
           </div>
         </div>
       </div>
-    );
-  };
+    )
+  }
   /* Stepper component dependencies */
 
-  /* Form submission dependencies */  
+  /* Form submission dependencies */
   const handleSubmitFirstLoginParentForm = () => {
-    console.log(firstLoginParentDetails,'firstLoginParentDetails')
     dispatch(
       getFirstLoginParentAction(
         firstLoginParentDetails,
         navigate,
         setError,
         setLoading
-        )
-        )
-      }
-  /* Form submission dependencies */  
+      )
+    )
+  }
+  /* Form submission dependencies */
 
   return (
     <div className="FirstLoginParent">
@@ -126,13 +147,17 @@ function FirstLoginParent() {
           fullWidth
           color="secondary"
           disabled={loading}
-          onClick={activeStep === 3 ? handleSubmitFirstLoginParentForm : handleStepperNext}
+          onClick={
+            activeStep === 3
+              ? handleSubmitFirstLoginParentForm
+              : handleStepperNext
+          }
         >
-          {loading ? <CircularProgress /> : t("FirstLoginParent.next")}
+          {loading ? <CircularProgress /> : t('FirstLoginParent.next')}
         </Button>
       </div>
     </div>
-  );
+  )
 }
 
-export default FirstLoginParent;
+export default FirstLoginParent

@@ -1,3 +1,3 @@
-import ParentDashboard from "./ParentDashboard";
+import ParentDashboard from './ParentDashboard'
 
 export default ParentDashboard

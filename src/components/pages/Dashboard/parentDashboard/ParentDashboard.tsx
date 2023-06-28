@@ -1,7 +1,3 @@
 export default function ParentDashboard() {
-    return (
-        <>
-        Parent dashboard
-        </>
-    )
+  return <>Parent dashboard</>
 }

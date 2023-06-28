@@ -4,36 +4,60 @@ import {
   TextField,
   Typography,
   FormLabel,
-} from "@mui/material";
-import { useTranslation } from "react-i18next";
-import React from "react";
-import { useAppDispatch, useAppSelector } from "../../../../../hooks/redux-hooks";
-import Actions from "../../../../../actions";
+} from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import React from 'react'
+import {
+  useAppDispatch,
+  useAppSelector,
+} from '../../../../../hooks/redux-hooks'
+import Actions from '../../../../../actions'
 
 const StepperOne = () => {
   /* i18n translation dependencies */
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   /* i18n translation dependencies */
 
   const dispatch = useAppDispatch()
-  const {firstLoginTeacherDetails} = useAppSelector((state)=>state.firstLoginTeacher)
+  const { firstLoginTeacherDetails } = useAppSelector(
+    (state) => state.firstLoginTeacher
+  )
 
   /* OnChange formData dependencies */
   const handleChangeFormData = (e: React.SyntheticEvent) => {
     const dataToBeSent = {
-      [(e.target as HTMLInputElement).name] : (e.target as HTMLInputElement).value
+      [(e.target as HTMLInputElement).name]: (e.target as HTMLInputElement)
+        .value,
     }
-    dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,dataToBeSent))
-  };
+    dispatch(
+      Actions.createAction(
+        Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
+        dataToBeSent
+      )
+    )
+  }
   /* OnChange formData dependencies */
-  
+
   /* On Country changed setSelectedCountryObj */
-  const onCountryChanged = (event:React.SyntheticEvent, changedValue:{id:string,label:string} | null) => {
-    if(event && changedValue && changedValue!==null && changedValue!==undefined) {
+  const onCountryChanged = (
+    event: React.SyntheticEvent,
+    changedValue: { id: string; label: string } | null
+  ) => {
+    if (
+      event &&
+      changedValue &&
+      changedValue !== null &&
+      changedValue !== undefined
+    ) {
       const dataToBeSent = {
-        country:changedValue.label || ""
+        country: changedValue.label || '',
       }
-      dispatch(Actions.createAction(Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,dataToBeSent))
+      dispatch(
+        Actions.createAction(
+          Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
+          dataToBeSent
+        )
+      )
     }
   }
   /* On Country changed setSelectedCountryObj */
@@ -41,15 +65,15 @@ const StepperOne = () => {
   /* Stepper One component dependencies */
   const renderTitle = () => (
     <Typography className="Title">
-      {" "}
-      {t("FirstLoginTeacher.stepOne.title")}
+      {' '}
+      {t('FirstLoginTeacher.stepOne.title')}
     </Typography>
-  );
+  )
   const renderSubTitle = () => (
     <Typography className="Subtitle" data-subtitle>
-      {t("FirstLoginTeacher.stepOne.subTitle")}
+      {t('FirstLoginTeacher.stepOne.subTitle')}
     </Typography>
-  );
+  )
 
   const renderFirstLoginTeacherForm = () => {
     return (
@@ -85,9 +109,20 @@ const StepperOne = () => {
               <Autocomplete
                 disableClearable={!!firstLoginTeacherDetails.country}
                 disablePortal
-                options={[{ id: "1", label: "India" },{id: "2", label:"Israel"}]}
-                onChange={(e,value) => onCountryChanged(e,value)}
-                value={[{ id: "1", label: "India" },{id: "2", label:"Israel"}].find((element)=>element.label === firstLoginTeacherDetails.country) || null}
+                options={[
+                  { id: '1', label: 'India' },
+                  { id: '2', label: 'Israel' },
+                ]}
+                onChange={(e, value) => onCountryChanged(e, value)}
+                value={
+                  [
+                    { id: '1', label: 'India' },
+                    { id: '2', label: 'Israel' },
+                  ].find(
+                    (element) =>
+                      element.label === firstLoginTeacherDetails.country
+                  ) || null
+                }
                 isOptionEqualToValue={(option, value) => option.id === value.id}
                 renderInput={(params) => (
                   <TextField
@@ -103,8 +138,8 @@ const StepperOne = () => {
           </Grid>
         </form>
       </>
-    );
-  };
+    )
+  }
   /* Stepper One component dependencies */
 
   return (
@@ -113,7 +148,7 @@ const StepperOne = () => {
       {renderSubTitle()}
       {renderFirstLoginTeacherForm()}
     </>
-  );
-};
+  )
+}
 
-export default StepperOne;
+export default StepperOne

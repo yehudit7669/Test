@@ -1,29 +1,29 @@
-import { Button, CircularProgress, TextField } from "@mui/material";
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
-import { forgotPasswordAction } from "../../../services/auth/authServices";
-import { useAppDispatch } from "../../../hooks/redux-hooks";
-import { routes } from "../../../constants";
-import SingleLineColorText from "../../common/errorText/SingleLineColorText";
-import { forgotPasswordValidations } from "../../../validations/authValidations";
+import { Button, CircularProgress, TextField } from '@mui/material'
+import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+import { Link, useNavigate } from 'react-router-dom'
+import { forgotPasswordAction } from '../../../services/auth/authServices'
+import { useAppDispatch } from '../../../hooks/redux-hooks'
+import { routes } from '../../../constants'
+import SingleLineColorText from '../../common/errorText/SingleLineColorText'
+import { forgotPasswordValidations } from '../../../validations/authValidations'
 
 function ForgotPassword() {
-  const { t } = useTranslation();
-  const dispatch = useAppDispatch();
-  const [email, setEmail] = useState("");
-  const [error, setError] = useState("");
-  const [successMessage, setSuccessMessage] = useState("");
-  const navigate = useNavigate();
-  const [loader, setLoader] = useState(false);
+  const { t } = useTranslation()
+  const dispatch = useAppDispatch()
+  const [email, setEmail] = useState('')
+  const [error, setError] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
+  const navigate = useNavigate()
+  const [loader, setLoader] = useState(false)
 
   const handleForgotPassword = (e: React.FormEvent) => {
-    e.preventDefault();
-    const validate = forgotPasswordValidations(email);
+    e.preventDefault()
+    const validate = forgotPasswordValidations(email)
     if (validate.status) {
-      setError(validate.message);
+      setError(validate.message)
     } else {
-      setError("");
+      setError('')
       // Calling forgot password api, setting error/success message, navigating to sign in and showing loader
       dispatch(
         forgotPasswordAction(
@@ -33,20 +33,20 @@ function ForgotPassword() {
           navigate,
           setLoader
         )
-      );
+      )
     }
-  };
+  }
 
   return (
     <>
       <div className="ForgotPassword">
         <div className="Wrapper">
           <div className="TitleContainer">
-          <div className="Title">{t("ForgotPassword.forgotPassword")}</div>
-          <div className="Title">{t("ForgotPassword.noWorries")}</div>
+            <div className="Title">{t('ForgotPassword.forgotPassword')}</div>
+            <div className="Title">{t('ForgotPassword.noWorries')}</div>
           </div>
           <label className="Subtitle" data-subtitle>
-            {t("ForgotPassword.submitYourEmail")}
+            {t('ForgotPassword.submitYourEmail')}
           </label>
           <form
             className="ForgotPasswordForm"
@@ -67,33 +67,33 @@ function ForgotPassword() {
               type="submit"
               disabled={loader}
             >
-              {loader ? <CircularProgress /> : t("ForgotPassword.send")}
+              {loader ? <CircularProgress /> : t('ForgotPassword.send')}
             </Button>
             <SingleLineColorText
               text={successMessage}
-              variant={"body1"}
-              component={"span"}
+              variant={'body1'}
+              component={'span'}
               color="green"
               align="center"
             />
             <SingleLineColorText
               text={error}
-              variant={"body1"}
-              component={"span"}
+              variant={'body1'}
+              component={'span'}
               color="red"
               align="center"
             />
           </form>
           <div className="BackToLoginLinkContainer">
-            <label>{t("ForgotPassword.backTo")}</label>
+            <label>{t('ForgotPassword.backTo')}</label>
             <Link className="BackToLoginLink" to={`/${routes.SIGN_IN}`}>
-              {t("ForgotPassword.login")}
+              {t('ForgotPassword.login')}
             </Link>
           </div>
         </div>
       </div>
     </>
-  );
+  )
 }
 
-export default ForgotPassword;
+export default ForgotPassword

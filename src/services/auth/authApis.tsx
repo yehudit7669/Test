@@ -1,8 +1,8 @@
-import axios from "axios";
+import axios from 'axios'
 
 // export const LOGIN_URL = `auth/login`;
-export const LOGIN_URL = `auth/login`;
-export const FORGOT_PASSWORD_URL = `auth/forgot-password`;
+export const LOGIN_URL = `auth/login`
+export const FORGOT_PASSWORD_URL = `auth/forgot-password`
 
 export const login = (email: string, password: string, rememberMe: boolean) => {
   return axios.post(
@@ -13,8 +13,8 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
       rememberMe,
     }
     // { headers: {} }
-  );
-};
+  )
+}
 
 export const forgotPassword = (email: string) => {
   return axios.post(
@@ -23,5 +23,5 @@ export const forgotPassword = (email: string) => {
       email,
     }
     // { headers: {} }
-  );
-};
+  )
+}

@@ -1,12 +1,12 @@
-import { Typography } from "@mui/material";
+import { Typography } from '@mui/material'
 
 type Props = {
-  text: string;
-  variant: any;
-  component: any;
-  color: string;
-  align: "right" | "left" | "center" | "inherit" | "justify";
-};
+  text: string
+  variant: any
+  component: any
+  color: string
+  align: 'right' | 'left' | 'center' | 'inherit' | 'justify'
+}
 
 const SingleLineColorText = ({
   text,
@@ -25,8 +25,8 @@ const SingleLineColorText = ({
       >
         {text}
       </Typography>
-    );
-  return null;
-};
+    )
+  return null
+}
 
-export default SingleLineColorText;
+export default SingleLineColorText

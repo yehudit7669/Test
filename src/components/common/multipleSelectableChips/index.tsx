@@ -1,3 +1,3 @@
-import MultipleSelectableChips from "./MultipleSelectableChips";
+import MultipleSelectableChips from './MultipleSelectableChips'
 
-export default MultipleSelectableChips;
+export default MultipleSelectableChips

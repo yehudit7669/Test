@@ -1,12 +1,12 @@
-import { Navigate, Route } from "react-router-dom";
-import MainLayout from "../../components/layouts/MainLayout";
-import { routes, userLayouts } from "../../constants";
-import FirstLoginParent from "../../components/pages/Auth/firstLoginParent";
-import ParentDashboard from "../../components/pages/Dashboard/parentDashboard";
+import { Navigate, Route } from 'react-router-dom'
+import MainLayout from '../../components/layouts/MainLayout'
+import { routes, userLayouts } from '../../constants'
+import FirstLoginParent from '../../components/pages/Auth/firstLoginParent'
+import ParentDashboard from '../../components/pages/Dashboard/parentDashboard'
 
 type Props = {
-  layout: string;
-};
+  layout: string
+}
 
 const renderParentRoutes = ({ layout }: Props) => {
   // Render routes for students who have signed in before
@@ -22,20 +22,20 @@ const renderParentRoutes = ({ layout }: Props) => {
             />
           </Route>
         </>
-      );
+      )
     case userLayouts.IS_MAIN:
       return (
         <>
           <Route path={`/${routes.PARENT}`} element={<MainLayout />}>
-            <Route index element={<Navigate to={"dashboard"} replace />} />
+            <Route index element={<Navigate to={'dashboard'} replace />} />
             <Route path={routes.DASHBOARD} element={<ParentDashboard />} />
           </Route>
         </>
-      );
+      )
     default:
-      break;
+      break
   }
-  return <></>;
-};
+  return <></>
+}
 
-export default renderParentRoutes;
+export default renderParentRoutes

@@ -1,25 +1,31 @@
-import { Outlet, useLocation, useParams } from "react-router-dom";
-import "@fontsource/mansalva";
-import "./AuthLayout.css";
-import { routes } from "../../../constants";
+import { Outlet, useLocation, useParams } from 'react-router-dom'
+import '@fontsource/mansalva'
+import './AuthLayout.css'
+import { routes } from '../../../constants'
 
 function AuthLayout() {
   /* Route dependencies */
-  const location = useLocation();
-  const params = useParams();
+  const location = useLocation()
+  const params = useParams()
 
   /* Function definition to get the title of side navbar dynamically based on route */
   const getSideNavTitleBasedOnRoute = () => {
-    const { pathname } = location;
-    const { role } = params;
+    const { pathname } = location
+    const { role } = params
 
     switch (pathname) {
       case `${routes.GET_STARTED}/${routes.BIRTH_DATE}`:
-        return "Join the community of passionate students!";
+        return 'Join the community of passionate students!'
 
       case `/${routes.SIGN_UP}`:
       case `/${routes.SIGN_UP}/${role}`:
-        return "Join the Wizer community";
+        return 'Join the Wizer community'
+
+      case `/${routes.SIGN_UP}/${role}/parent-details`:
+        return 'Join the community of concerned parents!'
+
+      case `/${routes.SIGN_UP}/${role}/teacher-details`:
+        return 'Join the  community of innovative teachers!'
 
       case `/${routes.SIGN_UP}/${role}/parent-details`:
         return "Join the community of concerned parents!";
@@ -28,11 +34,10 @@ function AuthLayout() {
         return "Join the  community of innovative teachers!";
 
       default:
-        return "Over 2,500,000 worksheets to explore or create your own.";
+        return 'Over 2,500,000 worksheets to explore or create your own.'
     }
-  };
+  }
   /* Function definition to get the title of side navbar dynamically based on route */
-
 
   return (
     <div className="AuthLayout">
@@ -43,7 +48,7 @@ function AuthLayout() {
           <Outlet />
       </div>
     </div>
-  );
+  )
 }
 
-export default AuthLayout;
+export default AuthLayout

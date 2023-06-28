@@ -1,1 +1,1 @@
-export const FIRST_LOGIN_STUDENT = null;
+export const FIRST_LOGIN_STUDENT = null

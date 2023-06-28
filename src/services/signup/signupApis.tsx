@@ -1,9 +1,14 @@
-import axios from "axios";
+import axios from 'axios'
 
-export const SIGN_UP_URL = `auth/register`;
+export const SIGN_UP_URL = `auth/register`
 
-export const signup = (email: string, password: string, role:any, classCode?: string) => {
-  if(role === "student"){
+export const signup = (
+  email: string,
+  password: string,
+  role: any,
+  classCode?: string
+) => {
+  if (role === 'student') {
     return axios.post(
       SIGN_UP_URL,
       {
@@ -13,17 +18,16 @@ export const signup = (email: string, password: string, role:any, classCode?: st
         classCode,
       }
       // { headers: {} }
-    );
-  }
-  else{
+    )
+  } else {
     return axios.post(
       SIGN_UP_URL,
       {
         email,
         password,
-        role
+        role,
       }
       // { headers: {} }
-    );
+    )
   }
-};
+}

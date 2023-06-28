@@ -1,4 +1,4 @@
-name: Prod - Build and Push to GCR
+name: CI::Prod
 
 on:
   workflow_dispatch:
@@ -6,66 +6,19 @@ on:
     branches:
       - main
 
-env:
-  GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-  GCP_SA_EMAIL: ${{ secrets.GCP_SA_EMAIL }}
-  GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-  SERVICE: wizer-fe
-  REGISTRY: gcr.io
-
 jobs:
-  setup-build-publish-deploy:
-    concurrency:
-      group: ${{ github.ref }}
-      cancel-in-progress: true
-    
+  shared-workflow:
     permissions:
-      contents: 'read'
-      id-token: 'write'
-
-    name: Setup, Build, and Publish
-    runs-on: ubuntu-latest
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - id: 'auth'
-        uses: 'google-github-actions/auth@v1'
-        with:
-          credentials_json: ${{ secrets.GCP_SA_KEY }}
-
-      # Setup gcloud CLI
-      - uses: google-github-actions/setup-gcloud@v1
-        with:
-          project_id: ${{ secrets.GCP_PROJECT_ID }}
-
-      # Configure docker to use the gcloud command-line tool as a credential helper
-      - run: |
-          # Set up docker to authenticate
-          # via gcloud command-line tool.
-          gcloud auth configure-docker
-
-      # Build the Docker image
-      - name: Build
-        run: |
-          docker build -t $REGISTRY/$GCP_PROJECT_ID/$SERVICE:${GITHUB_SHA} .
-
-      # Push the Docker image to Google Container Registry
-      - name: Publish
-        run: |
-          docker push $REGISTRY/$GCP_PROJECT_ID/$SERVICE:${GITHUB_SHA}
-
-      - id: 'deploy'
-        uses: google-github-actions/deploy-cloudrun@v1
-        with:
-          service: ${{env.SERVICE}}-prod
-          image: ${{ env.REGISTRY }}/${{ env.GCP_PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}
-
-      - name: 'Use output'
-        run: 'curl "${{ steps.deploy.outputs.url }}"'
-
-      - name: Slack Notify
-        uses: rtCamp/action-slack-notify@v2.2.0
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+      id-token: write
+      contents: read
+    uses: ./.github/workflows/ci.yaml
+    name: Prod CI
+    with:
+      env: prod
+      backendURL: https://wizer-be-prod-g372w7tgka-uc.a.run.app
+      WSURL: wss://wizer-be-prod-g372w7tgka-uc.a.run.app
+    secrets:
+      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
+      GCP_SA_EMAIL: ${{ secrets.GCP_SA_EMAIL }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
+      SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

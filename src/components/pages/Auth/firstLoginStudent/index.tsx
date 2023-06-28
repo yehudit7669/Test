@@ -1,3 +1,3 @@
-import FirstLoginStudent from "./FirstLoginStudent";
+import FirstLoginStudent from './FirstLoginStudent'
 
-export default FirstLoginStudent;
+export default FirstLoginStudent

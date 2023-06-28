@@ -1,28 +1,26 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import SignIn from "../components/pages/Auth/SignIn";
-import SignUpTabs from "../components/pages/Auth/SignUpTabs";
-import AuthLayout from "../components/layouts/AuthLayout";
-import { routes, userLayouts } from "../constants";
-import useWebSocket from "react-use-websocket";
-import { getWSEnv } from "../utils/envUtil";
-import SignUp from "../components/pages/Auth/SignUp";
-import renderRoutes from "./routes/renderRoutes";
+import { useEffect } from 'react'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import SignIn from '../components/pages/Auth/SignIn'
+import SignUpTabs from '../components/pages/Auth/SignUpTabs'
+import AuthLayout from '../components/layouts/AuthLayout'
+import { routes, userLayouts } from '../constants'
+import { connect as WSConnect } from '../socket'
+import SignUp from '../components/pages/Auth/SignUp'
+import renderRoutes from './routes/renderRoutes'
 
 function App() {
-  //Connecting websocket
-  useWebSocket(getWSEnv(), {
-    onOpen: () => {
-      console.log("WebSocket connection established.");
-    },
-  });
-
-
+  useEffect(() => {
+    WSConnect()
+  }, [])
   return (
     <div className="App">
       <Routes>
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
-          <Route index element={<Navigate to={`/${routes.SIGN_IN}`} replace />} />
+          <Route
+            index
+            element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
+          />
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
 
           {/* Public routes */}
@@ -30,28 +28,24 @@ function App() {
           <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
           <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />
           {/* Public routes */}
-          <Route
-          path="*"
-          element={<Navigate to={routes.SIGN_IN} replace />}
-          />
+          <Route path="*" element={<Navigate to={routes.SIGN_IN} replace />} />
         </Route>
 
-          {/* Protect these routes for auth layout */}
-          {renderRoutes(userLayouts.IS_AUTH)}
-          {/* Protect these routes for auth layout */}
+        {/* Protect these routes for auth layout */}
+        {renderRoutes(userLayouts.IS_AUTH)}
+        {/* Protect these routes for auth layout */}
 
+        {/* Protected routes for main layout */}
+        {renderRoutes(userLayouts.IS_MAIN)}
+        {/* Protected routes for main layout */}
 
-          {/* Protected routes for main layout */}
-          {renderRoutes(userLayouts.IS_MAIN)}
-          {/* Protected routes for main layout */}
-            
-          {/* <Route
+        {/* <Route
           path="*"
           element={<Navigate to={ routes.SIGN_IN} replace />}
           />   */}
       </Routes>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

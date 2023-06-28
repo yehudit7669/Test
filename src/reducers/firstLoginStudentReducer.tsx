@@ -1,27 +1,27 @@
-import Actions from "../actions";
-import { produce } from "immer";
+import Actions from '../actions'
+import { produce } from 'immer'
 
 interface State {
-  user: {status:boolean};
+  user: { status: boolean }
 }
 
 const initialState: State = {
-    user: {status:false}
-};
+  user: { status: false },
+}
 
 const firstLoginStudent = produce((draft: State, action: any) => {
-  const { payload } = action;
+  const { payload } = action
   switch (action.type) {
     case Actions.FIRST_LOGIN_STUDENT: {
-      draft.user = {...payload};
-      break;
+      draft.user = { ...payload }
+      break
     }
 
     default: {
       // Nothing to do
-      break;
+      break
     }
   }
-}, initialState);
+}, initialState)
 
 export default firstLoginStudent

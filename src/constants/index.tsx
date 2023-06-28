@@ -1,5 +1,5 @@
-import { routes } from "./routeConsts";
-import userRoles from "./userRolesConsts";
-import userLayouts from "./userLayoutsConsts";
+import { routes } from './routeConsts'
+import userRoles from './userRolesConsts'
+import userLayouts from './userLayoutsConsts'
 
-export { routes, userRoles, userLayouts  };
+export { routes, userRoles, userLayouts }
