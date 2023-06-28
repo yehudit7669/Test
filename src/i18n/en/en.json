@@ -133,7 +133,8 @@
       "recordedAnswers" : "Recorded Answers :",
       "voiceAnswer" : "Voice Answer",
       "saved" : "Saved",
-      "handInWork" : "Hand In Work"
+      "handInWork" : "Hand In Work",
+      "videoQuestion" : "Video Question"
     }
   }
 }

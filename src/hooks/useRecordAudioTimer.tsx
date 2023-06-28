@@ -44,7 +44,6 @@ export const formatTime = (audioDuration:number) => {
     const minutes = Math.floor(audioDuration / 60)
     const getMinutes = `0${minutes % 60}`.slice(-2)
     const getHours = `0${Math.floor(audioDuration / 3600)}`.slice(-2)
-    console.log(Number(getHours),'getHours')
     
     return Number(getHours) > 0 ? `${getHours}:${getMinutes}:${getSeconds}` : `${getMinutes}:${getSeconds}` 
   }

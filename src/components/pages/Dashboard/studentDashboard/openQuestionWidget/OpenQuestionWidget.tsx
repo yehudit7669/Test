@@ -18,6 +18,7 @@ import { useToggle } from "../../../../../hooks/useToggle";
 import RichTextEditor from "./richTextEditor/RichTextEditor";
 import { useTranslation } from "react-i18next";
 import VideoRecorderDialog from "./videoRecorderDialog/VideoRecorderDialog";
+import AudioVideoInstructions from "./audioVideoInstructions/AudioVideoInstructions";
 
 export default function OpenQuestionWidget() {
   /* i18n dependencies */
@@ -28,14 +29,14 @@ export default function OpenQuestionWidget() {
   const {
     status: audioRecorderDialogStatus,
     changeStatus: handleChangeAudioRecorderDialogStatus,
-  } = useToggle();
+  } = useToggle(false);
   /* Audio recorder Dialog dependencies */
 
   /* Video recorder Dialog dependencies */
   const {
     status: videoRecorderDialogStatus,
     changeStatus: handleChangeVideoRecorderDialogStatus,
-  } = useToggle();
+  } = useToggle(false);
   /* Video recorder Dialog dependencies */
 
   /***** Widget --> Block-1 : Render Question Header *****/
@@ -85,7 +86,7 @@ export default function OpenQuestionWidget() {
             <Stack direction="row">
               <Stack direction="row" className="AudioButton_Container">
                 <IconButton onClick={handleChangeAudioRecorderDialogStatus}>
-                  <div className="AudioIcon_Container">
+                  <div className="AudioVideoIcon_Container">
                     <AudioIcon />
                   </div>
                 </IconButton>
@@ -94,7 +95,7 @@ export default function OpenQuestionWidget() {
 
               <Stack direction="row" className="VideoButton_Container">
                 <IconButton onClick={handleChangeVideoRecorderDialogStatus}>
-                  <div className="AudioIcon_Container">
+                  <div className="AudioVideoIcon_Container">
                     <AudioIcon />
                   </div>
                 </IconButton>
@@ -129,7 +130,7 @@ export default function OpenQuestionWidget() {
               padding="2px"
             >
               <IconButton onClick={() => {}}>
-                <div className="AudioIcon_Container PaddingForPlayIcon_Container">
+                <div className="AudioVideoIcon_Container PaddingForPlayIcon_Container">
                   <PlayIconForRecordedAnswers />
                 </div>
               </IconButton>
@@ -168,10 +169,22 @@ export default function OpenQuestionWidget() {
   }
   /***** Widget --> Block-5 : Render Saved And Hand In Work button *****/
 
+  const RenderAudioVideoInstructions = () => {
+    return (
+      <>
+      <Grid item xs={12}>
+        <AudioVideoInstructions/>
+      </Grid>
+      </>
+    )
+  }
+
   return (
     <div className="OpenQuestionWidget_Container">
       <Grid container spacing={2}>
         {renderQuestionAndDescriptionHeader()}
+        <RenderAudioVideoInstructions/>
+
         {renderRichTextEditor()}
         {renderAudioVideoAnswerRecorders()}
         {renderRecordedAnswers()}        

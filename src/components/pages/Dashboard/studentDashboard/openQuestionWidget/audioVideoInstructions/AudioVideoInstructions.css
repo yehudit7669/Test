@@ -1,0 +1,12 @@
+.AudioVideoInstructions_Container .Video_Instructions_Accordion{
+    display:"flex";
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid #E6E6E6;
+    background-color: #F2F2F2;
+    border-radius: 5px;
+    width: 342.43px;
+}
+.AudioVideoInstructions_Container .Video_Instructions_Accordion .Video_Instructions_Accordion_Summary >  *{
+    margin: 0;
+}
