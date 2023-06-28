@@ -5,41 +5,41 @@ import {
   Stack,
   IconButton,
   Button,
-} from "@mui/material";
+} from '@mui/material'
 import {
   CloseIconForRecorder,
   PlayIconForRecordedAnswers,
-} from "../../../../../../assets/svgs/svg-components";
-import { useTranslation } from "react-i18next";
-import Accordion from "@mui/material/Accordion";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useState, useRef } from "react";
-import "./AudioVideoInstructions.css";
-import VideoPlayer from "../videoRecorderDialog/videoPlayer";
-import video from "../../../../../../assets/videos/SampleVideo_720x480_20mb.mp4"
+} from '../../../../../../assets/svgs/svg-components'
+import { useTranslation } from 'react-i18next'
+import Accordion from '@mui/material/Accordion'
+import AccordionDetails from '@mui/material/AccordionDetails'
+import AccordionSummary from '@mui/material/AccordionSummary'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import { useState, useRef } from 'react'
+import './AudioVideoInstructions.css'
+import VideoPlayer from '../videoRecorderDialog/videoPlayer'
+import video from '../../../../../../assets/videos/SampleVideo_720x480_20mb.mp4'
 
-export default function AudioVideoInstructions() {
+export default function AudioVideoInstructions({ videoSrc, audioSrc }: any) {
   /* i18n dependencies */
-  const { t } = useTranslation();
+  const { t } = useTranslation()
   /* i18n dependencies */
 
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>(false)
   // const videoSrcRef = useRef<any>(null);
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
-      setExpanded(isExpanded ? panel : false);
-    };
+      setExpanded(isExpanded ? panel : false)
+    }
 
   return (
     <div className="AudioVideoInstructions_Container">
       <Grid item xs={5}>
         <Accordion
           className="Video_Instructions_Accordion"
-          expanded={expanded === "panel1"}
-          onChange={handleChange("panel1")}
+          expanded={expanded === 'panel1'}
+          onChange={handleChange('panel1')}
         >
           <AccordionSummary
             className="Video_Instructions_Accordion_Summary"
@@ -53,14 +53,14 @@ export default function AudioVideoInstructions() {
               </div>
             </IconButton>
             <Typography className="Voice" style={{ flexGrow: 1 }}>
-              {t("Widget.videoQuestion")}
+              {t('Widget.videoQuestion')}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <VideoPlayer videoSrc={video} />
+            <VideoPlayer videoSrc={videoSrc} />
           </AccordionDetails>
         </Accordion>
       </Grid>
     </div>
-  );
+  )
 }

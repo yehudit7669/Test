@@ -1,18 +1,18 @@
-
-import StudentDashboardImg from "../../../../assets/images/studentDashboard_bg.png";
-import OpenQuestionWidget from "./openQuestionWidget";
-import "./StudentDashboard.css"
+import { Link } from 'react-router-dom'
+import './StudentDashboard.css'
 
 export default function StudentDashboard() {
-
   return (
-    <main className="StudentDashboard_mainWrapper">
-      <div className="StudentDashboard_ImgWrapper">
-        <img className="StudentDashBoard_CoverImg" src={StudentDashboardImg} />
+    <div>
+      <div>
+        <Link to={'/worksheet/D1OVW2'}>Worksheet 1</Link>
       </div>
-      <section className="StudentDashBoard_section">
-        <OpenQuestionWidget/>
-      </section>
-    </main>
-  );
+      <div>
+        <Link to={'/worksheet/TI2KSG'}>Worksheet 2</Link>
+      </div>
+      <div>
+        <Link to={'/worksheet/KUGXFS'}>Worksheet 3</Link>
+      </div>
+    </div>
+  )
 }

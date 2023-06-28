@@ -1,4 +1,7 @@
+import { Grid } from '@mui/material'
 import { ChangeEvent, useState } from 'react'
+import RenderQuestionHeader from './common/renderQuestions/RenderQuestionHeader'
+import AudioVideoInstructions from '../../Dashboard/studentDashboard/openQuestionWidget/audioVideoInstructions/AudioVideoInstructions'
 
 interface Option {
   text: string
@@ -29,34 +32,34 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ data }) => {
     setSelectedOption(e.target.value)
   }
 
-  const handleSubmit = () => {
-    console.log('Selected option:', selectedOption)
-  }
-
   return (
-    <div>
-      <h2 dangerouslySetInnerHTML={{ __html: data.title }}></h2>
-      {data.options.map((option) => (
-        <div
-          style={{ display: 'flex', justifyContent: 'center' }}
-          key={option.index}
-        >
-          <input
-            type="radio"
-            name="option"
-            value={option.text}
-            checked={selectedOption === option.text}
-            onChange={handleOptionChange}
-          />
-          <label dangerouslySetInnerHTML={{ __html: option.text }}></label>
-          {option.imageUrl && <img src={option.imageUrl} alt="Option" />}
-        </div>
-      ))}
-      <div>{data.audio && <audio src={data.audio.url} controls />}</div>
-      <div>{data.video && <video src={data.video.url} controls />}</div>
-      <div>
-        <button onClick={handleSubmit}>Submit</button>
-      </div>
+    <div className="Widget_Container">
+      <Grid container spacing={2}>
+        <RenderQuestionHeader title={data?.title} desc={''} />
+        {(data.audio || data.video) && (
+          <Grid item xs={12}>
+            <AudioVideoInstructions
+              videoSrc={data?.video?.url}
+              audioSrc={data?.audio?.url}
+            />
+          </Grid>
+        )}
+        <Grid item xs={12}>
+          {data.options.map((option) => (
+            <div key={option.index}>
+              <input
+                type="radio"
+                name="option"
+                value={option.text}
+                checked={selectedOption === option.text}
+                onChange={handleOptionChange}
+              />
+              <label dangerouslySetInnerHTML={{ __html: option.text }}></label>
+              {option.imageUrl && <img src={option.imageUrl} alt="Option" />}
+            </div>
+          ))}
+        </Grid>
+      </Grid>
     </div>
   )
 }

@@ -60,7 +60,7 @@
     border-radius: 2px;
 }
 
-.OpenQuestionWidget_Container .Button[data-savedButton] {
+.OpenQuestionWidget_Container .Button[data-savedbutton] {
     padding: 1.5px 20.25px 2.5px 20.75px;
     color: rgba(0, 0, 0, 0.38);
     background: rgba(0, 0, 0, 0.12);

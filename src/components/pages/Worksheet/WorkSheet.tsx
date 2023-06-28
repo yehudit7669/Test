@@ -3,10 +3,14 @@ import Widget from './widget/Widget'
 import { useEffect, useState } from 'react'
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux-hooks'
 import { getWorksheetById } from '../../../services/worksheet/worksheetServices'
-import { CircularProgress } from '@mui/material'
+import { Button, Divider, Grid, Stack } from '@mui/material'
 import './Worksheet.css'
+import { HandInWorkIcon } from '../../../assets/svgs/svg-components'
+import { useTranslation } from 'react-i18next'
+import Loader from '../../common/loader'
 
 const Worksheet = () => {
+  const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
@@ -31,12 +35,33 @@ const Worksheet = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
 
-  console.log(currentSheetData)
+  const renderSavedAndHandInWorkButtons = () => {
+    return (
+      <>
+        <Grid item xs={12} marginTop={10}>
+          <Stack direction="column" spacing={2}>
+            <Divider variant="middle" className="Divider" data-saved />
+            <Stack direction="row" justifyContent="end" spacing={2}>
+              <Button className="Button" variant="contained" data-savedbutton>
+                {t('Widget.saved')}
+              </Button>
+              <Button className="Button" variant="contained" data-handinwork>
+                <HandInWorkIcon />
+                {t('Widget.handInWork')}
+              </Button>
+            </Stack>
+          </Stack>
+        </Grid>
+      </>
+    )
+  }
+
+  console.log('currentStyles', currentStyles)
 
   if (loading) {
     return (
       <div className="Worksheet-container-loader">
-        <CircularProgress />
+        <Loader />
       </div>
     )
   }
@@ -44,27 +69,24 @@ const Worksheet = () => {
     return <div className="Worksheet-container-error">{error}</div>
   }
   return (
-    <div
-      className={`Worksheet-container `}
-      style={{
-        backgroundImage: `url(${currentStyles?.background.images[0].path})`,
-        backgroundSize:
-          currentStyles?.background.images[0]?.['background-size'],
-        backgroundRepeat: currentStyles?.background.images[0]?.repeat,
-      }}
-    >
-      <div className="worksheet-header">
-        <h1>{currentSheetData?.name}</h1>
+    <main className="Worksheet_mainWrapper">
+      <div className="Worksheet_ImgWrapper">
+        <img
+          className="Worksheet_CoverImg"
+          src={currentStyles?.background.images[0].path}
+        />
+        <span className={currentStyles?.font?.className}>
+          {currentSheetData?.name}
+        </span>
       </div>
-      <div className="worksheet-background"></div>
-      <div className="worksheet">
-        <p>{currentSheetData?.description}</p>
-
+      <section className="Worksheet_section">
+        {/* <p>{currentSheetData?.description}</p> */}
         {sortedWidgetList?.map((widget: any) => (
           <Widget key={widget.seqid} widget={widget} />
         ))}
-      </div>
-    </div>
+        {renderSavedAndHandInWorkButtons()}
+      </section>
+    </main>
   )
 }
 

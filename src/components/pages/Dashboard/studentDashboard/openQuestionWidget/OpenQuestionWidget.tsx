@@ -3,8 +3,8 @@ import {
   CloseIconForRecorder,
   HandInWorkIcon,
   PlayIconForRecordedAnswers,
-} from "../../../../../assets/svgs/svg-components";
-import "./OpenQuestionWidget.css";
+} from '../../../../../assets/svgs/svg-components'
+import './OpenQuestionWidget.css'
 import {
   Grid,
   Typography,
@@ -12,31 +12,31 @@ import {
   Stack,
   IconButton,
   Button,
-} from "@mui/material";
-import AudioRecorderDialog from "./audioRecorderDialog.tsx/AudioRecorderDialog";
-import { useToggle } from "../../../../../hooks/useToggle";
-import RichTextEditor from "./richTextEditor/RichTextEditor";
-import { useTranslation } from "react-i18next";
-import VideoRecorderDialog from "./videoRecorderDialog/VideoRecorderDialog";
-import AudioVideoInstructions from "./audioVideoInstructions/AudioVideoInstructions";
+} from '@mui/material'
+import AudioRecorderDialog from './audioRecorderDialog.tsx/AudioRecorderDialog'
+import { useToggle } from '../../../../../hooks/useToggle'
+import RichTextEditor from './richTextEditor/RichTextEditor'
+import { useTranslation } from 'react-i18next'
+import VideoRecorderDialog from './videoRecorderDialog/VideoRecorderDialog'
+import AudioVideoInstructions from './audioVideoInstructions/AudioVideoInstructions'
 
 export default function OpenQuestionWidget() {
   /* i18n dependencies */
-  const {t} = useTranslation()
+  const { t } = useTranslation()
   /* i18n dependencies */
 
   /* Audio recorder Dialog dependencies */
   const {
     status: audioRecorderDialogStatus,
     changeStatus: handleChangeAudioRecorderDialogStatus,
-  } = useToggle(false);
+  } = useToggle(false)
   /* Audio recorder Dialog dependencies */
 
   /* Video recorder Dialog dependencies */
   const {
     status: videoRecorderDialogStatus,
     changeStatus: handleChangeVideoRecorderDialogStatus,
-  } = useToggle(false);
+  } = useToggle(false)
   /* Video recorder Dialog dependencies */
 
   /***** Widget --> Block-1 : Render Question Header *****/
@@ -57,8 +57,8 @@ export default function OpenQuestionWidget() {
           </Typography>
         </Grid>
       </>
-    );
-  };
+    )
+  }
   /***** Widget --> Block-1 : Render Question Header *****/
 
   /***** Widget --> Block-2 : Render Rich Text Editor *****/
@@ -69,19 +69,18 @@ export default function OpenQuestionWidget() {
           <RichTextEditor />
         </Grid>
       </>
-    );
-  };
+    )
+  }
   /***** Widget --> Block-2 : Render Rich Text Editor *****/
-  
-  
+
   /***** Widget --> Block-3 : Render Audio Video Answer Recorder *****/
   const renderAudioVideoAnswerRecorders = () => {
     return (
       <>
-      <Grid item xs={12}>
+        <Grid item xs={12}>
           <Stack direction="row" alignItems="center">
             <Typography className="Answer_Recorder">
-              {t("Widget.answerRecorder")}
+              {t('Widget.answerRecorder')}
             </Typography>
             <Stack direction="row">
               <Stack direction="row" className="AudioButton_Container">
@@ -108,15 +107,15 @@ export default function OpenQuestionWidget() {
     )
   }
   /***** Widget --> Block-3 : Render Audio Video Answer Recorder *****/
-  
+
   /***** Widget --> Block-4 : Render Recorded Answers *****/
   const renderRecordedAnswers = () => {
     return (
       <>
-      <Grid item xs={12}>
+        <Grid item xs={12}>
           <Stack direction="row" alignItems="center" gap={1}>
             <Typography className="Answer_Recorder">
-              {t("Widget.recordedAnswers")}
+              {t('Widget.recordedAnswers')}
             </Typography>
             <Stack
               display="flex"
@@ -134,10 +133,12 @@ export default function OpenQuestionWidget() {
                   <PlayIconForRecordedAnswers />
                 </div>
               </IconButton>
-              <Typography className="Voice">{t("Widget.voiceAnswer")}</Typography>
-                <IconButton onClick={() => {}}>
-                  <CloseIconForRecorder />
-                </IconButton>
+              <Typography className="Voice">
+                {t('Widget.voiceAnswer')}
+              </Typography>
+              <IconButton onClick={() => {}}>
+                <CloseIconForRecorder />
+              </IconButton>
             </Stack>
           </Stack>
         </Grid>
@@ -145,21 +146,21 @@ export default function OpenQuestionWidget() {
     )
   }
   /***** Widget --> Block-4 : Render Recorded Answers *****/
-  
+
   /***** Widget --> Block-5 : Render Saved And Hand In Work button *****/
   const renderSavedAndHandInWorkButtons = () => {
     return (
       <>
-      <Grid item xs={12} marginTop={10}>
+        <Grid item xs={12} marginTop={10}>
           <Stack direction="column" spacing={2}>
             <Divider variant="middle" className="Divider" data-saved />
             <Stack direction="row" justifyContent="end" spacing={2}>
-              <Button className="Button" variant="contained" data-savedButton>
-                {t("Widget.saved")}
+              <Button className="Button" variant="contained" data-savedbutton>
+                {t('Widget.saved')}
               </Button>
               <Button className="Button" variant="contained" data-handInWork>
                 <HandInWorkIcon />
-                {t("Widget.handInWork")}
+                {t('Widget.handInWork')}
               </Button>
             </Stack>
           </Stack>
@@ -172,9 +173,9 @@ export default function OpenQuestionWidget() {
   const RenderAudioVideoInstructions = () => {
     return (
       <>
-      <Grid item xs={12}>
-        <AudioVideoInstructions/>
-      </Grid>
+        <Grid item xs={12}>
+          <AudioVideoInstructions />
+        </Grid>
       </>
     )
   }
@@ -183,13 +184,11 @@ export default function OpenQuestionWidget() {
     <div className="OpenQuestionWidget_Container">
       <Grid container spacing={2}>
         {renderQuestionAndDescriptionHeader()}
-        <RenderAudioVideoInstructions/>
+        <RenderAudioVideoInstructions />
 
         {renderRichTextEditor()}
         {renderAudioVideoAnswerRecorders()}
-        {renderRecordedAnswers()}        
-
-        
+        {renderRecordedAnswers()}
 
         {renderSavedAndHandInWorkButtons()}
       </Grid>
@@ -212,5 +211,5 @@ export default function OpenQuestionWidget() {
       }
       {/* Audio dialog dependencies */}
     </div>
-  );
+  )
 }
