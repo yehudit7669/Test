@@ -7,6 +7,7 @@ import { routes, userLayouts } from '../constants'
 import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
+import NewCustomer from '../components/pages/Admin/Dashboard/newCustomer'
 
 function App() {
   useEffect(() => {
@@ -15,6 +16,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+      <Route path={`/${routes.ADMIN}/dashboard/new-customer`} element={<NewCustomer />}/>
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route
