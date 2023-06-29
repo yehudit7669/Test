@@ -7,8 +7,8 @@ import { routes, userLayouts } from '../constants'
 import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
-import Dashboard from '../components/pages/admin/dashboard/Dashboard'
-import { NewCustomer } from '../components/pages/admin/dashboard/newCustomer/newCustomer'
+import Dashboard from '../components/pages/Admin/Dashboard/Dashboard'
+import { NewCustomer } from '../components/pages/Admin/Dashboard/newCustomer/newCustomer'
 
 function App() {
   useEffect(() => {
