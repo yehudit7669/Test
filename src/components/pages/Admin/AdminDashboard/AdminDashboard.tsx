@@ -1,10 +1,9 @@
 import CustomerList from './customerList/CustomerList'
-
 import './Dashboard.css'
 import Button from '@mui/material/Button'
 import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 
-export default function Dashboard() {
+export default function AdminDashboard() {
   return (
     <div className="listSpaces">
       <div className="divButton">
