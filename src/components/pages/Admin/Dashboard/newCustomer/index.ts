@@ -1,3 +1,3 @@
-import NewCustomer from "./newCustomer";
+import NewCustomer from './newCustomer'
 
 export default NewCustomer

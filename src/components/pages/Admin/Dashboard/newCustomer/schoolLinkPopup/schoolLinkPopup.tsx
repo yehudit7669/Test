@@ -1,5 +1,5 @@
 import Dialog from '@mui/material/Dialog'
-import {IconButton } from '@mui/material'
+import { IconButton } from '@mui/material'
 import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
 import Confetti from '../../../../Auth/firstLoginTeacher/confetti/Confetti'
@@ -10,7 +10,6 @@ type Props = {
   open: boolean
   handleClose: () => void
   dashboardLink: any
-
 }
 
 const SchoolLinkPopup = ({ open, handleClose, dashboardLink }: Props) => {
@@ -34,10 +33,16 @@ const SchoolLinkPopup = ({ open, handleClose, dashboardLink }: Props) => {
           <div className="WelcomeToWizerTitle">
             {t('NewCustomer.schoolLinkPopup.title')}
           </div>
-            <CopyTextToClipboard color='#FFC046' text={ String(dashboardLink?.link)} />
-            <label>{dashboardLink?.link}</label>
+          <CopyTextToClipboard
+            color="#FFC046"
+            text={String(dashboardLink?.link)}
+          />
+          <label>{dashboardLink?.link}</label>
           <div>
-            <CopyTextToClipboard color='#FFC046' text={ String(dashboardLink?.link)} />
+            <CopyTextToClipboard
+              color="#FFC046"
+              text={String(dashboardLink?.link)}
+            />
             <label>{dashboardLink?.password}</label>
           </div>
         </DialogContent>

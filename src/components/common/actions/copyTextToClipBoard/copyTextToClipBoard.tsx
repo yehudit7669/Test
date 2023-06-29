@@ -1,14 +1,13 @@
-import { ClipBoardIcon } from "../../../../assets/svgs/svg-components";
+import { ClipBoardIcon } from '../../../../assets/svgs/svg-components'
 
 type Props = {
   text: string
   color: string
 }
 export const CopyTextToClipboard = (props: Props) => {
-
   return (
-    <div style={
-      {
+    <div
+      style={{
         cursor: 'pointer',
         backgroundColor: props.color ? props.color : '',
         borderRadius: '6px',
@@ -16,15 +15,14 @@ export const CopyTextToClipboard = (props: Props) => {
         height: '30px',
         alignItems: 'center',
         display: 'flex',
-        justifyContent:'center'
-
+        justifyContent: 'center',
       }}
       onClick={() => {
-        const clipboard = navigator.clipboard;
-        clipboard.writeText(props.text);
-      }}>
+        const clipboard = navigator.clipboard
+        clipboard.writeText(props.text)
+      }}
+    >
       <ClipBoardIcon></ClipBoardIcon>
     </div>
-
   )
-};
+}
