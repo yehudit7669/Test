@@ -9,7 +9,7 @@ import SchoolLinkPopup from './schoolLinkPopup/SchoolLinkPopup'
 import { SchoolInfo } from './schoolInfo/schoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
-import './NewCustomer.css'
+import './newCustomer.css'
 
 export const NewCustomerScreen = () => {
   const dispatch = useAppDispatch()
