@@ -2,14 +2,14 @@ import { Form } from 'react-final-form'
 import { useAppDispatch } from '../../../../../hooks/redux-hooks'
 import { newCustomerAction } from '../../../../../services/customer/customerServices'
 import { useState } from 'react'
-import { SchoolInfo } from './schoolInfo/schoolInfo'
-import './newCustomer.css'
+import './NewCustomer.css'
 import { Grid } from '@mui/material'
+import { useTranslation } from 'react-i18next'
+import { SubmitButton } from '../../../../common/ui/buttons/submitButton'
+import { SchoolInfo } from './schoolInfo/schoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
-import { useTranslation } from 'react-i18next'
 import SchoolLinkPopup from './schoolLinkPopup/schoolLinkPopup'
-import { SubmitButton } from '../../../../common/ui/buttons/submitButton'
 export default function NewCustomer() {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
