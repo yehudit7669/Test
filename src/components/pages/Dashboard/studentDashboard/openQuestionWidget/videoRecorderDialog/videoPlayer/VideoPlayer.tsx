@@ -7,13 +7,14 @@ import RenderVideoDuration from './renderVideoDuration'
 import RenderVideoPlaybackSpeedAndMiniPlayer from './videoPlaybackSpeedAndMiniPlayer'
 import RenderTheaterModeAndFullScreenMode from './theaterModeAndFullScreenMode'
 import { useVideoPlayerContext } from '../context/videoPlayerContext'
-import video from '../../../../../../../assets/videos/SampleVideo_720x480_20mb.mp4'
-import { useRef } from 'react'
+import {useRef} from "react";
+import video from "../../../../../../../assets/videos/SampleVideo_720x480_20mb.mp4"
 
 type Props = {
-  videoSrc: string | null | undefined
+  videoSrc: string | undefined;
+  isStandAloneVideoPlayer : boolean;
 }
-export default function VideoPlayer({ videoSrc }: Props) {
+export default function VideoPlayer({ videoSrc, isStandAloneVideoPlayer }: Props) {
   /* Context dependencies */
   const { recordVideoDuration, recordedVideo } = useVideoRecorderContext()
   const {
@@ -29,28 +30,41 @@ export default function VideoPlayer({ videoSrc }: Props) {
     setIsVideoPlayerPaused,
     setTimelineSliderValue,
     setVideoPlayerMaxTimeForSliderValue,
+    videoPlayerRef
   } = useVideoPlayerContext()
-  let { videoPlayerRef } = useVideoPlayerContext()
   /* Context dependencies */
 
   const videoSrcRef = useRef<any>(null)
 
+
   /* Function definition to play and pause the video player */
   const handlePlayPauseToggleButton = () => {
-    videoSrcRef.current.paused
-      ? videoSrcRef.current.play()
-      : videoSrcRef.current.pause()
+    let ref
+    if (isStandAloneVideoPlayer) {
+      ref = videoSrcRef
+    } else {
+      ref = videoPlayerRef
+    }
+    ref.current.paused
+      ? ref.current.play()
+      : ref.current.pause()
   }
   /* Function definition to play and pause the video player */
 
   /* Function definition to change the volume */
   const handleVolumeChanged = () => {
-    setVideoPlayerVolumeSliderValue(videoSrcRef.current.volume)
+    let ref
+    if (isStandAloneVideoPlayer) {
+      ref = videoSrcRef
+    } else {
+      ref = videoPlayerRef
+    }
+    setVideoPlayerVolumeSliderValue(ref.current.volume)
     let volumeLevel
-    if (videoSrcRef.current.volume === '0' || videoSrcRef.current.muted) {
+    if (ref.current.volume === '0' || ref.current.muted) {
       setVideoPlayerVolumeSliderValue(0)
       volumeLevel = 'muted'
-    } else if (videoSrcRef.current.volume >= '0.5') {
+    } else if (ref.current.volume >= '0.5') {
       volumeLevel = 'high'
     } else {
       volumeLevel = 'low'
@@ -61,21 +75,34 @@ export default function VideoPlayer({ videoSrc }: Props) {
 
   /* On data load - set the duration of the video */
   const handleDataLoaded = () => {
-    setVideoPlayerVolumeSliderValue(videoSrcRef?.current?.volume)
-    if (videoSrcRef?.current?.duration === Infinity) {
+    let ref
+    if (isStandAloneVideoPlayer) {
+      ref = videoSrcRef
+    } else {
+      ref = videoPlayerRef
+    }
+    setVideoPlayerVolumeSliderValue(ref?.current?.volume)
+    console.log(ref.current.duration,'videoPlayerRef.current.duration')
+    if (ref?.current?.duration === Infinity) {
       setVideoPlayerTotalTime(formatDuration(recordVideoDuration))
       setVideoPlayerMaxTimeForSliderValue(recordVideoDuration)
     } else {
-      setVideoPlayerTotalTime(formatDuration(videoSrcRef.current.duration))
-      setVideoPlayerMaxTimeForSliderValue(videoSrcRef.current.duration)
+      setVideoPlayerTotalTime(formatDuration(ref.current.duration))
+      setVideoPlayerMaxTimeForSliderValue(ref.current.duration)
     }
   }
   /* On data load - set the duration of the video */
 
   /* Function definition to change the position of the slider on time change or time update */
   const handleTimeUpdate = () => {
-    setVideoPlayerCurrentTime(formatDuration(videoSrcRef.current.currentTime))
-    setTimelineSliderValue(videoSrcRef.current.currentTime)
+    let ref
+    if (isStandAloneVideoPlayer) {
+      ref = videoSrcRef
+    } else {
+      ref = videoPlayerRef
+    }
+    setVideoPlayerCurrentTime(formatDuration(ref.current.currentTime))
+    setTimelineSliderValue(ref.current.currentTime)
   }
   /* Function definition to change the position of the slider on time change or time update */
 
@@ -103,7 +130,7 @@ export default function VideoPlayer({ videoSrc }: Props) {
 
   return (
     <>
-      {recordedVideo || videoSrc ? (
+      {(recordedVideo || videoSrc) ? (
         <div
           ref={videoPlayerContainerRef}
           className={`Video_Player_Container ${
@@ -113,27 +140,26 @@ export default function VideoPlayer({ videoSrc }: Props) {
           } ${isVideoPlayerPaused ? 'paused' : ''}`}
         >
           <video
-            key={video}
-            src={videoSrc || ''}
-            ref={videoSrcRef}
+            ref={(isStandAloneVideoPlayer) ? videoSrcRef : videoPlayerRef}
             onPlay={() => setIsVideoPlayerPaused(false)}
             onPause={() => setIsVideoPlayerPaused(true)}
             onClick={handlePlayPauseToggleButton}
             onVolumeChange={handleVolumeChanged}
-            onLoadedData={handleDataLoaded}
+            onLoadedMetadata={handleDataLoaded}
+            onDurationChange={handleDataLoaded}
             onTimeUpdate={handleTimeUpdate}
             className="Video_Player"
-          />
+          >
+            <source src={(isStandAloneVideoPlayer) ? videoSrc : recordedVideo}/>
+          </video>
           <div className="Video_Controls_Container">
-            <RenderTimeline videoSrcRef={videoSrcRef} />
+            <RenderTimeline isStandAloneVideoPlayer={isStandAloneVideoPlayer} ref={videoSrcRef}/>
             <div className="Controls_Container">
-              <RenderPlayPauseVideo videoSrcRef={videoSrcRef} />
-              <RenderVolumeControls videoSrcRef={videoSrcRef} />
+              <RenderPlayPauseVideo isStandAloneVideoPlayer={isStandAloneVideoPlayer} ref={videoSrcRef}/>
+              <RenderVolumeControls isStandAloneVideoPlayer={isStandAloneVideoPlayer} ref={videoSrcRef}/>
               <RenderVideoDuration />
-              <RenderVideoPlaybackSpeedAndMiniPlayer
-                videoSrcRef={videoSrcRef}
-              />
-              <RenderTheaterModeAndFullScreenMode />
+              <RenderVideoPlaybackSpeedAndMiniPlayer isStandAloneVideoPlayer={isStandAloneVideoPlayer} ref={videoSrcRef}/>
+              <RenderTheaterModeAndFullScreenMode/>
             </div>
           </div>
         </div>

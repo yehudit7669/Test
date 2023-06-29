@@ -9,6 +9,7 @@ import {
 import {
   CloseIconForRecorder,
   PlayIconForRecordedAnswers,
+  VideoInstructionsIcon,
 } from '../../../../../../assets/svgs/svg-components'
 import { useTranslation } from 'react-i18next'
 import Accordion from '@mui/material/Accordion'
@@ -18,12 +19,13 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useState, useRef } from 'react'
 import './AudioVideoInstructions.css'
 import VideoPlayer from '../videoRecorderDialog/videoPlayer'
-import video from '../../../../../../assets/videos/SampleVideo_720x480_20mb.mp4'
+import AudioPlayer from '../../../../Worksheet/widget/common/audioPlayer/AudioPlayer'
 
-export default function AudioVideoInstructions({ videoSrc, audioSrc }: any) {
+export default function AudioVideoInstructions({ videoSrc, audioSrc, audioName }: any) {
   /* i18n dependencies */
   const { t } = useTranslation()
   /* i18n dependencies */
+  console.log(audioSrc,'audioSrc')
 
   const [expanded, setExpanded] = useState<string | false>(false)
   // const videoSrcRef = useRef<any>(null);
@@ -34,33 +36,34 @@ export default function AudioVideoInstructions({ videoSrc, audioSrc }: any) {
     }
 
   return (
-    <div className="AudioVideoInstructions_Container">
-      <Grid item xs={5}>
+    <Grid container spacing={2} className="AudioVideoInstructions_Container">
+      <Grid item xs={6}>
+        <AudioPlayer audioSrc={audioSrc} audioName={audioName}/>
+      </Grid>
+      <Grid item xs={6}>
         <Accordion
-          className="Video_Instructions_Accordion"
+          className="Video_Instructions_Accordion in-fullscreen"
           expanded={expanded === 'panel1'}
           onChange={handleChange('panel1')}
         >
           <AccordionSummary
-            className="Video_Instructions_Accordion_Summary"
+            className="Video_Instructions_Accordion_Summary in-fullscreen"
             expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1bh-content"
-            id="panel1bh-header"
           >
             <IconButton>
               <div className="AudioVideoIcon_Container PaddingForPlayIcon_Container">
-                <PlayIconForRecordedAnswers />
+                <VideoInstructionsIcon />
               </div>
             </IconButton>
-            <Typography className="Voice" style={{ flexGrow: 1 }}>
+            <Typography className="videoQuestion" style={{ flexGrow: 1 }}>
               {t('Widget.videoQuestion')}
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <VideoPlayer videoSrc={videoSrc} />
+            <VideoPlayer isStandAloneVideoPlayer={true} videoSrc={videoSrc} />
           </AccordionDetails>
         </Accordion>
       </Grid>
-    </div>
+    </Grid>
   )
 }

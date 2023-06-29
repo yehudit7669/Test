@@ -134,7 +134,9 @@
       "voiceAnswer" : "Voice Answer",
       "saved" : "Saved",
       "handInWork" : "Hand In Work",
-      "videoQuestion" : "Video Question"
+      "videoQuestion" : "Video Question",
+      "listenToInstructions" : "Listen to instructions",
+      "loading" : "Loading"
     }
   }
 }

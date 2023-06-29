@@ -1,18 +1,21 @@
 import { Slider } from "@mui/material";
 import { useVideoPlayerContext } from "../../context/videoPlayerContext";
 import "../VideoPlayer.css";
+import { forwardRef } from 'react'
 
 type Props = {
-  videoSrcRef: any;
-};
+  isStandAloneVideoPlayer : boolean;
+}
 
 /* Sub component - 1 --> Time line for video player */
-export default function RenderTimeline({ videoSrcRef }: Props) {
+const RenderTimeline = forwardRef(({isStandAloneVideoPlayer}:Props,ref) => {
+  
   /* Context dependencies */
   const {
     timelineSliderValue,
     setTimelineSliderValue,
     videoPlayerMaxTimeForSliderValue,
+    videoPlayerRef
   } = useVideoPlayerContext();
   /* Context dependencies */
 
@@ -21,7 +24,13 @@ export default function RenderTimeline({ videoSrcRef }: Props) {
     newValue: number | number[]
   ) => {
     setTimelineSliderValue(newValue);
-    videoSrcRef.current.currentTime = (event.target as HTMLInputElement).value;
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
+    tempRef.current.currentTime = (event.target as HTMLInputElement).value;
   };
   return (
     <>
@@ -34,5 +43,7 @@ export default function RenderTimeline({ videoSrcRef }: Props) {
       />
     </>
   );
-}
+})
+
+export default RenderTimeline
 /* Sub component - 1 --> Time line for video player */

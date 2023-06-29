@@ -121,6 +121,7 @@ const OpenQuestion: React.FC<OpenQuestionProps> = ({ data }) => {
             <AudioVideoInstructions
               videoSrc={data?.video?.url}
               audioSrc={data?.audio?.url}
+              audioName = {data?.audio?.name}
             />
           </Grid>
         )}

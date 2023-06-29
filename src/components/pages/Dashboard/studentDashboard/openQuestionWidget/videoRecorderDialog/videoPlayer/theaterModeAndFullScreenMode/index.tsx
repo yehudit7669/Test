@@ -6,7 +6,7 @@ export default function RenderTheaterModeAndFullScreenMode() {
   const {
     videoPlayerContainerRef,
     setIsVideoPlayerTheaterMode,
-    setIsVideoPlayerFullScreenMode,
+    setIsVideoPlayerFullScreenMode
   } = useVideoPlayerContext();
   /* Context dependencies */
 
@@ -18,8 +18,14 @@ export default function RenderTheaterModeAndFullScreenMode() {
 
   /* Function definition to toggle full screen mode */
   const handleToggleFullScreenMode = () => {
+    console.log('document.fullscreenEnabled',document.fullscreenEnabled)
     if (document.fullscreenElement === null) {
-      videoPlayerContainerRef.current.requestFullscreen();
+      videoPlayerContainerRef.current.requestFullscreen().then(()=>{
+        console.log('full screen done')
+      }).catch((err:any) => {
+        alert(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+      });
+      console.log(videoPlayerContainerRef.current.requestFullscreen(),'videoPlayerContainerRef.current.requestFullscreen')
     } else {
       document.exitFullscreen();
     }

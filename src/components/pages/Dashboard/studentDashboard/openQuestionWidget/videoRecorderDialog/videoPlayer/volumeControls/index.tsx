@@ -1,33 +1,46 @@
 import Slider from "@mui/material/Slider";
 import { useVideoPlayerContext } from "../../context/videoPlayerContext";
+import {forwardRef} from "react";
 
 type Props = {
-  videoSrcRef : any
+  isStandAloneVideoPlayer : boolean;
 }
 
-export default function RenderVolumeControls({videoSrcRef}:Props) {
+const RenderVolumeControls = forwardRef(({isStandAloneVideoPlayer}:Props, ref)=> {
   /* Context dependencies */
   const {
     setVideoPlayerVolumeSliderValue,
     videoPlayerVolumeType,
     videoPlayerVolumeSliderValue,
+    videoPlayerRef
   } = useVideoPlayerContext();
 
-  let {videoPlayerRef} = useVideoPlayerContext()
   /* Context dependencies */
 
 
   /* Function definition to change the volume using slider */
   const handleVolumeSliderChange = (event: Event, newValue: number | number[]) => {
-    videoSrcRef.current.volume = newValue;
-    videoSrcRef.current.muted = newValue.toString() === "0";
-    setVideoPlayerVolumeSliderValue(videoSrcRef.current.volume);
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
+    tempRef.current.volume = newValue;
+    tempRef.current.muted = newValue.toString() === "0";
+    setVideoPlayerVolumeSliderValue(tempRef.current.volume);
   };
   /* Function definition to change the volume using slider */
 
   /* Function definition to toggle volume button */
   const handleToggleVolumeButton = () => {
-    videoSrcRef.current.muted = !videoSrcRef.current.muted;
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
+    tempRef.current.muted = !tempRef.current.muted;
   };
   /* Function definition to toggle volume button */
 
@@ -69,4 +82,6 @@ export default function RenderVolumeControls({videoSrcRef}:Props) {
       </div>
     </>
   );
-}
+})
+
+export default RenderVolumeControls

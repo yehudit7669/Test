@@ -116,7 +116,7 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
                     <RenderDialogHeaderDescription />
                   </Stack>
                   <VideoRecorder />
-                  <VideoPlayer videoSrc={null} />
+                  <VideoPlayer isStandAloneVideoPlayer={false} videoSrc={""} />
                   <Stack
                     spacing={1}
                     display="flex"

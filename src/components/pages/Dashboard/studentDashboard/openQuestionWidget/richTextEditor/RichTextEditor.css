@@ -1,5 +1,7 @@
 .RichTextEditor_Wrapper{
     position: relative;
+    min-width: 375px;
+    width: fit-content;
 }
 .RichTextEditor_Wrapper em-emoji-picker{
     height: 300px;

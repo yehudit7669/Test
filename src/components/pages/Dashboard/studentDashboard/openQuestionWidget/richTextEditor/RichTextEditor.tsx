@@ -20,7 +20,7 @@ export default function RichTextEditor() {
     status: emojiPickerStatus,
     changeStatus: handleChangeEmojiPickerStatus,
     setStatus: setEmojiPickerStatus,
-  } = useToggle();
+  } = useToggle(false);
   /* Emoji Picker Dialog dependencies */
 
   /* Default editor config dependencies */
@@ -35,7 +35,7 @@ export default function RichTextEditor() {
     spellcheck: true,
     editorCssClass: false,
     triggerChangeEvent: true,
-    width: "auto",
+    minWidth : 375,
     height: 300,
     minHeight: 300,
     direction: "",

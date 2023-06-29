@@ -445,6 +445,22 @@ export const PauseRecordingIcon = () => {
   )
 }
 
+export const PauseIconForRecordedAnswers = () => {
+  return (
+    <>
+      <svg
+        width="25"
+        height="25"
+        viewBox="0 0 25 25"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect width="25" height="25" fill="white" />
+      </svg>
+    </>
+  )
+}
+
 export const PlayAudioIcon = () => {
   return (
     <>
@@ -540,6 +556,37 @@ export const FullScreenCloseIcon = () => {
           fill="currentColor"
           d="M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z"
         />
+      </svg>
+    </>
+  )
+}
+
+export const VideoInstructionsIcon = () => {
+  return (
+    <>
+      <svg
+        width="26"
+        height="26"
+        viewBox="0 0 26 26"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clip-path="url(#clip0_235_18971)">
+          <path
+            d="M25.2297 5.80978V20.9884C25.2297 21.379 25.0483 21.6533 24.6856 21.8115C24.5647 21.858 24.4484 21.8812 24.3368 21.8812C24.0857 21.8812 23.8764 21.7929 23.709 21.6161L18.0868 15.9939V18.3098C18.0868 19.4166 17.6939 20.3629 16.908 21.1488C16.1221 21.9347 15.1757 22.3276 14.069 22.3276H4.24753C3.14076 22.3276 2.19443 21.9347 1.40853 21.1488C0.622625 20.3629 0.229675 19.4166 0.229675 18.3098V8.48835C0.229675 7.38158 0.622625 6.43524 1.40853 5.64934C2.19443 4.86344 3.14076 4.47049 4.24753 4.47049H14.069C15.1757 4.47049 16.1221 4.86344 16.908 5.64934C17.6939 6.43524 18.0868 7.38158 18.0868 8.48835V10.7902L23.709 5.18199C23.8764 5.00528 24.0857 4.91692 24.3368 4.91692C24.4484 4.91692 24.5647 4.94017 24.6856 4.98668C25.0483 5.14479 25.2297 5.41915 25.2297 5.80978Z"
+            fill="white"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_235_18971">
+            <rect
+              width="25.14"
+              height="25"
+              fill="white"
+              transform="matrix(1 0 0 -1 0.229675 25.8999)"
+            />
+          </clipPath>
+        </defs>
       </svg>
     </>
   )

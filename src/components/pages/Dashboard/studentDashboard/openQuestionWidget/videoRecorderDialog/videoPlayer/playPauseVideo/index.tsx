@@ -1,18 +1,26 @@
-import { useVideoPlayerContext } from "../../context/videoPlayerContext";
-import "../VideoPlayer.css"
-type Props = {
-  videoSrcRef: any;
-};
-export default function RenderPlayPauseVideo({ videoSrcRef }: Props) {
-  /* Context dependencies */
-  // let { videoPlayerRef } = useVideoPlayerContext();
-  /* Context dependencies */
+import { useVideoPlayerContext } from '../../context/videoPlayerContext'
+import '../VideoPlayer.css'
+import {forwardRef} from "react";
 
+type Props = {
+  isStandAloneVideoPlayer : boolean;
+}
+
+const RenderPlayPauseVideo = forwardRef(({isStandAloneVideoPlayer }:Props, ref) => {
+  /* Context dependencies */
+  let { videoPlayerRef } = useVideoPlayerContext()
+  /* Context dependencies */
 
   /* Function definition to play and pause video player */
   const handlePlayPauseToggleButton = () => {
-    videoSrcRef.current.paused ? videoSrcRef.current.play() : videoSrcRef.current.pause();
-  };
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
+    tempRef.current.paused ? tempRef.current.play() : tempRef.current.pause()
+  }
   /* Function definition to play and pause video player */
 
   return (
@@ -26,5 +34,7 @@ export default function RenderPlayPauseVideo({ videoSrcRef }: Props) {
         </svg>
       </button>
     </>
-  );
-}
+  )
+})
+
+export default RenderPlayPauseVideo

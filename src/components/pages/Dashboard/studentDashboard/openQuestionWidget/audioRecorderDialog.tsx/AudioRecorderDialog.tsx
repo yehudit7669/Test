@@ -86,10 +86,9 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
 
   /* Condition to check if the playing duration is equal to the recorded duration */
   useEffect(() => {
-    if (playAudioDuration > recordAudioDuration) {
+    if (playAudioDuration >= recordAudioDuration) {
       setIsPlayingRecordedAudio(false);
       handlePauseAudio();
-      handleResetAudio();
     }
   }, [playAudioDuration, recordAudioDuration]);
   /* Condition to check if the playing duration is equal to the recorded duration */
@@ -330,7 +329,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
       audioRef.current.pause();
       setIsPlayingRecordedAudio(false);
       handlePauseAudio();
-      handleResetAudio();
     };
     /* Function definition to pause audio file which is recorded */
     return (

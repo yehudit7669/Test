@@ -1,38 +1,51 @@
 import { useVideoPlayerContext } from "../../context/videoPlayerContext";
-
+import {forwardRef} from "react";
 
 type Props = {
-  videoSrcRef : any
+  isStandAloneVideoPlayer : boolean;
 }
 
-export default function RenderVideoPlaybackSpeedAndMiniPlayer({videoSrcRef}:Props) {
+
+const RenderVideoPlaybackSpeedAndMiniPlayer = forwardRef(({isStandAloneVideoPlayer}:Props, ref)=> {
   /* Context dependencies */
   const {
     videoPlayerPlaybackSpeed,
     setVideoPlayerPlaybackSpeed,
     isVideoPlayerMiniMode,
     setIsVideoPlayerMiniMode,
+    videoPlayerRef
   } = useVideoPlayerContext();
 
-  let {videoPlayerRef} = useVideoPlayerContext()
   /* Context dependencies */
 
 
   /* Function definition to change the playback speed */
   const handleChangePlaybackSpeed = () => {
-    let newPlaybackSpeed = videoSrcRef.current.playbackRate + 0.25;
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
+    let newPlaybackSpeed = tempRef.current.playbackRate + 0.25;
     if (newPlaybackSpeed > 2) newPlaybackSpeed = 0.25;
-    videoSrcRef.current.playbackRate = newPlaybackSpeed;
+    tempRef.current.playbackRate = newPlaybackSpeed;
     setVideoPlayerPlaybackSpeed(`${newPlaybackSpeed}x`);
   };
   /* Function definition to change the playback speed */
 
   /* Function definition to toggle the mini player button */
   const handleToggleMiniPlayer = () => {
+    let tempRef
+    if (isStandAloneVideoPlayer) {
+      tempRef = ref
+    } else {
+      tempRef = videoPlayerRef
+    }
     if (isVideoPlayerMiniMode) {
       document.exitPictureInPicture();
     } else {
-      videoSrcRef.current.requestPictureInPicture();
+      tempRef.current.requestPictureInPicture();
     }
     setIsVideoPlayerMiniMode();
   };
@@ -56,4 +69,6 @@ export default function RenderVideoPlaybackSpeedAndMiniPlayer({videoSrcRef}:Prop
       </button>
     </>
   );
-}
+})
+
+export default RenderVideoPlaybackSpeedAndMiniPlayer
