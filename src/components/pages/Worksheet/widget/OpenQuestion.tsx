@@ -1,6 +1,6 @@
 import { Grid, IconButton, Stack, Typography } from '@mui/material'
-import AudioVideoInstructions from '../../Dashboard/studentDashboard/openQuestionWidget/audioVideoInstructions/AudioVideoInstructions'
-import RichTextEditor from '../../Dashboard/studentDashboard/openQuestionWidget/richTextEditor/RichTextEditor'
+import AudioVideoInstructions from './common/audioVideoInstructions'
+import RichTextEditor from './common/richTextEditor'
 import {
   AudioIcon,
   CloseIconForRecorder,
@@ -8,8 +8,8 @@ import {
 } from '../../../../assets/svgs/svg-components'
 import { useToggle } from '../../../../hooks/useToggle'
 import { useTranslation } from 'react-i18next'
-import AudioRecorderDialog from '../../Dashboard/studentDashboard/openQuestionWidget/audioRecorderDialog.tsx/AudioRecorderDialog'
-import VideoRecorderDialog from '../../Dashboard/studentDashboard/openQuestionWidget/videoRecorderDialog/VideoRecorderDialog'
+import AudioRecorderDialog from './common/audioRecorderDialog'
+import VideoRecorderDialog from './common/videoRecorderDialog'
 import RenderQuestionHeader from './common/renderQuestions/RenderQuestionHeader'
 interface OpenQuestionProps {
   data: {
@@ -121,7 +121,7 @@ const OpenQuestion: React.FC<OpenQuestionProps> = ({ data }) => {
             <AudioVideoInstructions
               videoSrc={data?.video?.url}
               audioSrc={data?.audio?.url}
-              audioName = {data?.audio?.name}
+              audioName={data?.audio?.name}
             />
           </Grid>
         )}

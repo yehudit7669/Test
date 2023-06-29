@@ -17,9 +17,6 @@ import { store } from './store/store.tsx'
 import { theme } from './assets/styles/theme.tsx'
 import App from './app/App.tsx'
 import axios from 'axios'
-import { VideoRecorderContextProvider } from './components/pages/Dashboard/studentDashboard/openQuestionWidget/videoRecorderDialog/context/videoRecorderContext/VideoRecorderContextProvider.tsx'
-import { VideoPlayerContextProvider } from './components/pages/Dashboard/studentDashboard/openQuestionWidget/videoRecorderDialog/context/videoPlayerContext/VideoPlayerContextProvider.tsx'
-
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL
 //Setting default authorization headers
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
@@ -32,15 +29,11 @@ axios.defaults.headers.post['Authorization'] = `Bearer ${localStorage.getItem(
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <Provider store={store}>
-    <VideoRecorderContextProvider>
-        <VideoPlayerContextProvider>
-          <BrowserRouter>
-            <ThemeProvider theme={theme}>
-              <App />
-            </ThemeProvider>
-          </BrowserRouter>
-        </VideoPlayerContextProvider>
-    </VideoRecorderContextProvider>
+      <BrowserRouter>
+        <ThemeProvider theme={theme}>
+          <App />
+        </ThemeProvider>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 )

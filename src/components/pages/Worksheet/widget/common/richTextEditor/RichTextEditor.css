@@ -1,0 +1,17 @@
+.RichTextEditor_Wrapper{
+    position: relative;
+}
+
+.RichTextEditor_Wrapper em-emoji-picker{
+    height: 300px;
+    border-radius: 2px;
+    background: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 1px -2px rgba(76,76,76,.2), 0 3px 3px 0 rgba(76,76,76,.15), 0 1px 4px 0 rgba(76,76,76,.13);
+}
+
+.RichTextEditor_Wrapper .EmojiPicker_Wrapper{
+    position: absolute;
+    top: 35px;
+    right: 0;
+}

@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
 import { ChangeEvent, useState } from 'react'
 import RenderQuestionHeader from './common/renderQuestions/RenderQuestionHeader'
-import AudioVideoInstructions from '../../Dashboard/studentDashboard/openQuestionWidget/audioVideoInstructions/AudioVideoInstructions'
+import AudioVideoInstructions from './common/audioVideoInstructions/AudioVideoInstructions'
 
 interface Option {
   text: string

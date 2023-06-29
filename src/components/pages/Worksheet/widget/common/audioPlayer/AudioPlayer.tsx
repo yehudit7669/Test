@@ -12,8 +12,7 @@ import {
   PlayIconForRecordedAnswers,
 } from '../../../../../../assets/svgs/svg-components'
 import { useTranslation } from 'react-i18next'
-import { useRef, useCallback, forwardRef } from 'react'
-import audio from '../../../../../../assets/audios/file_example_MP3_5MG.mp3'
+import { useRef } from 'react'
 import './AudioPlayer.css'
 
 type Props = {
@@ -21,7 +20,7 @@ type Props = {
   audioName: string
 }
 
-const AudioPlayer = ({ audioSrc, audioName }: Props) => {
+const AudioPlayer = ({ audioSrc }: Props) => {
   /* i18n dependencies */
   const { t } = useTranslation()
 
@@ -42,12 +41,14 @@ const AudioPlayer = ({ audioSrc, audioName }: Props) => {
   const audioRef = useRef<any>(null)
   /* Audio player dependencies */
 
-  /* Check if the current time is greater than audio duration time */
   useEffect(() => {
-    if (playAudioCurrentTime === audioDuration) {
+    if (audioSrc) {
+      const audio = audioRef.current
+      if (audio) {
+        audio.load()
+      }
     }
-  }, [playAudioCurrentTime, audioDuration])
-  /* Check if the current time is greater than audio duration time */
+  }, [audioSrc])
 
   /***** Seperate component for Play Pause Buttons *****/
   const PlayIconButton = () => {
@@ -99,20 +100,19 @@ const AudioPlayer = ({ audioSrc, audioName }: Props) => {
   /***** Seperate component for Play Pause Buttons *****/
 
   useEffect(() => {
-    const handleDataLoaded = () => {
-      console.log(audioRef.current.currentTime, 'ref.current.currentTime')
-      console.log(audioRef.current.duration, 'ref.current.duration')
-      if (audioRef.current.duration !== Infinity) {
-        setAudioDuration(formatDuration(audioRef.current.duration))
-        setAudioPlayerMaxTimeForSliderValue(audioRef.current.duration)
-        setPlayAudioCurrentTime(formatDuration(audioRef.current.currentTime))
-        setTimelineSliderValue(audioRef.current.currentTime)
+    const handleDataLoaded = (event: any) => {
+      // console.log(audioRef.current.currentTime, 'ref.current.currentTime')
+      if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
+        setAudioDuration(formatDuration(event.target.duration))
+        setAudioPlayerMaxTimeForSliderValue(event.target.duration)
+        setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
+        setTimelineSliderValue(event.target.currentTime)
       }
     }
 
     audioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
     audioRef.current.addEventListener('ondurationchange', handleDataLoaded)
-    
+
     return () => {
       audioRef.current.removeEventListener('loadedmetadata', handleDataLoaded)
       audioRef.current.removeEventListener('ondurationchange', handleDataLoaded)
@@ -120,12 +120,13 @@ const AudioPlayer = ({ audioSrc, audioName }: Props) => {
   }, [])
 
   /* Function definition to change the position of the slider on time change or time update */
-  const handleTimeUpdate = () => {
-    if (audioRef.current.duration !== Infinity) {
-      setPlayAudioCurrentTime(formatDuration(audioRef.current.currentTime))
-      setTimelineSliderValue(audioRef.current.currentTime)
-      setAudioDuration(formatDuration(audioRef.current.duration))
-      setAudioPlayerMaxTimeForSliderValue(audioRef.current.duration)
+  const handleTimeUpdate = (event: any) => {
+    console.log(event.target.duration, 'inside time update')
+    if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
+      setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
+      setTimelineSliderValue(event.target.currentTime)
+      setAudioDuration(formatDuration(event.target.duration))
+      setAudioPlayerMaxTimeForSliderValue(event.target.duration)
     }
   }
   /* Function definition to change the position of the slider on time change or time update */
@@ -181,16 +182,12 @@ const AudioPlayer = ({ audioSrc, audioName }: Props) => {
         className="AudioPlayer_Container"
       >
         <audio
+          key={audioSrc?.split('=')[1]}
           ref={audioRef}
-          // onLoadedMetadata={handleDataLoaded}
-          // onLoadedData={handleDataLoaded}
-          // onDurationChange={handleDataLoaded}
           onTimeUpdate={handleTimeUpdate}
           onEnded={handleAudioEnd}
-          // onLoadedMetadata = {handleDataLoaded}
         >
-          {/* <source src={"https://dynamic.wizer.me/ws-audio/fd038199-7933-418e-af18-c9ccf3997b6e"}/> */}
-          <source src={`https://dynamic.wizer.me/ws-audio/${audioName}`} />
+          <source src={audioSrc && audioSrc?.split('=')[1]} />
         </audio>
         <Grid container spacing={2} display="flex" alignItems="center">
           <Grid item xs={2}>
