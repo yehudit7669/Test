@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { StatusQuote } from '../../reducers/quoteReducer'
 
-export const QUOTE_URL = `quote`
+export const QUOTE_URL = `api/v2/quote`
 
 export const getAllQuoteRequests = () => {
   return axios.get(`${QUOTE_URL}/quote-request-list`)
