@@ -1,0 +1,16 @@
+.typography {
+  max-width: 150px;
+  max-height: 10px;
+  background-color: #d4d4d4;
+  display: flex;
+  align-items: center;
+}
+.copyIcon {
+  position: relative;
+}
+.copyData {
+  width: 80% !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
