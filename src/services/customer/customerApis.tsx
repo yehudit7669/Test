@@ -1,10 +1,9 @@
 import axios from 'axios'
 
-export const CUSTOMER_URL = `customer`
-export const NEW_CUSTOMER_URL = `/customer/new`
+export const CUSTOMER_URL = `api/v2/customer`
 
 export const newCustomer = (customer: any) => {
-  return axios.post(NEW_CUSTOMER_URL, customer)
+  return axios.post(`${CUSTOMER_URL}/new`, customer)
 }
 
 export const getAllCustomers = () => {
