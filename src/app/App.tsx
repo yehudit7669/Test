@@ -9,6 +9,7 @@ import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
 import Worksheet from '../components/pages/Worksheet'
 import RequireAuth from './requireAuth/RequireAuth'
+import ForgotPassword from '../components/pages/Auth/ForgotPassword'
 
 function App() {
   useEffect(() => {
@@ -23,11 +24,15 @@ function App() {
             index
             element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
           />
-
           {/* Public routes */}
           <Route path={`/${routes.SIGN_IN}`} element={<SignIn />} />
           <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
           <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />
+          <Route
+            path={`/${routes.FORGOT_PASSWORD}`}
+            element={<ForgotPassword />}
+          />
+          `
           <Route path="*" element={<Navigate to={routes.SIGN_IN} replace />} />
         </Route>
 
