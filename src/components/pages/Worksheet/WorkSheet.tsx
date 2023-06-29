@@ -56,8 +56,6 @@ const Worksheet = () => {
     )
   }
 
-  console.log('currentStyles', currentStyles)
-
   if (loading) {
     return (
       <div className="Worksheet-container-loader">
