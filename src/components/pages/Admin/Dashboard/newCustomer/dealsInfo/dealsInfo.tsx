@@ -21,6 +21,7 @@ export const DealsInfo = () => {
         return (
           <>
             <Grid
+              key={deal}
               container
               item
               rowSpacing={3}
