@@ -8,6 +8,7 @@ import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
 import NewCustomer from '../components/pages/Admin/Dashboard/newCustomer'
+import Dashboard from '../components/pages/Admin/Dashboard/Dashboard'
 
 function App() {
   useEffect(() => {
@@ -16,7 +17,11 @@ function App() {
   return (
     <div className="App">
       <Routes>
-      <Route path={`/${routes.ADMIN}/dashboard/new-customer`} element={<NewCustomer />}/>
+        <Route
+          path={`/${routes.ADMIN}/dashboard/new-customer`}
+          element={<NewCustomer />}
+        />
+        <Route path={`/${routes.ADMIN}/dashboard`} element={<Dashboard />} />
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route

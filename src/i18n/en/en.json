@@ -1,160 +1,156 @@
 {
   "translation": {
-    "Role" : {
-      "parent" : "Parent",
-      "teacher" : "Teacher",
-      "student" : "Student"
+    "Role": {
+      "parent": "Parent",
+      "teacher": "Teacher",
+      "student": "Student"
     },
     "SignIn": {
       "newToWizer": "New to Wizer?",
-      "signUp":"Sign Up",
-      "logInToWizer":"Log in To Wizer",
-      "discoverWizer":"Discover more with a Wizer account",
-      "signIn":"Log In",
-      "forgotPassword":"Forgot Password?",
-      "connect":{
-        "google":"Connect with Google",
-        "microsoft":"Connect with Microsoft"
+      "signUp": "Sign Up",
+      "logInToWizer": "Log in To Wizer",
+      "discoverWizer": "Discover more with a Wizer account",
+      "signIn": "Log In",
+      "forgotPassword": "Forgot Password?",
+      "connect": {
+        "google": "Connect with Google",
+        "microsoft": "Connect with Microsoft"
       },
-      "orText":"or"
+      "orText": "or"
     },
     "FirstLoginStudent": {
       "birthDate": "What is your birth date?",
-      "submit":"Submit",
-      "dayTitle":"Day",
-      "monthTitle":"Month",
-      "yearTitle":"Year"
+      "submit": "Submit",
+      "dayTitle": "Day",
+      "monthTitle": "Month",
+      "yearTitle": "Year"
     },
     "ForgotPassword": {
-      "forgotPassword":"Forgot password?",
-      "noWorries":"No worries!",
-      "submitYourEmail":"Submit your email address and we'll send you a link to reset your password.",
-      "send":"Send",
-      "backTo":"Back to",
-      "login":"Login"
+      "forgotPassword": "Forgot password?",
+      "noWorries": "No worries!",
+      "submitYourEmail": "Submit your email address and we'll send you a link to reset your password.",
+      "send": "Send",
+      "backTo": "Back to",
+      "login": "Login"
     },
     "SignUp": {
-      "joinAs":"Join as",
-      "joinAsTeacherDescription":"I will create worksheets, assign to students and grade their work.",
-      "joinAsStudentDescription":"I will create worksheets, assign to students and grade their work.",
-      "joinAsParentDescription":"I want to be up to date with progres of my children.",
-      "registerToWizer":"Register to Wizer",
-      "discoverWizer":"Join Wizer and discover the full potential of digital worksheets."
+      "joinAs": "Join as",
+      "joinAsTeacherDescription": "I will create worksheets, assign to students and grade their work.",
+      "joinAsStudentDescription": "I will create worksheets, assign to students and grade their work.",
+      "joinAsParentDescription": "I want to be up to date with progres of my children.",
+      "registerToWizer": "Register to Wizer",
+      "discoverWizer": "Join Wizer and discover the full potential of digital worksheets."
     },
-    "JoinWizerSignUp" : {
-      "title":"Join Wizer as ",
-      "notA":"Not a",
+    "JoinWizerSignUp": {
+      "title": "Join Wizer as ",
+      "notA": "Not a",
       "change": "Change",
-      "termsAndPolicyDescription" : "By clicking 'Sign up', you agree to our ",
-      "termsOfService" : "Terms of Service",
-      "privacyPolicy" : "Privacy Policy",
-      "haveAccount" : "Have account?",
-      "signIn" : "Log In",
-      "signUp" : "Sign up"
+      "termsAndPolicyDescription": "By clicking 'Sign up', you agree to our ",
+      "termsOfService": "Terms of Service",
+      "privacyPolicy": "Privacy Policy",
+      "haveAccount": "Have account?",
+      "signIn": "Log In",
+      "signUp": "Sign up"
     },
-    "FirstLoginParent" : {
-      "stepOne" : {
-        "title" : "Tell us more about you",
-        "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
+    "FirstLoginParent": {
+      "stepOne": {
+        "title": "Tell us more about you",
+        "subTitle": "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
       },
-      "stepTwo" : {
-        "title" : "Tell us about your children",
-        "subTitle" : "So we can personalize the learning experience  based on your child needs.",
-        "childStrengths" : "What are the Strengths of your child (optional)",
-        "challenges" : "Challenges (optional)",
-        "preferences" : "Preferences (optional)",
-        "passionsAndHobbies" : "Passions and hobbies (optional)",
-        "addAChild" : "Add a Child",
-        "removeAChild" : "Remove a Child"
+      "stepTwo": {
+        "title": "Tell us about your children",
+        "subTitle": "So we can personalize the learning experience  based on your child needs.",
+        "childStrengths": "What are the Strengths of your child (optional)",
+        "challenges": "Challenges (optional)",
+        "preferences": "Preferences (optional)",
+        "passionsAndHobbies": "Passions and hobbies (optional)",
+        "addAChild": "Add a Child",
+        "removeAChild": "Remove a Child"
       },
-      "stepThree" : {
-        "title" : "How do you support your child's education?",
-        "subTitle" : "You can select more than 1."
+      "stepThree": {
+        "title": "How do you support your child's education?",
+        "subTitle": "You can select more than 1."
       },
-      "stepFour" : {
-        "title" : "What are your teaching goals?",
-        "subTitle" : "You can select more than 1."
+      "stepFour": {
+        "title": "What are your teaching goals?",
+        "subTitle": "You can select more than 1."
       },
-      "next" : "Next"
+      "next": "Next"
     },
-    "FirstLoginTeacher" : {
-      "stepOne" : {
-        "title" : "Tell us more about you",
-        "subTitle" : "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
+    "FirstLoginTeacher": {
+      "stepOne": {
+        "title": "Tell us more about you",
+        "subTitle": "We'd like to get to know you better so we can improve Wizer based on your experience and needs."
       },
-      "stepTwo" : {
-        "title" : "What's your role?",
-        "subTitle" : "You can select more than 1.",
-        "otherRole" : "Other role"
+      "stepTwo": {
+        "title": "What's your role?",
+        "subTitle": "You can select more than 1.",
+        "otherRole": "Other role"
       },
-      "stepThree" : {
-        "title" : "What subjects interest you the most?",
-        "subTitle" : "You can select more than 1.",
-        "otherSubjects" : "Other subjects"
+      "stepThree": {
+        "title": "What subjects interest you the most?",
+        "subTitle": "You can select more than 1.",
+        "otherSubjects": "Other subjects"
       },
-      "stepFour" : {
-        "title" : "What grade are your students?",
-        "subTitle" : "You can select more than 1.",
-        "otherGrades" : "Other grades"
+      "stepFour": {
+        "title": "What grade are your students?",
+        "subTitle": "You can select more than 1.",
+        "otherGrades": "Other grades"
       },
-      "stepFive" : {
-        "title" : "What are you looking for in Wizer?",
-        "subTitle" : "You can select more than 1.",
-        "otherReason" : "Other Reason"
+      "stepFive": {
+        "title": "What are you looking for in Wizer?",
+        "subTitle": "You can select more than 1.",
+        "otherReason": "Other Reason"
       },
-      "stepSix" : {
-        "title" : "What is your school?",
-        "searchSchool" : "Search for your school name",
-        "didntSeeYourSchoolLink" : "Don't see your school?",
-        "shareWizerMeLink" : "Please share Wizer.Me with your supervisor",
-        "joinThisSchool" : "Join this school",
-        "skipLink" : "Skip"
+      "stepSix": {
+        "title": "What is your school?",
+        "searchSchool": "Search for your school name",
+        "didntSeeYourSchoolLink": "Don't see your school?",
+        "shareWizerMeLink": "Please share Wizer.Me with your supervisor",
+        "joinThisSchool": "Join this school",
+        "skipLink": "Skip"
       },
-      "next" : "Next",
-      "joinThisSchool" : "Join this school"
+      "next": "Next",
+      "joinThisSchool": "Join this school"
     },
-    "WelcomeToWizerDialog":{
-      "title" : "Welcome To",
-      "letsStart" : "Let's start"
+    "WelcomeToWizerDialog": {
+      "title": "Welcome To",
+      "letsStart": "Let's start"
     },
-    "NewCustomer":{
-      "NewCustomer" :"New Customer",
+    "NewCustomer": {
+      "NewCustomer": "New Customer",
       "saveButton": "Save and send invitation",
-      "SchoolInfo":{
-        "schoolName" : "School Name*",
-        "street" : "Street",
+      "SchoolInfo": {
+        "schoolName": "School Name*",
+        "street": "Street",
         "country": "Country*",
-        "city":"City",
-        "zip":"Zip",
-        "state" : "State"
+        "city": "City",
+        "zip": "Zip",
+        "state": "State"
       },
-      "ContactInfo" :{
-        "firstName":"First Name",
-        "lastName":"Last Name",
-        "email":"Email",
-        "phoneNumber":"Phone Number",
-        "personContact":"Contact person",
-        "personBilling":"Contact billing",
-        "owner":"Owner*"
+      "ContactInfo": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phoneNumber": "Phone Number",
+        "personContact": "Contact person",
+        "personBilling": "Contact billing",
+        "owner": "Owner*"
       },
-      "DealsInfo" :{
-        "numberSeats":"Number Of Seats*",
-        "amountPaid":"Amount Paid*",
-        "startDate":"Start Date*",
-        "endDate":"End Date*",
-        "PONumber":"PO Number (optional)",
-        "quoteNumber":"Quote Number (optional)",
-        "addDeal" :"Add another deal",
-        "upgradeManuallySeats":"Upgrade manually seats"
+      "DealsInfo": {
+        "numberSeats": "Number Of Seats*",
+        "amountPaid": "Amount Paid*",
+        "startDate": "Start Date*",
+        "endDate": "End Date*",
+        "PONumber": "PO Number (optional)",
+        "quoteNumber": "Quote Number (optional)",
+        "addDeal": "Add another deal",
+        "upgradeManuallySeats": "Upgrade manually seats"
       },
-      "schoolLinkPopup":{
-        "title":"We've got a deal!",
-        "hereIsLinkTo":"Here is the link to"
-
-       
+      "schoolLinkPopup": {
+        "title": "We've got a deal!",
+        "hereIsLinkTo": "Here is the link to"
       }
-
-      
     }
   }
 }
