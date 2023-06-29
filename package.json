@@ -12,9 +12,6 @@
     "preview": "cross-env vite preview",
     "prepare": "husky install"
   },
-  "lint-staged": {
-    "*.css": "eslint --ext .css --cache --fix"
-  },
   "dependencies": {
     "@emoji-mart/data": "^1.1.2",
     "@emoji-mart/react": "^1.1.1",
