@@ -159,7 +159,7 @@ export default function CustomerList() {
 
                       <span
                         onClick={() =>
-                          handleClickOpen(customer.customerName, customer.id)
+                          handleClickOpen(customer.schoolname, customer.id)
                         }
                         className="cursor"
                       >
@@ -170,7 +170,11 @@ export default function CustomerList() {
                 </TableRow>
               ))
             ) : (
-              <div>There are no customers</div>
+              <TableRow>
+                <TableCell align="center" colSpan={customersTitle.length}>
+                  There are no customers
+                </TableCell>
+              </TableRow>
             )}
           </TableBody>
         </Table>
