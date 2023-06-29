@@ -1,6 +1,6 @@
 import { Form } from 'react-final-form'
 import { useAppDispatch } from '../../../../../hooks/redux-hooks'
-import { newCustomerAction } from '../../../../../services/customer/CustomerServices'
+import { newCustomerAction } from '../../../../../services/customer/customerServices'
 import { useState } from 'react'
 import { SchoolInfo } from './schoolInfo/schoolInfo'
 import './newCustomer.css'
