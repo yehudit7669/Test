@@ -133,7 +133,7 @@ export default function QuoteRequestList() {
                   <TableCell align="right">
                     <div
                       onClick={() =>
-                        handleClickOpen(quote.customerName, quote.id)
+                        handleClickOpen(quote.schoolname, quote.id)
                       }
                       className="deleteLogo"
                     >
@@ -157,7 +157,7 @@ export default function QuoteRequestList() {
         submitButton={true}
         cancleText="Cancle"
         submitText="Yes"
-        title="Delete Quote"
+        title="Delete Quote Request"
         handleClose={handleClose}
         onSubmit={() => deleteQuoteRequest(quoteRequestId)}
         open={open}
