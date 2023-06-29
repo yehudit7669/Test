@@ -7,8 +7,8 @@ import { routes, userLayouts } from '../constants'
 import { connect as WSConnect } from '../socket'
 import SignUp from '../components/pages/Auth/SignUp'
 import renderRoutes from './routes/renderRoutes'
-import Dashboard from '../components/pages/Admin/Dashboard/Dashboard'
-import { NewCustomer } from '../components/pages/Admin/Dashboard/newCustomer/newCustomer'
+import Dashboard from '../components/pages/Admin/Dashboard/Dashboard.tsx'
+import { NewCustomerScreen } from '../components/pages/Admin/Dashboard/newCustomerScreen/NewCustomerScreen'
 
 function App() {
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
       <Routes>
         <Route
           path={`/${routes.ADMIN}/dashboard/new-customer`}
-          element={<NewCustomer />}
+          element={<NewCustomerScreen />}
         />
         <Route path={`/${routes.ADMIN}/dashboard`} element={<Dashboard />} />
         <Route element={<AuthLayout />}>

@@ -11,7 +11,7 @@ import { SchoolInfo } from './schoolInfo/schoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
 
-export const NewCustomer = () => {
+export const NewCustomerScreen = () => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
   const [error, setError] = useState('')
