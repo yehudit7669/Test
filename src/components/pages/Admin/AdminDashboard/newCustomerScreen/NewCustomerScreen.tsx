@@ -1,7 +1,7 @@
 import { Form } from 'react-final-form'
 import { useAppDispatch } from '../../../../../hooks/redux-hooks'
 import { newCustomerAction } from '../../../../../services/customer/customerServices'
-import { useState } from 'react'
+import { useState, useCallback } from 'react'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { SubmitButton } from '../../../../common/ui/buttons/submitButton'
@@ -19,6 +19,30 @@ export const NewCustomerScreen = () => {
   const [openSchoolLinkPopup, setOpenSchoolLinkPopup] = useState<boolean>(false)
   const [schoolLink, setSchoolLink] = useState<any>(null)
 
+  const onSubmit = useCallback(
+    async (values: any) => {
+      values.personContact ? (values.personContact.type = 'person contact') : ''
+      values.personBilling ? (values.personBilling.type = 'person billing') : ''
+      values.owner.type = 'owner'
+      const contacts = [values.owner]
+      values.personContact ? contacts.push(values.personContact) : ''
+      values.personBilling ? contacts.push(values.personBilling) : ''
+      const customer = {
+        school: values.school,
+        contacts: contacts,
+        deals: values.deals,
+      }
+      const res = await dispatch(
+        newCustomerAction(customer, setError, setLoading)
+      )
+      if (!error) {
+        setSchoolLink(res?.data)
+        setOpenSchoolLinkPopup(true)
+      }
+    },
+    [dispatch, error]
+  )
+
   return (
     <>
       <SchoolLinkPopup
@@ -33,41 +57,16 @@ export const NewCustomerScreen = () => {
         }}
       />
       <div className="header">{t('NewCustomer.NewCustomer')}</div>
-      <Form
-        onSubmit={async (values: any) => {
-          values.personContact
-            ? (values.personContact.type = 'person contact')
-            : ''
-          values.personBilling
-            ? (values.personBilling.type = 'person billing')
-            : ''
-          values.owner.type = 'owner'
-          const contacts = [values.owner]
-          values.personContact ? contacts.push(values.personContact) : ''
-          values.personBilling ? contacts.push(values.personBilling) : ''
-          const customer = {
-            school: values.school,
-            contacts: contacts,
-            deals: values.deals,
-          }
-          const res = await dispatch(
-            newCustomerAction(customer, setError, setLoading)
-          )
-          if (!error) {
-            setSchoolLink(res?.data)
-            setOpenSchoolLinkPopup(true)
-          }
-        }}
-      >
+      <Form onSubmit={onSubmit}>
         {({ handleSubmit }) => (
           <Grid container width={'80%'} margin="auto">
             <form onSubmit={handleSubmit}>
               <SchoolInfo />
               <div className="line"></div>
               <ContactInfo />
-              <div className={'line'}></div>
+              <div className="line"></div>
               <DealsInfo />
-              <div className={'line'}></div>
+              <div className="line"></div>
               <SubmitButton
                 className="saveButton"
                 text={t('saveButton')}
