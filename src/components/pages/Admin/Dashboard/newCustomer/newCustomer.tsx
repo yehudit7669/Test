@@ -10,7 +10,8 @@ import { SchoolInfo } from './schoolInfo/schoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
 import SchoolLinkPopup from './schoolLinkPopup/schoolLinkPopup'
-export default function NewCustomer() {
+
+export const NewCustomer = () => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
   const [error, setError] = useState('')
