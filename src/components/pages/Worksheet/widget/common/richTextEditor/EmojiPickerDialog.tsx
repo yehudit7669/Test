@@ -1,4 +1,4 @@
-import { Backdrop, Dialog, DialogTitle } from '@mui/material'
+import { Backdrop } from '@mui/material'
 import EmojiData from '@emoji-mart/data/sets/14/apple.json'
 import Picker from '@emoji-mart/react'
 

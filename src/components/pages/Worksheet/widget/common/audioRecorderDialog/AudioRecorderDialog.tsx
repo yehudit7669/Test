@@ -89,7 +89,7 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
       setIsPlayingRecordedAudio(false)
       handlePauseAudio()
     }
-  }, [playAudioDuration, recordAudioDuration])
+  }, [playAudioDuration, recordAudioDuration, handlePauseAudio])
   /* Condition to check if the playing duration is equal to the recorded duration */
 
   /* Function definition to reset the default values when dialog is closed - Dialog close dependencies */

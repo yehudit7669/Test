@@ -1,13 +1,10 @@
-import JoditEditor, { Jodit } from 'jodit-react'
-import { useRef, useState, useEffect } from 'react'
+import JoditEditor from 'jodit-react'
+import { useRef, useState } from 'react'
 import { useToggle } from '../../../../../../hooks/useToggle'
 import { renderToString } from 'react-dom/server'
-import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { RichTextEditorConfig } from './RichTextEditorConfig'
 import './RichTextEditor.css'
-import { Dialog, IconButton } from '@mui/material'
 import { EmojiIcon } from '../../../../../../assets/svgs/svg-components'
-import EmojiPicker from '@emoji-mart/react'
 import EmojiPickerDialog from './EmojiPickerDialog'
 
 export default function RichTextEditor() {
@@ -16,13 +13,11 @@ export default function RichTextEditor() {
   /* Rich Text Editor dependencies */
 
   let editorInstance: any = useRef(null)
-  const emojiStatusButtonRef = useRef<any>(null)
 
   /* Emoji Picker Dialog dependencies */
   const {
     status: emojiPickerStatus,
     changeStatus: handleChangeEmojiPickerStatus,
-    setStatus: setEmojiPickerStatus,
   } = useToggle(false)
   /* Emoji Picker Dialog dependencies */
 

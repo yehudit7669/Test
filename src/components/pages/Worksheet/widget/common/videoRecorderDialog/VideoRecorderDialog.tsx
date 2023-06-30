@@ -1,11 +1,5 @@
 import Dialog from '@mui/material/Dialog'
-import {
-  Button,
-  DialogTitle,
-  IconButton,
-  Stack,
-  Typography,
-} from '@mui/material'
+import { DialogTitle, IconButton, Stack, Typography } from '@mui/material'
 import { DialogContent } from '@mui/material'
 import { CloseIconForRecorder } from '../../../../../../assets/svgs/svg-components'
 import React from 'react'
@@ -43,7 +37,6 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
 
   const {
     setPermission,
-    recordedVideo,
     loading,
     setRecordingStatus,
     setRecordedVideo,

@@ -63,7 +63,7 @@ export default function VideoPlayer({
         video.load()
       }
     }
-  }, [videoSrc])
+  }, [videoSrc, isStandAloneVideoPlayer, videoPlayerRef])
 
   /* Function definition to change the volume */
   const handleVolumeChanged = () => {

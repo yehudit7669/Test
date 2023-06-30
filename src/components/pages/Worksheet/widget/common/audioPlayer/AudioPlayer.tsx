@@ -99,47 +99,6 @@ const AudioPlayer = ({ audioSrc }: Props) => {
   }
   /***** Seperate component for Play Pause Buttons *****/
 
-  useEffect(() => {
-    const handleDataLoaded = (event: any) => {
-      // console.log(audioRef.current.currentTime, 'ref.current.currentTime')
-      if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
-        setAudioDuration(formatDuration(event.target.duration))
-        setAudioPlayerMaxTimeForSliderValue(event.target.duration)
-        setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
-        setTimelineSliderValue(event.target.currentTime)
-      }
-    }
-
-    audioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
-    audioRef.current.addEventListener('ondurationchange', handleDataLoaded)
-
-    return () => {
-      audioRef.current.removeEventListener('loadedmetadata', handleDataLoaded)
-      audioRef.current.removeEventListener('ondurationchange', handleDataLoaded)
-    }
-  }, [])
-
-  /* Function definition to change the position of the slider on time change or time update */
-  const handleTimeUpdate = (event: any) => {
-    console.log(event.target.duration, 'inside time update')
-    if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
-      setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
-      setTimelineSliderValue(event.target.currentTime)
-      setAudioDuration(formatDuration(event.target.duration))
-      setAudioPlayerMaxTimeForSliderValue(event.target.duration)
-    }
-  }
-  /* Function definition to change the position of the slider on time change or time update */
-
-  const handleAudioEnd = () => {
-    setIsPlayingRecordedAudio(false)
-    setIsShowAudioPlayer(false)
-    setPlayAudioCurrentTime('00:00')
-    setTimelineSliderValue(0)
-    setAudioDuration('00:00')
-    setAudioPlayerMaxTimeForSliderValue(0)
-  }
-
   const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
     minimumIntegerDigits: 2,
   })
@@ -160,6 +119,54 @@ const AudioPlayer = ({ audioSrc }: Props) => {
         seconds
       )}`
     }
+  }
+
+  useEffect(() => {
+    const handleDataLoaded = (event: any) => {
+      // console.log(audioRef.current.currentTime, 'ref.current.currentTime')
+      if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
+        setAudioDuration(formatDuration(event.target.duration))
+        setAudioPlayerMaxTimeForSliderValue(event.target.duration)
+        setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
+        setTimelineSliderValue(event.target.currentTime)
+      }
+    }
+    let tempAudioRef: any = null
+    tempAudioRef = audioRef
+    tempAudioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
+    tempAudioRef.current.addEventListener('ondurationchange', handleDataLoaded)
+
+    return () => {
+      tempAudioRef.current.removeEventListener(
+        'loadedmetadata',
+        handleDataLoaded
+      )
+      tempAudioRef.current.removeEventListener(
+        'ondurationchange',
+        handleDataLoaded
+      )
+    }
+  }, [formatDuration])
+
+  /* Function definition to change the position of the slider on time change or time update */
+  const handleTimeUpdate = (event: any) => {
+    console.log(event.target.duration, 'inside time update')
+    if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
+      setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
+      setTimelineSliderValue(event.target.currentTime)
+      setAudioDuration(formatDuration(event.target.duration))
+      setAudioPlayerMaxTimeForSliderValue(event.target.duration)
+    }
+  }
+  /* Function definition to change the position of the slider on time change or time update */
+
+  const handleAudioEnd = () => {
+    setIsPlayingRecordedAudio(false)
+    setIsShowAudioPlayer(false)
+    setPlayAudioCurrentTime('00:00')
+    setTimelineSliderValue(0)
+    setAudioDuration('00:00')
+    setAudioPlayerMaxTimeForSliderValue(0)
   }
 
   /* Function definition on slider timeline change */
