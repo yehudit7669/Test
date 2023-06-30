@@ -1,19 +1,21 @@
-import JoditEditor from 'jodit-react'
+import JoditEditor, { Jodit } from 'jodit-react'
 import { useRef, useState, useEffect } from 'react'
-import EmojiData from '@emoji-mart/data/sets/14/apple.json'
-import Picker from '@emoji-mart/react'
 import { useToggle } from '../../../../../../hooks/useToggle'
 import { renderToString } from 'react-dom/server'
 import SentimentSatisfiedAltIcon from '@mui/icons-material/SentimentSatisfiedAlt'
 import { RichTextEditorConfig } from './RichTextEditorConfig'
 import './RichTextEditor.css'
+import { Dialog, IconButton } from '@mui/material'
+import { EmojiIcon } from '../../../../../../assets/svgs/svg-components'
+import EmojiPicker from '@emoji-mart/react'
+import EmojiPickerDialog from './EmojiPickerDialog'
 
 export default function RichTextEditor() {
   /* Rich Text Editor dependencies */
   const [editorValue] = useState<string>('')
   /* Rich Text Editor dependencies */
 
-  let editorInstance: any = null
+  let editorInstance: any = useRef(null)
   const emojiStatusButtonRef = useRef<any>(null)
 
   /* Emoji Picker Dialog dependencies */
@@ -27,16 +29,18 @@ export default function RichTextEditor() {
   /* Default editor config dependencies */
   const editorConfig: any = {
     ...RichTextEditorConfig,
-    extraButtons: [
+    buttons: [
+      ...RichTextEditorConfig.buttons,
       {
         name: 'emoji',
-        icon: renderToString(<SentimentSatisfiedAltIcon />),
+        icon: renderToString(<EmojiIcon />),
         tooltip: 'Emoji',
         exec: () => {
-          emojiStatusButtonRef?.current.click()
+          handleChangeEmojiPickerStatus()
         },
       },
     ],
+    extraButtons: [],
     uploader: {
       insertImageAsBase64URI: true,
     },
@@ -47,28 +51,6 @@ export default function RichTextEditor() {
     },
   }
   /* Default editor config dependencies */
-
-  /* On component mount Check if user has clicked outside the emoji picker then close the emoji picker */
-  useEffect(() => {
-    const handleClickOutsideEmojiWrapper = (event: any) => {
-      const emojiIcon = document.querySelector("[aria-label='Emoji']")
-      const container: HTMLElement | null = document.getElementById(
-        'EmojiPicker_Container'
-      )
-      if (event.target?.ariaLabel !== emojiIcon?.ariaLabel) {
-        if (container && !container.contains(event.target)) {
-          setEmojiPickerStatus(false)
-        }
-      }
-    }
-
-    document.addEventListener('click', handleClickOutsideEmojiWrapper)
-
-    return () => {
-      document.removeEventListener('click', handleClickOutsideEmojiWrapper)
-    }
-  }, [])
-  /* On component mount Check if user has clicked outside the emoji picker then close the emoji picker */
 
   /***** Render rich text editor *****/
   const renderRichTextEditor = () => {
@@ -84,41 +66,19 @@ export default function RichTextEditor() {
   }
   /***** Render rich text editor *****/
 
-  /***** Render Emoji Picker Container *****/
-  const renderEmojiPickerContainer = () => {
-    /* Function definition for Emoji Picker - On change */
-    const handleEmojiSelect = (emoji: any) => {
-      editorInstance?.selection?.insertHTML(`${emoji.native}`)
-    }
-    /* Function definition for Emoji Picker - On change */
-
-    return (
-      <div id="EmojiPicker_Container" className="EmojiPicker_Wrapper">
-        <button
-          ref={emojiStatusButtonRef}
-          style={{ display: 'none' }}
-          onClick={handleChangeEmojiPickerStatus}
-        ></button>
-        {emojiPickerStatus ? (
-          <Picker
-            set="apple"
-            data={EmojiData}
-            onEmojiSelect={handleEmojiSelect}
-            emojiButtonSize={27}
-            emojiSize={20}
-            previewPosition="none"
-          />
-        ) : null}
-      </div>
-    )
+  const handleGetEmoji = (emoji: any) => {
+    editorInstance?.selection?.insertHTML(`${emoji}`)
   }
-  /***** Render Emoji Picker Container *****/
 
   return (
     <>
       <div className="RichTextEditor_Wrapper">
         {renderRichTextEditor()}
-        {renderEmojiPickerContainer()}
+        <EmojiPickerDialog
+          open={emojiPickerStatus}
+          handleClose={() => handleChangeEmojiPickerStatus()}
+          handleGetEmoji={handleGetEmoji}
+        />
       </div>
     </>
   )
