@@ -10,8 +10,8 @@ import renderRoutes from './routes/renderRoutes'
 import Worksheet from '../components/pages/Worksheet'
 import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
-import { VideoRecorderContextProvider } from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoRecorderContext'
-import { VideoPlayerContextProvider } from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoPlayerContext'
+import VideoRecorderContextProvider from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoRecorderContext'
+import VideoPlayerContextProvider from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoPlayerContext'
 import Dashboard from '../components/pages/admin/dashboard/Dashboard'
 
 function App() {

@@ -5,6 +5,6 @@ import {
 import { useVideoRecorderContext } from './VideoRecorderContext'
 export {
   VideoRecorderContext,
-  VideoRecorderContextProvider,
   useVideoRecorderContext,
+  VideoRecorderContextProvider as default,
 }
