@@ -31,7 +31,7 @@ const RenderVolumeControls = forwardRef(
       }
       tempRef.current.volume = newValue
       tempRef.current.muted = newValue.toString() === '0'
-      setVideoPlayerVolumeSliderValue(tempRef.current.volume)
+      if (event) setVideoPlayerVolumeSliderValue(tempRef.current.volume)
     }
     /* Function definition to change the volume using slider */
 
