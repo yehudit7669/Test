@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useCallback } from 'react'
 import {
   PauseIconForRecordedAnswers,
   PlayIconForRecordedAnswers,
@@ -103,7 +103,7 @@ const AudioPlayer = ({ audioSrc }: Props) => {
     minimumIntegerDigits: 2,
   })
 
-  const formatDuration = (time: number) => {
+  const formatDuration = useCallback((time: number) => {
     const seconds = Math.floor(time % 60)
     const minutes = Math.floor(time / 60) % 60
     const hours = Math.floor(time / 3600)
@@ -119,7 +119,7 @@ const AudioPlayer = ({ audioSrc }: Props) => {
         seconds
       )}`
     }
-  }
+  }, [])
 
   useEffect(() => {
     const handleDataLoaded = (event: any) => {
