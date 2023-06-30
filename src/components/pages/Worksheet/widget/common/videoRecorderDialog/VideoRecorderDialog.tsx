@@ -2,15 +2,15 @@ import Dialog from '@mui/material/Dialog'
 import { DialogTitle, IconButton, Stack, Typography } from '@mui/material'
 import { DialogContent } from '@mui/material'
 import { CloseIconForRecorder } from '../../../../../../assets/svgs/svg-components'
-import React from 'react'
+import React, { useState } from 'react'
 import { TransitionProps } from '@mui/material/transitions'
 import Zoom from '@mui/material/Zoom'
-import './VideoRecorderDialog.css'
 import Uploader from '../../../../../common/uploader'
 import { useTranslation } from 'react-i18next'
-import { useVideoRecorderContext } from './context/videoRecorderContext/VideoRecorderContext'
 import VideoRecorder from './videoRecorder'
 import VideoPlayer from './videoPlayer'
+import { useTimer } from '../../../../../../hooks/useRecordAudioTimer'
+import './VideoRecorderDialog.css'
 
 type Props = {
   open: boolean
@@ -33,14 +33,16 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
   const { t } = useTranslation()
   /* i18n dependencies */
 
+  /* Video recorder dependencies */
+  const [recordedVideo, setRecordedVideo] = useState<string>('')
   const {
-    setPermission,
-    loading,
-    setRecordingStatus,
-    setRecordedVideo,
-    handleResetVideoRecording,
-    setMediaRecorderState,
-  } = useVideoRecorderContext()
+    duration: recordVideoDuration,
+    handleStart: handleStartVideoRecording,
+    handlePause: handlePauseVideoRecording,
+  } = useTimer(0)
+  const [loading] = useState(false)
+  /* Video recorder dependencies */
+
   /***** Dialog title dependencies *****/
   const RenderDialogTitle = () => {
     return (
@@ -79,11 +81,7 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
   /* Dialog close dependencies */
   const onDialogClose = () => {
     handleClose()
-    setPermission(false)
-    setRecordingStatus('inactive')
     setRecordedVideo('')
-    handleResetVideoRecording()
-    setMediaRecorderState('resumed')
   }
   /* Dialog close dependencies */
 
@@ -104,8 +102,20 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
               <Stack spacing={2} display="flex" alignItems="center">
                 <RenderDialogHeaderDescription />
               </Stack>
-              <VideoRecorder />
-              <VideoPlayer isStandAloneVideoPlayer={false} videoSrc={''} />
+              {!recordedVideo || recordedVideo === '' ? (
+                <VideoRecorder
+                  recordVideoDuration={recordVideoDuration}
+                  setRecordedVideo={setRecordedVideo}
+                  handleStartVideoRecording={handleStartVideoRecording}
+                  handlePauseVideoRecording={handlePauseVideoRecording}
+                />
+              ) : (
+                <VideoPlayer
+                  recordVideoDuration={recordVideoDuration}
+                  isStandAloneVideoPlayer={false}
+                  videoSrc={recordedVideo}
+                />
+              )}
               <Stack
                 spacing={1}
                 display="flex"

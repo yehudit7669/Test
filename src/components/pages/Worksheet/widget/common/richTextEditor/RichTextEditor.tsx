@@ -18,6 +18,7 @@ export default function RichTextEditor() {
   const {
     status: emojiPickerStatus,
     changeStatus: handleChangeEmojiPickerStatus,
+    setStatus: setEmojiPickerStatus,
   } = useToggle(false)
   /* Emoji Picker Dialog dependencies */
 
@@ -71,7 +72,7 @@ export default function RichTextEditor() {
         {renderRichTextEditor()}
         <EmojiPickerDialog
           open={emojiPickerStatus}
-          handleClose={() => handleChangeEmojiPickerStatus()}
+          handleClose={() => setEmojiPickerStatus(false)}
           handleGetEmoji={handleGetEmoji}
         />
       </div>
