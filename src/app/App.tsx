@@ -12,11 +12,13 @@ import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
 import { VideoRecorderContextProvider } from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoRecorderContext'
 import { VideoPlayerContextProvider } from '../components/pages/Worksheet/widget/common/videoRecorderDialog/context/videoPlayerContext'
+import Dashboard from '../components/pages/admin/dashboard/Dashboard'
 
 function App() {
   useEffect(() => {
     WSConnect()
   }, [])
+
   return (
     <div className="App">
       <VideoRecorderContextProvider>
@@ -29,6 +31,10 @@ function App() {
                 element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
               />
               {/* Public routes */}
+              <Route
+                path={`/${routes.ADMIN}/dashboard`}
+                element={<Dashboard />}
+              />
               <Route path={`/${routes.SIGN_IN}`} element={<SignIn />} />
               <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
               <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />

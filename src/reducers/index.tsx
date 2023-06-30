@@ -4,6 +4,8 @@ import firstLoginParent from './firstLoginParentReducer'
 import firstLoginTeacher from './firstLoginTeacherReducer'
 import firstLoginStudent from './firstLoginStudentReducer'
 import worksheet from './worksheetReducer'
+import quoteRequest from './quoteReducer'
+import customer from './customerReducer'
 
 const rootReducer = () =>
   combineReducers({
@@ -12,6 +14,8 @@ const rootReducer = () =>
     firstLoginTeacher,
     firstLoginStudent,
     worksheet,
+    quoteRequest,
+    customer,
   })
 
 export default rootReducer

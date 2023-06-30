@@ -34,14 +34,14 @@ jobs:
     concurrency:
       group: ${{ github.ref }}
       cancel-in-progress: true
-    
+
     permissions:
       contents: 'read'
       id-token: 'write'
 
     name: Setup, Build, and Publish
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
