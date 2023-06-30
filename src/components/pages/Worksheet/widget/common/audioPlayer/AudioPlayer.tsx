@@ -99,30 +99,26 @@ const AudioPlayer = ({ audioSrc }: Props) => {
   }
   /***** Seperate component for Play Pause Buttons *****/
 
-  const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
-    minimumIntegerDigits: 2,
-  })
+  const formatDuration = useCallback((time: number) => {
+    const leadingZeroFormatter = new Intl.NumberFormat(undefined, {
+      minimumIntegerDigits: 2,
+    })
+    const seconds = Math.floor(time % 60)
+    const minutes = Math.floor(time / 60) % 60
+    const hours = Math.floor(time / 3600)
 
-  const formatDuration = useCallback(
-    (time: number) => {
-      const seconds = Math.floor(time % 60)
-      const minutes = Math.floor(time / 60) % 60
-      const hours = Math.floor(time / 3600)
-
-      if (hours === 0) {
-        return `${leadingZeroFormatter.format(
-          minutes
-        )}:${leadingZeroFormatter.format(seconds)}`
-      } else {
-        return `${leadingZeroFormatter.format(
-          hours
-        )}:${leadingZeroFormatter.format(
-          minutes
-        )}:${leadingZeroFormatter.format(seconds)}`
-      }
-    },
-    [leadingZeroFormatter]
-  )
+    if (hours === 0) {
+      return `${leadingZeroFormatter.format(
+        minutes
+      )}:${leadingZeroFormatter.format(seconds)}`
+    } else {
+      return `${leadingZeroFormatter.format(
+        hours
+      )}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(
+        seconds
+      )}`
+    }
+  }, [])
 
   useEffect(() => {
     const handleDataLoaded = (event: any) => {
