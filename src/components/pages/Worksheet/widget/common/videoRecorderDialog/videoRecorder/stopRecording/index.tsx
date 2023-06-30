@@ -1,5 +1,5 @@
 import StopIcon from '@mui/icons-material/Stop'
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 import { IconButton } from '@mui/material'
 
 /* Sub component - 4 --> Stop recording */

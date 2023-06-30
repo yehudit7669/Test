@@ -3,7 +3,7 @@ import {
   FullScreenOpenIcon,
   MiniPlayerIcon,
 } from '../../../../../../../../assets/svgs/svg-components'
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 import { IconButton } from '@mui/material'
 
 /* Sub component - 5 --> Mini player and full screen mode */

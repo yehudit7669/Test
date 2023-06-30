@@ -1,7 +1,7 @@
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import PauseIcon from '@mui/icons-material/Pause'
 import { IconButton } from '@mui/material'
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 import { red } from '@mui/material/colors'
 
 /* Sub component - 3 --> Pause And Resume recording */

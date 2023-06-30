@@ -1,5 +1,5 @@
 import { Slider } from '@mui/material'
-import { useVideoPlayerContext } from '../../context/videoPlayerContext'
+import { useVideoPlayerContext } from '../../context/videoPlayerContext/VideoPlayerContext'
 import '../VideoPlayer.css'
 import { forwardRef } from 'react'
 

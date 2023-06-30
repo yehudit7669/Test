@@ -8,9 +8,7 @@ import Zoom from '@mui/material/Zoom'
 import './VideoRecorderDialog.css'
 import Uploader from '../../../../../common/uploader'
 import { useTranslation } from 'react-i18next'
-import VideoRecorderContextProvider from './context/videoRecorderContext'
-import { useVideoRecorderContext } from './context/videoRecorderContext'
-import VideoPlayerContextProvider from './context/videoPlayerContext'
+import { useVideoRecorderContext } from './context/videoRecorderContext/VideoRecorderContext'
 import VideoRecorder from './videoRecorder'
 import VideoPlayer from './videoPlayer'
 
@@ -91,50 +89,46 @@ const VideoRecorderDialog = ({ open, handleClose }: Props) => {
 
   return (
     <>
-      <VideoRecorderContextProvider>
-        <VideoPlayerContextProvider>
-          <Dialog
-            className="VideoRecorderDialog"
-            open={open}
-            onClose={onDialogClose}
-            fullWidth
-            TransitionComponent={Transition}
-            maxWidth={'sm'}
-          >
-            <RenderDialogTitle />
-            <DialogContent>
-              {!loading && (
-                <>
-                  <Stack spacing={2} display="flex" alignItems="center">
-                    <RenderDialogHeaderDescription />
-                  </Stack>
-                  <VideoRecorder />
-                  <VideoPlayer isStandAloneVideoPlayer={false} videoSrc={''} />
-                  <Stack
-                    spacing={1}
-                    display="flex"
-                    justifyContent="end"
-                    flexDirection="row"
-                  >
-                    {/* <Button color="primary" variant="contained">
+      <Dialog
+        className="VideoRecorderDialog"
+        open={open}
+        onClose={onDialogClose}
+        fullWidth
+        TransitionComponent={Transition}
+        maxWidth={'sm'}
+      >
+        <RenderDialogTitle />
+        <DialogContent>
+          {!loading && (
+            <>
+              <Stack spacing={2} display="flex" alignItems="center">
+                <RenderDialogHeaderDescription />
+              </Stack>
+              <VideoRecorder />
+              <VideoPlayer isStandAloneVideoPlayer={false} videoSrc={''} />
+              <Stack
+                spacing={1}
+                display="flex"
+                justifyContent="end"
+                flexDirection="row"
+              >
+                {/* <Button color="primary" variant="contained">
                       Upload
                     </Button>
                     <Button variant="contained">
                       Cancel
                     </Button> */}
-                  </Stack>
-                </>
-              )}
+              </Stack>
+            </>
+          )}
 
-              {loading && (
-                <Stack>
-                  <Uploader />
-                </Stack>
-              )}
-            </DialogContent>
-          </Dialog>
-        </VideoPlayerContextProvider>
-      </VideoRecorderContextProvider>
+          {loading && (
+            <Stack>
+              <Uploader />
+            </Stack>
+          )}
+        </DialogContent>
+      </Dialog>
     </>
   )
 }

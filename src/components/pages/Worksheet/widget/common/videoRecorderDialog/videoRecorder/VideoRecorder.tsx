@@ -1,4 +1,4 @@
-import { useVideoRecorderContext } from '../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../context/videoRecorderContext/VideoRecorderContext'
 import './VideoRecorder.css'
 import RenderGetPermissions from './getPermissions'
 import RenderStartRecording from './startRecording'

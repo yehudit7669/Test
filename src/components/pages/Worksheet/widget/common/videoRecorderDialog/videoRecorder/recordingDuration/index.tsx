@@ -1,5 +1,5 @@
 import { formatTime } from '../../../../../../../../hooks/useRecordAudioTimer'
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 
 /* Sub component - 6 --> Recording Duration */
 export default function RenderRecordingDuration() {

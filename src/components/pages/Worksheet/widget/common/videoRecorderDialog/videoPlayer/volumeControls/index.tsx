@@ -1,5 +1,5 @@
 import Slider from '@mui/material/Slider'
-import { useVideoPlayerContext } from '../../context/videoPlayerContext'
+import { useVideoPlayerContext } from '../../context/videoPlayerContext/VideoPlayerContext'
 import { forwardRef } from 'react'
 
 type Props = {

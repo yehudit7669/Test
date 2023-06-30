@@ -1,4 +1,4 @@
-import { useVideoPlayerContext } from '../../context/videoPlayerContext'
+import { useVideoPlayerContext } from '../../context/videoPlayerContext/VideoPlayerContext'
 import '../VideoPlayer.css'
 
 export default function RenderTheaterModeAndFullScreenMode() {

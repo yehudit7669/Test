@@ -1,4 +1,4 @@
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 import { IconButton } from '@mui/material'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import { red } from '@mui/material/colors'

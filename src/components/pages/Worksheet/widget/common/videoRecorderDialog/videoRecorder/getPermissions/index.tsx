@@ -1,5 +1,5 @@
 import { RecordAudioIcon } from '../../../../../../../../assets/svgs/svg-components'
-import { useVideoRecorderContext } from '../../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../../context/videoRecorderContext/VideoRecorderContext'
 import { IconButton } from '@mui/material'
 
 /* Sub component - 1 --> Get permissions */

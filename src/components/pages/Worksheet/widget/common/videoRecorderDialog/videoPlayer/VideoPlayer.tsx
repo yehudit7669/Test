@@ -1,11 +1,11 @@
-import { useVideoRecorderContext } from '../context/videoRecorderContext'
+import { useVideoRecorderContext } from '../context/videoRecorderContext/VideoRecorderContext'
 import RenderTimeline from './timeline'
 import RenderPlayPauseVideo from './playPauseVideo'
 import RenderVolumeControls from './volumeControls'
 import RenderVideoDuration from './renderVideoDuration'
 import RenderVideoPlaybackSpeedAndMiniPlayer from './videoPlaybackSpeedAndMiniPlayer'
 import RenderTheaterModeAndFullScreenMode from './theaterModeAndFullScreenMode'
-import { useVideoPlayerContext } from '../context/videoPlayerContext'
+import { useVideoPlayerContext } from '../context/videoPlayerContext/VideoPlayerContext'
 import { useRef, useEffect } from 'react'
 import './VideoPlayer.css'
 
