@@ -1,9 +1,9 @@
-.AudioPlayer_Container .Timeline_Container{
-    color: #5BBBB7;
+.AudioPlayer_Container .Timeline_Container {
+  color: #5bbbb7;
 }
-.AudioPlayer_Container .Timer_Container{
-    color: #d48300;
-    font-size: 18px;
+.AudioPlayer_Container .Timer_Container {
+  color: #d48300;
+  font-size: 18px;
   font-family: Rubik;
   font-style: normal;
   font-weight: 400;
@@ -11,6 +11,6 @@
   display: flex;
   align-items: center;
 }
-.AudioPlayer_Container .AudioPlayer_Loading{
-    color: #d48300;
+.AudioPlayer_Container .AudioPlayer_Loading {
+  color: #d48300;
 }

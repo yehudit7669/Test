@@ -23,9 +23,9 @@ export const theme = createTheme({
     success: {
       main: '#0AB813',
     },
-    grey : {
-      "400" :  "rgba(0, 0, 0, 0.12)"
-    }
+    grey: {
+      '400': 'rgba(0, 0, 0, 0.12)',
+    },
   },
   components: {
     MuiAppBar: {

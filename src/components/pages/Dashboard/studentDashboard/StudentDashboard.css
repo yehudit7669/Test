@@ -1,62 +1,63 @@
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat&family=Rubik&display=swap');
 
-
-.StudentDashboard_mainWrapper{
-    background: linear-gradient(90deg, #7AA552 0%, #89BC5D 100%);
-    display: grid;
-    grid-template-rows: repeat(3, auto);
-    place-content: center;
-    grid-template-columns: minmax(auto, 6rem) minmax(360px, 1fr) minmax(auto, 6rem);
+.StudentDashboard_mainWrapper {
+  background: linear-gradient(90deg, #7aa552 0%, #89bc5d 100%);
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  place-content: center;
+  grid-template-columns: minmax(auto, 6rem) minmax(360px, 1fr) minmax(
+      auto,
+      6rem
+    );
 }
 
-.StudentDashboard_ImgWrapper{
-    grid-column: 1 / -1;
-    grid-row: 1 / 2;
-    position: relative;
+.StudentDashboard_ImgWrapper {
+  grid-column: 1 / -1;
+  grid-row: 1 / 2;
+  position: relative;
 }
 
-.StudentDashboard_ImgWrapper > .StudentDashBoard_CoverImg{
-    width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    display: block;
+.StudentDashboard_ImgWrapper > .StudentDashBoard_CoverImg {
+  width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.StudentDashboard_ImgWrapper::after{
-    content: "Open and multiple widgets";
-    position: absolute;
-    width: fit-content;
-    height: fit-content;
-    inset: 0;
-    margin: auto;
-    font-family: 'Indie Flower';
-    font-style: normal;
-    font-weight: 400;
-    line-height: 69px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    color: #FFE969;
-    font-size: clamp(1vw,5vw + 1rem, 5vw)
+.StudentDashboard_ImgWrapper::after {
+  content: 'Open and multiple widgets';
+  position: absolute;
+  width: fit-content;
+  height: fit-content;
+  inset: 0;
+  margin: auto;
+  font-family: 'Indie Flower';
+  font-style: normal;
+  font-weight: 400;
+  line-height: 69px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #ffe969;
+  font-size: clamp(1vw, 5vw + 1rem, 5vw);
 }
 
-
-.StudentDashBoard_section{
-    background-color: white;
-    max-width: 1200px;
-    margin: auto;
-    width: 100%;
-    grid-row: 2 / 4;
-    grid-column: 2 / 3;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #FFFFFF 6%, #FFFFFF 94%, rgba(255, 255, 255, 0) 100%), #FFFFFF;
-    border: 1px solid #C57C04;
-    border-radius: 5px;
-    padding: 51px 43px 1px;
+.StudentDashBoard_section {
+  background-color: white;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  grid-row: 2 / 4;
+  grid-column: 2 / 3;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      #ffffff 6%,
+      #ffffff 94%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    #ffffff;
+  border: 1px solid #c57c04;
+  border-radius: 5px;
+  padding: 51px 43px 1px;
 }
-
-
-
-
-
-
-

@@ -21,17 +21,14 @@ function AuthLayout() {
       case `/${routes.SIGN_UP}/${role}`:
         return 'Join the Wizer community'
 
-      case `/${routes.SIGN_UP}/${role}/parent-details`:
-        return 'Join the community of concerned parents!'
+      case `/${routes.SIGN_UP}/${role}/student-details`:
+        return 'Join the  community of passionate students!'
 
       case `/${routes.SIGN_UP}/${role}/teacher-details`:
         return 'Join the  community of innovative teachers!'
 
       case `/${routes.SIGN_UP}/${role}/parent-details`:
-        return "Join the community of concerned parents!";
-
-      case `/${routes.SIGN_UP}/${role}/teacher-details`:
-        return "Join the  community of innovative teachers!";
+        return 'Join the community of concerned parents!'
 
       default:
         return 'Over 2,500,000 worksheets to explore or create your own.'
@@ -45,7 +42,7 @@ function AuthLayout() {
         <div className="Title">{getSideNavTitleBasedOnRoute()}</div>
       </div>
       <div className="Outlet">
-          <Outlet />
+        <Outlet />
       </div>
     </div>
   )

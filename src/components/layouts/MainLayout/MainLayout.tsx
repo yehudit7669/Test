@@ -5,7 +5,6 @@ import { Avatar, TextField, IconButton } from '@mui/material'
 import CssBaseline from '@mui/material/CssBaseline'
 import useScrollTrigger from '@mui/material/useScrollTrigger'
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
 import Fab from '@mui/material/Fab'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import Fade from '@mui/material/Fade'
@@ -81,8 +80,8 @@ const MainLayout = (props: Props) => {
           </Toolbar>
         </AppBar>
         <Toolbar id="back-to-top-anchor" />
-        
-          <Outlet />
+
+        <Outlet />
 
         <ScrollTop {...props}>
           <Fab size="small" aria-label="scroll back to top">

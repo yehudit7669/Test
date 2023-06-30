@@ -117,7 +117,7 @@ function FirstLoginParent() {
         )}
         {activeStep === 1 && (
           <>
-            <AboutYourChildrenStepperTwo/>
+            <AboutYourChildrenStepperTwo />
           </>
         )}
         {activeStep === 2 && (
