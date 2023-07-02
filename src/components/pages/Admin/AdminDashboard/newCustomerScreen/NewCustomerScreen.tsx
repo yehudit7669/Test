@@ -56,7 +56,7 @@ export const NewCustomerScreen = () => {
           // ))
         }}
       />
-      <div className="header">{t('NewCustomer.NewCustomer')}</div>
+      <div className="header">{t('NewCustomer.mainText')}</div>
       <Form onSubmit={onSubmit}>
         {({ handleSubmit }) => (
           <Grid container width={'80%'} margin="auto">
