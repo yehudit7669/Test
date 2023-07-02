@@ -1,10 +1,11 @@
 import CustomerList from './customerList/CustomerList'
-import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 import './Dashboard.css'
 import Button from '@mui/material/Button'
+import QuoteRequestList from './quoteRequestList/QuoteRequestList'
+
 import { useNavigate } from 'react-router'
 
-export default function Dashboard() {
+export default function AdminDashboard() {
   const navigate = useNavigate()
   return (
     <div className="listSpaces">

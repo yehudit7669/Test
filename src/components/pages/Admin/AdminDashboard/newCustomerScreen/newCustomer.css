@@ -1,0 +1,64 @@
+/****** New customer component dependencies ******/
+:root {
+  --black: #0000003b;
+  --orange: #ffc046;
+}
+.line {
+  border: 1px solid var(--orange);
+  margin-top: 10px;
+  margin-bottom: 6px;
+}
+
+.header {
+  margin: auto;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.text {
+  font-size: 10px;
+}
+
+.contactType {
+  font-size: 12px;
+  margin-top: 25px;
+}
+
+.subHeader {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input {
+  height: 29px;
+  width: 100%;
+  border-color: var(--black);
+  border-radius: 4px;
+}
+
+label {
+  font-size: 10px;
+}
+
+.saveButton {
+  display: flex;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.addDeal label {
+  cursor: pointer;
+  margin-inline-start: 9px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+.addDeal {
+  margin-top: 20px;
+  justify-items: center;
+  align-items: center;
+  display: flex;
+}
+/****** New customer component dependencies ******/
