@@ -1,6 +1,6 @@
 import { Field } from 'react-final-form'
 import { PluseIcon } from '../../../../../../assets/svgs/svg-components'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { FinalFormInput } from '../../../../../common/ui/form/finalFormInput'
@@ -9,10 +9,6 @@ import { required } from '../../../../../common/validationFields/validationFeild
 export const DealsInfo = () => {
   const { t } = useTranslation()
   const [deals, setDeals] = useState([1])
-
-  useEffect(() => {
-    setDeals(deals)
-  }, [deals])
 
   return (
     <>
@@ -77,7 +73,6 @@ export const DealsInfo = () => {
                 <Field
                   name={`deals[${index}].quoteNumber`}
                   component={FinalFormInput}
-                  type="date"
                   label={t('NewCustomer.DealsInfo.quoteNumber')}
                 />
               </Grid>
@@ -90,6 +85,7 @@ export const DealsInfo = () => {
         <label
           onClick={() => {
             deals.push(1)
+            setDeals([...deals])
           }}
         >
           {t('NewCustomer.DealsInfo.addDeal')}

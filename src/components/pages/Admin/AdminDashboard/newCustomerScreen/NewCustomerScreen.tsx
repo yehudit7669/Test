@@ -21,8 +21,8 @@ export const NewCustomerScreen = () => {
 
   const onSubmit = useCallback(
     async (values: any) => {
-      values.personContact ? (values.personContact.type = 'person contact') : ''
-      values.personBilling ? (values.personBilling.type = 'person billing') : ''
+      values.personContact ? (values.personContact.type = 'person_contact') : ''
+      values.personBilling ? (values.personBilling.type = 'person_billing') : ''
       values.owner.type = 'owner'
       const contacts = [values.owner]
       values.personContact ? contacts.push(values.personContact) : ''
