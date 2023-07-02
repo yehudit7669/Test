@@ -351,7 +351,6 @@ export const WizerLogoForLoader = () => {
     </>
   )
 }
-
 export const DeleteLogo = () => {
   return (
     <>
@@ -394,7 +393,6 @@ export const DeleteLogo = () => {
     </>
   )
 }
-
 export const PasswordLogo = () => {
   return (
     <>
@@ -429,7 +427,6 @@ export const PasswordLogo = () => {
     </>
   )
 }
-
 export const PasswordOnCursorLogo = () => {
   return (
     <>
@@ -465,7 +462,6 @@ export const PasswordOnCursorLogo = () => {
     </>
   )
 }
-
 export const LinkToDashboardLogo = () => {
   return (
     <>
@@ -500,7 +496,6 @@ export const LinkToDashboardLogo = () => {
     </>
   )
 }
-
 export const ClipBoardIcon = () => {
   return (
     <>
@@ -523,7 +518,6 @@ export const ClipBoardIcon = () => {
     </>
   )
 }
-
 export const CloseCircleIcon = () => {
   return (
     <>

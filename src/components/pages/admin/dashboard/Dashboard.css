@@ -1,5 +1,10 @@
+/****** Dashboard component dependencies ******/
+:root {
+  --off-white: #fafaf4;
+  --blue: #240046;
+}
 body {
-  background-color: #fafaf4;
+  background-color: var(--off-white);
 }
 .listSpaces {
   width: 1000px;
@@ -7,7 +12,7 @@ body {
 }
 .buttonNewDeal {
   margin-top: 30px !important;
-  background-color: #240046 !important;
+  background-color: var(--blue) !important;
   height: 48px !important;
   border-radius: 10px !important;
 }
@@ -34,3 +39,4 @@ body {
   padding-top: 20px;
   margin-bottom: 10px;
 }
+/****** Dashboard component dependencies ******/

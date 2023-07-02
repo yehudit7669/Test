@@ -1,3 +1,9 @@
+/****** Popup component dependencies ******/
+:root {
+  --yellowish-white: #fafaf4;
+  --blue: #240046;
+  --dark-gray: #212121;
+}
 .dialog {
   height: 324px !important;
   width: 390px;
@@ -5,7 +11,7 @@
   top: 30%;
   left: 35%;
   text-align: center;
-  background-color: #fafaf4;
+  background-color: var(--yellowish-white);
 }
 .dialogActions {
   display: flex !important;
@@ -23,18 +29,19 @@
   font: Source Sans Pro;
   font-size: 24px;
   font-weight: 700;
-  color: #212121;
+  color: var(--dark-gray)
 }
 .cancleButton {
-  border: 1px solid #240046 !important;
+  border: 1px solid var(--blue) !important;
   border-radius: 10px !important;
   width: 100px !important;
   height: 44px !important;
 }
 .submitButton {
-  background-color: #240046 !important;
+  background-color: var(--blue) !important;
   color: white !important;
   width: 100px !important;
   height: 44px !important;
   border-radius: 10px !important;
 }
+/****** Popup component dependencies ******/

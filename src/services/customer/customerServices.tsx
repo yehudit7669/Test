@@ -68,8 +68,8 @@ export const deleteCustomer =
         await requestFromServer.deleteCustomer(customerId)
 
       if (response.status === 200) {
-        dispatch(Actions.createAction(Actions.GET_CUSTOMERS, response.data))
-
+        const res = await requestFromServer.getAllCustomers()
+        dispatch(Actions.createAction(Actions.GET_CUSTOMERS, res.data))
         return response
       } else {
         setError(response?.data?.message)
