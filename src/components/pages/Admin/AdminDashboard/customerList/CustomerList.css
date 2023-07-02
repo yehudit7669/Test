@@ -2,11 +2,7 @@
   max-width: 1000px;
   max-height: 230px;
   margin: auto;
-  /* border: 1px solid #FDAD03; */
-  /* padding: 10px; */
-  /* border-radius: 10px; */
   background-color: #fafaf4 !important;
-  /* padding-bottom: 70px; */
 }
 .cursor {
   cursor: pointer;

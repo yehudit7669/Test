@@ -1,12 +1,8 @@
-import { FieldRenderProps } from 'react-final-form'
-
-export const FinalFormInput = <T extends string | number>(
-  props: FieldRenderProps<T, HTMLInputElement>
-) => {
+export const FinalFormInput = (props: any) => {
   const { input, meta, label, placeholder, alt, id, ...inputProps } = props
   return (
     <>
-      <div style={{ color: meta.touched && meta.error ? 'red' : '' }}>
+      <div style={{ color: meta?.touched && meta?.error ? 'red' : '' }}>
         <label>{label}</label>
         <input
           {...input}
@@ -16,8 +12,8 @@ export const FinalFormInput = <T extends string | number>(
           id={id}
           style={{ borderColor: meta?.touched && meta?.error ? 'red' : '' }}
         />
-        {meta.touched && meta.error && (
-          <span style={{ fontSize: '10px' }}>{meta.error}</span>
+        {meta?.touched && meta?.error && (
+          <span style={{ fontSize: '10px' }}>{meta?.error}</span>
         )}
       </div>
     </>
