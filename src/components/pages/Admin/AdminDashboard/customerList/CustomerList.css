@@ -1,8 +1,13 @@
+/****** Customer List component dependencies ******/
+:root {
+  --off-white: #fafaf4;
+  --blue: #212121;
+}
 .tableContainer {
   max-width: 1000px;
   max-height: 230px;
   margin: auto;
-  background-color: #fafaf4 !important;
+  background-color: var(--off-white) !important;
 }
 .cursor {
   cursor: pointer;
@@ -14,7 +19,7 @@
   top: 30%;
   left: 35%;
   text-align: center;
-  background-color: #fafaf4;
+  background-color: var(--off-white);
 }
 .dialogActions {
   display: flex !important;
@@ -27,10 +32,11 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -1.1%;
-  color: #212121;
+  color: var(--blue);
   width: 20px;
 }
 .tableCell {
-  background-color: #fafaf4 !important;
+  background-color: var(--off-white) !important;
   text-align: center !important;
 }
+/****** Customer List component dependencies ******/
