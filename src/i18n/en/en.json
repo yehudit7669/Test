@@ -118,7 +118,7 @@
       "letsStart": "Let's start"
     },
     "NewCustomer": {
-      "NewCustomer": "New Customer",
+      "mainText": "New Customer",
       "saveButton": "Save and send invitation",
       "SchoolInfo": {
         "schoolName": "School Name*",

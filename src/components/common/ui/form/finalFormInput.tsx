@@ -14,7 +14,7 @@ export const FinalFormInput = <T extends string | number>(
           placeholder={placeholder}
           alt={alt}
           id={id}
-          style={{ borderColor: meta.touched && meta.error ? 'red' : '' }}
+          style={{ borderColor: meta?.touched && meta?.error ? 'red' : '' }}
         />
         {meta.touched && meta.error && (
           <span style={{ fontSize: '10px' }}>{meta.error}</span>

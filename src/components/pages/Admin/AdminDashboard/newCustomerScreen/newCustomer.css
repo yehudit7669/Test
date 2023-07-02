@@ -1,6 +1,10 @@
 /****** New customer component dependencies ******/
+:root {
+  --black: #0000003b;
+  --orange: #ffc046;
+}
 .line {
-  border: 1px solid #ffc046;
+  border: 1px solid var(--orange);
   margin-top: 10px;
   margin-bottom: 6px;
 }
@@ -29,7 +33,7 @@
 input {
   height: 29px;
   width: 100%;
-  border-color: #0000003b;
+  border-color: var(--black);
   border-radius: 4px;
 }
 

@@ -32,7 +32,7 @@ export const NewCustomerScreen = () => {
           // ))
         }}
       />
-      <div className="header">{t('NewCustomer.NewCustomer')}</div>
+      <div className="header">{t('NewCustomer.mainText')}</div>
       <Form
         onSubmit={async (values: any) => {
           values.personContact
