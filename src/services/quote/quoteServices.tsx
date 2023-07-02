@@ -57,7 +57,8 @@ export const deleteQuote =
       )
 
       if (response.status === 200) {
-        dispatch(Actions.createAction(Actions.QUOTE_REQUEST, response.data))
+        const res = await requestFromServer.getAllQuoteRequests()
+        dispatch(Actions.createAction(Actions.QUOTE_REQUEST, res.data))
 
         return response
       } else {
