@@ -20,6 +20,7 @@ function App() {
   return (
     <div className="App">
       <Routes>
+        <Route path={`/${routes.ADMIN}/dashboard`} element={<Dashboard />} />
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route
@@ -27,7 +28,6 @@ function App() {
             element={<Navigate to={`/${routes.SIGN_IN}`} replace />}
           />
           {/* Public routes */}
-          <Route path={`/${routes.ADMIN}/dashboard`} element={<Dashboard />} />
           <Route path={`/${routes.SIGN_IN}`} element={<SignIn />} />
           <Route path={`/${routes.SELECT_ROLE}`} element={<SignUpTabs />} />
           <Route path={`/${routes.SIGN_UP}`} element={<SignUp />} />
