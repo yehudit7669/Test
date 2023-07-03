@@ -16,7 +16,7 @@ export const ContactInfo = () => {
   ]
   return (
     <>
-      <div className="subHeader">Contact Info</div>
+      <div className="subHeader">{t('NewCustomer.ContactInfo.title')}</div>
       <Grid container>
         {contactTypes.map((type) => {
           return (

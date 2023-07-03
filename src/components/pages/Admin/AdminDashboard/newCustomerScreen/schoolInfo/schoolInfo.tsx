@@ -9,7 +9,7 @@ export const SchoolInfo = () => {
 
   return (
     <>
-      <div className="subHeader">School Info</div>
+      <div className="subHeader">{t('NewCustomer.SchoolInfo.title')}</div>
       <Grid
         container
         direction="row"

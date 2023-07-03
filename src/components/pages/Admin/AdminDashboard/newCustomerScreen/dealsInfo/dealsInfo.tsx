@@ -12,7 +12,7 @@ export const DealsInfo = () => {
 
   return (
     <>
-      <div className="subHeader">Deals Info</div>
+      <div className="subHeader">{t('NewCustomer.DealsInfo.title')}</div>
       {deals.map((deal, index) => {
         return (
           <>
