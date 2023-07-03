@@ -26,6 +26,7 @@ type Props = {
 export default function Popup(props: Props) {
   return (
     <Dialog
+      className="dialogPopup"
       open={props.open}
       onClose={props.handleClose}
       aria-labelledby="alert-dialog-title"

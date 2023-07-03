@@ -10,7 +10,7 @@ export default function AdminDashboard() {
     <div className="adminDashboardContainer">
       <div className="listSpaces">
         <div
-          className="divButton"
+          className="newDeal"
           onClick={() => navigate(`/admin/dashboard/new-customer`)}
         >
           <Button variant="contained" className="buttonNewDeal">

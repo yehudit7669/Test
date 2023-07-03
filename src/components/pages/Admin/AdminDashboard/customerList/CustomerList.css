@@ -7,24 +7,10 @@
   max-width: 1000px;
   max-height: 230px;
   margin: auto;
-  background-color: var(--off-white) !important;
+  background-color: var(--off-white);
 }
 .cursor {
   cursor: pointer;
-}
-.dialog {
-  height: 324px !important;
-  width: 390px;
-  position: absolute;
-  top: 30%;
-  left: 35%;
-  text-align: center;
-  background-color: var(--off-white);
-}
-.dialogActions {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
 }
 .popupSpan {
   font: Source Sans Pro;
@@ -35,8 +21,8 @@
   color: var(--blue);
   width: 20px;
 }
-.tableCell {
-  background-color: var(--off-white) !important;
-  text-align: center !important;
+.tableContainer .tableCell {
+  background-color: var(--off-white);
+  text-align: center;
 }
 /****** Customer List component dependencies ******/
