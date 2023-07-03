@@ -10,7 +10,8 @@ import renderRoutes from './routes/renderRoutes'
 import Worksheet from '../components/pages/Worksheet'
 import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
-import Dashboard from '../components/pages/admin/dashboard/Dashboard'
+import { NewCustomerScreen } from '../components/pages/Admin/AdminDashboard/newCustomerScreen/NewCustomerScreen.tsx'
+import AdminDashboard from '../components/pages/Admin/AdminDashboard/AdminDashboard.tsx'
 
 function App() {
   useEffect(() => {
@@ -20,7 +21,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path={`/${routes.ADMIN}/dashboard`} element={<Dashboard />} />
+        <Route
+          path={`/${routes.ADMIN}/dashboard/new-customer`}
+          element={<NewCustomerScreen />}
+        />
+        <Route
+          path={`/${routes.ADMIN}/dashboard`}
+          element={<AdminDashboard />}
+        />
         <Route element={<AuthLayout />}>
           {/* Index route - If user goes to '/' then navigate him to '/sign-in' */}
           <Route

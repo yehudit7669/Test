@@ -651,7 +651,6 @@ export const DeleteLogo = () => {
     </>
   )
 }
-
 export const PasswordLogo = () => {
   return (
     <>
@@ -686,7 +685,6 @@ export const PasswordLogo = () => {
     </>
   )
 }
-
 export const PasswordOnCursorLogo = () => {
   return (
     <>
@@ -722,7 +720,6 @@ export const PasswordOnCursorLogo = () => {
     </>
   )
 }
-
 export const LinkToDashboardLogo = () => {
   return (
     <>
@@ -757,7 +754,6 @@ export const LinkToDashboardLogo = () => {
     </>
   )
 }
-
 export const ClipBoardIcon = () => {
   return (
     <>
@@ -780,7 +776,6 @@ export const ClipBoardIcon = () => {
     </>
   )
 }
-
 export const CloseCircleIcon = () => {
   return (
     <>
@@ -793,6 +788,29 @@ export const CloseCircleIcon = () => {
       >
         <path
           d="M13.755 22.245L22.245 13.755M22.245 22.245L13.755 13.755M18 33C26.25 33 33 26.25 33 18C33 9.75 26.25 3 18 3C9.75 3 3 9.75 3 18C3 26.25 9.75 33 18 33Z"
+          stroke="black"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </>
+  )
+}
+
+// pluse icon
+export const PluseIcon = () => {
+  return (
+    <>
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 12H16M12 16V8M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"
           stroke="black"
           stroke-width="1.5"
           stroke-linecap="round"

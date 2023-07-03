@@ -1,7 +1,11 @@
+/****** Popper component dependencies ******/
+:root {
+  --light-gray: #d4d4d4;
+}
 .typography {
   max-width: 150px;
   max-height: 10px;
-  background-color: #d4d4d4;
+  background-color: var(--light-gray);
   display: flex;
   align-items: center;
 }
@@ -14,3 +18,4 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+/****** Popper component dependencies ******/
