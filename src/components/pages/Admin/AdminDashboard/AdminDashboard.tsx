@@ -1,13 +1,13 @@
 import CustomerList from './customerList/CustomerList'
-import './Dashboard.css'
+import './AdminDashboard.css'
 import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router'
 import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 
-export default function Dashboard() {
+export default function AdminDashboard() {
   const navigate = useNavigate()
   return (
-    <div className="bodyPage">
+    <div className="adminDashboardContainer">
       <div className="listSpaces">
         <div
           className="divButton"

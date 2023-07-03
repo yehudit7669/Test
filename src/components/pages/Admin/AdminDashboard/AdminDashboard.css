@@ -1,9 +1,9 @@
-/****** Dashboard component dependencies ******/
+/****** Admin Dashboard component dependencies ******/
 :root {
   --off-white: #fafaf4;
   --blue: #240046;
 }
-.bodyPage {
+.adminDashboardContainer {
   background-color: var(--off-white);
   height: 100vh;
 }
@@ -40,4 +40,4 @@
   padding-top: 20px;
   margin-bottom: 10px;
 }
-/****** Dashboard component dependencies ******/
+/****** Admin Dashboard component dependencies ******/
