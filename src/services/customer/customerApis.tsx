@@ -3,7 +3,7 @@ import axios from 'axios'
 export const CUSTOMER_URL = `api/v2/customer`
 
 export const newCustomer = (customer: any) => {
-  return axios.post(`${CUSTOMER_URL}/new`, customer)
+  return axios.post(`${CUSTOMER_URL}`, customer)
 }
 
 export const getAllCustomers = () => {

@@ -12,7 +12,7 @@ export const DealsInfo = () => {
 
   return (
     <>
-      <div className="subHeader">deals info</div>
+      <div className="subHeader">Deals Info</div>
       {deals.map((deal, index) => {
         return (
           <>

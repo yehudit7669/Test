@@ -10,6 +10,7 @@ import { SchoolInfo } from './schoolInfo/schoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
 import './newCustomer.css'
+import MainLayout from '../../../../layouts/MainLayout'
 
 export const NewCustomerScreen = () => {
   const dispatch = useAppDispatch()
@@ -56,6 +57,7 @@ export const NewCustomerScreen = () => {
           // ))
         }}
       />
+      <MainLayout></MainLayout>
       <div className="header">{t('NewCustomer.mainText')}</div>
       <Form onSubmit={onSubmit}>
         {({ handleSubmit }) => (
