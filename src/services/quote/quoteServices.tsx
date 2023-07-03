@@ -43,7 +43,7 @@ export const updateQuoteRequestStatus =
         return null
       }
     } catch (err: any) {
-      console.log(err)
+      console.log(err, 'error')
       throw err
     }
   }

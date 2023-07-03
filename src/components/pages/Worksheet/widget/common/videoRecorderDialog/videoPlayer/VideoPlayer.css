@@ -113,17 +113,18 @@
 
 .Video_Player_Container .Volume_Container .Volume_Slider {
   margin-inline: 10px;
-  width: 0 !important;
+  /* width: 0 !important;
   transform: scaleX(0) !important;
   transform-origin: left !important;
-  transition: width 200ms ease-in-out, transform 200ms ease-in-out;
+  transition: width 200ms ease-in-out, transform 200ms ease-in-out; */
+  width: 80px;
   color: white;
 }
 
-.Video_Player_Container .Volume_Container:hover .Volume_Slider {
+/* .Video_Player_Container .Volume_Container:hover .Volume_Slider {
   width: 80px !important;
   transform: scaleX(1) !important;
-}
+} */
 
 .Video_Player_Container .Duration_Container {
   display: flex;

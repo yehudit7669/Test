@@ -23,7 +23,6 @@ const initialState: State = {
 
 const signup = produce((draft: State, action: any) => {
   const { payload } = action
-  console.log(payload, 'payload signup')
   switch (action.type) {
     case Actions.USER_SIGN_UP: {
       draft.user = { ...payload }

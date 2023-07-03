@@ -122,7 +122,6 @@ const AudioPlayer = ({ audioSrc }: Props) => {
 
   useEffect(() => {
     const handleDataLoaded = (event: any) => {
-      // console.log(audioRef.current.currentTime, 'ref.current.currentTime')
       if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
         setAudioDuration(formatDuration(event.target.duration))
         setAudioPlayerMaxTimeForSliderValue(event.target.duration)
@@ -132,15 +131,18 @@ const AudioPlayer = ({ audioSrc }: Props) => {
     }
     let tempAudioRef: any = null
     tempAudioRef = audioRef
-    tempAudioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
-    tempAudioRef.current.addEventListener('ondurationchange', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener('loadedmetadata', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener(
+      'ondurationchange',
+      handleDataLoaded
+    )
 
     return () => {
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'loadedmetadata',
         handleDataLoaded
       )
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'ondurationchange',
         handleDataLoaded
       )
@@ -149,7 +151,6 @@ const AudioPlayer = ({ audioSrc }: Props) => {
 
   /* Function definition to change the position of the slider on time change or time update */
   const handleTimeUpdate = (event: any) => {
-    console.log(event.target.duration, 'inside time update')
     if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
       setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
       setTimelineSliderValue(event.target.currentTime)

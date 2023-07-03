@@ -327,18 +327,12 @@ export default function VideoPlayer({
       if (document.fullscreenElement === null) {
         videoPlayerContainerRef.current
           .requestFullscreen()
-          .then(() => {
-            console.log('full screen done')
-          })
+          .then(() => undefined)
           .catch((err: any) => {
             alert(
               `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
             )
           })
-        console.log(
-          videoPlayerContainerRef.current.requestFullscreen(),
-          'videoPlayerContainerRef.current.requestFullscreen'
-        )
       } else {
         document.exitFullscreen()
       }

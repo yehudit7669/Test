@@ -27,7 +27,6 @@ export const getWorksheetById =
       }
     } catch (err: any) {
       setLoading(false)
-      console.log('errrrrr', err)
       setError(err?.response?.data)
       throw err
     }

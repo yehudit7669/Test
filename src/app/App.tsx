@@ -12,6 +12,9 @@ import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
 import { NewCustomerScreen } from '../components/pages/Admin/AdminDashboard/newCustomerScreen/NewCustomerScreen.tsx'
 import AdminDashboard from '../components/pages/Admin/AdminDashboard/AdminDashboard.tsx'
+import FirstLoginStudent from '../components/pages/Auth/firstLoginStudent/FirstLoginStudent.tsx'
+import FirstLoginTeacher from '../components/pages/Auth/firstLoginTeacher/FirstLoginTeacher.tsx'
+import FirstLoginParent from '../components/pages/Auth/firstLoginParent/FirstLoginParent.tsx'
 
 function App() {
   useEffect(() => {
@@ -49,6 +52,38 @@ function App() {
 
         {/* Protect these routes for auth layout */}
         {renderRoutes(userLayouts.IS_AUTH)}
+
+        <Route element={<AuthLayout />}>
+          {/* Temporary route open for student details for demo */}
+          <Route path={`/${routes.GET_STARTED}`}>
+            <Route index element={<Navigate to={routes.STUDENT} replace />} />
+            <Route
+              path={`/${routes.FIRST_LOGIN_STUDENT}`}
+              element={<FirstLoginStudent />}
+            />
+          </Route>
+          {/* Temporary route open for student details for demo */}
+
+          {/* Temporary route open for teacher details for demo */}
+          <Route path={`/${routes.GET_STARTED}`}>
+            <Route index element={<Navigate to={routes.TEACHER} replace />} />
+            <Route
+              path={`/${routes.FIRST_LOGIN_TEACHER}`}
+              element={<FirstLoginTeacher />}
+            />
+          </Route>
+          {/* Temporary route open for teacher details for demo */}
+
+          {/* Temporary route open for parent details for demo */}
+          <Route path={`/${routes.GET_STARTED}`}>
+            <Route index element={<Navigate to={routes.PARENT} replace />} />
+            <Route
+              path={`/${routes.FIRST_LOGIN_PARENT}`}
+              element={<FirstLoginParent />}
+            />
+          </Route>
+          {/* Temporary route open for parent details for demo */}
+        </Route>
 
         {/* Protected routes for main layout */}
         {renderRoutes(userLayouts.IS_MAIN)}
