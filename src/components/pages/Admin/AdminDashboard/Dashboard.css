@@ -4,7 +4,7 @@
   --blue: #240046;
 }
 
-.AdminDashboard_Container{
+.AdminDashboard_Container {
   background-color: var(--off-white);
   min-height: 100vh;
 }
