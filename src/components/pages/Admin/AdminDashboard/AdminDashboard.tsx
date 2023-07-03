@@ -1,17 +1,16 @@
 import CustomerList from './customerList/CustomerList'
-import './Dashboard.css'
+import './AdminDashboard.css'
 import Button from '@mui/material/Button'
-import QuoteRequestList from './quoteRequestList/QuoteRequestList'
-
 import { useNavigate } from 'react-router'
+import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 
 export default function AdminDashboard() {
   const navigate = useNavigate()
   return (
-    <div className="AdminDashboard_Container">
+    <div className="adminDashboardContainer">
       <div className="listSpaces">
         <div
-          className="divButton"
+          className="newDeal"
           onClick={() => navigate(`/admin/dashboard/new-customer`)}
         >
           <Button variant="contained" className="buttonNewDeal">

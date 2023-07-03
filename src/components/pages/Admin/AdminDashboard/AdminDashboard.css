@@ -1,10 +1,9 @@
-/****** Dashboard component dependencies ******/
+/****** Admin Dashboard component dependencies ******/
 :root {
   --off-white: #fafaf4;
   --blue: #240046;
 }
-
-.AdminDashboard_Container {
+.adminDashboardContainer {
   background-color: var(--off-white);
   height: 100vh;
 }
@@ -13,13 +12,13 @@
   width: 1000px;
   margin: auto;
 }
-.buttonNewDeal {
-  margin-top: 30px !important;
-  background-color: var(--blue) !important;
-  height: 48px !important;
-  border-radius: 10px !important;
+.newDeal .buttonNewDeal {
+  margin-top: 30px;
+  background-color: var(--blue);
+  height: 48px;
+  border-radius: 10px;
 }
-.divButton {
+.newDeal {
   padding-left: 845px;
 }
 .quoteRequestTitle {
@@ -42,4 +41,4 @@
   padding-top: 20px;
   margin-bottom: 10px;
 }
-/****** Dashboard component dependencies ******/
+/****** Admin Dashboard component dependencies ******/

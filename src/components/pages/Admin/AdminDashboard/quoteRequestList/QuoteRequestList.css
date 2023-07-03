@@ -7,20 +7,6 @@
 .deleteLogo {
   cursor: pointer;
 }
-.dialog {
-  height: 324px !important;
-  width: 390px;
-  position: absolute;
-  top: 30%;
-  left: 35%;
-  text-align: center;
-  background-color: var(--off-white);
-}
-.dialogActions {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-}
 .popupSpan {
   font: Source Sans Pro;
   font-weight: 500;
