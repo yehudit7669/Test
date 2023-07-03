@@ -3,7 +3,7 @@ import { produce } from 'immer'
 
 export enum StatusQuote {
   Pending = 'Pending',
-  QuoteSent = 'Quote sent',
+  QuoteSent = 'Quote_sent',
   Done = 'Done',
 }
 
