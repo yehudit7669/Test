@@ -5,6 +5,13 @@
       "teacher": "Teacher",
       "student": "Student"
     },
+    "AuthLayout": {
+      "defaultCoverDescription": "Over 2,500,000 worksheets to explore or create your own.",
+      "selectRoleCoverDescription": "Join the Wizer community",
+      "firstLoginStudentConverDescription": "Join the  community of passionate students!",
+      "firstLoginParentConverDescription": "Join the community of concerned parents!",
+      "firstLoginTeacherConverDescription": "Join the  community of innovative teachers!"
+    },
     "SignIn": {
       "newToWizer": "New to Wizer?",
       "signUp": "Sign Up",

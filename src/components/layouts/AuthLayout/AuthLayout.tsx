@@ -1,37 +1,36 @@
-import { Outlet, useLocation, useParams } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import '@fontsource/mansalva'
 import './AuthLayout.css'
 import { routes } from '../../../constants'
+import { useTranslation } from 'react-i18next'
 
 function AuthLayout() {
   /* Route dependencies */
   const location = useLocation()
-  const params = useParams()
+
+  /* i18n dependencies */
+  const { t } = useTranslation()
 
   /* Function definition to get the title of side navbar dynamically based on route */
   const getSideNavTitleBasedOnRoute = () => {
     const { pathname } = location
-    const { role } = params
 
     switch (pathname) {
-      case `${routes.GET_STARTED}/${routes.BIRTH_DATE}`:
-        return 'Join the community of passionate students!'
-
       case `/${routes.SIGN_UP}`:
-      case `/${routes.SIGN_UP}/${role}`:
-        return 'Join the Wizer community'
+      case `/${routes.SELECT_ROLE}`:
+        return t('AuthLayout.selectRoleCoverDescription')
 
-      case `/${routes.SIGN_UP}/${role}/student-details`:
-        return 'Join the  community of passionate students!'
+      case `/${routes.FIRST_LOGIN_STUDENT}`:
+        return t('AuthLayout.firstLoginStudentConverDescription')
 
-      case `/${routes.SIGN_UP}/${role}/teacher-details`:
-        return 'Join the  community of innovative teachers!'
+      case `/${routes.FIRST_LOGIN_PARENT}`:
+        return t('AuthLayout.firstLoginParentConverDescription')
 
-      case `/${routes.SIGN_UP}/${role}/parent-details`:
-        return 'Join the community of concerned parents!'
+      case `/${routes.FIRST_LOGIN_TEACHER}`:
+        return t('AuthLayout.firstLoginTeacherConverDescription')
 
       default:
-        return 'Over 2,500,000 worksheets to explore or create your own.'
+        return t('AuthLayout.defaultCoverDescription')
     }
   }
   /* Function definition to get the title of side navbar dynamically based on route */

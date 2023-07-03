@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider } from '@mui/material/styles'
-import './assets/styles/reset.css'
 
 import './i18n/i18n.tsx'
 import './setupAxios.tsx'
@@ -17,6 +16,8 @@ import { store } from './store/store.tsx'
 import { theme } from './assets/styles/theme.tsx'
 import App from './app/App.tsx'
 import axios from 'axios'
+import './assets/styles/reset.css'
+import './assets/styles/themeVariables.css'
 import './main.css'
 
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL

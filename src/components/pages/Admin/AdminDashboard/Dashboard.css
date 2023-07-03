@@ -6,7 +6,7 @@
 
 .AdminDashboard_Container {
   background-color: var(--off-white);
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .listSpaces {
