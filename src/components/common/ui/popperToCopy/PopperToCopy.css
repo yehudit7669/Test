@@ -12,8 +12,8 @@
 .copyIcon {
   position: relative;
 }
-.copyData {
-  width: 80% !important;
+.typography .copyData {
+  width: 80%;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;

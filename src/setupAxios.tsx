@@ -2,6 +2,10 @@ import axios from 'axios'
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {
+    if (localStorage.getItem('token')) {
+      config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    }
+
     // Do something before request is sent
     return config
   },

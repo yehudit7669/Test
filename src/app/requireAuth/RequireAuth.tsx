@@ -11,6 +11,7 @@ const RequireAuth = ({ allowedRole }: Props) => {
   const [user] = useUser() // Destructure the user from the useUser hook
 
   // Check if user and user role exist, and if the allowed roles include the user's role
+  // const isAuthorized = true
   const isAuthorized = user?.role === allowedRole
 
   return isAuthorized ? (

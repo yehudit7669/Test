@@ -1,0 +1,214 @@
+/* Video Player Dependencies */
+.Video_Player_Container {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-inline: auto;
+  background-color: black;
+}
+
+.Video_Player_Container.theater,
+.Video_Player_Container.full-screen {
+  max-width: initial;
+  width: 100%;
+}
+
+.Video_Player_Container.theater {
+  min-height: 90vh;
+}
+
+.Video_Player_Container.full-screen {
+  min-height: 100vh;
+}
+
+.Video_Player_Container video {
+  width: 100%;
+}
+
+.Video_Player_Container .Video_Controls_Container {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  color: white;
+  z-index: 100;
+  transition: opacity 150ms ease-in;
+  width: 100%;
+}
+
+.Video_Player_Container .Video_Controls_Container::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75), transparent);
+  width: 100%;
+  aspect-ratio: 6 / 1;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.Video_Player_Container.paused .Video_Controls_Container,
+.Video_Player_Container:hover .Video_Controls_Container {
+  opacity: 1;
+}
+
+.Video_Player_Container .Video_Controls_Container .Controls_Container {
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.25rem;
+  align-items: center;
+}
+
+.Video_Player_Container .Video_Controls_Container .Controls_Container button {
+  background: none;
+  color: inherit;
+  border: none;
+  font-size: 1.1rem;
+  padding: 0;
+  width: 30px;
+  aspect-ratio: 1;
+  opacity: 0.7;
+  transition: opacity 150ms ease-in;
+  cursor: pointer;
+}
+
+.Video_Player_Container
+  .Video_Controls_Container
+  .Controls_Container
+  button:hover {
+  opacity: 1;
+}
+
+.Video_Player_Container.paused .Pause_Icon {
+  display: none;
+}
+
+.Video_Player_Container:not(.paused) .Play_Icon {
+  display: none;
+}
+
+.Video_Player_Container.theater .Tall_Icon {
+  display: none;
+}
+
+.Video_Player_Container:not(.theater) .Wide_Icon {
+  display: none;
+}
+
+.Video_Player_Container.full-screen .Open_Icon {
+  display: none;
+}
+
+.Video_Player_Container:not(.full-screen) .Close_Icon {
+  display: none;
+}
+
+.Video_Player_Container .Volume_Container {
+  display: flex;
+  align-items: center;
+}
+
+.Video_Player_Container .Volume_Container .Volume_Slider {
+  margin-inline: 10px;
+  width: 0 !important;
+  transform: scaleX(0) !important;
+  transform-origin: left !important;
+  transition: width 200ms ease-in-out, transform 200ms ease-in-out;
+  color: white;
+}
+
+.Video_Player_Container .Volume_Container:hover .Volume_Slider {
+  width: 80px !important;
+  transform: scaleX(1) !important;
+}
+
+.Video_Player_Container .Duration_Container {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex-grow: 1;
+}
+
+.Video_Player_Container
+  .Video_Controls_Container
+  .Controls_Container
+  button.wide-btn {
+  width: 50px;
+}
+
+.Video_Player_Container .Timeline_Container {
+  /* height: 7px; */
+  color: white;
+  margin-inline: 0.5rem;
+  width: calc(100% - 1.5rem);
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0;
+  inset: 0;
+  margin: auto;
+}
+.Video_Player_Container .Timeline_Container .Timeline {
+  background-color: rgba(100, 100, 100, 0.5);
+  height: 5px;
+  width: 100%;
+  position: relative;
+}
+
+.Video_Player_Container.scrubbing .Timeline,
+.Video_Player_Container .Timeline_Container:hover .Timeline {
+  height: 100%;
+}
+
+.Video_Player_Container .Timeline_Container .Timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: calc(100% - var(--preview-position) * 100%);
+  background-color: rgb(150, 150, 150);
+  display: none;
+}
+
+.Video_Player_Container .Timeline_Container .Timeline::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: calc(100% - var(--progress-position) * 100%);
+  background-color: red;
+}
+
+.Video_Player_Container .Timeline_Container .Timeline .Thumb_Indicator {
+  --scale: 0;
+  position: absolute;
+  transform: translateX(-50%) scale(var(--scale));
+  height: 200%;
+  top: -50%;
+  left: calc(var(--progress-position) * 100%);
+  background-color: red;
+  border-radius: 50%;
+  transition: transform 150ms ease-in-out;
+  aspect-ratio: 1 / 1;
+}
+
+.Video_Player_Container.scrubbing .Thumb_Indicator,
+.Video_Player_Container .Timeline_Container:hover .Timeline .Thumb_Indicator {
+  --scale: 1;
+}
+
+.Video_Player_Container.scrubbing .Timeline::before,
+.Video_Player_Container .Timeline_Container:hover .Timeline::before {
+  display: block;
+}
+
+:fullscreen,
+::backdrop {
+  background-color: rgba(255, 255, 255, 0);
+}
+/* Video Player Dependencies */

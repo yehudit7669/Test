@@ -63,7 +63,7 @@ export const forgotPasswordAction =
         setSuccessMessage(response.data.message)
         setTimeout(() => {
           navigate(routes.SIGN_IN)
-        }, 3000)
+        }, 5000)
         return response
       } else {
         setLoader(false)
