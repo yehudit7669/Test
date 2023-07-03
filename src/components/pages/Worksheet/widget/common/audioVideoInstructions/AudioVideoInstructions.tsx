@@ -53,7 +53,11 @@ export default function AudioVideoInstructions({
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <VideoPlayer isStandAloneVideoPlayer={true} videoSrc={videoSrc} />
+            <VideoPlayer
+              recordVideoDuration={0}
+              isStandAloneVideoPlayer={true}
+              videoSrc={videoSrc}
+            />
           </AccordionDetails>
         </Accordion>
       </Grid>

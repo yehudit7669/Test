@@ -17,6 +17,8 @@ import { store } from './store/store.tsx'
 import { theme } from './assets/styles/theme.tsx'
 import App from './app/App.tsx'
 import axios from 'axios'
+import './main.css'
+
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL
 //Setting default authorization headers
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem(
