@@ -3,8 +3,9 @@
   --off-white: #fafaf4;
   --blue: #240046;
 }
-body {
+.bodyPage {
   background-color: var(--off-white);
+  height: 100vh;
 }
 .listSpaces {
   width: 1000px;
