@@ -3,9 +3,12 @@
   --off-white: #fafaf4;
   --blue: #240046;
 }
-body {
+
+.AdminDashboard_Container{
   background-color: var(--off-white);
+  min-height: 100vh;
 }
+
 .listSpaces {
   width: 1000px;
   margin: auto;
