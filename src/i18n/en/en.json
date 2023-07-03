@@ -116,6 +116,41 @@
     "WelcomeToWizerDialog": {
       "title": "Welcome To",
       "letsStart": "Let's start"
+    },
+    "NewCustomer": {
+      "mainText": "New Customer",
+      "saveButton": "Save and send invitation",
+      "SchoolInfo": {
+        "schoolName": "School Name*",
+        "street": "Street",
+        "country": "Country*",
+        "city": "City",
+        "zip": "Zip",
+        "state": "State"
+      },
+      "ContactInfo": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "phoneNumber": "Phone Number",
+        "personContact": "Contact person",
+        "personBilling": "Contact billing",
+        "owner": "Owner*"
+      },
+      "DealsInfo": {
+        "numberSeats": "Number Of Seats*",
+        "amountPaid": "Amount Paid*",
+        "startDate": "Start Date*",
+        "endDate": "End Date*",
+        "PONumber": "PO Number (optional)",
+        "quoteNumber": "Quote Number (optional)",
+        "addDeal": "Add another deal",
+        "upgradeManuallySeats": "Upgrade manually seats"
+      },
+      "schoolLinkPopup": {
+        "title": "We've got a deal!",
+        "hereIsLinkTo": "Here is the link to"
+      }
     }
   }
 }

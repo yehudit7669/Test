@@ -1,8 +1,8 @@
 import CustomerList from './customerList/CustomerList'
-import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 import './Dashboard.css'
 import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router'
+import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 
 export default function Dashboard() {
   const navigate = useNavigate()
