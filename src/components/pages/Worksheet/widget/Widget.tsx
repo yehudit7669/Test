@@ -2,6 +2,7 @@ import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 import EmbedWidget from './common/embed'
 import LinkWidget from './common/link'
+import TextWidget from './common/text'
 import Video from './common/video'
 
 const widgetTypes = {
@@ -35,6 +36,8 @@ const Widget = ({ widget }: any) => {
       return <Video data={widget.data} />
     case widgetTypes.embed:
       return <EmbedWidget data={widget.data} />
+    case widgetTypes.text:
+      return <TextWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }

@@ -21,9 +21,14 @@ const RenderQuestionHeader = ({ title, desc, faviconLink, url }: Props) => {
           gap={1}
         >
           {faviconLink && url && (
-            <a href={url} target="_blank" rel="noopener noreferrer">
+            <Typography
+              component={'a'}
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <img src={faviconLink} alt="image" />
-            </a>
+            </Typography>
           )}
           <Typography
             className="Question"

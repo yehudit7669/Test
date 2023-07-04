@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import RenderQuestionHeader from '../renderQuestions/RenderQuestionHeader'
 import './EmbedWidget.css'
 
@@ -14,7 +14,9 @@ const EmbedWidget = ({ data }: any) => {
           alignItems={'center'}
           justifyContent={'center'}
         >
-          <span dangerouslySetInnerHTML={{ __html: data?.embedHtml }}></span>
+          <Typography
+            dangerouslySetInnerHTML={{ __html: data?.embedHtml }}
+          ></Typography>
         </Grid>
       </Grid>
     </div>

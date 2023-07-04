@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material'
+import { Grid, Typography } from '@mui/material'
 import RenderQuestionHeader from '../renderQuestions/RenderQuestionHeader'
 import './linkWidget.css'
 
@@ -17,18 +17,19 @@ const LinkWidget = ({ data }: any) => {
         <Grid gap={1} container item xs={12}>
           {data?.image && (
             <Grid item xs={3}>
-              <a
+              <Typography
+                component={'a'}
                 className="link-widget-container"
                 href={data?.url}
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 <img src={data?.image} alt="image" />
-              </a>
+              </Typography>
             </Grid>
           )}
           <Grid item xs={data?.image ? 8 : 12}>
-            <p>{data?.description}</p>
+            <Typography>{data?.description}</Typography>
           </Grid>
         </Grid>
       </Grid>
