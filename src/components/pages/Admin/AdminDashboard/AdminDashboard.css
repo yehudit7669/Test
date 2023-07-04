@@ -1,0 +1,44 @@
+/****** Admin Dashboard component dependencies ******/
+:root {
+  --off-white: #fafaf4;
+  --blue: #240046;
+}
+.adminDashboardContainer {
+  background-color: var(--off-white);
+  height: 100vh;
+}
+
+.listSpaces {
+  width: 1000px;
+  margin: auto;
+}
+.newDeal .buttonNewDeal {
+  margin-top: 30px;
+  background-color: var(--blue);
+  height: 48px;
+  border-radius: 10px;
+}
+.newDeal {
+  padding-left: 845px;
+}
+.quoteRequestTitle {
+  font: Roboto;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  width: 240px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+.customerListTitle {
+  font: Roboto;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.15px;
+  width: 240px;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+/****** Admin Dashboard component dependencies ******/

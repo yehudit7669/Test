@@ -33,7 +33,6 @@ export const getFirstLoginParentAction =
         return null
       }
     } catch (err: any) {
-      console.log(err)
       setLoading(false)
       setError(err?.response?.data?.message)
       throw err

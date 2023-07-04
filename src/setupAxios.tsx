@@ -2,6 +2,10 @@ import axios from 'axios'
 // Add a request interceptor
 axios.interceptors.request.use(
   function (config) {
+    if (localStorage.getItem('token')) {
+      config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`
+    }
+
     // Do something before request is sent
     return config
   },
@@ -23,7 +27,6 @@ axios.interceptors.response.use(
     // Do something with response error
     if (error.response && error.response.status === 401) {
       //TODO : Logic for clearing all user data and navigating back to auth urls comes here
-      console.log('User unauthorised')
     }
     return Promise.reject(error)
   }

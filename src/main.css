@@ -1,0 +1,6 @@
+html {
+  /* Adding default fonts - Source Sans Pro */
+  font-family: var(--default-font-family);
+  /* Adding default fonts - Source Sans Pro */
+  line-height: 1;
+}
