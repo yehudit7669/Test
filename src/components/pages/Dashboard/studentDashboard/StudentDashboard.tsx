@@ -13,6 +13,9 @@ export default function StudentDashboard() {
       <div>
         <Link to={'/worksheet/KUGXFS'}>Worksheet 3</Link>
       </div>
+      <div>
+        <Link to={'/worksheet/J489L4'}>Worksheet 4</Link>
+      </div>
     </div>
   )
 }

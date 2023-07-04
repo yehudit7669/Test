@@ -1,6 +1,6 @@
-import LinkWidget from './Link'
 import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
+import LinkWidget from './common/link'
 import Video from './common/video'
 
 const widgetTypes = {
@@ -17,9 +17,11 @@ const widgetTypes = {
   discussion: 'Discussion',
   reflection: 'Reflection',
   wordPuzzle: 'Word Search Puzzle',
+  fillOnAnImage: 'Fill On An Image',
 }
 
 const Widget = ({ widget }: any) => {
+  console.log(widget)
   switch (widget.name) {
     case widgetTypes.openQuestion:
       return <OpenQuestion data={widget.data} />
@@ -29,8 +31,9 @@ const Widget = ({ widget }: any) => {
       return <LinkWidget data={widget.data} />
     case widgetTypes.video:
       return <Video data={widget.data} />
+
     default:
-      return <h1>Component not found!!</h1>
+      return <h1>Component not found!! Type : {widget?.name}</h1>
   }
 }
 
