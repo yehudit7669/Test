@@ -3,7 +3,6 @@ import RenderQuestionHeader from '../renderQuestions/RenderQuestionHeader'
 import './linkWidget.css'
 
 const LinkWidget = ({ data }: any) => {
-  console.log('Link widget', data)
   return (
     <div className="Widget_Container">
       <Grid container spacing={2}>

@@ -24,7 +24,6 @@ const widgetTypes = {
 }
 
 const Widget = ({ widget }: any) => {
-  console.log(widget)
   switch (widget.name) {
     case widgetTypes.openQuestion:
       return <OpenQuestion data={widget.data} />
