@@ -13,7 +13,7 @@ import { routes } from '../../../constants/routeConsts.tsx'
 import userRoles from '../../../constants/userRolesConsts.tsx'
 import { signUpValidations } from '../../../validations/signupValidations.tsx'
 import SingleLineColorText from '../../common/errorText/SingleLineColorText.tsx'
-import { getSignUpAction } from '../../../services/signup/signupServices.tsx'
+import { getSignUpAction } from '../../../services/auth/authServices.tsx'
 import useLocalStorage from '../../../hooks/useLocalStorage.tsx'
 import { useAppDispatch } from '../../../hooks/redux-hooks.ts'
 
