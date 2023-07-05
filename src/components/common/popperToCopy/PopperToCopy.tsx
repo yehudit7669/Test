@@ -4,15 +4,18 @@ import { Typography } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Popper, { PopperPlacementType } from '@mui/material/Popper'
 import Fade from '@mui/material/Fade'
-import { CopyTextToClipboard } from '../../copyTextToClipboard/CopyTextToClipboard'
+import { CopyTextToClipboard } from '../copyTextToClipboard/CopyTextToClipboard'
 
 type Props = {
-  style?: HTMLElement
   open: boolean
   children?: React.ReactNode
   anchorEl?: HTMLButtonElement | null
   placement?: PopperPlacementType
   text: string
+  classNameTypography: string
+  classNameData: string
+  classNameIcon: string
+  color: string
 }
 
 export default function PopperToCopy(props: Props) {
@@ -26,10 +29,10 @@ export default function PopperToCopy(props: Props) {
       {({ TransitionProps }) => (
         <Fade {...TransitionProps} timeout={350}>
           <Paper>
-            <Typography className="typography" sx={{ p: 2 }}>
-              <div className="copyData">{props.text}</div>
-              <div className="copyIcon">
-                <CopyTextToClipboard color="#D4D4D4" text={props.text} />
+            <Typography className={props.classNameTypography} sx={{ p: 2 }}>
+              <div className={props.classNameData}>{props.text}</div>
+              <div className={props.classNameIcon}>
+                <CopyTextToClipboard color={props.color} text={props.text} />
               </div>
             </Typography>
           </Paper>

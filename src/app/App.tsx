@@ -11,10 +11,10 @@ import Worksheet from '../components/pages/Worksheet'
 import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
 import { NewCustomerScreen } from '../components/pages/Admin/AdminDashboard/newCustomerScreen/NewCustomerScreen.tsx'
-import AdminDashboard from '../components/pages/Admin/AdminDashboard/AdminDashboard.tsx'
 import FirstLoginStudent from '../components/pages/Auth/firstLoginStudent/FirstLoginStudent.tsx'
 import FirstLoginTeacher from '../components/pages/Auth/firstLoginTeacher/FirstLoginTeacher.tsx'
 import FirstLoginParent from '../components/pages/Auth/firstLoginParent/FirstLoginParent.tsx'
+import AdminDashboard from '../components/pages/Admin/AdminDashboard'
 
 function App() {
   useEffect(() => {
@@ -25,11 +25,11 @@ function App() {
     <div className="App">
       <Routes>
         <Route
-          path={`/${routes.ADMIN}/dashboard/new-customer`}
+          path={`/${routes.ADMIN_DASHBOARD}/${routes.NEW_CUSTOMER}`}
           element={<NewCustomerScreen />}
         />
         <Route
-          path={`/${routes.ADMIN}/dashboard`}
+          path={`/${routes.ADMIN_DASHBOARD}`}
           element={<AdminDashboard />}
         />
         <Route element={<AuthLayout />}>
