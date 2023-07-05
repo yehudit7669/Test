@@ -34,14 +34,14 @@ export const NewCustomerScreen = () => {
         deals: values.deals,
       }
       const res = await dispatch(
-        newCustomerAction(customer, setError, setLoading)
+        newCustomerAction(customer, setError, setLoading),
       )
       if (!error) {
         setSchoolLink(res?.data)
         setOpenSchoolLinkPopup(true)
       }
     },
-    [dispatch, error]
+    [dispatch, error],
   )
 
   return (

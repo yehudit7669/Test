@@ -11,7 +11,7 @@ export const login = (email: string, password: string, rememberMe: boolean) => {
       email,
       password,
       rememberMe,
-    }
+    },
     // { headers: {} }
   )
 }
@@ -21,7 +21,7 @@ export const forgotPassword = (email: string) => {
     FORGOT_PASSWORD_URL,
     {
       email,
-    }
+    },
     // { headers: {} }
   )
 }

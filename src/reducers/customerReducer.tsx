@@ -12,7 +12,7 @@ interface State {
       numberSeats: number
       link: string
       password: string
-    }
+    },
   ]
 }
 

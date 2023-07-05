@@ -5,7 +5,7 @@ export const signUpValidations = (
   email: string,
   password: string,
   classCode: string,
-  role: any
+  role: any,
 ) => {
   let status
   let message

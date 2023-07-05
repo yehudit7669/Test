@@ -7,13 +7,13 @@ export const newCustomerAction =
   (
     customer: { [key: string]: any },
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       setLoading(true)
       const response: AxiosResponse<any> = await requestFromServer.newCustomer(
-        customer
+        customer,
       )
 
       if (response.status === 201) {
@@ -35,7 +35,7 @@ export const newCustomerAction =
 export const getAllCustomers =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {

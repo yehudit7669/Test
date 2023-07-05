@@ -38,14 +38,14 @@ const SubjectInterestsStepperThree = () => {
         id: string
         label: string
         selected: boolean
-      }[]
+      }[],
     ) => {
       /* Dispatching an action to update the selected state of the selectable chips */
       dispatch(
         Actions.createAction(
           Actions.FIRST_LOGIN_TEACHER_UPDATE_SUBJECTS_INTEREST_CHIP_DETAILS,
-          { multipleSelectableChipsArr }
-        )
+          { multipleSelectableChipsArr },
+        ),
       )
       /* Dispatching an action to update the selected state of the selectable chips */
       const dataToBeSent = {
@@ -59,8 +59,8 @@ const SubjectInterestsStepperThree = () => {
       dispatch(
         Actions.createAction(
           Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
-          dataToBeSent
-        )
+          dataToBeSent,
+        ),
       )
     }
     /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
@@ -94,8 +94,8 @@ const SubjectInterestsStepperThree = () => {
                 dispatch(
                   Actions.createAction(
                     Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
-                    dataToBeSent
-                  )
+                    dataToBeSent,
+                  ),
                 )
               }}
               value={firstLoginTeacherDetails.subjects.otherSubjects}

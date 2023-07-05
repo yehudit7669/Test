@@ -20,7 +20,7 @@ const StepperOne = () => {
 
   const dispatch = useAppDispatch()
   const { firstLoginParentDetails } = useAppSelector(
-    (state) => state.firstLoginParent
+    (state) => state.firstLoginParent,
   )
 
   /* Routing, navigation and param dependencies */
@@ -36,7 +36,10 @@ const StepperOne = () => {
         .value,
     }
     dispatch(
-      Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS, dataToBeSent)
+      Actions.createAction(
+        Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
+        dataToBeSent,
+      ),
     )
   }
   /* OnChange formData dependencies */
@@ -44,7 +47,7 @@ const StepperOne = () => {
   /* On Country changed setSelectedCountryObj */
   const onCountryChanged = (
     event: React.SyntheticEvent,
-    changedValue: { id: string; label: string } | null
+    changedValue: { id: string; label: string } | null,
   ) => {
     if (
       event &&
@@ -58,8 +61,8 @@ const StepperOne = () => {
       dispatch(
         Actions.createAction(
           Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
-          dataToBeSent
-        )
+          dataToBeSent,
+        ),
       )
     }
   }
@@ -121,7 +124,8 @@ const StepperOne = () => {
                   { id: '1', label: 'India' },
                   { id: '2', label: 'Israel' },
                 ].find(
-                  (element) => element.label === firstLoginParentDetails.country
+                  (element) =>
+                    element.label === firstLoginParentDetails.country,
                 ) || null
               }
               isOptionEqualToValue={(option, value) => option.id === value.id}
