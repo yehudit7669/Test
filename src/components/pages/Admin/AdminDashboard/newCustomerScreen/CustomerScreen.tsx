@@ -43,11 +43,19 @@ export const CustomerScreen = () => {
       setCustomer(res?.data)
       console.log('customer', customer)
     }
-  }, [dispatch, error])
+  }, [dispatch, error, customer, params.id])
 
   useEffect(() => {
     if (isEdit) renderCustomer()
-  }, [renderCustomer])
+  }, [isEdit, renderCustomer])
+  const sendInvitation = useCallback(async () => {
+    await dispatch(
+      sendInvitationsAction(setError, setLoading, emailsToInvitation)
+    )
+    if (error) {
+      alert('error on send the emails')
+    }
+  }, [dispatch, emailsToInvitation, error])
 
   const onSubmit = useCallback(
     async (values: any) => {
@@ -78,17 +86,8 @@ export const CustomerScreen = () => {
         }
       }
     },
-    [dispatch, error]
+    [dispatch, error, isEdit, sendInvitation]
   )
-
-  const sendInvitation = useCallback(async () => {
-    await dispatch(
-      sendInvitationsAction(setError, setLoading, emailsToInvitation)
-    )
-    if (error) {
-      alert('error on send the emails')
-    }
-  }, [dispatch, error])
 
   const renderInitialValues = () => {
     return {
