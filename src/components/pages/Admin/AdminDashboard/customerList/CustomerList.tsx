@@ -52,6 +52,7 @@ export default function CustomerList() {
 
   const handleClickOpen = (customerName: string, customerId: string) => {
     setOpen(true)
+    console.log()
     setcustomerName(customerName)
     setcustomerId(customerId)
   }
