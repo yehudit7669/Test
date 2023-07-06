@@ -58,10 +58,9 @@ export const ContactInfo = () => {
                     label={t('NewCustomer.ContactInfo.email')}
                   />
                 </Grid>
-                {type.type == 'owner' && (
+                {type.type == 'personBilling' && (
                   <Grid item xs={2}>
                     <Field
-                      validate={required}
                       name={`${type.type}.phoneNumber`}
                       component={FinalFormInput}
                       label={t('NewCustomer.ContactInfo.phoneNumber')}

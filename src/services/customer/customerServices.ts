@@ -7,13 +7,13 @@ export const newCustomerAction =
   (
     customer: { [key: string]: any },
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       setLoading(true)
       const response: AxiosResponse<any> = await requestFromServer.newCustomer(
-        customer,
+        customer
       )
 
       if (response.status === 201) {
@@ -26,6 +26,7 @@ export const newCustomerAction =
         return null
       }
     } catch (err: any) {
+      console.log(err)
       setLoading(false)
       setError(err?.response?.data?.message)
       throw err
@@ -35,7 +36,7 @@ export const newCustomerAction =
 export const getAllCustomers =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -69,6 +70,85 @@ export const deleteCustomer =
       if (response.status === 200) {
         const res = await requestFromServer.getAllCustomers()
         dispatch(Actions.createAction(Actions.GET_CUSTOMERS, res.data))
+        return response
+      } else {
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+
+export const editCustomerAction =
+  (
+    customer: { [key: string]: any },
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      setLoading(true)
+      const response: AxiosResponse<any> = await requestFromServer.editCustomer(
+        customer
+      )
+
+      if (response.status === 200) {
+        setLoading(false)
+        return response
+      } else {
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      console.log(err)
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+export const getCustomer =
+  (
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    customerId: string
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      const response: AxiosResponse<any> = await requestFromServer.getCustomer(
+        customerId
+      )
+
+      if (response.status === 200) {
+        setLoading(false)
+        return response
+      } else {
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+
+export const sendInvitationsAction =
+  (
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    emails: Array<string>
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      const response: AxiosResponse<any> =
+        await requestFromServer.sendInvitation(emails)
+
+      if (response.status === 200) {
+        setLoading(false)
         return response
       } else {
         setError(response?.data?.message)

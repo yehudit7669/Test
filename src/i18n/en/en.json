@@ -176,7 +176,13 @@
         "PONumber": "PO Number (optional)",
         "quoteNumber": "Quote Number (optional)",
         "addDeal": "Add another deal",
-        "upgradeManuallySeats": "Upgrade manually seats"
+        "pastDealsTitle": "Past deals table",
+        "update": "Update",
+        "UpgradeManuallySeatsPopup": {
+          "title": "Upgrade manually  seats",
+          "subTitle": "Add members emails.\n Remember that every teacher you add is taking a seat.",
+          "email": "Email"
+        }
       },
       "schoolLinkPopup": {
         "title": "!We've got a deal",
