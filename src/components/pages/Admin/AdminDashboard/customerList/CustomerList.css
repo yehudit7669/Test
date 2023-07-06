@@ -1,8 +1,4 @@
 /****** Customer List component dependencies ******/
-:root {
-  --off-white: #fafaf4;
-  --blue: #212121;
-}
 .tableContainer {
   max-width: 1000px;
   max-height: 230px;
@@ -13,7 +9,7 @@
   cursor: pointer;
 }
 .popupSpan {
-  font: Source Sans Pro;
+  font: var(--default-font-family);
   font-weight: 500;
   font-size: 16px;
   line-height: 24px;
@@ -24,5 +20,60 @@
 .tableContainer .tableCell {
   background-color: var(--off-white);
   text-align: center;
+}
+.deleteCustomerPopup {
+  width: 390px;
+  background-color: var(--off-white) !important;
+  min-height: 324px;
+  text-align: center;
+  min-width: 390px;
+}
+.typography {
+  max-width: 150px;
+  max-height: 10px;
+  background-color: var(--light-gray);
+  display: flex;
+  align-items: center;
+}
+.copyIcon {
+  position: relative;
+}
+.typography .copyData {
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dialogPopup .dialogActions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px 20px 16px;
+}
+.closeIcon {
+  padding-left: 335px;
+  padding-top: 19px;
+  cursor: pointer;
+  width: 36px;
+}
+.title {
+  font: var(--default-font-family);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
+.dialogPopup .dialogActions .cancleButton {
+  border: 1px solid var(--blue);
+  border-radius: 10px;
+  width: 100px;
+  height: 44px;
+}
+.dialogPopup .dialogActions .submitButton {
+  background-color: var(--blue);
+  color: white;
+  width: 100px;
+  height: 44px;
+  border-radius: 10px;
 }
 /****** Customer List component dependencies ******/

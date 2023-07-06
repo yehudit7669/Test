@@ -55,7 +55,7 @@ export default function RichTextEditor() {
         <JoditEditor
           config={editorConfig}
           value={editorValue}
-          onChange={(event) => console.log(event, 'editor change event')}
+          onChange={() => undefined}
         />
       </>
     )

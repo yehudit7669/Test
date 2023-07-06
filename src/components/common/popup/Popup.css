@@ -1,0 +1,10 @@
+/****** Popup component dependencies ******/
+.dialog {
+  height: 324px !important;
+  width: 390px;
+  top: 30%;
+  left: 35%;
+  text-align: center;
+  background-color: var(--yellowish-white);
+}
+/****** Popup component dependencies ******/

@@ -4,11 +4,15 @@ import Button from '@mui/material/Button'
 import { useNavigate } from 'react-router'
 import QuoteRequestList from './quoteRequestList/QuoteRequestList'
 import { routes } from '../../../../constants'
+import AdminMainLayout from '../../../layouts/AdminMainLayout'
+import { useTranslation } from 'react-i18next'
 
-export default function AdminDashboard() {
+function AdminDashboard() {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   return (
     <div className="adminDashboardContainer">
+      <AdminMainLayout />
       <div className="listSpaces">
         <div
           className="newDeal"
@@ -17,14 +21,20 @@ export default function AdminDashboard() {
           }
         >
           <Button variant="contained" className="buttonNewDeal">
-            + Create new deal
+            {t('adminDashboard.createNewDealButton')}
+            {/* t('+ Create new deal') */}
           </Button>
         </div>
-        <h1 className="quoteRequestTitle">Quote request</h1>
+        <h1 className="quoteRequestTitle">
+          {t('adminDashboard.quoteRequestList')}
+        </h1>
         <QuoteRequestList />
-        <h1 className="customerListTitle">Customer list</h1>
+        <h1 className="customerListTitle">
+          {t('adminDashboard.customerList')}
+        </h1>
         <CustomerList />
       </div>
     </div>
   )
 }
+export default AdminDashboard

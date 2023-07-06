@@ -8,11 +8,11 @@ interface State {
       schoolName: string
       firstName: string
       email: string
-      updatedAt: Date
+      updatedAt: string
       numberSeats: number
       link: string
       password: string
-    }
+    },
   ]
 }
 
@@ -23,7 +23,7 @@ const initialState: State = {
       schoolName: '',
       firstName: '',
       email: '',
-      updatedAt: new Date(),
+      updatedAt: '',
       numberSeats: 0,
       link: '',
       password: '',
@@ -38,7 +38,13 @@ const customer = produce((draft: State, action: any) => {
       break
     }
     case Actions.GET_CUSTOMERS: {
-      draft.customers = [...payload] as State['customers']
+      draft.customers = payload.map((customer: any) => ({
+        ...customer,
+        updatedAt:
+          customer.updatedat instanceof Date
+            ? customer.updatedat.toString()
+            : null,
+      }))
       break
     }
     default: {

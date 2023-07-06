@@ -182,6 +182,50 @@
         "title": "!We've got a deal",
         "hereIsLinkTo": "Here is the link to"
       }
+    },
+    "adminDashboard": {
+      "createNewDealButton": "+ Create new deal",
+      "quoteRequestList": "Quote request",
+      "customerList": "Customer list",
+      "quoteRequest": {
+        "noQuoteRequest": "There are no quote requests",
+        "quoteRequestsTitle": {
+          "schoolName": "School name",
+          "owner": "Owner",
+          "ownerEmail": "Owner email",
+          "currentSeats": "Current seats",
+          "seatsRequest": "Seats request",
+          "lastUpdate": "Last update",
+          "status": "Status"
+        },
+        "statusQuote": {
+          "Quotesent": "Quote sent",
+          "Pending": "Pending",
+          "Done": "Done"
+        },
+        "popup": {
+          "submitButton": "Yes",
+          "cancleButton": "Cancle",
+          "title": "Delete Quote Request",
+          "bodyText": "Are you sure you want to delete the quote request of"
+        }
+      },
+      "customer": {
+        "noCustomer": "There are no customers",
+        "customerTitle": {
+          "schoolName": "School name",
+          "owner": "Owner",
+          "ownerEmail": "Owner email",
+          "seats": "Seats",
+          "lastUpdate": "Last update"
+        },
+        "popup": {
+          "submitButton": "Yes",
+          "cancleButton": "Cancle",
+          "title": "Delete School",
+          "bodyText": "Are you sure you want to delete"
+        }
+      }
     }
   }
 }

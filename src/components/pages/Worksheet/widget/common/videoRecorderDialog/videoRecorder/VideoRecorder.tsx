@@ -58,10 +58,10 @@ export default function VideoRecorder({
           const audioConstraints = { audio: true }
           // create audio and video streams separately
           const audioStream = await navigator.mediaDevices.getUserMedia(
-            audioConstraints
+            audioConstraints,
           )
           const videoStream = await navigator.mediaDevices.getUserMedia(
-            videoConstraints
+            videoConstraints,
           )
           setPermission(true)
           //combine both audio and video streams
@@ -174,7 +174,6 @@ export default function VideoRecorder({
       mediaRecorder.current.onstop = () => {
         const videoBlob = new Blob(videoChunks, { type: mimeType })
         const videoUrl = URL.createObjectURL(videoBlob)
-        console.log(videoUrl, 'videoUrl')
         setRecordedVideo(videoUrl)
         setVideoChunks([])
       }

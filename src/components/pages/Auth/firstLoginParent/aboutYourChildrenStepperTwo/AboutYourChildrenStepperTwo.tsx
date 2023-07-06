@@ -27,7 +27,7 @@ const StepperTwo = () => {
 
   const dispatch = useAppDispatch()
   const { firstLoginParentDetails } = useAppSelector(
-    (state) => state.firstLoginParent
+    (state) => state.firstLoginParent,
   )
 
   /* OnChange dependencies */
@@ -43,7 +43,10 @@ const StepperTwo = () => {
       childrens: [...newFormData],
     }
     dispatch(
-      Actions.createAction(Actions.SET_FIRST_LOGIN_PARENT_DETAILS, dataToBeSent)
+      Actions.createAction(
+        Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
+        dataToBeSent,
+      ),
     )
   }
   /* OnChange dependencies */
@@ -84,8 +87,8 @@ const StepperTwo = () => {
       dispatch(
         Actions.createAction(
           Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_ADD_CHILDREN,
-          dataToBeSent
-        )
+          dataToBeSent,
+        ),
       )
     }
     /* Function definition on button click - Add a child */
@@ -93,15 +96,15 @@ const StepperTwo = () => {
     /* Function definition on cancel button click - Remove a child */
     const handleRemoveAChildren = (
       data: { [key: string]: any },
-      index: number
+      index: number,
     ) => {
       if (index >= 1) {
         const dataToBeSent = { data, index }
         dispatch(
           Actions.createAction(
             Actions.FIRST_LOGIN_PARENT_STEPPER_TWO_REMOVE_CHILDREN,
-            dataToBeSent
-          )
+            dataToBeSent,
+          ),
         )
         setSelectedTab(`${index}`)
       }

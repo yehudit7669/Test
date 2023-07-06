@@ -7,7 +7,7 @@ export const firstLoginStudent = (DOB: string) => {
     FIRST_LOGIN_STUDENT_URL,
     {
       DOB,
-    }
+    },
     // { headers: {} }
   )
 }

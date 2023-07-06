@@ -7,13 +7,13 @@ export const getWorksheetById =
   (
     workSheetId: string | undefined,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       setLoading(true)
       const response: AxiosResponse<any> = await requestFromServer.getWorksheet(
-        workSheetId
+        workSheetId,
       )
 
       if (response.status === 200) {
@@ -27,7 +27,6 @@ export const getWorksheetById =
       }
     } catch (err: any) {
       setLoading(false)
-      console.log('errrrrr', err)
       setError(err?.response?.data)
       throw err
     }

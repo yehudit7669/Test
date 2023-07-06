@@ -21,14 +21,13 @@ function EmojiPickerDialog({ open, handleClose, handleGetEmoji }: Props) {
   /* Check for dialog outside click and close the dialog */
   useEffect(() => {
     const handleClickOutside = (event: any) => {
-      if (dialogRef.current && !dialogRef.current.contains(event.target)) {
+      if (dialogRef?.current && !dialogRef?.current?.contains(event.target)) {
         handleClose && handleClose()
       }
     }
-    console.log(dialogRef.current, 'dialogRef.current')
-    document.addEventListener('click', handleClickOutside, true)
+    document?.addEventListener('click', handleClickOutside, true)
     return () => {
-      document.removeEventListener('click', handleClickOutside, true)
+      document?.removeEventListener('click', handleClickOutside, true)
     }
   }, [handleClose])
   /* Check for dialog outside click and close the dialog */

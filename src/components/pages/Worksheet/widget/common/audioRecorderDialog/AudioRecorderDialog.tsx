@@ -35,7 +35,7 @@ const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>
   },
-  ref: React.Ref<unknown>
+  ref: React.Ref<unknown>,
 ) {
   return <Zoom timeout={500} in ref={ref} {...props} />
 })
@@ -163,7 +163,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
       mediaRecorder.current?.start()
       const localAudioChunks: any[] = []
       mediaRecorder.current.ondataavailable = (event: any) => {
-        console.log(event, 'event')
         if (typeof event.data === 'undefined') return
         if (event.data.size === 0) return
         localAudioChunks.push(event.data)
@@ -259,7 +258,6 @@ const AudioRecorderDialog = ({ open, handleClose }: Props) => {
     /* Function definition for API call - On Submit handler */
     const onSubmit = () => {
       setLoading(true)
-      console.log(audio, 'audio')
     }
     /* Function definition for API call - On Submit handler */
     return (

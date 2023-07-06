@@ -109,20 +109,19 @@ const AudioPlayer = ({ audioSrc }: Props) => {
 
     if (hours === 0) {
       return `${leadingZeroFormatter.format(
-        minutes
+        minutes,
       )}:${leadingZeroFormatter.format(seconds)}`
     } else {
       return `${leadingZeroFormatter.format(
-        hours
+        hours,
       )}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(
-        seconds
+        seconds,
       )}`
     }
   }, [])
 
   useEffect(() => {
     const handleDataLoaded = (event: any) => {
-      // console.log(audioRef.current.currentTime, 'ref.current.currentTime')
       if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
         setAudioDuration(formatDuration(event.target.duration))
         setAudioPlayerMaxTimeForSliderValue(event.target.duration)
@@ -132,24 +131,26 @@ const AudioPlayer = ({ audioSrc }: Props) => {
     }
     let tempAudioRef: any = null
     tempAudioRef = audioRef
-    tempAudioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
-    tempAudioRef.current.addEventListener('ondurationchange', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener('loadedmetadata', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener(
+      'ondurationchange',
+      handleDataLoaded,
+    )
 
     return () => {
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'loadedmetadata',
-        handleDataLoaded
+        handleDataLoaded,
       )
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'ondurationchange',
-        handleDataLoaded
+        handleDataLoaded,
       )
     }
   }, [formatDuration])
 
   /* Function definition to change the position of the slider on time change or time update */
   const handleTimeUpdate = (event: any) => {
-    console.log(event.target.duration, 'inside time update')
     if (event.target.duration !== Infinity && !isNaN(event.target.duration)) {
       setPlayAudioCurrentTime(formatDuration(event.target.currentTime))
       setTimelineSliderValue(event.target.currentTime)
@@ -171,7 +172,7 @@ const AudioPlayer = ({ audioSrc }: Props) => {
   /* Function definition on slider timeline change */
   const handleSliderTimelineChange = (
     event: Event,
-    newValue: number | number[]
+    newValue: number | number[],
   ) => {
     setTimelineSliderValue(newValue)
     audioRef.current.currentTime = (event.target as HTMLInputElement).value

@@ -20,21 +20,23 @@ import {
   PasswordLogo,
 } from '../../../../../assets/svgs/svg-components'
 import { PopperPlacementType } from '@mui/material/Popper'
-import Popup from '../../../../common/ui/popup/Popup'
+import Popup from '../../../../common/popup/Popup'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
-import PopperToCopy from '../../../../common/ui/popperToCopy/PopperToCopy'
+import PopperToCopy from '../../../../common/popperToCopy/PopperToCopy'
+import { useTranslation } from 'react-i18next'
 
 export default function CustomerList() {
   const dispatch = useAppDispatch()
   const [, setError] = useState('')
   const [, setLoading] = useState(false)
   const { customers } = useAppSelector((state) => state.customer)
+  const { t } = useTranslation()
   const customersTitle = [
-    'School name',
-    'Owner',
-    'Owner email',
-    'seats',
-    'Last update',
+    t('adminDashboard.customer.customerTitle.schoolName'),
+    t('adminDashboard.customer.customerTitle.owner'),
+    t('adminDashboard.customer.customerTitle.ownerEmail'),
+    t('adminDashboard.customer.customerTitle.seats'),
+    t('adminDashboard.customer.customerTitle.lastUpdate'),
   ]
   const [open, setOpen] = useState(false)
   const [customerName, setcustomerName] = useState('')
@@ -137,7 +139,7 @@ export default function CustomerList() {
                         <span
                           onClick={handleClickPassword(
                             'bottom-end',
-                            customer.password
+                            customer.password,
                           )}
                           className="cursor"
                         >
@@ -183,14 +185,22 @@ export default function CustomerList() {
       <Popup
         cancleButton={true}
         submitButton={true}
-        cancleText="Cancle"
-        submitText="Yes"
-        title="Delete School"
+        cancleText={t('adminDashboard.customer.popup.cancleButton')}
+        submitText={t('adminDashboard.customer.popup.submitButton')}
+        title={t('adminDashboard.customer.popup.title')}
         handleClose={handleClose}
         onSubmit={() => deleteCustomers(customerId)}
         open={open}
+        classNameDialog="deleteCustomerPopup"
+        classNameDialogActions="dialogActions"
+        classNameCloseIcon="closeIcon"
+        classNameTitle="title"
+        classNameCancleButton="cancleButton"
+        classNameSubmitButton="submitButton"
       >
-        <span className="popupSpan">{`Are you sure you want to delete ${customerName} dashboard`}</span>
+        <span className="popupSpan">{`${t(
+          'adminDashboard.customer.popup.bodyText',
+        )} ${customerName}?`}</span>
       </Popup>
 
       <PopperToCopy
@@ -198,12 +208,20 @@ export default function CustomerList() {
         text={link}
         anchorEl={anchorEl}
         placement={placement}
+        classNameTypography="typography"
+        classNameData="copyData"
+        classNameIcon="copyIcon"
+        color="#D4D4D4"
       />
       <PopperToCopy
         open={openPassword}
         text={password}
         anchorEl={anchorEl}
         placement={placement}
+        classNameTypography="typography"
+        classNameData="copyData"
+        classNameIcon="copyIcon"
+        color="#D4D4D4"
       />
     </>
   )
