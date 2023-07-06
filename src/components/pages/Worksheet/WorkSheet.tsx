@@ -15,16 +15,16 @@ const Worksheet = () => {
   const { id } = useParams()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
+  // console.log(temp clg to make commit)
   const currentSheetData = useAppSelector(
-    (state) => state.worksheet.currentSheet
+    (state) => state.worksheet.currentSheet,
   )
   const currentStyles = currentSheetData.style
   //   Flatten nested widgets into a single list of widgets
   const widgetList = currentSheetData?.widgets?.flat()
   //   Sorting widgets by sequence
   const sortedWidgetList = widgetList?.sort(
-    (a: any, b: any) => a.seqid - b.seqid
+    (a: any, b: any) => a.seqid - b.seqid,
   )
 
   const fetchWorksheet = () => {
