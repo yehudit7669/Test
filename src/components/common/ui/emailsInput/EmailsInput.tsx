@@ -22,7 +22,7 @@ export default function EmailsInput(props: Props) {
         options={[]}
         freeSolo
         onChange={(event, newValue) => {
-          if (email(event.target.value)) {
+          if (email((event.target as HTMLInputElement).value)) {
             newValue.pop()
             return
           }
