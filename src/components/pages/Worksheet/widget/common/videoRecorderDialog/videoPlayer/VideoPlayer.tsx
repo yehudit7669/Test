@@ -144,13 +144,13 @@ export default function VideoPlayer({
 
     if (hours === 0) {
       return `${leadingZeroFormatter.format(
-        minutes
+        minutes,
       )}:${leadingZeroFormatter.format(seconds)}`
     } else {
       return `${leadingZeroFormatter.format(
-        hours
+        hours,
       )}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(
-        seconds
+        seconds,
       )}`
     }
   }
@@ -160,7 +160,7 @@ export default function VideoPlayer({
     /* Function definition for time line change event */
     const handleSliderTimelineChange = (
       event: Event,
-      newValue: number | number[]
+      newValue: number | number[],
     ) => {
       setTimelineSliderValue(newValue)
       videoPlayerRef.current.currentTime = (
@@ -215,7 +215,7 @@ export default function VideoPlayer({
     /* Function definition to change the volume using slider */
     const handleVolumeSliderChange = (
       event: Event,
-      newValue: number | number[]
+      newValue: number | number[],
     ) => {
       videoPlayerRef.current.volume = newValue
       videoPlayerRef.current.muted = newValue.toString() === '0'
@@ -330,7 +330,7 @@ export default function VideoPlayer({
           .then(() => undefined)
           .catch((err: any) => {
             alert(
-              `Error attempting to enable full-screen mode: ${err.message} (${err.name})`
+              `Error attempting to enable full-screen mode: ${err.message} (${err.name})`,
             )
           })
       } else {

@@ -28,7 +28,7 @@ export const DealsInfo = (props: Props) => {
       {props.isEdit && (
         <div>
           <label className="subHeader">{`${t(
-            'NewCustomer.DealsInfo.numberSeats'
+            'NewCustomer.DealsInfo.numberSeats',
           )}: ${0}/${numberOfSeats}`}</label>
         </div>
       )}

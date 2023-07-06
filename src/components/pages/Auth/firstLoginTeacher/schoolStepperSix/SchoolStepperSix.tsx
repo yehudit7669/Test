@@ -47,8 +47,8 @@ const SchoolStepperFive = () => {
       dispatch(
         Actions.createAction(
           Actions.FIRST_LOGIN_TEACHER_UPDATE_SCHOOL_DETAILS,
-          { eventTargetValue }
-        )
+          { eventTargetValue },
+        ),
       )
       /* Dispatching an action to update the selected state of the schools */
 
@@ -58,8 +58,8 @@ const SchoolStepperFive = () => {
       dispatch(
         Actions.createAction(
           Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
-          dataToBeSent
-        )
+          dataToBeSent,
+        ),
       )
     }
     /* Function definition for when the school is selected */

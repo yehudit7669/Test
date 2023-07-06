@@ -27,7 +27,7 @@ function FirstLoginParent() {
 
   /* Form submission dependencies */
   const { firstLoginParentDetails } = useAppSelector(
-    (state) => state.firstLoginParent
+    (state) => state.firstLoginParent,
   )
   const [, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -100,8 +100,8 @@ function FirstLoginParent() {
         firstLoginParentDetails,
         navigate,
         setError,
-        setLoading
-      )
+        setLoading,
+      ),
     )
   }
   /* Form submission dependencies */

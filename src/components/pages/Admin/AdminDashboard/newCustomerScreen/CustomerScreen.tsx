@@ -27,7 +27,7 @@ export const CustomerScreen = () => {
   const [openSchoolLinkPopup, setOpenSchoolLinkPopup] = useState<boolean>(false)
   const [schoolLink, setSchoolLink] = useState<any>(null)
   const [emailsToInvitation, setEmailsToInvitation] = useState<Array<string>>(
-    []
+    [],
   )
   const navigate = useNavigate()
   const location = useLocation().pathname
@@ -37,7 +37,7 @@ export const CustomerScreen = () => {
 
   const renderCustomer = useCallback(async () => {
     const res = await dispatch(
-      getCustomer(setError, setLoading, String(params.id))
+      getCustomer(setError, setLoading, String(params.id)),
     )
     if (!error) {
       setCustomer(res?.data)
@@ -50,7 +50,7 @@ export const CustomerScreen = () => {
   }, [isEdit, renderCustomer])
   const sendInvitation = useCallback(async () => {
     await dispatch(
-      sendInvitationsAction(setError, setLoading, emailsToInvitation)
+      sendInvitationsAction(setError, setLoading, emailsToInvitation),
     )
     if (error) {
       alert('error on send the emails')
@@ -72,7 +72,7 @@ export const CustomerScreen = () => {
       }
       if (!isEdit) {
         const res = await dispatch(
-          newCustomerAction(customerData, setError, setLoading)
+          newCustomerAction(customerData, setError, setLoading),
         )
         if (!error) {
           sendInvitation()
@@ -86,7 +86,7 @@ export const CustomerScreen = () => {
         }
       }
     },
-    [dispatch, error, isEdit, sendInvitation]
+    [dispatch, error, isEdit, sendInvitation],
   )
 
   const renderInitialValues = () => {
