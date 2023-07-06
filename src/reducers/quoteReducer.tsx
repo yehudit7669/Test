@@ -18,7 +18,7 @@ interface State {
       seatsRequest: string
       status: StatusQuote
       updatedAt: string
-    },
+    }
   ]
 }
 

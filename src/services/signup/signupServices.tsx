@@ -14,7 +14,7 @@ export const getSignUpAction =
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
-    classCode?: string,
+    classCode?: string
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -24,7 +24,7 @@ export const getSignUpAction =
         email,
         password,
         role,
-        classCode,
+        classCode
       )
 
       if (response.status === 200) {

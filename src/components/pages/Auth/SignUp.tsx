@@ -134,8 +134,8 @@ function SignUp() {
               navigate,
               setError,
               setLoading,
-              classCode,
-            ),
+              classCode
+            )
           )
         } else {
           dispatch(
@@ -146,8 +146,8 @@ function SignUp() {
               setToken,
               navigate,
               setError,
-              setLoading,
-            ),
+              setLoading
+            )
           )
         }
       }

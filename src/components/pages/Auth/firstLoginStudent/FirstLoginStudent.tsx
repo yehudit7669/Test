@@ -47,8 +47,8 @@ function FirstLoginStudent() {
         navigate,
         setError,
         setLoading,
-        user?.role,
-      ),
+        user?.role
+      )
     )
   }
   /* On submit form */

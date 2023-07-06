@@ -10,7 +10,7 @@ export const getFirstLoginParentAction =
     firstLoginParentDetails: { [key: string]: any },
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -22,7 +22,7 @@ export const getFirstLoginParentAction =
       if (response.status === 200) {
         setLoading(false)
         dispatch(
-          Actions.createAction(Actions.FIRST_LOGIN_PARENT, response.data),
+          Actions.createAction(Actions.FIRST_LOGIN_PARENT, response.data)
         )
         navigate(`/${routes.PARENT}`, { replace: true })
 

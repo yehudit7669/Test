@@ -10,7 +10,7 @@ export const getFirstLoginTeacherAction =
     firstLoginTeacherDetails: { [key: string]: any },
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -22,7 +22,7 @@ export const getFirstLoginTeacherAction =
       if (response.status === 200) {
         setLoading(false)
         dispatch(
-          Actions.createAction(Actions.FIRST_LOGIN_TEACHER, response.data),
+          Actions.createAction(Actions.FIRST_LOGIN_TEACHER, response.data)
         )
         navigate(`/${routes.TEACHER}`, { replace: true })
 

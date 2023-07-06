@@ -20,7 +20,7 @@ const StepperOne = () => {
 
   const dispatch = useAppDispatch()
   const { firstLoginTeacherDetails } = useAppSelector(
-    (state) => state.firstLoginTeacher,
+    (state) => state.firstLoginTeacher
   )
 
   /* OnChange formData dependencies */
@@ -32,8 +32,8 @@ const StepperOne = () => {
     dispatch(
       Actions.createAction(
         Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
-        dataToBeSent,
-      ),
+        dataToBeSent
+      )
     )
   }
   /* OnChange formData dependencies */
@@ -41,7 +41,7 @@ const StepperOne = () => {
   /* On Country changed setSelectedCountryObj */
   const onCountryChanged = (
     event: React.SyntheticEvent,
-    changedValue: { id: string; label: string } | null,
+    changedValue: { id: string; label: string } | null
   ) => {
     if (
       event &&
@@ -55,8 +55,8 @@ const StepperOne = () => {
       dispatch(
         Actions.createAction(
           Actions.SET_FIRST_LOGIN_TEACHER_DETAILS,
-          dataToBeSent,
-        ),
+          dataToBeSent
+        )
       )
     }
   }
@@ -120,7 +120,7 @@ const StepperOne = () => {
                     { id: '2', label: 'Israel' },
                   ].find(
                     (element) =>
-                      element.label === firstLoginTeacherDetails.country,
+                      element.label === firstLoginTeacherDetails.country
                   ) || null
                 }
                 isOptionEqualToValue={(option, value) => option.id === value.id}

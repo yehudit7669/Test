@@ -9,7 +9,7 @@ export const firstLoginParent = (firstLoginParentDetails: {
     FIRST_LOGIN_PARENT_URL,
     {
       ...firstLoginParentDetails,
-    },
+    }
     // { headers: {} }
   )
 }

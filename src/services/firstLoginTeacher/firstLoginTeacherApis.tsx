@@ -9,7 +9,7 @@ export const firstLoginTeacher = (firstLoginTeacherDetails: {
     FIRST_LOGIN_TEACHER_URL,
     {
       ...firstLoginTeacherDetails,
-    },
+    }
     // { headers: {} }
   )
 }

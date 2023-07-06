@@ -109,13 +109,13 @@ const AudioPlayer = ({ audioSrc }: Props) => {
 
     if (hours === 0) {
       return `${leadingZeroFormatter.format(
-        minutes,
+        minutes
       )}:${leadingZeroFormatter.format(seconds)}`
     } else {
       return `${leadingZeroFormatter.format(
-        hours,
+        hours
       )}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(
-        seconds,
+        seconds
       )}`
     }
   }, [])
@@ -134,17 +134,17 @@ const AudioPlayer = ({ audioSrc }: Props) => {
     tempAudioRef?.current?.addEventListener('loadedmetadata', handleDataLoaded)
     tempAudioRef?.current?.addEventListener(
       'ondurationchange',
-      handleDataLoaded,
+      handleDataLoaded
     )
 
     return () => {
       tempAudioRef?.current?.removeEventListener(
         'loadedmetadata',
-        handleDataLoaded,
+        handleDataLoaded
       )
       tempAudioRef?.current?.removeEventListener(
         'ondurationchange',
-        handleDataLoaded,
+        handleDataLoaded
       )
     }
   }, [formatDuration])
@@ -172,7 +172,7 @@ const AudioPlayer = ({ audioSrc }: Props) => {
   /* Function definition on slider timeline change */
   const handleSliderTimelineChange = (
     event: Event,
-    newValue: number | number[],
+    newValue: number | number[]
   ) => {
     setTimelineSliderValue(newValue)
     audioRef.current.currentTime = (event.target as HTMLInputElement).value

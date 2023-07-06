@@ -31,8 +31,8 @@ function ForgotPassword() {
           setSuccessMessage,
           setError,
           navigate,
-          setLoader,
-        ),
+          setLoader
+        )
       )
     }
   }

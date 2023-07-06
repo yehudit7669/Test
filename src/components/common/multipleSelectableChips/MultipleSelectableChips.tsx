@@ -7,7 +7,7 @@ type Props = {
     selected: boolean
   }[]
   handleGetSelectedChipsDetails: (
-    value: { id: string; label: string; selected: boolean }[],
+    value: { id: string; label: string; selected: boolean }[]
   ) => void
 }
 
@@ -18,7 +18,7 @@ const MultipleSelectableChips = ({
   /* Function definition to select the tag on click */
   const handleSelectTags = (
     selectedvalue: { id: string; label: string; selected: boolean },
-    index: number,
+    index: number
   ) => {
     const newMultipleSelectableChipDetails = [
       ...JSON.parse(JSON.stringify(multipleSelectableChipDetails)),
@@ -39,7 +39,7 @@ const MultipleSelectableChips = ({
         {multipleSelectableChipDetails?.map(
           (
             tag: { id: string; label: string; selected: boolean },
-            index: number,
+            index: number
           ) => {
             return (
               <>
@@ -56,7 +56,7 @@ const MultipleSelectableChips = ({
                 />
               </>
             )
-          },
+          }
         )}
       </Stack>
     </>

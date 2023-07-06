@@ -10,7 +10,7 @@ export const getFirstLoginStudentAction =
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
-    role: string | undefined,
+    role: string | undefined
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -22,7 +22,7 @@ export const getFirstLoginStudentAction =
       if (response.status === 200) {
         setLoading(false)
         dispatch(
-          Actions.createAction(Actions.FIRST_LOGIN_STUDENT, response.data),
+          Actions.createAction(Actions.FIRST_LOGIN_STUDENT, response.data)
         )
         navigate(`/${role}`, { replace: true })
 

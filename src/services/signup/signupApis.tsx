@@ -6,7 +6,7 @@ export const signup = (
   email: string,
   password: string,
   role: any,
-  classCode?: string,
+  classCode?: string
 ) => {
   if (role === 'student') {
     return axios.post(
@@ -16,7 +16,7 @@ export const signup = (
         password,
         role,
         classCode,
-      },
+      }
       // { headers: {} }
     )
   } else {
@@ -26,7 +26,7 @@ export const signup = (
         email,
         password,
         role,
-      },
+      }
       // { headers: {} }
     )
   }

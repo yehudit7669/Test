@@ -122,12 +122,12 @@ export default function QuoteRequestList() {
                         >
                           <MenuItem value={StatusQuote.QuoteSent}>
                             {t(
-                              'adminDashboard.quoteRequest.statusQuote.Quotesent',
+                              'adminDashboard.quoteRequest.statusQuote.Quotesent'
                             )}
                           </MenuItem>
                           <MenuItem value={StatusQuote.Pending}>
                             {t(
-                              'adminDashboard.quoteRequest.statusQuote.Pending',
+                              'adminDashboard.quoteRequest.statusQuote.Pending'
                             )}
                           </MenuItem>
                           <MenuItem value={StatusQuote.Done}>
@@ -177,7 +177,7 @@ export default function QuoteRequestList() {
         classNameSubmitButton="submitButton"
       >
         <span className="popupSpan">{`${t(
-          'adminDashboard.quoteRequest.popup.bodyText',
+          'adminDashboard.quoteRequest.popup.bodyText'
         )} ${customerName}?`}</span>
       </Popup>
     </div>

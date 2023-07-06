@@ -7,7 +7,7 @@ import { StatusQuote } from '../../reducers/quoteReducer'
 export const getAllQuoteRequests =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -53,7 +53,7 @@ export const deleteQuote =
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       const response: AxiosResponse<any> = await requestFromServer.deleteQuote(
-        quoteId,
+        quoteId
       )
 
       if (response.status === 200) {

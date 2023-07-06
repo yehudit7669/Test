@@ -16,7 +16,7 @@ const StepperThree = () => {
 
   const dispatch = useAppDispatch()
   const { firstLoginParentDetails, childEducationChipDetails } = useAppSelector(
-    (state) => state.firstLoginParent,
+    (state) => state.firstLoginParent
   )
 
   /* Stepper Three component dependencies */
@@ -39,14 +39,14 @@ const StepperThree = () => {
         id: string
         label: string
         selected: boolean
-      }[],
+      }[]
     ) => {
       /* Dispatching an action to update the selected state of the selectable chips */
       dispatch(
         Actions.createAction(
           Actions.FIRST_LOGIN_PARENT_UPDATE_CHILD_EDUCATION_CHIP_DETAILS,
-          { multipleSelectableChipsArr },
-        ),
+          { multipleSelectableChipsArr }
+        )
       )
       /* Dispatching an action to update the selected state of the selectable chips */
       const dataToBeSent = {
@@ -60,8 +60,8 @@ const StepperThree = () => {
       dispatch(
         Actions.createAction(
           Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
-          dataToBeSent,
-        ),
+          dataToBeSent
+        )
       )
     }
     /* Function definition passed as a prop to multiple Selectable chips to get the selected chips data */
@@ -93,8 +93,8 @@ const StepperThree = () => {
                 dispatch(
                   Actions.createAction(
                     Actions.SET_FIRST_LOGIN_PARENT_DETAILS,
-                    dataToBeSent,
-                  ),
+                    dataToBeSent
+                  )
                 )
               }}
               value={firstLoginParentDetails.childEducation.other}

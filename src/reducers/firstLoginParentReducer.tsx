@@ -80,7 +80,7 @@ const firstLoginParent = produce((draft: State, action: any) => {
         const newChildrensArr = draft.firstLoginParentDetails.childrens.filter(
           (element, index) => {
             return index !== payload.index && element !== payload.data
-          },
+          }
         )
         draft.firstLoginParentDetails.childrens = newChildrensArr
       }
