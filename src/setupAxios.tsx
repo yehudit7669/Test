@@ -12,7 +12,7 @@ axios.interceptors.request.use(
   function (error) {
     // Do something with request error
     return Promise.reject(error)
-  }
+  },
 )
 
 // Add a response interceptor
@@ -29,5 +29,5 @@ axios.interceptors.response.use(
       //TODO : Logic for clearing all user data and navigating back to auth urls comes here
     }
     return Promise.reject(error)
-  }
+  },
 )

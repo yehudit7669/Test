@@ -51,7 +51,7 @@ function VideoPlayer({
       Math.min(Math.max(0, e.clientX - rect.x), rect.width) / rect.width
     timelineContainerRef.current.style.setProperty(
       '--preview-position',
-      percent
+      percent,
     )
   }
   /* Function definition for toggle scrubbing and timeline change */
@@ -149,13 +149,13 @@ function VideoPlayer({
 
     if (hours === 0) {
       return `${leadingZeroFormatter.format(
-        minutes
+        minutes,
       )}:${leadingZeroFormatter.format(seconds)}`
     } else {
       return `${leadingZeroFormatter.format(
-        hours
+        hours,
       )}:${leadingZeroFormatter.format(minutes)}:${leadingZeroFormatter.format(
-        seconds
+        seconds,
       )}`
     }
   }
@@ -168,7 +168,7 @@ function VideoPlayer({
       const percent = event.target.currentTime / event.target.duration
       timelineContainerRef.current.style.setProperty(
         '--progress-position',
-        percent
+        percent,
       )
     } else {
       setTotalTime('00:00')

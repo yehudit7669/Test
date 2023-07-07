@@ -13,7 +13,7 @@ export const getUserAction =
     setToken: (newToken: string) => void,
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -22,7 +22,7 @@ export const getUserAction =
       const response: AxiosResponse<any> = await requestFromServer.login(
         email,
         password,
-        rememberMe
+        rememberMe,
       )
 
       if (response.status === 200) {
@@ -50,7 +50,7 @@ export const forgotPasswordAction =
     setSuccessMessage: Dispatch<SetStateAction<string>>,
     setError: Dispatch<SetStateAction<string>>,
     navigate: NavigateFunction,
-    setLoader: Dispatch<SetStateAction<boolean>>
+    setLoader: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {
@@ -86,7 +86,7 @@ export const getSignUpAction =
     navigate: NavigateFunction,
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
-    classCode?: string
+    classCode?: string,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -96,7 +96,7 @@ export const getSignUpAction =
         email,
         password,
         role,
-        classCode
+        classCode,
       )
 
       if (response.status === 200) {

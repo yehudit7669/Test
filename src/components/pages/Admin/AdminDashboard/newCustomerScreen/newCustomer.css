@@ -1,8 +1,4 @@
 /****** New customer component dependencies ******/
-:root {
-  --black: #0000003b;
-  --orange: #ffc046;
-}
 .line {
   border: 1px solid var(--orange);
   margin-top: 10px;

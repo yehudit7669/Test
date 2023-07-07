@@ -22,21 +22,23 @@ import Select from '@mui/material/Select'
 import { StatusQuote } from '../../../../../reducers/quoteReducer'
 import { DeleteLogo } from '../../../../../assets/svgs/svg-components'
 import './QuoteRequestList.css'
-import Popup from '../../../../common/ui/popup/Popup'
+import Popup from '../../../../common/popup/Popup'
+import { useTranslation } from 'react-i18next'
 
 export default function QuoteRequestList() {
   const dispatch = useAppDispatch()
   const [, setError] = useState('')
   const [, setLoading] = useState(false)
   const { quoteRequest } = useAppSelector((state) => state.quoteRequest)
+  const { t } = useTranslation()
   const quoteRequestsTitle = [
-    'School name',
-    'Owner',
-    'Owner email',
-    'Current seats',
-    'Seats request',
-    'Last update',
-    'Status',
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.schoolName'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.owner'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.ownerEmail'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.currentSeats'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.seatsRequest'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.lastUpdate'),
+    t('adminDashboard.quoteRequest.quoteRequestsTitle.status'),
   ]
   const [open, setOpen] = useState(false)
   const [customerName, setcustomerName] = useState('')
@@ -70,7 +72,7 @@ export default function QuoteRequestList() {
   }
 
   return (
-    <div style={{ paddingBottom: 30 }}>
+    <div className="quoteRequestsContainer">
       <TableContainer component={Paper} className="tableContainerQuotes">
         <Table
           stickyHeader
@@ -119,12 +121,18 @@ export default function QuoteRequestList() {
                           }}
                         >
                           <MenuItem value={StatusQuote.QuoteSent}>
-                            Quote sent
+                            {t(
+                              'adminDashboard.quoteRequest.statusQuote.Quotesent',
+                            )}
                           </MenuItem>
                           <MenuItem value={StatusQuote.Pending}>
-                            Pending
+                            {t(
+                              'adminDashboard.quoteRequest.statusQuote.Pending',
+                            )}
                           </MenuItem>
-                          <MenuItem value={StatusQuote.Done}>Done</MenuItem>
+                          <MenuItem value={StatusQuote.Done}>
+                            {t('adminDashboard.quoteRequest.statusQuote.Done')}
+                          </MenuItem>
                         </Select>
                       </FormControl>
                     </Box>
@@ -145,7 +153,7 @@ export default function QuoteRequestList() {
             ) : (
               <TableRow>
                 <TableCell align="center" colSpan={quoteRequestsTitle.length}>
-                  There are no quote requests
+                  {t('adminDashboard.quoteRequest.noQuoteRequest')}
                 </TableCell>
               </TableRow>
             )}
@@ -155,14 +163,22 @@ export default function QuoteRequestList() {
       <Popup
         cancleButton={true}
         submitButton={true}
-        cancleText="Cancle"
-        submitText="Yes"
-        title="Delete Quote Request"
+        cancleText={t('adminDashboard.quoteRequest.popup.cancleButton')}
+        submitText={t('adminDashboard.quoteRequest.popup.submitButton')}
+        title={t('adminDashboard.quoteRequest.popup.title')}
         handleClose={handleClose}
         onSubmit={() => deleteQuoteRequest(quoteRequestId)}
         open={open}
+        classNameDialog="deleteQuotePopup"
+        classNameDialogActions="dialogActions"
+        classNameCloseIcon="closeIcon"
+        classNameTitle="title"
+        classNameCancleButton="cancleButton"
+        classNameSubmitButton="submitButton"
       >
-        <span className="popupSpan">{`Are you sure you want to delete the quote request of ${customerName}`}</span>
+        <span className="popupSpan">{`${t(
+          'adminDashboard.quoteRequest.popup.bodyText',
+        )} ${customerName}?`}</span>
       </Popup>
     </div>
   )

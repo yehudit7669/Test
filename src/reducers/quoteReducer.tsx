@@ -17,8 +17,8 @@ interface State {
       currentSeats?: string
       seatsRequest: string
       status: StatusQuote
-      updatedAt: Date
-    }
+      updatedAt: string
+    },
   ]
 }
 
@@ -32,7 +32,7 @@ const initialState: State = {
       currentSeats: '',
       seatsRequest: '',
       status: StatusQuote.QuoteSent,
-      updatedAt: new Date(),
+      updatedAt: '',
     },
   ],
 }
@@ -41,7 +41,13 @@ const quote = produce((draft: State, action: any) => {
   const { payload } = action
   switch (action.type) {
     case Actions.QUOTE_REQUEST: {
-      draft.quoteRequest = [...payload] as State['quoteRequest']
+      draft.quoteRequest = payload.map((quoteRequest: any) => ({
+        ...quoteRequest,
+        updatedAt:
+          quoteRequest.updatedat instanceof Date
+            ? quoteRequest.updatedat.toString()
+            : null,
+      }))
       break
     }
     default: {

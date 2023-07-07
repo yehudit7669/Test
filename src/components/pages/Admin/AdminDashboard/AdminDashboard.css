@@ -1,8 +1,4 @@
 /****** Admin Dashboard component dependencies ******/
-:root {
-  --off-white: #fafaf4;
-  --blue: #240046;
-}
 .adminDashboardContainer {
   background-color: var(--off-white);
   height: 100vh;
@@ -13,7 +9,7 @@
   margin: auto;
 }
 .newDeal .buttonNewDeal {
-  margin-top: 30px;
+  margin-top: 10px;
   background-color: var(--blue);
   height: 48px;
   border-radius: 10px;
