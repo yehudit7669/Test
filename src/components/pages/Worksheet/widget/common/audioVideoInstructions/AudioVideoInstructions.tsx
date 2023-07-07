@@ -6,9 +6,9 @@ import AccordionDetails from '@mui/material/AccordionDetails'
 import AccordionSummary from '@mui/material/AccordionSummary'
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import { useState } from 'react'
-import VideoPlayer from '../videoRecorderDialog/videoPlayer'
 import AudioPlayer from '../audioPlayer/AudioPlayer'
 import './AudioVideoInstructions.css'
+import VideoPlayer from '../videoRecorderDialog/videoPlayer'
 
 export default function AudioVideoInstructions({
   videoSrc,

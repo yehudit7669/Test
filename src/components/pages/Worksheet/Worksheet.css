@@ -68,6 +68,9 @@
   padding: 51px 43px 1px;
 }
 
+.Widget_Container {
+  margin-bottom: 1.5rem;
+}
 .Widget_Container .Question {
   font-family: 'Indie Flower';
   font-style: normal;

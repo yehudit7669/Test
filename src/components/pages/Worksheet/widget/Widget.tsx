@@ -1,5 +1,6 @@
 import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
+import WordSearchPuzzle from './WordSearchPuzzle'
 import EmbedWidget from './common/embed'
 import LinkWidget from './common/link'
 import TextWidget from './common/text'
@@ -31,6 +32,8 @@ const Widget = ({ widget }: any) => {
       return <MultipleChoice data={widget.data} />
     case widgetTypes.link:
       return <LinkWidget data={widget.data} />
+    case widgetTypes.wordPuzzle:
+      return <WordSearchPuzzle data={widget.data} />
     case widgetTypes.video:
       return <Video data={widget.data} />
     case widgetTypes.embed:
