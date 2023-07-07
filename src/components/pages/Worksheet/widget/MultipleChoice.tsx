@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material'
-import { ChangeEvent, useState } from 'react'
 import RenderQuestionHeader from './common/renderQuestions/RenderQuestionHeader'
 import AudioVideoInstructions from './common/audioVideoInstructions/AudioVideoInstructions'
+import MultipleChoiceOptions from './common/miltipleChoiceOptions'
 
 interface Option {
   text: string
@@ -26,16 +26,12 @@ interface MultipleChoiceProps {
 }
 
 const MultipleChoice: React.FC<MultipleChoiceProps> = ({ data }) => {
-  const [selectedOption, setSelectedOption] = useState('')
-
-  const handleOptionChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSelectedOption(e.target.value)
-  }
-
   return (
     <div className="Widget_Container">
       <Grid container spacing={2}>
-        <RenderQuestionHeader title={data?.title} desc={''} />
+        <Grid item xs={12}>
+          <RenderQuestionHeader title={data?.title} desc={''} />
+        </Grid>
         {(data.audio || data.video) && (
           <Grid item xs={12}>
             <AudioVideoInstructions
@@ -45,19 +41,10 @@ const MultipleChoice: React.FC<MultipleChoiceProps> = ({ data }) => {
           </Grid>
         )}
         <Grid item xs={12}>
-          {data.options.map((option) => (
-            <div key={option.index}>
-              <input
-                type="radio"
-                name="option"
-                value={option.text}
-                checked={selectedOption === option.text}
-                onChange={handleOptionChange}
-              />
-              <label dangerouslySetInnerHTML={{ __html: option.text }}></label>
-              {option.imageUrl && <img src={option.imageUrl} alt="Option" />}
-            </div>
-          ))}
+          <MultipleChoiceOptions
+            questionDirection={'row'}
+            options={data?.options}
+          />
         </Grid>
       </Grid>
     </div>

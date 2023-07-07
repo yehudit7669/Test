@@ -1,0 +1,72 @@
+.PuzzleGame_Container {
+  display: grid;
+}
+.PuzzleGame_Container .Alphabet_Container {
+  aspect-ratio: 1;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none;
+  border: 1px solid lightgray;
+  transition: transform 0.3s;
+  overflow: hidden;
+  color: #333;
+  text-align: center;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.PuzzleGame_Container .Alphabet_Container.beginner {
+  width: 35px;
+  font-size: 30px;
+  border-radius: 5px;
+}
+.PuzzleGame_Container .Alphabet_Container.intermediate {
+  width: 30px;
+  font-size: 25px;
+  border-radius: 3.5px;
+}
+.PuzzleGame_Container .Alphabet_Container.advanced {
+  width: 25px;
+  font-size: 20px;
+  border-radius: 2px;
+}
+
+.PuzzleGame_Container .Alphabet_Container:hover {
+  transform: scale(1.1);
+}
+.PuzzleGame_Container .Alphabet_Container.selected {
+  background: lightcoral;
+  color: white;
+}
+
+.PuzzleGame_Container .Alphabet_Container.highlighted {
+  /* background: rgb(255, 184, 184); */
+  background-color: rgb(255, 183, 183);
+  color: white;
+}
+
+.Words_Container .Words {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: start;
+  column-gap: 1.5rem;
+}
+
+.Words_Container .Word_Title {
+  color: #333;
+  font-family: Rubik;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+}
+
+.Words_Container .Single_Word {
+  cursor: pointer;
+  font-size: 18px;
+}

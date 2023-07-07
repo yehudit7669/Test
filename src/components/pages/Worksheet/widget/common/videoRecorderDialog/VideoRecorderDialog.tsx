@@ -8,8 +8,8 @@ import Zoom from '@mui/material/Zoom'
 import Uploader from '../../../../../common/uploader'
 import { useTranslation } from 'react-i18next'
 import VideoRecorder from './videoRecorder'
-import VideoPlayer from './videoPlayer'
 import { useTimer } from '../../../../../../hooks/useRecordAudioTimer'
+import VideoPlayer from './videoPlayer'
 import './VideoRecorderDialog.css'
 
 type Props = {

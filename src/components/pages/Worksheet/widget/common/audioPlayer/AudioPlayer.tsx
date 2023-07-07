@@ -132,15 +132,18 @@ const AudioPlayer = ({ audioSrc }: Props) => {
     }
     let tempAudioRef: any = null
     tempAudioRef = audioRef
-    tempAudioRef.current.addEventListener('loadedmetadata', handleDataLoaded)
-    tempAudioRef.current.addEventListener('ondurationchange', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener('loadedmetadata', handleDataLoaded)
+    tempAudioRef?.current?.addEventListener(
+      'ondurationchange',
+      handleDataLoaded
+    )
 
     return () => {
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'loadedmetadata',
         handleDataLoaded
       )
-      tempAudioRef.current.removeEventListener(
+      tempAudioRef?.current?.removeEventListener(
         'ondurationchange',
         handleDataLoaded
       )

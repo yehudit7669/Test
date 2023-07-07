@@ -1,0 +1,49 @@
+.Option_Container {
+  display: grid;
+  align-items: center;
+  gap: 1rem;
+  grid-template-columns: auto 1fr;
+}
+
+.Option_Container .CheckBox_Common {
+  border-radius: 100vw;
+  width: 46px;
+  aspect-ratio: 1;
+  text-align: center;
+  padding: 6px;
+  cursor: pointer;
+  font-size: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Gochi Hand', cursive;
+}
+
+.Option_Container .CheckBox {
+  background: #faeb91;
+}
+.Option_Container .CheckedCheckbox {
+  background: #263d45;
+}
+
+.Option_Container .Option_Text_Container .Option_Text {
+  color: #333;
+  font-size: 18px;
+  font-family: Rubik;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25.714px;
+}
+
+.Option_Container .Img_Container {
+  max-width: 100%;
+  grid-row-start: 2;
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.Option_Container .Img_Container .Option_Image {
+  max-width: 100%;
+  border-radius: 5px;
+  overflow: hidden;
+}
