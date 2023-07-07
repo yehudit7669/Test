@@ -9,7 +9,7 @@ type Props = {
 
 const MultipleChoiceOptions = ({ options, questionDirection }: Props) => {
   const letters = Array.from({ length: 29 }, (_, index) =>
-    String.fromCharCode(65 + index)
+    String.fromCharCode(65 + index),
   )
 
   // const handleCheckBoxSelect = (option,index) => {
@@ -26,7 +26,7 @@ const MultipleChoiceOptions = ({ options, questionDirection }: Props) => {
       <Grid container spacing={2} direction={questionDirection}>
         {options.map((option, index) => {
           return (
-            <Grid item xs={4}>
+            <Grid key={index} item xs={4}>
               <div className={`Option_Container`}>
                 {option.checked ? (
                   <div className="CheckBox_Common CheckedCheckbox">

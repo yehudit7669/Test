@@ -2,6 +2,7 @@ import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 import WordSearchPuzzle from './WordSearchPuzzle'
 import EmbedWidget from './common/embed'
+import ImageWidget from './common/image'
 import LinkWidget from './common/link'
 import TextWidget from './common/text'
 import Video from './common/video'
@@ -22,9 +23,11 @@ const widgetTypes = {
   wordPuzzle: 'Word Search Puzzle',
   fillOnAnImage: 'Fill On An Image',
   text: 'Text',
+  image: 'Image',
 }
 
 const Widget = ({ widget }: any) => {
+  // console.log(widget.name)
   switch (widget.name) {
     case widgetTypes.openQuestion:
       return <OpenQuestion data={widget.data} />
@@ -40,6 +43,8 @@ const Widget = ({ widget }: any) => {
       return <EmbedWidget data={widget.data} />
     case widgetTypes.text:
       return <TextWidget data={widget.data} />
+    case widgetTypes.image:
+      return <ImageWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import './PuzzleGame.css'
 import { Grid, Typography } from '@mui/material'
 import useRandomColor from '../../../../../../hooks/useRandomColor'
@@ -34,7 +34,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
   const handleSelectAlphabet = (
     _element: { letter: string; x: number; y: number },
     rowIndex: number,
-    colIndex: number
+    colIndex: number,
   ) => {
     if (
       highlightedLetters &&
@@ -104,9 +104,9 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
             (_elem: { letter: string; x: number; y: number }) =>
               _elem.letter === selectedLetterElement.letter &&
               _elem.x === selectedLetterElement.x &&
-              _elem.y === selectedLetterElement.y
+              _elem.y === selectedLetterElement.y,
           )
-        }
+        },
       )
 
       const selectedColIndex = puzzleWidgetData?.grid?.cells[
@@ -157,7 +157,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
         rowIndex: number,
         colIndex: number,
         selectedRowIndex: number,
-        selectedColIndex: number
+        selectedColIndex: number,
       ) => {
         return (
           Math.abs(rowIndex - selectedRowIndex) /
@@ -172,7 +172,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
           rowIndex,
           colIndex,
           selectedRowIndex,
-          selectedColIndex
+          selectedColIndex,
         ) === 1
       ) {
         const colStep = colIndex > selectedColIndex ? 1 : -1
@@ -202,7 +202,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
             element.x === selectedLetterElement.x &&
             element.y === selectedLetterElement.y
           )
-        }
+        },
       )
       const isCurrentHoveredElementHighlighted = tempHighlightedLetters.some(
         (element: { letter: string; x: number; y: number }) => {
@@ -211,7 +211,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
             element.x === currentHoveredElement.x &&
             element.y === currentHoveredElement.y
           )
-        }
+        },
       )
       !isCurrentHoveredElementHighlighted &&
         tempHighlightedLetters.push({ ...currentHoveredElement })
@@ -269,11 +269,12 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
               x: number
               y: number
             }[],
-            rowIndex: number
+            rowIndex: number,
           ) => {
             return rowElement.map((columnElement, colIndex) => {
               return (
                 <span
+                  key={colIndex}
                   style={{
                     backgroundColor:
                       foundLetters
@@ -281,7 +282,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
                           (elem) =>
                             elem.letter === columnElement.letter &&
                             elem.x === columnElement.x &&
-                            elem.y === columnElement.y
+                            elem.y === columnElement.y,
                         )
                         .map((elem) => elem.backgroundColor)
                         .join('') || 'default',
@@ -297,7 +298,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
               ${
                 highlightedLetters?.some(
                   (elem) =>
-                    elem.x === columnElement.x && elem.y === columnElement.y
+                    elem.x === columnElement.x && elem.y === columnElement.y,
                 )
                   ? 'highlighted'
                   : ''
@@ -323,7 +324,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
                 </span>
               )
             })
-          }
+          },
         )}
       </Grid>
       <Grid
@@ -355,9 +356,9 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
             }px`,
           }}
         >
-          {puzzleWidgetData?.grid?.words.map((word: string) => {
+          {puzzleWidgetData?.grid?.words.map((word: string, index: any) => {
             return (
-              <>
+              <React.Fragment key={index}>
                 <Typography
                   sx={{
                     color:
@@ -375,7 +376,7 @@ const PuzzleGame = ({ puzzleWidgetData }: Props) => {
                 >
                   {word}
                 </Typography>
-              </>
+              </React.Fragment>
             )
           })}
         </div>
