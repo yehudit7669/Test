@@ -1,7 +1,6 @@
 import { Navigate, Route } from 'react-router-dom'
 import MainLayout from '../../components/layouts/MainLayout'
 import { routes, userLayouts } from '../../constants'
-import FirstLoginParent from '../../components/pages/Auth/firstLoginParent'
 import ParentDashboard from '../../components/pages/Dashboard/parentDashboard'
 
 type Props = {
@@ -14,13 +13,13 @@ const renderParentRoutes = ({ layout }: Props) => {
     case userLayouts.IS_AUTH:
       return (
         <>
-          <Route path={`/${routes.GET_STARTED}`}>
+          {/* <Route path={`/${routes.GET_STARTED}`}>
             <Route index element={<Navigate to={routes.PARENT} replace />} />
             <Route
               path={`/${routes.FIRST_LOGIN_PARENT}`}
               element={<FirstLoginParent />}
             />
-          </Route>
+          </Route> */}
         </>
       )
     case userLayouts.IS_MAIN:

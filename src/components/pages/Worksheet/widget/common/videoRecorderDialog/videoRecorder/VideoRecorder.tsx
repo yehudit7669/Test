@@ -174,7 +174,6 @@ export default function VideoRecorder({
       mediaRecorder.current.onstop = () => {
         const videoBlob = new Blob(videoChunks, { type: mimeType })
         const videoUrl = URL.createObjectURL(videoBlob)
-        console.log(videoUrl, 'videoUrl')
         setRecordedVideo(videoUrl)
         setVideoChunks([])
       }

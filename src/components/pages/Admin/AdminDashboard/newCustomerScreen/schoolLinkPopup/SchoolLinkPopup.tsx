@@ -23,22 +23,28 @@ const SchoolLinkPopup = ({ open, handleClose, dashboardLink }: Props) => {
         maxWidth={'sm'}
         sx={{ '& .MuiDialog-paper': { minHeight: '386px' } }}
       >
-        <DialogContent className="WelcomeToWizerDialogContent">
+        <DialogContent className="PopUpContent">
           <div className="CloseIconContainer">
             <IconButton onClick={handleClose}>
               <CloseIcon />
             </IconButton>
           </div>
           <Confetti />
-          <div className="WelcomeToWizerTitle">
+          <div className="PopUpTitle">
             {t('NewCustomer.schoolLinkPopup.title')}
           </div>
-          <CopyTextToClipboard
-            color="#FFC046"
-            text={String(dashboardLink?.link)}
-          />
-          <label>{dashboardLink?.link}</label>
-          <div>
+          <div className="subTitle">
+            {`Here is the link to   \n`}
+            {dashboardLink?.school.schoolName}
+          </div>
+          <div className="popUpLinkAndPassword">
+            <CopyTextToClipboard
+              color="#FFC046"
+              text={String(dashboardLink?.link)}
+            />
+            <label>{dashboardLink?.link}</label>
+          </div>
+          <div className="popUpLinkAndPassword">
             <CopyTextToClipboard
               color="#FFC046"
               text={String(dashboardLink?.link)}

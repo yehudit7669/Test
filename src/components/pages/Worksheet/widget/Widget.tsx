@@ -1,7 +1,10 @@
-import LinkWidget from './Link'
 import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 import WordSearchPuzzle from './WordSearchPuzzle'
+import EmbedWidget from './common/embed'
+import LinkWidget from './common/link'
+import TextWidget from './common/text'
+import Video from './common/video'
 
 const widgetTypes = {
   openQuestion: 'Open Question',
@@ -17,6 +20,8 @@ const widgetTypes = {
   discussion: 'Discussion',
   reflection: 'Reflection',
   wordPuzzle: 'Word Search Puzzle',
+  fillOnAnImage: 'Fill On An Image',
+  text: 'Text',
 }
 
 const Widget = ({ widget }: any) => {
@@ -29,8 +34,14 @@ const Widget = ({ widget }: any) => {
       return <LinkWidget data={widget.data} />
     case widgetTypes.wordPuzzle:
       return <WordSearchPuzzle data={widget.data} />
+    case widgetTypes.video:
+      return <Video data={widget.data} />
+    case widgetTypes.embed:
+      return <EmbedWidget data={widget.data} />
+    case widgetTypes.text:
+      return <TextWidget data={widget.data} />
     default:
-      return <h1>Component not found!!</h1>
+      return <h1>Component not found!! Type : {widget?.name}</h1>
   }
 }
 
