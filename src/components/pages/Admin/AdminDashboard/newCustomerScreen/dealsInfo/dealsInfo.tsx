@@ -4,7 +4,6 @@ import { useState } from 'react'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { FinalFormInput } from '../../../../../common/ui/form/finalFormInput'
-import { required } from '../../../../../common/validationFields/validationFeilds'
 import UpgradeManuallySeatsPopup from './upgradeManuallySeats/UpgradeManuallySeatsPopup'
 import { DealList } from './dealList/DealList'
 
@@ -18,21 +17,64 @@ type Props = {
 }
 export const DealsInfo = (props: Props) => {
   const { t } = useTranslation()
-  const [dealsFields, setDealsFields] = useState(props.isEdit ? [] : [1])
+  const [dealsFields, setDealsFields] = useState(
+    props.isEdit
+      ? []
+      : [
+          {
+            numberSeats: '',
+            amountPaid: '',
+            startDate: '',
+            endDate: '',
+            PONumber: '',
+            quoteNumber: '',
+          },
+        ]
+  )
   const [isOpenPopup, setOpenPopup] = useState<boolean>(false)
   let numberOfSeats = 0
   props.dealList?.map((deal) => (numberOfSeats += deal?.numberSeats))
+
+  const required = (value: string, fromFiedls: any, field: any) => {
+    let validateMessage = undefined
+    if (value) {
+      return undefined
+    }
+    const fieldName = field?.name
+    const openingBracketIndex = fieldName?.indexOf('[')
+    const closingBracketIndex = fieldName?.indexOf(']')
+    const IndexElement = fieldName?.substring(
+      openingBracketIndex + 1,
+      closingBracketIndex
+    )
+    const currentField = fromFiedls?.deals?.[IndexElement]
+    const keys = currentField && Object?.keys(currentField)
+    keys?.forEach((key: string) => {
+      console.log(fieldName?.substring(closingBracketIndex + 2))
+      if (
+        currentField[key] &&
+        fieldName?.substring(closingBracketIndex + 2) != key
+      ) {
+        validateMessage = 'Required'
+        return
+      }
+    })
+    return validateMessage
+  }
+
   return (
     <>
       <div className="subHeader">{t('NewCustomer.DealsInfo.title')}</div>
       {props.isEdit && (
         <div>
-          <label className="subHeader">{`${t(
-            'NewCustomer.DealsInfo.numberSeats',
-          )}: ${0}/${numberOfSeats}`}</label>
+          <label className="subHeader">
+            {`${t(
+              'NewCustomer.DealsInfo.DealList.numberSeats'
+            )}: ${0}/${numberOfSeats}`}
+          </label>
         </div>
       )}
-      {dealsFields.map((field, index) => {
+      {dealsFields.map((deelFrom, index) => {
         return (
           <>
             <UpgradeManuallySeatsPopup
@@ -42,7 +84,7 @@ export const DealsInfo = (props: Props) => {
               setEmailsToInvitation={props.setEmailsToInvitation}
             ></UpgradeManuallySeatsPopup>
             <Grid
-              key={field}
+              key={deelFrom.numberSeats}
               container
               item
               rowSpacing={3}
@@ -121,7 +163,14 @@ export const DealsInfo = (props: Props) => {
         <PluseIcon />
         <label
           onClick={() => {
-            dealsFields.push(1)
+            dealsFields.push({
+              numberSeats: '',
+              amountPaid: '',
+              startDate: '',
+              endDate: '',
+              PONumber: '',
+              quoteNumber: '',
+            })
             setDealsFields([...dealsFields])
           }}
         >

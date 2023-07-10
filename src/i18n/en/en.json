@@ -182,6 +182,14 @@
           "title": "Upgrade manually  seats",
           "subTitle": "Add members emails.\n Remember that every teacher you add is taking a seat.",
           "email": "Email"
+        },
+        "DealList": {
+          "numberSeats": "Number of seats",
+          "amountPaid": "Amount paid",
+          "startDate": "Start date",
+          "endDate": "End date",
+          "PONumber": "PO number",
+          "quoteNumber": "Quote number"
         }
       },
       "schoolLinkPopup": {
