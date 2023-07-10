@@ -1,0 +1,31 @@
+.reflection-box{
+cursor: pointer;
+}
+.reflection-box:hover {
+transform: scale(1.2);
+}
+.reflection-box-selected-thumbs-up svg:hover path {
+    fill: green;
+}
+.reflection-box-selected-thumbs-down svg:hover path {
+    fill: red;
+}
+.reflection-box-selected-finger-up svg:hover path {
+    fill: rgb(181, 181, 6);
+}
+
+.reflection-box-selected-answer-thumbs-up path{
+
+fill: green;
+}
+
+.reflection-box-selected-answer-thumbs-down path{
+
+    fill: red;
+}
+
+.reflection-box-selected-answer-finger-up path{
+
+    fill: rgb(181, 181, 6);
+    
+}

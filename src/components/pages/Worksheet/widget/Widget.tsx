@@ -1,9 +1,11 @@
 import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 import WordSearchPuzzle from './WordSearchPuzzle'
+import BlanksWidget from './common/blanks'
 import EmbedWidget from './common/embed'
 import ImageWidget from './common/image'
 import LinkWidget from './common/link'
+import Reflection from './common/reflection'
 import TextWidget from './common/text'
 import Video from './common/video'
 
@@ -45,6 +47,10 @@ const Widget = ({ widget }: any) => {
       return <TextWidget data={widget.data} />
     case widgetTypes.image:
       return <ImageWidget data={widget.data} />
+    case widgetTypes.reflection:
+      return <Reflection data={widget.data} />
+    case widgetTypes.blanks:
+      return <BlanksWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }
