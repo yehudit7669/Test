@@ -48,7 +48,7 @@ export const CustomerScreen = () => {
 
   useEffect(() => {
     if (isEdit) renderCustomer()
-  })
+  }, [])
 
   const sendInvitation = useCallback(
     async (schoolId: string) => {
