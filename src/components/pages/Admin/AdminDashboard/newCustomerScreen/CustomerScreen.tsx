@@ -49,7 +49,7 @@ export const CustomerScreen = () => {
       }
       renderCustomer()
     }
-  }, [isEdit])
+  }, [isEdit, customer, dispatch, error, params.id])
 
   const sendInvitation = useCallback(
     async (schoolId: string) => {
