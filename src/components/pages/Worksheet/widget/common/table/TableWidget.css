@@ -1,0 +1,20 @@
+.table-container-widget{
+    width: 100%;
+}
+
+.table-container-widget{
+    background-color: rgb(211, 207, 207);
+    padding: 5px;
+}
+
+.table-row-container-widget .table-item-container-widget{
+border: 1px dashed rgb(191, 191, 191);
+padding: 20px 15px;
+background-color: white;
+}
+
+.table-row-container-widget .table-item-container-widget:hover {
+    border: 1px dashed rgb(41, 41, 41);
+    padding: 20px 15px;
+    background-color: white;
+}

@@ -6,6 +6,7 @@ import EmbedWidget from './common/embed'
 import ImageWidget from './common/image'
 import LinkWidget from './common/link'
 import Reflection from './common/reflection'
+import TableWidget from './common/table'
 import TextWidget from './common/text'
 import Video from './common/video'
 
@@ -26,10 +27,11 @@ const widgetTypes = {
   fillOnAnImage: 'Fill On An Image',
   text: 'Text',
   image: 'Image',
+  table: 'Table',
 }
 
 const Widget = ({ widget }: any) => {
-  // console.log(widget.name)
+  console.log(widget.name)
   switch (widget.name) {
     case widgetTypes.openQuestion:
       return <OpenQuestion data={widget.data} />
@@ -51,6 +53,8 @@ const Widget = ({ widget }: any) => {
       return <Reflection data={widget.data} />
     case widgetTypes.blanks:
       return <BlanksWidget data={widget.data} />
+    case widgetTypes.table:
+      return <TableWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }

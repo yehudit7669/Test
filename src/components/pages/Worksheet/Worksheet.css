@@ -31,6 +31,14 @@
   max-height: 100%;
   object-fit: cover;
   display: block;
+  
+}
+.Worksheet_ImgWrapper span{
+        top: 50%;
+        position: absolute;
+        left: 40%;
+        background: aliceblue;
+        font-size: 56px;
 }
 .font-indie-flower {
   position: absolute;
