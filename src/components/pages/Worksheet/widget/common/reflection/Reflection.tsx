@@ -10,7 +10,6 @@ import {
 import { useState } from 'react'
 
 const Reflection = ({ data }: any) => {
-  console.log('Reflection', data)
   const [selectRanking, setSelectRanking] = useState<number>()
   return (
     <div className="Widget_Container">
@@ -20,6 +19,7 @@ const Reflection = ({ data }: any) => {
           {data?.isRanking && (
             <Grid container item xs={4} m={'auto'} marginY={4}>
               <Grid
+                item
                 onClick={() => setSelectRanking(1)}
                 xs={4}
                 className={`reflection-box reflection-box-selected-thumbs-down ${
@@ -30,6 +30,7 @@ const Reflection = ({ data }: any) => {
                 <ReflectionThumbsDown />
               </Grid>
               <Grid
+                item
                 onClick={() => setSelectRanking(2)}
                 xs={4}
                 className={`reflection-box reflection-box-selected-finger-up ${
@@ -41,6 +42,7 @@ const Reflection = ({ data }: any) => {
                 <ReflectionFingerUp />
               </Grid>
               <Grid
+                item
                 onClick={() => setSelectRanking(3)}
                 xs={4}
                 className={`reflection-box reflection-box-selected-thumbs-up ${
