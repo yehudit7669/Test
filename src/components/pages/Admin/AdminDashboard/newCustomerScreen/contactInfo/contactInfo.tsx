@@ -32,7 +32,7 @@ export const ContactInfo = () => {
         if (fieldName?.includes('email') && key == 'email') {
           validateMessage = email(currentField[key])
         } else {
-          validateMessage = 'Required'
+          validateMessage = t('Global.required')
         }
         return
       }

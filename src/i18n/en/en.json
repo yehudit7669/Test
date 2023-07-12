@@ -241,6 +241,9 @@
           "bodyText": "Are you sure you want to delete"
         }
       }
+    },
+    "Global": {
+      "required": "Required"
     }
   }
 }
