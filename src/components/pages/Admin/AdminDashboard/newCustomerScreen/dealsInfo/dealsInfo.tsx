@@ -50,7 +50,6 @@ export const DealsInfo = (props: Props) => {
     const currentField = fromFiedls?.deals?.[IndexElement]
     const keys = currentField && Object?.keys(currentField)
     keys?.forEach((key: string) => {
-      console.log(fieldName?.substring(closingBracketIndex + 2))
       if (
         currentField[key] &&
         fieldName?.substring(closingBracketIndex + 2) != key

@@ -25,7 +25,6 @@ export const ContactInfo = () => {
     const currentField = fromFiedls?.[contactType]
     const keys = currentField && Object?.keys(currentField)
     keys?.forEach((key: string) => {
-      console.log(fieldName?.substring(bracketIndex + 2))
       if (currentField[key] && fieldName?.substring(bracketIndex + 2) != key) {
         if (fieldName?.substring(bracketIndex + 2) == 'email')
           validateMessage = email

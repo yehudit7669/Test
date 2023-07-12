@@ -44,7 +44,6 @@ export const CustomerScreen = () => {
         )
         if (!error) {
           setCustomer(res?.data)
-          console.log('customer', customer)
         }
       }
       renderCustomer()
