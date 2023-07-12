@@ -1,16 +1,9 @@
-:root {
-  --font-style: normal;
-  --fs-15: 15px;
-  --fs-17: 17px;
-  --fw-400: 400;
-  --fw-700: 700;
-}
-
 .dflex-center {
   display: flex;
   align-items: center;
   justify-content: center;
 }
+
 .dflex-spaceBetween {
   display: flex;
   align-items: center;

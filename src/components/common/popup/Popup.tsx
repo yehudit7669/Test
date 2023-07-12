@@ -12,6 +12,8 @@ type VoidFunction = () => void
 
 type Props = {
   open: boolean
+  width?: string
+  height?: string
   handleClose: VoidFunction
   onSubmit: VoidFunction
   title: string

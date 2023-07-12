@@ -79,3 +79,85 @@ export const deleteCustomer =
       throw err
     }
   }
+
+export const editCustomerAction =
+  (
+    customer: { [key: string]: any },
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      setLoading(true)
+      const response: AxiosResponse<any> = await requestFromServer.editCustomer(
+        customer,
+      )
+
+      if (response.status === 200) {
+        setLoading(false)
+        return response
+      } else {
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+export const getCustomer =
+  (
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    customerId: string,
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      const response: AxiosResponse<any> = await requestFromServer.getCustomer(
+        customerId,
+      )
+
+      if (response.status === 200) {
+        setLoading(false)
+        return response
+      } else {
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setLoading(false)
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+
+export const sendInvitationsAction =
+  (
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    emails: Array<string>,
+    schoolId: string,
+  ) =>
+  async (): Promise<AxiosResponse<any> | null> => {
+    try {
+      const response: AxiosResponse<any> =
+        await requestFromServer.sendInvitation({
+          schoolId: schoolId,
+          emails: emails,
+        })
+
+      if (response.status === 200) {
+        setLoading(false)
+        return response
+      } else {
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }

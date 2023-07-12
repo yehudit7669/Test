@@ -24,6 +24,8 @@ import Popup from '../../../../common/popup/Popup'
 import ClickAwayListener from '@mui/base/ClickAwayListener'
 import PopperToCopy from '../../../../common/popperToCopy/PopperToCopy'
 import { useTranslation } from 'react-i18next'
+import { Link } from 'react-router-dom'
+import { routes } from '../../../../../constants'
 
 export default function CustomerList() {
   const dispatch = useAppDispatch()
@@ -125,7 +127,13 @@ export default function CustomerList() {
                   key={customer.name}
                   sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                 >
-                  <TableCell align="center">{customer.schoolname}</TableCell>
+                  <TableCell align="center">
+                    <Link
+                      to={`/${routes.ADMIN_DASHBOARD}/${customer?.id}/${routes.EDIT}`}
+                    >
+                      {customer.schoolname}
+                    </Link>
+                  </TableCell>
                   <TableCell align="center">{customer.firstname}</TableCell>
                   <TableCell align="center">{customer.email}</TableCell>
                   <TableCell align="center">{customer.numberseats}</TableCell>
