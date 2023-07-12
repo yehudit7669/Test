@@ -2,7 +2,6 @@ import axios from 'axios'
 
 export const CUSTOMER_URL = `api/v2/customer`
 export const DELETE_CUSTOMER_URL = `${CUSTOMER_URL}/delete-customer/`
-export const SEND_INVITATION_URL = `${CUSTOMER_URL}/send-invitation`
 const INVITATION_TEACHER = `api/v2/invitation-teacher/send-emails`
 
 export const newCustomer = (customer: any) => {

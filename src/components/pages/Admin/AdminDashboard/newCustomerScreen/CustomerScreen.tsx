@@ -65,6 +65,7 @@ export const CustomerScreen = () => {
         alert(t('NewCustomer.error'))
       }
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch, emailsToInvitation, error],
   )
 
