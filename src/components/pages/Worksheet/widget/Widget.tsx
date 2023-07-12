@@ -2,6 +2,7 @@ import MultipleChoice from './MultipleChoice'
 import OpenQuestion from './OpenQuestion'
 import WordSearchPuzzle from './WordSearchPuzzle'
 import BlanksWidget from './common/blanks'
+import DiscussionsWidget from './common/discussions'
 import EmbedWidget from './common/embed'
 import ImageWidget from './common/image'
 import LinkWidget from './common/link'
@@ -31,7 +32,7 @@ const widgetTypes = {
 }
 
 const Widget = ({ widget }: any) => {
-  console.log(widget.name)
+  // console.log(widget.name)
   switch (widget.name) {
     case widgetTypes.openQuestion:
       return <OpenQuestion data={widget.data} />
@@ -55,6 +56,8 @@ const Widget = ({ widget }: any) => {
       return <BlanksWidget data={widget.data} />
     case widgetTypes.table:
       return <TableWidget data={widget.data} />
+    case widgetTypes.discussion:
+      return <DiscussionsWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }

@@ -3,7 +3,6 @@ import './TableWidget.css'
 import RenderQuestionHeader from '../renderQuestions/RenderQuestionHeader'
 
 const TableWidget = ({ data }: any) => {
-  console.log('TableWidget', data)
   return (
     <div className="Widget_Container">
       <Grid container spacing={2}>
@@ -16,15 +15,13 @@ const TableWidget = ({ data }: any) => {
           />
         </Grid>
         <Grid item xs={12}>
-          {/* <RichTextEditor /> */}
-
           <table className="table-container-widget">
             <tbody className="table-body-container-widget">
-              {' '}
-              {data?.tablerows.map((item: any) => (
-                <tr className="table-row-container-widget">
-                  {item?.cols?.map((cols: any) => (
+              {data?.tablerows.map((item: any, indexing: number) => (
+                <tr className="table-row-container-widget" key={indexing}>
+                  {item?.cols?.map((cols: any, index: number) => (
                     <td
+                      key={index}
                       className="table-item-container-widget"
                       dangerouslySetInnerHTML={{ __html: cols.text }}
                     />

@@ -18,7 +18,7 @@ import AdminDashboard from '../components/pages/Admin/AdminDashboard'
 
 function App() {
   useEffect(() => {
-    WSConnect()
+    // WSConnect()
   }, [])
 
   return (

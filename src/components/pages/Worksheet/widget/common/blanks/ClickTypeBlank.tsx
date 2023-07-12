@@ -21,7 +21,7 @@ const createWordBank = (wordBlankText: string): string[] => {
 }
 
 const ClickTypeBlank = ({ data }: ClickTypeBlankProps) => {
-  const completeBlankText = data?.blankText || ''
+  const completeBlankText = data?.blankText
 
   const wordBlankTextToRender = completeBlankText.replace(
     /<wmblank>.*?<\/wmblank>/g,
@@ -37,15 +37,10 @@ const ClickTypeBlank = ({ data }: ClickTypeBlankProps) => {
     const newInputValues: any = [...inputValues]
     const selectedValue = value !== '' ? value : undefined
 
-    // Check if the selected value is already present in the input values
     const valueIndex = newInputValues.indexOf(selectedValue)
-
-    // Remove the selected value from its current position
     if (valueIndex !== -1) {
       newInputValues[valueIndex] = ''
     }
-
-    // Set the selected value for the current index
     newInputValues[index] = selectedValue
 
     setInputValues(newInputValues)
@@ -72,9 +67,9 @@ const ClickTypeBlank = ({ data }: ClickTypeBlankProps) => {
               value={word || ''}
               onChange={(e) => handleSelectChange(inputIndex, e.target.value)}
             >
-              <option value=" ">Select word</option>
-              {wordBank.map((word, index) => (
-                <option key={index} value={word}>
+              <option value="">Select word</option>
+              {wordBank.map((word, wordIndex) => (
+                <option key={wordIndex} value={word}>
                   {word}
                 </option>
               ))}
@@ -85,6 +80,7 @@ const ClickTypeBlank = ({ data }: ClickTypeBlankProps) => {
             <span
               className="blank-text-parts"
               dangerouslySetInnerHTML={{ __html: part }}
+              key={index}
             ></span>
           )
         }

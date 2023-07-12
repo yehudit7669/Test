@@ -1,0 +1,93 @@
+.messageRow {
+    display: flex;
+}
+
+.messageRowRight {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.messageBlue {
+    position: relative;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #A8DDFD;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #97C6E3;
+    border-radius: 10px;
+}
+
+
+
+
+
+.messageOrange {
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f8e896;
+    text-align: left;
+    font: 400 .9em 'Open Sans', sans-serif;
+    border: 1px solid #dfd087;
+    border-radius: 10px;
+}
+
+
+
+.messageContent {
+    padding: 0;
+    margin: 0;
+}
+
+.messageTimeStampRight {
+    position: absolute;
+    font-size: .85em;
+    font-weight: 300;
+    margin-top: 10px;
+    bottom: -3px;
+    right: 5px;
+}
+
+.orange {
+    /* Assuming deepOrange is defined elsewhere */
+    color: black;
+    background-color:
+        orange;
+    width:
+        25%;
+    height:
+        25%;
+}
+
+.avatarNothing {
+    color: transparent;
+    background-color: transparent;
+    width:
+        25%;
+    height:
+        25%;
+}
+
+.displayName {
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.wrapForm {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.wrapText {
+    width: 80%;
+}
+
+.send-message-button {
+    width: 12%;
+    padding: 0;
+}

@@ -69,6 +69,7 @@ const NoneTypeBlank = ({ data }: SelectTypeBlankProps) => {
         } else {
           return (
             <span
+              key={index}
               className="blank-text-parts"
               dangerouslySetInnerHTML={{ __html: part }}
             ></span>
