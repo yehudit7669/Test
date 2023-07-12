@@ -11,19 +11,20 @@ import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { SubmitButton } from '../../../../common/ui/buttons/submitButton'
 import SchoolLinkPopup from './schoolLinkPopup/SchoolLinkPopup'
-import { SchoolInfo } from './schoolInfo/schoolInfo'
+import { SchoolInfo } from './schoolInfo/SchoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
 import './CustomerScreen.css'
 import MainLayout from '../../../../layouts/MainLayout'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { routes } from '../../../../../constants'
+import Loader from '../../../../common/loader'
 
 export const CustomerScreen = () => {
   const dispatch = useAppDispatch()
   const { t } = useTranslation()
   const [error, setError] = useState('')
-  const [, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [openSchoolLinkPopup, setOpenSchoolLinkPopup] = useState<boolean>(false)
   const [schoolLink, setSchoolLink] = useState<any>(null)
   const [emailsToInvitation, setEmailsToInvitation] = useState<Array<string>>(
@@ -35,27 +36,37 @@ export const CustomerScreen = () => {
   const isEdit = location.includes('edit') ? true : false
   const params = useParams()
 
-  const renderCustomer = useCallback(async () => {
-    const res = await dispatch(
-      getCustomer(setError, setLoading, String(params.id)),
-    )
-    if (!error) {
-      setCustomer(res?.data)
-    }
-  }, [dispatch, error, params.id])
-
   useEffect(() => {
-    if (isEdit) renderCustomer()
-  }, [isEdit, renderCustomer])
-  const sendInvitation = useCallback(async () => {
-    await dispatch(
-      sendInvitationsAction(setError, setLoading, emailsToInvitation),
-    )
-    if (error) {
-      alert(t('NewCustomer.error'))
+    if (isEdit) {
+      const renderCustomer = async () => {
+        const res = await dispatch(
+          getCustomer(setError, setLoading, String(params.id)),
+        )
+        if (!error) {
+          setCustomer(res?.data)
+          console.log('customer', customer)
+        }
+      }
+      renderCustomer()
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, emailsToInvitation, error])
+  }, [isEdit, customer, dispatch, error, params.id])
+
+  const sendInvitation = useCallback(
+    async (schoolId: string) => {
+      await dispatch(
+        sendInvitationsAction(
+          setError,
+          setLoading,
+          emailsToInvitation,
+          schoolId,
+        ),
+      )
+      if (error) {
+        alert(t('NewCustomer.error'))
+      }
+    },
+    [dispatch, emailsToInvitation, error],
+  )
 
   const onSubmit = useCallback(
     async (values: any) => {
@@ -75,19 +86,18 @@ export const CustomerScreen = () => {
           newCustomerAction(customerData, setError, setLoading),
         )
         if (!error) {
-          sendInvitation()
+          sendInvitation(res?.data?.schoolId)
           setSchoolLink(res?.data)
           setOpenSchoolLinkPopup(true)
         }
       } else {
         await dispatch(editCustomerAction(customerData, setError, setLoading))
         if (!error) {
-          sendInvitation()
+          sendInvitation(customer?.school?.id)
         }
       }
     },
-
-    [dispatch, error, isEdit, sendInvitation],
+    [dispatch, error, isEdit, customer, sendInvitation],
   )
 
   const renderInitialValues = () => {
@@ -98,7 +108,16 @@ export const CustomerScreen = () => {
       owner: customer?.contacts?.owner,
     }
   }
-
+  if (loading) {
+    return (
+      <div className="Worksheet-container-loader">
+        <Loader />
+      </div>
+    )
+  }
+  if (error) {
+    return <div className="Worksheet-container-error">{error}</div>
+  }
   return (
     <>
       <SchoolLinkPopup

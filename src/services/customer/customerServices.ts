@@ -139,11 +139,15 @@ export const sendInvitationsAction =
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
     emails: Array<string>,
+    schoolId: string,
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {
       const response: AxiosResponse<any> =
-        await requestFromServer.sendInvitation(emails)
+        await requestFromServer.sendInvitation({
+          schoolId: schoolId,
+          emails: emails,
+        })
 
       if (response.status === 200) {
         setLoading(false)

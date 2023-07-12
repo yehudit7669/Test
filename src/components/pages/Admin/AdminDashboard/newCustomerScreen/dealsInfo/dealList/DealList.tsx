@@ -15,12 +15,12 @@ export const DealList = (props: Props) => {
   const { t } = useTranslation()
 
   const columnTitle = [
-    t('NewCustomer.DealsInfo.numberSeats'),
-    t('NewCustomer.DealsInfo.amountPaid'),
-    t('NewCustomer.DealsInfo.startDate'),
-    t('NewCustomer.DealsInfo.endDate'),
-    t('NewCustomer.DealsInfo.PONumber'),
-    t('NewCustomer.DealsInfo.quoteNumber'),
+    t('NewCustomer.DealsInfo.DealList.numberSeats'),
+    t('NewCustomer.DealsInfo.DealList.amountPaid'),
+    t('NewCustomer.DealsInfo.DealList.startDate'),
+    t('NewCustomer.DealsInfo.DealList.endDate'),
+    t('NewCustomer.DealsInfo.DealList.PONumber'),
+    t('NewCustomer.DealsInfo.DealList.quoteNumber'),
   ]
   return (
     <>
@@ -53,6 +53,8 @@ export const DealList = (props: Props) => {
                 >
                   <TableCell align="center">{deal?.numberSeats}</TableCell>
                   <TableCell align="center">{deal?.amountPaid}</TableCell>
+                  <TableCell align="center">{deal?.startDate}</TableCell>
+                  <TableCell align="center">{deal?.endDate}</TableCell>
                   <TableCell align="center">{deal?.poNumber}</TableCell>
                   <TableCell align="center">{deal?.quoteNumber}</TableCell>
                 </TableRow>
