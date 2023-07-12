@@ -29,7 +29,7 @@ export const DealsInfo = (props: Props) => {
             PONumber: '',
             quoteNumber: '',
           },
-        ],
+        ]
   )
   const [isOpenPopup, setOpenPopup] = useState<boolean>(false)
   let numberOfSeats = 0
@@ -45,12 +45,11 @@ export const DealsInfo = (props: Props) => {
     const closingBracketIndex = fieldName?.indexOf(']')
     const IndexElement = fieldName?.substring(
       openingBracketIndex + 1,
-      closingBracketIndex,
+      closingBracketIndex
     )
     const currentField = fromFiedls?.deals?.[IndexElement]
     const keys = currentField && Object?.keys(currentField)
     keys?.forEach((key: string) => {
-      console.log(fieldName?.substring(closingBracketIndex + 2))
       if (
         currentField[key] &&
         fieldName?.substring(closingBracketIndex + 2) != key
@@ -69,7 +68,7 @@ export const DealsInfo = (props: Props) => {
         <div>
           <label className="subHeader">
             {`${t(
-              'NewCustomer.DealsInfo.DealList.numberSeats',
+              'NewCustomer.DealsInfo.DealList.numberSeats'
             )}: ${0}/${numberOfSeats}`}
           </label>
         </div>

@@ -146,6 +146,7 @@
       "loading": "Loading"
     },
     "NewCustomer": {
+      "error": "error while sending the emails",
       "mainText": "New Customer",
       "saveButton": "Save and send invitation",
       "SchoolInfo": {

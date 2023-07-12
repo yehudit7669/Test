@@ -27,4 +27,5 @@ export const routes: any = {
   EDIT: 'edit',
   STUDENT_DOB: 'date-of-birth',
   WORKSHEET: 'worksheet/:id',
+  CUSTOMER_EDIT: '/admin/dashboard/:id/edit',
 }

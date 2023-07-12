@@ -7,7 +7,7 @@ import { StatusQuote } from '../../reducers/quoteReducer'
 export const getAllQuoteRequests =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>,
+    setLoading: Dispatch<SetStateAction<boolean>>
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -33,18 +33,13 @@ export const getAllQuoteRequests =
 export const updateQuoteRequestStatus =
   (status: StatusQuote, id: string) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
-    try {
-      const response: AxiosResponse<any> =
-        await requestFromServer.updateQuoteRequestStatus(status, id)
-      if (response.status === 200) {
-        dispatch(Actions.createAction(Actions.QUOTE_REQUEST, response.data))
-        return response
-      } else {
-        return null
-      }
-    } catch (err: any) {
-      console.log(err, 'error')
-      throw err
+    const response: AxiosResponse<any> =
+      await requestFromServer.updateQuoteRequestStatus(status, id)
+    if (response.status === 200) {
+      dispatch(Actions.createAction(Actions.QUOTE_REQUEST, response.data))
+      return response
+    } else {
+      return null
     }
   }
 
@@ -53,7 +48,7 @@ export const deleteQuote =
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       const response: AxiosResponse<any> = await requestFromServer.deleteQuote(
-        quoteId,
+        quoteId
       )
 
       if (response.status === 200) {

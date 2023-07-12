@@ -60,7 +60,7 @@ export const CustomerScreen = () => {
         )
       )
       if (error) {
-        alert('error on send the emails')
+        alert(t('NewCustomer.error'))
       }
     },
     [dispatch, emailsToInvitation, error]

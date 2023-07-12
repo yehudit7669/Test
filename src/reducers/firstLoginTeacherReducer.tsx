@@ -52,15 +52,13 @@ const initialState: State = {
     wizerInterests: { interests: [], otherInterests: '' },
     school_Id: '',
   },
-  // Temporary data - This data will be attained from API call
+
   teacherRolesChipDetails: [
     { id: '1', label: 'Principal', selected: false },
     { id: '2', label: 'Tutor', selected: false },
     { id: '3', label: 'Technical Advisor', selected: false },
   ],
-  // Temporary data - This data will be attained from API call
 
-  // Temporary data - This data will be attained from API call
   subjectsInterestChipDetails: [
     { id: '1', label: 'Arts', selected: false },
     { id: '2', label: 'Biology', selected: false },
@@ -69,9 +67,7 @@ const initialState: State = {
     { id: '5', label: 'English', selected: false },
     { id: '6', label: 'History', selected: false },
   ],
-  // Temporary data - This data will be attained from API call
 
-  // Temporary data - This data will be attained from API call
   studentsGradeChipDetails: [
     { id: '1', label: '1st', selected: false },
     { id: '2', label: '2nd', selected: false },
@@ -80,9 +76,7 @@ const initialState: State = {
     { id: '5', label: '5th', selected: false },
     { id: '6', label: '6th', selected: false },
   ],
-  // Temporary data - This data will be attained from API call
 
-  // Temporary data - This data will be attained from API call
   wizerInterestsChipDetails: [
     { id: '1', label: 'Premade worksheets', selected: false },
     { id: '2', label: 'To digitize pdf worksheet', selected: false },
@@ -98,9 +92,7 @@ const initialState: State = {
     },
     { id: '5', label: 'Selling resources', selected: false },
   ],
-  // Temporary data - This data will be attained from API call
 
-  // Temporary data - This data will be attained from API call
   schoolDetails: [
     {
       id: '1',

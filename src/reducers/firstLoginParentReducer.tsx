@@ -39,14 +39,12 @@ const initialState: State = {
     childEducation: { teachingMethod: [], other: '' },
     goals: { options: [], otherGoals: '' },
   },
-  // Temporary data - This data will be attained from API call
+
   childEducationChipDetails: [
     { id: '1', label: 'Clickable', selected: false },
     { id: '2', label: 'Another', selected: false },
   ],
-  // Temporary data - This data will be attained from API call
 
-  // Temporary data - This data will be attained from API call
   teachingGoalsChipDetails: [
     { id: '1', label: 'Keep up on my child class activity', selected: false },
     {
@@ -80,7 +78,7 @@ const firstLoginParent = produce((draft: State, action: any) => {
         const newChildrensArr = draft.firstLoginParentDetails.childrens.filter(
           (element, index) => {
             return index !== payload.index && element !== payload.data
-          },
+          }
         )
         draft.firstLoginParentDetails.childrens = newChildrensArr
       }
