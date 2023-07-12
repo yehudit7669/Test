@@ -33,18 +33,13 @@ export const getAllQuoteRequests =
 export const updateQuoteRequestStatus =
   (status: StatusQuote, id: string) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
-    try {
-      const response: AxiosResponse<any> =
-        await requestFromServer.updateQuoteRequestStatus(status, id)
-      if (response.status === 200) {
-        dispatch(Actions.createAction(Actions.QUOTE_REQUEST, response.data))
-        return response
-      } else {
-        return null
-      }
-    } catch (err: any) {
-      console.log(err, 'error')
-      throw err
+    const response: AxiosResponse<any> =
+      await requestFromServer.updateQuoteRequestStatus(status, id)
+    if (response.status === 200) {
+      dispatch(Actions.createAction(Actions.QUOTE_REQUEST, response.data))
+      return response
+    } else {
+      return null
     }
   }
 

@@ -53,8 +53,6 @@ export const DealList = (props: Props) => {
                 >
                   <TableCell align="center">{deal?.numberSeats}</TableCell>
                   <TableCell align="center">{deal?.amountPaid}</TableCell>
-                  {/* <TableCell align="center">{deal?.startDate}</TableCell> */}
-                  {/* <TableCell align="center">{deal?.endDate}</TableCell> */}
                   <TableCell align="center">{deal?.poNumber}</TableCell>
                   <TableCell align="center">{deal?.quoteNumber}</TableCell>
                 </TableRow>

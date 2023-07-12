@@ -28,10 +28,7 @@ function App() {
           path={`/${routes.ADMIN_DASHBOARD}/${routes.NEW_CUSTOMER}`}
           element={<CustomerScreen />}
         />
-        <Route
-          path={`/${routes.ADMIN}/dashboard/:id/edit`}
-          element={<CustomerScreen />}
-        />
+        <Route path={routes.CUSTOMER_EDIT} element={<CustomerScreen />} />
         <Route
           path={`/${routes.ADMIN_DASHBOARD}`}
           element={<AdminDashboard />}

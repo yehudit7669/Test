@@ -41,9 +41,8 @@ export const CustomerScreen = () => {
     )
     if (!error) {
       setCustomer(res?.data)
-      console.log('customer', customer)
     }
-  }, [dispatch, error, customer, params.id])
+  }, [dispatch, error, params.id])
 
   useEffect(() => {
     if (isEdit) renderCustomer()
@@ -53,8 +52,9 @@ export const CustomerScreen = () => {
       sendInvitationsAction(setError, setLoading, emailsToInvitation),
     )
     if (error) {
-      alert('error on send the emails')
+      alert(t('NewCustomer.error'))
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, emailsToInvitation, error])
 
   const onSubmit = useCallback(
@@ -86,6 +86,7 @@ export const CustomerScreen = () => {
         }
       }
     },
+
     [dispatch, error, isEdit, sendInvitation],
   )
 

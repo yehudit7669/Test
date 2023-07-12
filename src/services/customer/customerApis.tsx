@@ -1,6 +1,8 @@
 import axios from 'axios'
 
 export const CUSTOMER_URL = `api/v2/customer`
+export const DELETE_CUSTOMER_URL = `${CUSTOMER_URL}/delete-customer/`
+export const SEND_INVITATION_URL = `${CUSTOMER_URL}/send-invitation`
 
 export const newCustomer = (customer: any) => {
   return axios.post(`${CUSTOMER_URL}`, customer)
@@ -11,7 +13,7 @@ export const getAllCustomers = () => {
 }
 
 export const deleteCustomer = (customerId: string) => {
-  return axios.delete(`${CUSTOMER_URL}/delete-customer/${customerId}`)
+  return axios.delete(`${DELETE_CUSTOMER_URL}${customerId}`)
 }
 
 export const editCustomer = (customer: any) => {
@@ -23,5 +25,5 @@ export const getCustomer = (customerId: string) => {
 }
 
 export const sendInvitation = (emails: Array<string>) => {
-  return axios.post(`${CUSTOMER_URL}/send-invitation`, emails)
+  return axios.post(SEND_INVITATION_URL, emails)
 }
