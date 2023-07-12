@@ -92,10 +92,11 @@ export const CustomerScreen = () => {
         await dispatch(editCustomerAction(customerData, setError, setLoading))
         if (!error) {
           sendInvitation(customer?.school?.id)
+          renderCustomer()
         }
       }
     },
-    [dispatch, error, isEdit, customer, sendInvitation]
+    [dispatch, error, isEdit, customer, sendInvitation, renderCustomer]
   )
 
   const renderInitialValues = () => {
