@@ -7,13 +7,13 @@ export const newCustomerAction =
   (
     customer: { [key: string]: any },
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       setLoading(true)
       const response: AxiosResponse<any> = await requestFromServer.newCustomer(
-        customer
+        customer,
       )
 
       if (response.status === 201) {
@@ -35,7 +35,7 @@ export const newCustomerAction =
 export const getAllCustomers =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -84,13 +84,13 @@ export const editCustomerAction =
   (
     customer: { [key: string]: any },
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {
       setLoading(true)
       const response: AxiosResponse<any> = await requestFromServer.editCustomer(
-        customer
+        customer,
       )
 
       if (response.status === 200) {
@@ -111,12 +111,12 @@ export const getCustomer =
   (
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
-    customerId: string
+    customerId: string,
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {
       const response: AxiosResponse<any> = await requestFromServer.getCustomer(
-        customerId
+        customerId,
       )
 
       if (response.status === 200) {
@@ -139,7 +139,7 @@ export const sendInvitationsAction =
     setError: Dispatch<SetStateAction<string>>,
     setLoading: Dispatch<SetStateAction<boolean>>,
     emails: Array<string>,
-    schoolId: string
+    schoolId: string,
   ) =>
   async (): Promise<AxiosResponse<any> | null> => {
     try {

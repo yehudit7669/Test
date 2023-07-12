@@ -147,7 +147,7 @@ export default function CustomerList() {
                         <span
                           onClick={handleClickPassword(
                             'bottom-end',
-                            customer.password
+                            customer.password,
                           )}
                           className="cursor"
                         >
@@ -207,7 +207,7 @@ export default function CustomerList() {
         classNameSubmitButton="submitButton"
       >
         <span className="popupSpan">{`${t(
-          'adminDashboard.customer.popup.bodyText'
+          'adminDashboard.customer.popup.bodyText',
         )} ${customerName}?`}</span>
       </Popup>
 
