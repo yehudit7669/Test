@@ -54,7 +54,7 @@ export const DealsInfo = (props: Props) => {
         currentField[key] &&
         fieldName?.substring(closingBracketIndex + 2) != key
       ) {
-        validateMessage = 'Required'
+        validateMessage = t('Global.required')
         return
       }
     })

@@ -15,10 +15,10 @@ import { SchoolInfo } from './schoolInfo/SchoolInfo'
 import { ContactInfo } from './contactInfo/contactInfo'
 import { DealsInfo } from './dealsInfo/dealsInfo'
 import './CustomerScreen.css'
-import MainLayout from '../../../../layouts/MainLayout'
 import { useLocation, useNavigate, useParams } from 'react-router'
 import { routes } from '../../../../../constants'
 import Loader from '../../../../common/loader'
+import AdminMainLayout from '../../../../layouts/AdminMainLayout'
 
 export const CustomerScreen = () => {
   const dispatch = useAppDispatch()
@@ -36,19 +36,18 @@ export const CustomerScreen = () => {
   const isEdit = location.includes('edit') ? true : false
   const params = useParams()
 
-  useEffect(() => {
-    if (isEdit) {
-      const renderCustomer = async () => {
-        const res = await dispatch(
-          getCustomer(setError, setLoading, String(params.id)),
-        )
-        if (!error) {
-          setCustomer(res?.data)
-        }
-      }
-      renderCustomer()
+  const renderCustomer = useCallback(async () => {
+    const res = await dispatch(
+      getCustomer(setError, setLoading, String(params.id)),
+    )
+    if (!error) {
+      setCustomer(res?.data)
     }
-  }, [isEdit, customer, dispatch, error, params.id])
+  }, [dispatch, error, params.id, setCustomer])
+
+  useEffect(() => {
+    if (isEdit) renderCustomer()
+  }, [isEdit, renderCustomer])
 
   const sendInvitation = useCallback(
     async (schoolId: string) => {
@@ -61,10 +60,9 @@ export const CustomerScreen = () => {
         ),
       )
       if (error) {
-        alert(t('NewCustomer.error'))
+        alert(error)
       }
     },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [dispatch, emailsToInvitation, error],
   )
 
@@ -94,10 +92,11 @@ export const CustomerScreen = () => {
         await dispatch(editCustomerAction(customerData, setError, setLoading))
         if (!error) {
           sendInvitation(customer?.school?.id)
+          renderCustomer()
         }
       }
     },
-    [dispatch, error, isEdit, customer, sendInvitation],
+    [dispatch, error, isEdit, customer, sendInvitation, renderCustomer],
   )
 
   const renderInitialValues = () => {
@@ -119,7 +118,7 @@ export const CustomerScreen = () => {
     return <div className="Worksheet-container-error">{error}</div>
   }
   return (
-    <>
+    <div className="customerScreenContainer">
       <SchoolLinkPopup
         dashboardLink={schoolLink}
         open={openSchoolLinkPopup}
@@ -128,7 +127,7 @@ export const CustomerScreen = () => {
           navigate(`/${routes.ADMIN_DASHBOARD}`)
         }}
       />
-      <MainLayout></MainLayout>
+      <AdminMainLayout />
       <div className="header">
         {isEdit ? customer?.school?.schoolName : t('NewCustomer.mainText')}
       </div>
@@ -156,6 +155,6 @@ export const CustomerScreen = () => {
           </Grid>
         )}
       </Form>
-    </>
+    </div>
   )
 }

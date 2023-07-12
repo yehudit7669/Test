@@ -16,19 +16,24 @@ export const ContactInfo = () => {
   ]
   const validationField = (value: string, fromFiedls: any, field: any) => {
     let validateMessage = undefined
-    if (value) {
+    const fieldName = field?.name
+    if (
+      (value && !fieldName?.includes('email')) ||
+      (fieldName?.includes('email') && !email(value))
+    ) {
       return undefined
     }
-    const fieldName = field?.name
     const bracketIndex = fieldName?.indexOf('.')
     const contactType = fieldName?.substring(0, bracketIndex)
     const currentField = fromFiedls?.[contactType]
     const keys = currentField && Object?.keys(currentField)
     keys?.forEach((key: string) => {
       if (currentField[key] && fieldName?.substring(bracketIndex + 2) != key) {
-        if (fieldName?.substring(bracketIndex + 2) == 'email')
-          validateMessage = email
-        else validateMessage = 'Required'
+        if (fieldName?.includes('email') && key == 'email') {
+          validateMessage = email(currentField[key])
+        } else {
+          validateMessage = t('Global.required')
+        }
         return
       }
     })
