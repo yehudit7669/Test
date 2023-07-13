@@ -1,0 +1,45 @@
+/* .sorting-component {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.item-box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.item {
+    cursor: pointer;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+}
+
+.option-box {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.option {
+    margin-bottom: 20px;
+}
+
+.option-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.option-item {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.create-option-button {
+    margin-top: 20px;
+} */

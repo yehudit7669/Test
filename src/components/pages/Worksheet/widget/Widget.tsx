@@ -7,6 +7,7 @@ import EmbedWidget from './common/embed'
 import ImageWidget from './common/image'
 import LinkWidget from './common/link'
 import Reflection from './common/reflection'
+import SortingWidget from './common/sorting'
 import TableWidget from './common/table'
 import TextWidget from './common/text'
 import Video from './common/video'
@@ -58,6 +59,8 @@ const Widget = ({ widget }: any) => {
       return <TableWidget data={widget.data} />
     case widgetTypes.discussion:
       return <DiscussionsWidget data={widget.data} />
+    case widgetTypes.sorting:
+      return <SortingWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }
