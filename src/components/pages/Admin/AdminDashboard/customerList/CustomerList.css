@@ -14,7 +14,7 @@
   font-size: 16px;
   line-height: 24px;
   letter-spacing: -1.1%;
-  color: var(--blue);
+  color: var(--dark-gray);
   width: 20px;
 }
 .tableContainer .tableCell {
@@ -64,13 +64,13 @@
   color: var(--dark-gray);
 }
 .dialogPopup .dialogActions .cancleButton {
-  border: 1px solid var(--blue);
+  border: 1px solid var(--dark-gray);
   border-radius: 10px;
   width: 100px;
   height: 44px;
 }
 .dialogPopup .dialogActions .submitButton {
-  background-color: var(--blue);
+  background-color: var(--dark-gray);
   color: white;
   width: 100px;
   height: 44px;

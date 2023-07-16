@@ -44,7 +44,7 @@ export const getAllCustomers =
 
       if (response.status === 200) {
         setLoading(false)
-        dispatch(Actions.createAction(Actions.GET_CUSTOMERS, response.data))
+        dispatch(Actions.createAction(Actions.GET_CUSTOMER_LIST, response.data))
 
         return response
       } else {
@@ -68,7 +68,7 @@ export const deleteCustomer =
 
       if (response.status === 200) {
         const res = await requestFromServer.getAllCustomers()
-        dispatch(Actions.createAction(Actions.GET_CUSTOMERS, res.data))
+        dispatch(Actions.createAction(Actions.GET_CUSTOMER_LIST, res.data))
         return response
       } else {
         setError(response?.data?.message)
@@ -157,6 +157,33 @@ export const sendInvitationsAction =
         return null
       }
     } catch (err: any) {
+      setError(err?.response?.data?.message)
+      throw err
+    }
+  }
+
+export const getCustomerByEmail =
+  (
+    setError: Dispatch<SetStateAction<string>>,
+    setLoading: Dispatch<SetStateAction<boolean>>,
+    email: string,
+  ) =>
+  async (dispatch: any): Promise<AxiosResponse<any> | null> => {
+    try {
+      const response: AxiosResponse<any> =
+        await requestFromServer.getCustomerByEmail(email)
+
+      if (response.status === 200) {
+        setLoading(false)
+        dispatch(Actions.createAction(Actions.GET_CUSTOMER, response.data))
+        return response
+      } else {
+        setLoading(false)
+        setError(response?.data?.message)
+        return null
+      }
+    } catch (err: any) {
+      setLoading(false)
       setError(err?.response?.data?.message)
       throw err
     }

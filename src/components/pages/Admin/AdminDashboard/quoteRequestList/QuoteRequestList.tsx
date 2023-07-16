@@ -29,7 +29,7 @@ export default function QuoteRequestList() {
   const dispatch = useAppDispatch()
   const [, setError] = useState('')
   const [, setLoading] = useState(false)
-  const { quoteRequest } = useAppSelector((state) => state.quoteRequest)
+  const { quoteRequest } = useAppSelector((state: any) => state.quoteRequest)
   const { t } = useTranslation()
   const quoteRequestsTitle = [
     t('adminDashboard.quoteRequest.quoteRequestsTitle.schoolName'),
@@ -101,7 +101,7 @@ export default function QuoteRequestList() {
                   <TableCell align="center">{quote.owneremail}</TableCell>
                   <TableCell align="center">{quote.currentseats}</TableCell>
                   <TableCell align="center">{quote.seatsrequest}</TableCell>
-                  <TableCell align="center">{quote.lastupdate}</TableCell>
+                  <TableCell align="center">{quote.updatedat}</TableCell>
                   <TableCell align="center">
                     <Box sx={{ minWidth: 120 }}>
                       <FormControl fullWidth>

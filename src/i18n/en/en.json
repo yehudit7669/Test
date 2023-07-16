@@ -244,6 +244,40 @@
     },
     "Global": {
       "required": "Required"
+    },
+    "InstituteOwner": {
+      "loginPage": {
+        "signIn": "Sign in",
+        "tooltipFirstLine": "Sorry, we couldn’t find an account with that email.",
+        "tooltipSecondLine": "Please try again or create a new account with campus email",
+        "submitButton": "Go to school workspace"
+      },
+      "dashboard": {
+        "titleByOwnerName": "Hi",
+        "titleForNoneTeachers": "Invite Teachers to Your Wizer Account",
+        "subTitleForNoneTeachers": "Invite teachers to your Wizer account and provide them with premium access.",
+        "buttonInviteMembers": "+ Invite members"
+      },
+      "dashboardPlanData": {
+        "titleCurrentPlan": "Your current plan:",
+        "invitMembersButton": "Invite members",
+        "titlePurchaseSeats": "Purchase more seats",
+        "askQuoteButton": "Ask for a quote",
+        "titleBookCall": "Hi, I'm Anna from your Customer Success Team",
+        "bookCallButton": "Book a call with me",
+        "popupAfterQuoteRequestTitle": "Thank you for contacting us!",
+        "popupAfterQuoteRequestSubTitle": "Our team takes care of your seats/plan, We will contact you as soon as possible!",
+        "popupAfterInviteMembersSuccessTitle": "Great!!",
+        "popupAfterInviteMembersSuccessSubTitle": "Invitations have been sent to these emails",
+        "popupInviteMembersTitle": "Invite Teachers to Your Wizer Account",
+        "popupInviteMembersSubTitle": "Invite teachers to your Wizer account and provide them with premium access.",
+        "popupInviteMembersExplanation": "Each invitation will use an additional license from your school’s total count. Invited teachers need to create their own accounts to access premium features.",
+        "inviteMembersSubmitButton": "Apply",
+        "inviteMembersBackButton": "Back to dashboard",
+        "usingSeatsUse": "Using",
+        "usingSeatsOf": "of",
+        "usingSeats": "seats"
+      }
     }
   }
 }

@@ -31,7 +31,7 @@ export default function CustomerList() {
   const dispatch = useAppDispatch()
   const [, setError] = useState('')
   const [, setLoading] = useState(false)
-  const { customers } = useAppSelector((state) => state.customer)
+  const { customers } = useAppSelector((state: any) => state.customer)
   const { t } = useTranslation()
   const customersTitle = [
     t('adminDashboard.customer.customerTitle.schoolName'),
