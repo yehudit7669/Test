@@ -10,7 +10,7 @@ import renderRoutes from './routes/renderRoutes'
 import Worksheet from '../components/pages/Worksheet'
 import RequireAuth from './requireAuth/RequireAuth'
 import ForgotPassword from '../components/pages/Auth/ForgotPassword'
-import { NewCustomerScreen } from '../components/pages/Admin/AdminDashboard/newCustomerScreen/NewCustomerScreen.tsx'
+import { CustomerScreen } from '../components/pages/Admin/AdminDashboard/newCustomerScreen/CustomerScreen.tsx'
 import FirstLoginStudent from '../components/pages/Auth/firstLoginStudent/FirstLoginStudent.tsx'
 import FirstLoginTeacher from '../components/pages/Auth/firstLoginTeacher/FirstLoginTeacher.tsx'
 import FirstLoginParent from '../components/pages/Auth/firstLoginParent/FirstLoginParent.tsx'
@@ -26,8 +26,9 @@ function App() {
       <Routes>
         <Route
           path={`/${routes.ADMIN_DASHBOARD}/${routes.NEW_CUSTOMER}`}
-          element={<NewCustomerScreen />}
+          element={<CustomerScreen />}
         />
+        <Route path={routes.CUSTOMER_EDIT} element={<CustomerScreen />} />
         <Route
           path={`/${routes.ADMIN_DASHBOARD}`}
           element={<AdminDashboard />}

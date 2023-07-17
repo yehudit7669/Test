@@ -4,20 +4,86 @@ import { useState } from 'react'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
 import { FinalFormInput } from '../../../../../common/ui/form/finalFormInput'
-import { required } from '../../../../../common/validationFields/validationFeilds'
+import UpgradeManuallySeatsPopup from './upgradeManuallySeats/UpgradeManuallySeatsPopup'
+import { DealList } from './dealList/DealList'
 
-export const DealsInfo = () => {
+type VoidFunction = (array: Array<string>) => void
+
+type Props = {
+  setEmailsToInvitation: VoidFunction
+  emailsToInvitation: Array<string>
+  isEdit: boolean
+  dealList: Array<any> | null
+}
+export const DealsInfo = (props: Props) => {
   const { t } = useTranslation()
-  const [deals, setDeals] = useState([1])
+  const [dealsFields, setDealsFields] = useState(
+    props.isEdit
+      ? []
+      : [
+          {
+            numberSeats: '',
+            amountPaid: '',
+            startDate: '',
+            endDate: '',
+            PONumber: '',
+            quoteNumber: '',
+          },
+        ],
+  )
+  const [isOpenPopup, setOpenPopup] = useState<boolean>(false)
+  let numberOfSeats = 0
+  props.dealList?.map((deal) => (numberOfSeats += deal?.numberSeats))
+
+  const required = (value: string, fromFiedls: any, field: any) => {
+    let validateMessage = undefined
+    if (value) {
+      return undefined
+    }
+    const fieldName = field?.name
+    const openingBracketIndex = fieldName?.indexOf('[')
+    const closingBracketIndex = fieldName?.indexOf(']')
+    const IndexElement = fieldName?.substring(
+      openingBracketIndex + 1,
+      closingBracketIndex,
+    )
+    const currentField = fromFiedls?.deals?.[IndexElement]
+    const keys = currentField && Object?.keys(currentField)
+    keys?.forEach((key: string) => {
+      if (
+        currentField[key] &&
+        fieldName?.substring(closingBracketIndex + 2) != key
+      ) {
+        validateMessage = t('Global.required')
+        return
+      }
+    })
+    return validateMessage
+  }
 
   return (
     <>
       <div className="subHeader">{t('NewCustomer.DealsInfo.title')}</div>
-      {deals.map((deal, index) => {
+      {props.isEdit && (
+        <div>
+          <label className="subHeader">
+            {`${t(
+              'NewCustomer.DealsInfo.DealList.numberSeats',
+            )}: ${0}/${numberOfSeats}`}
+          </label>
+        </div>
+      )}
+      {dealsFields.map((deelFrom, index) => {
         return (
           <>
+            <UpgradeManuallySeatsPopup
+              emailsToInvitation={props.emailsToInvitation}
+              setOpenPopup={setOpenPopup}
+              isOpenPopup={isOpenPopup}
+              setEmailsToInvitation={props.setEmailsToInvitation}
+            ></UpgradeManuallySeatsPopup>
             <Grid
-              key={deal}
+              key={deelFrom.numberSeats}
               container
               item
               rowSpacing={3}
@@ -80,17 +146,38 @@ export const DealsInfo = () => {
           </>
         )
       })}
+      {dealsFields.length ? (
+        <label
+          className="linkText"
+          onClick={() => {
+            setOpenPopup(true)
+          }}
+        >
+          {t('NewCustomer.DealsInfo.UpgradeManuallySeatsPopup.title')}
+        </label>
+      ) : (
+        ''
+      )}
       <div className="addDeal">
         <PluseIcon />
         <label
           onClick={() => {
-            deals.push(1)
-            setDeals([...deals])
+            dealsFields.push({
+              numberSeats: '',
+              amountPaid: '',
+              startDate: '',
+              endDate: '',
+              PONumber: '',
+              quoteNumber: '',
+            })
+            setDealsFields([...dealsFields])
           }}
         >
           {t('NewCustomer.DealsInfo.addDeal')}
         </label>
       </div>
+
+      {props.isEdit && <DealList deals={props.dealList}></DealList>}
     </>
   )
 }

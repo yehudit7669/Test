@@ -1,11 +1,11 @@
 import { Field } from 'react-final-form'
 import { Grid } from '@mui/material'
 import { useTranslation } from 'react-i18next'
+import { FinalFormInput } from '../../../../../common/ui/form/finalFormInput'
 import {
   email,
   required,
 } from '../../../../../common/validationFields/validationFeilds'
-import { FinalFormInput } from '../../../../../common/ui/form/finalFormInput'
 
 export const ContactInfo = () => {
   const { t } = useTranslation()
@@ -14,6 +14,32 @@ export const ContactInfo = () => {
     { type: 'personBilling', value: 'Contact Billing' },
     { type: 'owner', value: 'Owner' },
   ]
+  const validationField = (value: string, fromFiedls: any, field: any) => {
+    let validateMessage = undefined
+    const fieldName = field?.name
+    if (
+      (value && !fieldName?.includes('email')) ||
+      (fieldName?.includes('email') && !email(value))
+    ) {
+      return undefined
+    }
+    const bracketIndex = fieldName?.indexOf('.')
+    const contactType = fieldName?.substring(0, bracketIndex)
+    const currentField = fromFiedls?.[contactType]
+    const keys = currentField && Object?.keys(currentField)
+    keys?.forEach((key: string) => {
+      if (currentField[key] && fieldName?.substring(bracketIndex + 2) != key) {
+        if (fieldName?.includes('email') && key == 'email') {
+          validateMessage = email(currentField[key])
+        } else {
+          validateMessage = t('Global.required')
+        }
+        return
+      }
+    })
+    return validateMessage
+  }
+
   return (
     <>
       <div className="subHeader">{t('NewCustomer.ContactInfo.title')}</div>
@@ -36,7 +62,7 @@ export const ContactInfo = () => {
                 </Grid>
                 <Grid item xs={2}>
                   <Field
-                    validate={type.type == 'owner' ? required : undefined}
+                    validate={type.type == 'owner' ? required : validationField}
                     name={`${type.type}.firstName`}
                     component={FinalFormInput}
                     label={t('NewCustomer.ContactInfo.firstName')}
@@ -44,7 +70,7 @@ export const ContactInfo = () => {
                 </Grid>
                 <Grid item xs={2}>
                   <Field
-                    validate={type.type == 'owner' ? required : undefined}
+                    validate={type.type == 'owner' ? required : validationField}
                     name={`${type.type}.lastName`}
                     component={FinalFormInput}
                     label={t('NewCustomer.ContactInfo.lastName')}
@@ -52,16 +78,15 @@ export const ContactInfo = () => {
                 </Grid>
                 <Grid item xs={3}>
                   <Field
-                    validate={type.type == 'owner' ? email : undefined}
+                    validate={type.type == 'owner' ? email : validationField}
                     name={`${type.type}.email`}
                     component={FinalFormInput}
                     label={t('NewCustomer.ContactInfo.email')}
                   />
                 </Grid>
-                {type.type == 'owner' && (
+                {type.type == 'personBilling' && (
                   <Grid item xs={2}>
                     <Field
-                      validate={required}
                       name={`${type.type}.phoneNumber`}
                       component={FinalFormInput}
                       label={t('NewCustomer.ContactInfo.phoneNumber')}
