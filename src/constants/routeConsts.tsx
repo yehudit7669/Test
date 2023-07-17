@@ -28,11 +28,4 @@ export const routes: any = {
   STUDENT_DOB: 'date-of-birth',
   WORKSHEET: 'worksheet/:id',
   CUSTOMER_EDIT: '/admin/dashboard/:id/edit',
-  INSTITUTE_OWNER: '/institute_owner',
-  INSTITUTE_OWNER_LOGIN: '/institute_owner/login',
-  QUOTE_URL: `api/v2/quote`,
-  CREATE_QUOTE_URL: `api/v2/quote/create-quote-request`,
-  CUSTOMER_URL: `api/v2/customer`,
-  DELETE_CUSTOMER_URL: `api/v2/customer/delete-customer/`,
-  INVITATION_TEACHER: `api/v2/invitation-teacher/send-emails`,
 }

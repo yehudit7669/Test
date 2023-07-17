@@ -31,7 +31,7 @@ export default function CustomerList() {
   const dispatch = useAppDispatch()
   const [, setError] = useState('')
   const [, setLoading] = useState(false)
-  const { customers } = useAppSelector((state: any) => state.customer)
+  const { customers } = useAppSelector((state) => state.customer)
   const { t } = useTranslation()
   const customersTitle = [
     t('adminDashboard.customer.customerTitle.schoolName'),
@@ -147,7 +147,7 @@ export default function CustomerList() {
                         <span
                           onClick={handleClickPassword(
                             'bottom-end',
-                            customer.password
+                            customer.password,
                           )}
                           className="cursor"
                         >
@@ -207,7 +207,7 @@ export default function CustomerList() {
         classNameSubmitButton="submitButton"
       >
         <span className="popupSpan">{`${t(
-          'adminDashboard.customer.popup.bodyText'
+          'adminDashboard.customer.popup.bodyText',
         )} ${customerName}?`}</span>
       </Popup>
 

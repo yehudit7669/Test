@@ -2,7 +2,7 @@ import Dialog from '@mui/material/Dialog'
 import { IconButton } from '@mui/material'
 import DialogContent from '@mui/material/DialogContent'
 import { useTranslation } from 'react-i18next'
-import Confetti from '../../../../../common/confetti/Confetti'
+import Confetti from '../../../../Auth/firstLoginTeacher/confetti/Confetti'
 import { CloseIcon } from '../../../../../../assets/svgs/svg-components'
 import { CopyTextToClipboard } from '../../../../../common/actions/copyTextToClipBoard/copyTextToClipBoard'
 

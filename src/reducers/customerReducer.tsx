@@ -12,18 +12,8 @@ interface State {
       numberSeats: number
       link: string
       password: string
-    }
+    },
   ]
-  customer: {
-    id: string
-    schoolname: string
-    firstname: string
-    email: string
-    updatedat: string
-    numberseats: number
-    link: string
-    password: string
-  }
 }
 
 const initialState: State = {
@@ -39,16 +29,6 @@ const initialState: State = {
       password: '',
     },
   ],
-  customer: {
-    id: '',
-    schoolname: '',
-    firstname: '',
-    email: '',
-    updatedat: '',
-    numberseats: 0,
-    link: '',
-    password: '',
-  },
 }
 
 const customer = produce((draft: State, action: any) => {
@@ -57,7 +37,7 @@ const customer = produce((draft: State, action: any) => {
     case Actions.NEW_CUSTOMER: {
       break
     }
-    case Actions.GET_CUSTOMER_LIST: {
+    case Actions.GET_CUSTOMERS: {
       draft.customers = payload.map((customer: any) => ({
         ...customer,
         updatedAt:
@@ -65,10 +45,6 @@ const customer = produce((draft: State, action: any) => {
             ? customer.updatedat.toString()
             : null,
       }))
-      break
-    }
-    case Actions.GET_CUSTOMER: {
-      draft.customer = { ...draft.customer, ...payload }
       break
     }
     default: {

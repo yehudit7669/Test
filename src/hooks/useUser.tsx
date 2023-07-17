@@ -4,7 +4,6 @@ import useLocalStorage from './useLocalStorage'
 // Define the User type
 type User = {
   role: string
-  email: string
   hasSignedInBefore: boolean
   email: string
   // Add other properties if necessary

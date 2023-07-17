@@ -7,7 +7,7 @@ import { StatusQuote } from '../../reducers/quoteReducer'
 export const getAllQuoteRequests =
   (
     setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
+    setLoading: Dispatch<SetStateAction<boolean>>,
   ) =>
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
@@ -48,7 +48,7 @@ export const deleteQuote =
   async (dispatch: any): Promise<AxiosResponse<any> | null> => {
     try {
       const response: AxiosResponse<any> = await requestFromServer.deleteQuote(
-        quoteId
+        quoteId,
       )
 
       if (response.status === 200) {
@@ -61,36 +61,6 @@ export const deleteQuote =
         return null
       }
     } catch (err: any) {
-      setError(err?.response?.data?.message)
-      throw err
-    }
-  }
-
-export const createQuote =
-  (
-    quote: any,
-    setError: Dispatch<SetStateAction<string>>,
-    setLoading: Dispatch<SetStateAction<boolean>>
-  ) =>
-  async (dispatch: any): Promise<AxiosResponse<any> | null> => {
-    try {
-      setLoading(true)
-      const response: AxiosResponse<any> = await requestFromServer.createQuote(
-        quote
-      )
-
-      if (response.status === 201) {
-        const res = await requestFromServer.getAllQuoteRequests()
-        setLoading(false)
-        dispatch(Actions.createAction(Actions.QUOTE_REQUEST, res.data))
-        return response
-      } else {
-        setLoading(false)
-        setError(response?.data?.message)
-        return null
-      }
-    } catch (err: any) {
-      setLoading(false)
       setError(err?.response?.data?.message)
       throw err
     }

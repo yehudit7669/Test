@@ -6,7 +6,6 @@ import firstLoginStudent from './firstLoginStudentReducer'
 import worksheet from './worksheetReducer'
 import quoteRequest from './quoteReducer'
 import customer from './customerReducer'
-import teacher from './teacherReducer'
 
 const rootReducer = () =>
   combineReducers({
@@ -17,7 +16,6 @@ const rootReducer = () =>
     worksheet,
     quoteRequest,
     customer,
-    teacher,
   })
 
 export default rootReducer
