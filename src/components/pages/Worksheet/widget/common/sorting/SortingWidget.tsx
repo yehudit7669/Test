@@ -105,7 +105,7 @@ const SortingWidget = ({ data }: any) => {
           <Grid container item xs={12}>
             <Box className="item-box">
               <Typography variant="h6">Items</Typography>
-              <Grid item xs={12}>
+              <Grid item xs={12} display={'flex'} border={1}>
                 {items?.map((item, i) => (
                   <ListItemButton
                     key={i}
