@@ -1,0 +1,15 @@
+.fillOnImageContainer {
+    position: relative;
+}
+
+.fillOnImageContainer .tags {
+    position: absolute;
+}
+
+.fillOnImageContainer .activeIndices {
+    position: absolute;
+}
+
+.fillOnImageContainer .tags .adjust {
+    color: red;
+}

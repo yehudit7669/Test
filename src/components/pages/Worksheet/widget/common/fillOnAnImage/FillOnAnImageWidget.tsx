@@ -30,26 +30,25 @@ const FillOnAnImageWidget = ({ data }: any) => {
           alignItems={'center'}
           justifyContent={'center'}
         >
-          <div style={{ position: 'relative' }}>
+          <div className="fillOnImageContainer">
             <img src={data.image.url} />
             {data.tags.map((tag: any, index: number) => (
               <div
+                className="tags"
                 style={{
-                  position: 'absolute',
                   top: tag.positionY,
                   left: tag.positionX,
-                  cursor: 'pointer',
                 }}
                 onClick={() => handlePointClick(index)}
               >
-                <AdjustIcon style={{ color: 'red' }} />
+                <AdjustIcon className="adjust" />
               </div>
             ))}
             {activeIndices.map((activeIndex) => (
               <div
                 key={activeIndex}
+                className="activeIndices"
                 style={{
-                  position: 'absolute',
                   top: `${parseFloat(data.tags[activeIndex].positionY) + 10}%`,
                   left: data.tags[activeIndex].positionX,
                 }}
