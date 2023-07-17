@@ -1,7 +1,7 @@
 import Dialog from '@mui/material/Dialog'
 import { Button, IconButton, CircularProgress } from '@mui/material'
 import DialogContent from '@mui/material/DialogContent'
-import Confetti from '../confetti/Confetti'
+import Confetti from '../../../../common/confetti/Confetti'
 import {
   CloseIcon,
   WizerLogoWithNameForDialog,
@@ -26,7 +26,7 @@ const WelcomeToWizerDialog = ({ open, handleClose }: Props) => {
 
   /* Form submission dependencies */
   const { firstLoginTeacherDetails } = useAppSelector(
-    (state) => state.firstLoginTeacher,
+    (state) => state.firstLoginTeacher
   )
   const [, setError] = useState('')
   const [loading, setLoading] = useState(false)
@@ -44,8 +44,8 @@ const WelcomeToWizerDialog = ({ open, handleClose }: Props) => {
         firstLoginTeacherDetails,
         navigate,
         setError,
-        setLoading,
-      ),
+        setLoading
+      )
     )
   }
   /* Form submission dependencies */

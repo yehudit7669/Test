@@ -1,0 +1,47 @@
+.InstituteOwnerDashboard {
+  background-color: var(--off-white);
+  height: 100vh;
+}
+
+.InstituteOwnerDashboardContainer {
+  width: 1000px;
+  margin: auto;
+}
+
+.InstituteOwnerTitle {
+  font: var(--default-font-family);
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 45px;
+  margin-bottom: 10px;
+}
+
+.InstituteOwnerDashboardContainer .buttonInvite {
+  margin-top: 10px;
+  background-color: var(--blue);
+  height: 48px;
+  border-radius: 10px;
+}
+
+.InstituteOwnerSubTitle {
+  font: var(--default-font-family);
+  font-weight: 550;
+  font-size: 15px;
+  line-height: 33px;
+  margin-bottom: 10px;
+  line-height: 33px;
+}
+.InstituteOwnerThirdTitle {
+  font: var(--default-font-family);
+  font-weight: 450;
+  font-size: 15px;
+  line-height: 33px;
+  margin-bottom: 30px;
+  letter-spacing: -1.1%;
+  line-height: 24px;
+}
+.withoutTeachersContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

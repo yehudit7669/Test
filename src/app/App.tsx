@@ -15,10 +15,12 @@ import FirstLoginStudent from '../components/pages/Auth/firstLoginStudent/FirstL
 import FirstLoginTeacher from '../components/pages/Auth/firstLoginTeacher/FirstLoginTeacher.tsx'
 import FirstLoginParent from '../components/pages/Auth/firstLoginParent/FirstLoginParent.tsx'
 import AdminDashboard from '../components/pages/Admin/AdminDashboard'
+import InstituteOwnerDashboard from '../components/pages/InstituteOwner/InstituteOwnerDashboard'
+import LoginInstituteOwner from '../components/pages/InstituteOwner/LoginInstituteOwner/LoginInstituteOwner.tsx'
 
 function App() {
   useEffect(() => {
-     WSConnect()
+    WSConnect()
   }, [])
 
   return (
@@ -29,6 +31,14 @@ function App() {
           element={<CustomerScreen />}
         />
         <Route path={routes.CUSTOMER_EDIT} element={<CustomerScreen />} />
+        <Route
+          path={`${routes.INSTITUTE_OWNER}`}
+          element={<InstituteOwnerDashboard />}
+        />
+        <Route
+          path={`${routes.INSTITUTE_OWNER_LOGIN}`}
+          element={<LoginInstituteOwner />}
+        />
         <Route
           path={`/${routes.ADMIN_DASHBOARD}`}
           element={<AdminDashboard />}

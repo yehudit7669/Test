@@ -1,0 +1,134 @@
+.quoteRquestPopup {
+  width: 650px;
+  background-color: var(--off-white) !important;
+  min-height: 300px;
+  text-align: center;
+  min-width: 650px;
+}
+
+.titlePopupQuoteRequest {
+  font: var(--default-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--dark-gray);
+  margin-bottom: 20px;
+}
+
+.closeIconPopup {
+  padding-left: 600px;
+  padding-top: 19px;
+  cursor: pointer;
+  width: 36px;
+}
+
+.planDataContainer {
+  display: flex;
+  width: 1000px;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.amountSeats {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  height: 250px;
+  background-color: white;
+  margin-right: 20px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+}
+
+.titlesData {
+  margin: auto;
+  margin-top: 20px;
+  font: var(--default-font-family);
+}
+
+.amount {
+  margin: auto;
+  font-weight: 700;
+  font: var(--default-font-family);
+}
+
+.usingSeats {
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 5px;
+  font: var(--default-font-family);
+}
+
+.line {
+  margin: auto;
+  width: 70%;
+  height: 15px;
+  background-color: var(--beige);
+  border: none;
+}
+
+.inline {
+  height: 15px;
+  background-color: var(--orange);
+}
+
+.planDataContainer .buttonsPlanData {
+  margin: auto;
+  border-radius: 10px;
+  width: 140px;
+  margin-bottom: 20px;
+}
+
+.purchaseSeats {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 250px;
+  background-color: white;
+  margin-right: 20px;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+}
+
+.fieldPurchase {
+  margin: auto;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+}
+
+.textToPurchase {
+  text-align: center;
+}
+
+.bookCall {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  height: 250px;
+  background-color: white;
+  border: 1px solid var(--gray);
+  border-radius: 10px;
+}
+
+.picture {
+  margin: auto;
+}
+
+.ImageInBookCall {
+  width: 100px;
+}
+
+.bodyBookCall {
+  margin: auto;
+  font: var(--default-font-family);
+  width: 80%;
+  line-height: 22px;
+  letter-spacing: -1.1%;
+  text-align: center;
+}
+
+.popupAfterSubmitQuoteRequest {
+  width: 300px;
+  margin: auto;
+  margin-top: 20px;
+}
