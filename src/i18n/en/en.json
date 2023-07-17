@@ -146,7 +146,6 @@
       "loading": "Loading"
     },
     "NewCustomer": {
-      "error": "error while sending the emails",
       "mainText": "New Customer",
       "saveButton": "Save and send invitation",
       "SchoolInfo": {
@@ -177,21 +176,7 @@
         "PONumber": "PO Number (optional)",
         "quoteNumber": "Quote Number (optional)",
         "addDeal": "Add another deal",
-        "pastDealsTitle": "Past deals table",
-        "update": "Update",
-        "UpgradeManuallySeatsPopup": {
-          "title": "Upgrade manually  seats",
-          "subTitle": "Add members emails.\n Remember that every teacher you add is taking a seat.",
-          "email": "Email"
-        },
-        "DealList": {
-          "numberSeats": "Number of seats",
-          "amountPaid": "Amount paid",
-          "startDate": "Start date",
-          "endDate": "End date",
-          "PONumber": "PO number",
-          "quoteNumber": "Quote number"
-        }
+        "upgradeManuallySeats": "Upgrade manually seats"
       },
       "schoolLinkPopup": {
         "title": "!We've got a deal",
@@ -241,9 +226,6 @@
           "bodyText": "Are you sure you want to delete"
         }
       }
-    },
-    "Global": {
-      "required": "Required"
     }
   }
 }
