@@ -1,0 +1,62 @@
+/* Font CSS */
+@import url("https://fonts.googleapis.com/css?family=Raleway:400,900|Modak|Orbitron|Black+Ops+One|Crafty+Girls|Lato|Fredericka+the+Great|Sue+Ellen+Francisco|Indie+Flower|Gochi+Hand|Fredoka+One|Gloria+Hallelujah|Alfa+Slab+One|Codystar|Knewave|Londrina+Shadow|Open+Sans:800|Sniglet|Yellowtail|Trocchi|Mountains+of+Christmas|Grand+Hotel|Permanent+Marker|Lobster|Andada|Annie+Use+Your+Telescope|Montserrat:400,700|Cabin+Sketch:400,700|Quicksand:400,700|Sofia|Josefin+Slab:400,600,700|Amatic+SC:400,700|Boogaloo|Kalam:400,300,700|Old+Standard+TT|Libre+Baskerville|Open+Sans+Condensed:300,700|Roboto|Cookie&subset=latin,latin-ext");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swape");
+@import url("https://fonts.googleapis.com/css?family=Handlee");
+@import url("https://fonts.googleapis.com/css2?family=Bangers&family=Barrio&family=Chelsea+Market&family=Emilys+Candy&family=Faster+One&family=Griffy&family=Kavoon&family=Londrina+Sketch&family=Luckiest+Guy&family=Mochiy+Pop+P+One&family=Modak&family=Patrick+Hand&family=Ranchers&family=Shojumaru&family=Sniglet:wght@400;800&family=Snowburst+One&family=Special+Elite&family=Spicy+Rice&family=Zilla+Slab+Highlight:wght@400;700&display=swap");
+
+
+@font-face {
+    font-family: "Rubik";
+    src: url("../fonts/Rubik-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "nexa_rust_slabblack_shadow_01";
+    src: url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.eot");
+    src: url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.woff2") format("woff2"),
+        url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.woff") format("woff"),
+        url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.ttf") format("truetype"),
+        url("../fonts/Nexa-rust/NexaRustSlab-BlackShadow01-Free-webfont.svg#nexa_rust_slabblack_shadow_01") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Sunday";
+    src: url("../fonts/sunday/Sunday-Regular.eot");
+    src: url("../fonts/sunday/Sunday-Regular.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/sunday/Sunday-Regular.woff2") format("woff2"),
+        url("../fonts/sunday/Sunday-Regular.woff") format("woff"),
+        url("../fonts/sunday/Sunday-Regular.ttf") format("truetype"),
+        url("../fonts/sunday/Sunday-Regular.svg#sunday") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* ... Repeat the font-face declarations for other fonts ... */
+
+@font-face {
+    font-family: "Ubuntu Medium";
+    src: url("../fonts/Ubuntu-M/Ubuntu-M.eot");
+    src: url("../fonts/Ubuntu-M/Ubuntu-M.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/Ubuntu-M/Ubuntu-M.woff2") format("woff2"),
+        url("../fonts/Ubuntu-M/Ubuntu-M.woff") format("woff"),
+        url("../fonts/Ubuntu-M/Ubuntu-M.ttf") format("truetype"),
+        url("../fonts/Ubuntu-M/Ubuntu-M.svg") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "SF-NS-Text";
+    src: url("../fonts/San_Frnasisco/sanfranciscodisplay-regular-webfont.eot");
+    src: url("../fonts/San_Frnasisco/sanfranciscodisplay-regular-webfont.eot?#iefix") format("embedded-opentype"),
+        url("../fonts/San_Frnasisco/sanfranciscodisplay-regular-webfont.woff") format("woff"),
+        url("../fonts/San_Frnasisco/sanfranciscodisplay-regular-webfont.ttf") format("truetype"),
+        url("../fonts/San_Frnasisco/sanfranciscodisplay-regular-webfont.svg#sifonn_basic") format("svg");
+    font-weight: normal;
+    font-style: normal;
+}

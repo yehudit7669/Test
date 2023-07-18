@@ -18,6 +18,7 @@ import App from './app/App.tsx'
 import axios from 'axios'
 import './assets/styles/reset.css'
 import './assets/styles/themeVariables.css'
+import './assets/styles/fontStyles.css'
 import './main.css'
 
 axios.defaults.baseURL = import.meta.env.VITE_REACT_APP_URL
