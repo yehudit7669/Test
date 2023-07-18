@@ -26,7 +26,10 @@ const DiscussionsWidget = ({ data }: any) => {
   return (
     <div className="Widget_Container">
       <Grid container spacing={1}>
-        <RenderQuestionHeader title={data?.title} desc={data?.description} />
+        <RenderQuestionHeader
+          title={data?.title ? data?.title : 'Discussions'}
+          desc={data?.description}
+        />
         <Grid item xs={8} padding={2} margin={'auto'} marginY={4}>
           <Paper elevation={2}>
             <Grid padding={2} paddingBottom={0}>

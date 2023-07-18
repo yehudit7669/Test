@@ -6,7 +6,10 @@ const EmbedWidget = ({ data }: any) => {
   return (
     <div className="Widget_Container">
       <Grid container spacing={1}>
-        <RenderQuestionHeader title={data?.title} desc={data?.description} />
+        <RenderQuestionHeader
+          title={data?.title ? data?.title : 'Embedded'}
+          desc={data?.description}
+        />
         <Grid
           item
           xs={12}
