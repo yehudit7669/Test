@@ -4,6 +4,7 @@ import WordSearchPuzzle from './WordSearchPuzzle'
 import BlanksWidget from './common/blanks'
 import DiscussionsWidget from './common/discussions'
 import EmbedWidget from './common/embed'
+import FillOnAnImageWidget from './common/fillOnAnImage'
 import ImageWidget from './common/image'
 import LinkWidget from './common/link'
 import Reflection from './common/reflection'
@@ -61,6 +62,8 @@ const Widget = ({ widget }: any) => {
       return <DiscussionsWidget data={widget.data} />
     case widgetTypes.sorting:
       return <SortingWidget data={widget.data} />
+    case widgetTypes.fillOnAnImage:
+      return <FillOnAnImageWidget data={widget.data} />
     default:
       return <h1>Component not found!! Type : {widget?.name}</h1>
   }
