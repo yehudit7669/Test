@@ -945,3 +945,83 @@ export const ReflectionThumbsDown = () => {
     </>
   )
 }
+
+export const PointWithoutChanges = () => {
+  return (
+    <>
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="0.669922"
+          y="1.08789"
+          width="26.27"
+          height="26.27"
+          rx="12.5"
+          fill="#5BBBB7"
+          fill-opacity="0.5"
+        />
+        <rect
+          x="8.56055"
+          y="8.97852"
+          width="10.49"
+          height="10.49"
+          rx="5"
+          fill="#5BBBB7"
+        />
+        <rect
+          x="0.669922"
+          y="1.08789"
+          width="26.27"
+          height="26.27"
+          rx="12.5"
+          stroke="white"
+        />
+      </svg>
+    </>
+  )
+}
+
+export const PointWithChanges = () => {
+  return (
+    <>
+      <svg
+        width="28"
+        height="28"
+        viewBox="0 0 28 28"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          x="0.830078"
+          y="1.13867"
+          width="26.27"
+          height="26.27"
+          rx="12.5"
+          fill="#4688CB"
+          fill-opacity="0.5"
+        />
+        <rect
+          x="8.7207"
+          y="9.0293"
+          width="10.48"
+          height="10.49"
+          rx="5"
+          fill="#4688CB"
+        />
+        <rect
+          x="0.830078"
+          y="1.13867"
+          width="26.27"
+          height="26.27"
+          rx="12.5"
+          stroke="white"
+        />
+      </svg>
+    </>
+  )
+}

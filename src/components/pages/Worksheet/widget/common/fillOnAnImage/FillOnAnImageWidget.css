@@ -11,5 +11,17 @@
 }
 
 .fillOnImageContainer .tags .adjust {
-    color: red;
+    color: #85CCB8;
+}
+
+.activeIndices .tagInput {
+    border-radius: 8px;
+    flex: 1 0 0;
+    padding: 1px 13px 1px 13px;
+    align-items: flex-start;
+    font-family: Rubik;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    background-color: #fff;
 }

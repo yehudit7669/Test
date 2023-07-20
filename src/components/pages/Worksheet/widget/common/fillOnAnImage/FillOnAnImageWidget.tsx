@@ -1,11 +1,15 @@
-import { Grid } from '@mui/material'
+import { Grid, TextField } from '@mui/material'
 import RenderQuestionHeader from '../renderQuestions/RenderQuestionHeader'
 import './FillOnAnImageWidget.css'
 import { useState } from 'react'
-import AdjustIcon from '@mui/icons-material/Adjust'
+import {
+  PointWithChanges,
+  PointWithoutChanges,
+} from '../../../../../../assets/svgs/svg-components'
 
 const FillOnAnImageWidget = ({ data }: any) => {
   const [activeIndices, setActiveIndices] = useState<number[]>([])
+  const [tagsData, setTagsData] = useState([...data.tags])
 
   const handlePointClick = (index: number) => {
     setActiveIndices((prevIndices: number[]) => {
@@ -17,6 +21,13 @@ const FillOnAnImageWidget = ({ data }: any) => {
         return [...prevIndices, index]
       }
     })
+  }
+
+  const handleInputChange = (value: string, index: number) => {
+    const updatedData = structuredClone(tagsData)
+    updatedData[index].text = value
+    setTagsData([...updatedData])
+    return updatedData[index].text
   }
 
   return (
@@ -41,7 +52,11 @@ const FillOnAnImageWidget = ({ data }: any) => {
                 }}
                 onClick={() => handlePointClick(index)}
               >
-                <AdjustIcon className="adjust" />
+                {tagsData[index].text == data.tags[index].text ? (
+                  <PointWithoutChanges />
+                ) : (
+                  <PointWithChanges />
+                )}
               </div>
             ))}
             {activeIndices.map((activeIndex) => (
@@ -49,13 +64,25 @@ const FillOnAnImageWidget = ({ data }: any) => {
                 key={activeIndex}
                 className="activeIndices"
                 style={{
-                  top: `${parseFloat(data.tags[activeIndex].positionY) + 10}%`,
-                  left: data.tags[activeIndex].positionX,
+                  top: data.tags[activeIndex].positionY,
+                  left: `${parseFloat(data.tags[activeIndex].positionX) + 6}%`,
                 }}
               >
                 <input
+                  step="any"
+                  className="tagInput"
+                  style={{
+                    border:
+                      tagsData[activeIndex].text === data.tags[activeIndex].text
+                        ? '1px solid #DBDBDB'
+                        : '1px solid #4688CB',
+                  }}
+                  aria-multiline={true}
                   placeholder="Enter text"
-                  value={data.tags[activeIndex].text}
+                  defaultValue={tagsData[activeIndex].text}
+                  onChange={(event) =>
+                    handleInputChange(event.target.value, activeIndex)
+                  }
                 />
               </div>
             ))}
